@@ -31,12 +31,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Avenoir Luxury Gifting',
-  description: 'Definitive luxury raw honey e-commerce atelier, bespoke personalized gift vaults, corporate concierge, and full-featured operations admin management atelier.',
+  metadataBase: new URL(process.env.APP_URL || 'http://localhost:3001'),
+  title: {
+    default: 'Avenoir | Artisanal Raw Honey, Apiary Hardware & Bespoke Gifting',
+    template: '%s | Avenoir Apiary',
+  },
+  description: 'Definitive luxury raw honey e-commerce atelier, bespoke personalized gift vaults, corporate concierge, and professional commercial apiary supplies.',
+  keywords: ['raw honey', 'artisan honey', 'sussex county apiary', 'beekeeping supplies', 'executive gifting', 'heirloom trunks'],
   openGraph: {
-    title: 'Avenoir Luxury Gifting',
-    description: 'Definitive luxury raw honey e-commerce atelier, bespoke personalized gift vaults, corporate concierge, and full-featured operations admin management atelier.',
-  }
+    title: 'Avenoir | Artisanal Raw Honey & Bespoke Gifting',
+    description: 'Definitive luxury raw honey e-commerce atelier, bespoke personalized gift vaults, corporate concierge, and professional commercial apiary supplies.',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

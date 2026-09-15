@@ -18,7 +18,9 @@ import {
   Wrench, 
   Compass, 
   CheckCircle2,
-  SlidersHorizontal
+  SlidersHorizontal,
+  GraduationCap,
+  HeartHandshake
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useCart } from '@/context/CartContext';
@@ -28,9 +30,9 @@ export default function Navbar() {
   const pathname = usePathname();
   const { cartCount, setIsCartOpen } = useCart();
   
-  const [navDropdown, setNavDropdown] = useState<'honey' | 'beekeeping' | null>(null);
+  const [navDropdown, setNavDropdown] = useState<'honey' | 'beekeeping' | 'services' | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileAccordion, setMobileAccordion] = useState<'honey' | 'beekeeping' | null>(null);
+  const [mobileAccordion, setMobileAccordion] = useState<'honey' | 'beekeeping' | 'services' | null>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const isClient = useSyncExternalStore(
@@ -62,7 +64,7 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [mobileMenuOpen]);
 
-  const handleMouseEnter = (dept: 'honey' | 'beekeeping') => {
+  const handleMouseEnter = (dept: 'honey' | 'beekeeping' | 'services') => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
@@ -94,7 +96,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Navigation Links - Center (With 2 Dropdowns & Individual Page Links) */}
+        {/* Navigation Links - Center (With Dropdowns & Individual Page Links) */}
         <nav aria-label="Primary" className="hidden xl:flex items-center gap-2 shrink-0">
           
           {/* 1. Honey Products Dropdown */}
@@ -257,7 +259,131 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          {/* 3. Terroir Profiles Page */}
+          {/* 3. Services Dropdown (Educate, Bee Removal, Bee Keeping) */}
+          <div 
+            className="relative shrink-0"
+            onMouseEnter={() => handleMouseEnter('services')}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link
+              href="/services"
+              prefetch={true}
+              onClick={() => setNavDropdown(null)}
+              className={`px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
+                pathname.startsWith('/services') || navDropdown === 'services'
+                  ? 'bg-emerald-900 text-white shadow-xs' 
+                  : 'text-slate-800 hover:text-emerald-950 hover:bg-slate-100'
+              }`}
+              aria-expanded={navDropdown === 'services'}
+              aria-haspopup="true"
+            >
+              <Compass size={17} strokeWidth={2.4} className={pathname.startsWith('/services') || navDropdown === 'services' ? 'text-amber-400' : 'text-emerald-800'} />
+              <span className="text-[14px]">Services</span>
+              <ChevronDown 
+                size={16} 
+                strokeWidth={2.4}
+                className={`transition-transform duration-200 ${navDropdown === 'services' ? 'rotate-180 text-amber-300' : 'text-slate-400'}`} 
+              />
+            </Link>
+
+            {/* Services Dropdown Menu Panel */}
+            <AnimatePresence>
+              {navDropdown === 'services' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute top-full left-0 mt-2 w-84 bg-white rounded-2xl p-3 shadow-2xl border border-slate-200/90 z-50 text-left"
+                >
+                  <div className="px-3.5 pt-2 pb-1.5 text-xs font-extrabold tracking-wider text-slate-500 uppercase">
+                    Apiary Services
+                  </div>
+
+                  <div className="space-y-1">
+                    {/* Educate */}
+                    <Link
+                      href="/services/educate"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="flex items-start gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-800 hover:text-emerald-950 hover:bg-emerald-50/70 transition group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-amber-200 transition">
+                        <GraduationCap size={18} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-slate-900 group-hover:text-emerald-950">Educate</span>
+                          <ChevronRight size={14} className="text-slate-300 group-hover:text-emerald-800 group-hover:translate-x-0.5 transition" />
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-normal leading-snug">
+                          Academy &amp; field masterclasses
+                        </p>
+                      </div>
+                    </Link>
+
+                    {/* Bee Removal */}
+                    <Link
+                      href="/services/bee-removal"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="flex items-start gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-800 hover:text-emerald-950 hover:bg-emerald-50/70 transition group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-emerald-200 transition">
+                        <HeartHandshake size={18} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-slate-900 group-hover:text-emerald-950">Bee Removal</span>
+                          <ChevronRight size={14} className="text-slate-300 group-hover:text-emerald-800 group-hover:translate-x-0.5 transition" />
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-normal leading-snug">
+                          100% humane live swarm rescue
+                        </p>
+                      </div>
+                    </Link>
+
+                    {/* Bee Keeping */}
+                    <Link
+                      href="/services/beekeeping"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="flex items-start gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-800 hover:text-emerald-950 hover:bg-emerald-50/70 transition group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-900 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-amber-100 transition">
+                        <Wrench size={18} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-slate-900 group-hover:text-emerald-950">Bee Keeping</span>
+                          <ChevronRight size={14} className="text-slate-300 group-hover:text-emerald-800 group-hover:translate-x-0.5 transition" />
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-normal leading-snug">
+                          Private estate hive stewardship
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+
+                  <div className="mt-2 pt-2 border-t border-slate-100">
+                    <Link
+                      href="/services"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold text-emerald-900 bg-emerald-50/50 hover:bg-emerald-100/70 transition group"
+                    >
+                      <span>All Services Overview</span>
+                      <span className="text-xs font-semibold text-emerald-700 group-hover:translate-x-0.5 transition-transform">
+                        &rarr;
+                      </span>
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* 4. Terroir Profiles Page */}
           <Link 
             href="/terroir"
             prefetch={true}
@@ -270,7 +396,7 @@ export default function Navbar() {
             <span className="text-[14px]">Terroir Profiles</span>
           </Link>
 
-          {/* 4. Corporate Gifting Page */}
+          {/* 5. Corporate Gifting Page */}
           <Link 
             href="/corporate"
             prefetch={true}
@@ -481,6 +607,88 @@ export default function Navbar() {
                             </span>
                           </Link>
                         ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* 3. Services Accordion Card */}
+                  <div className="border border-sky-200/90 rounded-2xl p-3.5 bg-gradient-to-br from-sky-50/60 to-white space-y-2">
+                    <button
+                      onClick={() => setMobileAccordion(prev => prev === 'services' ? null : 'services')}
+                      className="w-full flex items-center justify-between font-serif text-base font-bold text-slate-900 cursor-pointer"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-xl bg-sky-100 text-sky-900 flex items-center justify-center">
+                          <Compass size={16} />
+                        </div>
+                        <span className="text-[15px]">Sussex Apiary Services</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-sky-100 text-sky-900">
+                          3 Disciplines
+                        </span>
+                        <ChevronDown size={16} className={`transition-transform duration-200 ${mobileAccordion === 'services' ? 'rotate-180 text-sky-600' : 'text-slate-400'}`} />
+                      </div>
+                    </button>
+
+                    {mobileAccordion === 'services' && (
+                      <div className="pt-3 border-t border-sky-200/60 space-y-2">
+                        <Link
+                          href="/services"
+                          prefetch={true}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block w-full text-sm font-bold text-sky-950 py-2.5 px-3.5 rounded-xl bg-sky-100/70 hover:bg-sky-200/70 transition"
+                        >
+                          → View Overview & Portfolio
+                        </Link>
+                        
+                        <Link
+                          href="/services/educate"
+                          prefetch={true}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="w-full text-sm font-medium text-slate-800 hover:text-sky-950 py-2.5 px-3.5 rounded-xl hover:bg-sky-50 transition flex items-center justify-between"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <GraduationCap size={16} className="text-amber-600" />
+                            <div>
+                              <p className="font-semibold text-slate-900 leading-snug">Educate</p>
+                              <p className="text-[11px] text-slate-500">Apiary Academy & Workshops</p>
+                            </div>
+                          </div>
+                          <ChevronRight size={14} className="text-slate-400" />
+                        </Link>
+
+                        <Link
+                          href="/services/bee-removal"
+                          prefetch={true}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="w-full text-sm font-medium text-slate-800 hover:text-sky-950 py-2.5 px-3.5 rounded-xl hover:bg-sky-50 transition flex items-center justify-between"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <HeartHandshake size={16} className="text-emerald-700" />
+                            <div>
+                              <p className="font-semibold text-slate-900 leading-snug">Bee Removal</p>
+                              <p className="text-[11px] text-slate-500">100% Humane Live Rescue</p>
+                            </div>
+                          </div>
+                          <ChevronRight size={14} className="text-slate-400" />
+                        </Link>
+
+                        <Link
+                          href="/services/beekeeping"
+                          prefetch={true}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="w-full text-sm font-medium text-slate-800 hover:text-sky-950 py-2.5 px-3.5 rounded-xl hover:bg-sky-50 transition flex items-center justify-between"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <Sparkles size={16} className="text-sky-700" />
+                            <div>
+                              <p className="font-semibold text-slate-900 leading-snug">Bee Keeping</p>
+                              <p className="text-[11px] text-slate-500">Estate Apiary Stewardship</p>
+                            </div>
+                          </div>
+                          <ChevronRight size={14} className="text-slate-400" />
+                        </Link>
                       </div>
                     )}
                   </div>

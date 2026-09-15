@@ -360,17 +360,63 @@ export default function TrustTestimonials() {
   return (
     <section className="py-20 bg-[#FBF9F5] border-y border-stone-200/80 overflow-hidden relative text-left">
       <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12">
-        {/* Editorial Section Header */}
-        <div className="max-w-3xl space-y-2 pb-6 border-b border-stone-200/80 text-left">
-          <p className="text-xs font-semibold tracking-widest uppercase text-stone-500">
-            Patron Dispatches &amp; Field Records
-          </p>
-          <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 leading-tight">
-            Observations from Michelin Kitchens, Apiary Yards &amp; Private Cellars
-          </h2>
-          <p className="text-sm text-stone-600 leading-relaxed pt-1">
-            Field testing notes on cold-extracted raw varietals, cabinet-grade cedar joinery, and heirloom gift trunks. Click any dispatch to inspect harvest provenance.
-          </p>
+        {/* Editorial Section Header with Upside Filter Tabs */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-stone-200/80 text-left">
+          <div className="max-w-2xl space-y-2">
+            <p className="text-xs font-semibold tracking-widest uppercase text-stone-500">
+              Patron Dispatches &amp; Field Records
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 leading-tight">
+              Observations from Michelin Kitchens, Apiary Yards &amp; Private Cellars
+            </h2>
+            <p className="text-sm text-stone-600 leading-relaxed pt-1">
+              Field testing notes on cold-extracted raw varietals, cabinet-grade cedar joinery, and heirloom gift trunks. Click any dispatch to inspect harvest provenance.
+            </p>
+          </div>
+
+          {/* Category Filter Tabs - Positioned Upside */}
+          <div className="flex flex-wrap items-center gap-1.5 bg-stone-200/70 p-1.5 rounded-2xl text-xs font-medium shadow-xs shrink-0 self-start lg:self-end">
+            <button
+              onClick={() => setActiveFilter('all')}
+              className={`px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
+                activeFilter === 'all'
+                  ? 'bg-white text-stone-900 shadow-xs font-bold'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
+              }`}
+            >
+              All Records ({TESTIMONIAL_ARCHIVES.length})
+            </button>
+            <button
+              onClick={() => setActiveFilter('culinary')}
+              className={`px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
+                activeFilter === 'culinary'
+                  ? 'bg-white text-stone-900 shadow-xs font-bold'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
+              }`}
+            >
+              Culinary &amp; Chefs
+            </button>
+            <button
+              onClick={() => setActiveFilter('apiary')}
+              className={`px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
+                activeFilter === 'apiary'
+                  ? 'bg-white text-stone-900 shadow-xs font-bold'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
+              }`}
+            >
+              Apiary &amp; Equipment
+            </button>
+            <button
+              onClick={() => setActiveFilter('gifting')}
+              className={`px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
+                activeFilter === 'gifting'
+                  ? 'bg-white text-stone-900 shadow-xs font-bold'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
+              }`}
+            >
+              Heirloom Gifting
+            </button>
+          </div>
         </div>
       </div>
 
@@ -499,51 +545,7 @@ export default function TrustTestimonials() {
         </div>
       </div>
 
-      {/* Category Filter Tabs - Docked below for better switching */}
-      <div className="mt-8 flex justify-center px-4 relative z-20">
-        <div className="flex flex-wrap items-center justify-center gap-1.5 bg-stone-200/70 p-1.5 rounded-2xl text-xs font-medium shadow-xs">
-          <button
-            onClick={() => setActiveFilter('all')}
-            className={`px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
-              activeFilter === 'all'
-                ? 'bg-white text-stone-900 shadow-xs font-bold'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
-            }`}
-          >
-            All Records ({TESTIMONIAL_ARCHIVES.length})
-          </button>
-          <button
-            onClick={() => setActiveFilter('culinary')}
-            className={`px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
-              activeFilter === 'culinary'
-                ? 'bg-white text-stone-900 shadow-xs font-bold'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
-            }`}
-          >
-            Culinary &amp; Chefs
-          </button>
-          <button
-            onClick={() => setActiveFilter('apiary')}
-            className={`px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
-              activeFilter === 'apiary'
-                ? 'bg-white text-stone-900 shadow-xs font-bold'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
-            }`}
-          >
-            Apiary &amp; Equipment
-          </button>
-          <button
-            onClick={() => setActiveFilter('gifting')}
-            className={`px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
-              activeFilter === 'gifting'
-                ? 'bg-white text-stone-900 shadow-xs font-bold'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
-            }`}
-          >
-            Heirloom Gifting
-          </button>
-        </div>
-      </div>
+
 
       {/* Interactive Detail Modal / Inspector */}
       {selectedRecord && (

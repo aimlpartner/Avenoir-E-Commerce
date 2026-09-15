@@ -66,7 +66,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Directory Columns */}
-      <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto py-8 sm:py-12 px-4 sm:px-8 xl:px-12 grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 text-left">
+      <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto py-8 sm:py-12 px-4 sm:px-8 xl:px-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 text-left">
         
         {/* Col 1: Honey Products */}
         <div className="space-y-3 col-span-1">
@@ -110,35 +110,54 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Col 3: Atelier & Terroir Pages */}
+        {/* Col 3: Apiary Services */}
+        <div className="space-y-3 col-span-1">
+          <span className="text-xs uppercase tracking-wider text-slate-200 font-bold block">
+            Apiary Services
+          </span>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/services" prefetch={true} className="hover:text-amber-300 transition block">
+                All Services Overview
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/educate" prefetch={true} className="hover:text-amber-300 transition block">
+                Educate & Academy
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/bee-removal" prefetch={true} className="hover:text-amber-300 transition block">
+                Humane Bee Removal
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/beekeeping" prefetch={true} className="hover:text-amber-300 transition block">
+                Estate Bee Keeping
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Col 4: Atelier & Terroir Pages */}
         <div className="space-y-3 col-span-1">
           <span className="text-xs uppercase tracking-wider text-slate-200 font-bold block">
             The Atelier
           </span>
           <ul className="space-y-2">
             <li>
-              <Link href="/honey" prefetch={true} className="hover:text-amber-300 transition block">
-                Honey Reserve Atelier
-              </Link>
-            </li>
-            <li>
-              <Link href="/beekeeping" prefetch={true} className="hover:text-amber-300 transition block">
-                Apiary Hardware & Supplies
-              </Link>
-            </li>
-            <li>
               <Link href="/terroir" prefetch={true} className="hover:text-amber-300 transition block">
-                Botanical Terroir Profiles
+                Botanical Terroir
               </Link>
             </li>
             <li>
               <Link href="/corporate" prefetch={true} className="hover:text-amber-300 transition block">
-                Corporate Gifting Concierge
+                Corporate Gifting
               </Link>
             </li>
             <li>
               <Link href="/cart" prefetch={true} className="hover:text-amber-300 transition block">
-                Shopping Bag & Checkout
+                Shopping Bag
               </Link>
             </li>
             <li>
@@ -149,7 +168,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Col 4: Apiary Standards */}
+        {/* Col 5: Apiary Standards */}
         <div className="space-y-3 col-span-1">
           <span className="text-xs uppercase tracking-wider text-slate-200 font-bold block">
             Purity Standards
@@ -163,8 +182,8 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Col 5: Support & Atelier Location */}
-        <div className="space-y-3 col-span-2 md:col-span-1">
+        {/* Col 6: Support & Atelier Location */}
+        <div className="space-y-3 col-span-2 sm:col-span-1">
           <span className="text-xs uppercase tracking-wider text-slate-200 font-bold block">
             Atelier Headquarters
           </span>
@@ -181,8 +200,20 @@ export default function Footer() {
 
       </div>
 
+      {/* Massive Editorial Brand Wordmark (Modern Luxury Aesthetic) */}
+      <div className="w-full overflow-hidden border-t border-slate-800/80 pt-8 sm:pt-14 pb-2 sm:pb-6 select-none text-center relative">
+        <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12">
+          <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.35em] uppercase text-emerald-400/70 block mb-2 sm:mb-3">
+            Sussex County Apiary &bull; Kittatinny Ridge Reserve
+          </span>
+          <span className="font-heading font-black tracking-[0.06em] sm:tracking-[0.12em] text-[15vw] 2xl:text-[235px] leading-[0.8] block bg-gradient-to-b from-slate-700/90 via-slate-800/60 to-slate-900/20 bg-clip-text text-transparent hover:from-amber-400/90 hover:via-amber-300/50 hover:to-slate-900/20 transition-all duration-700 cursor-default">
+            AVENOIR
+          </span>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800 py-6 px-4 sm:px-8 xl:px-12 text-center sm:flex sm:justify-between sm:items-center w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto text-[11px] text-slate-500">
+      <div className="border-t border-slate-800/90 py-6 px-4 sm:px-8 xl:px-12 text-center sm:flex sm:justify-between sm:items-center w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto text-[11px] text-slate-500">
         <p>© {new Date().getFullYear()} Avenoir Luxury Gifting LLC. All rights reserved.</p>
         <div className="flex justify-center gap-6 mt-3 sm:mt-0">
           <span className="hover:text-slate-400 cursor-pointer">Privacy Charter</span>
