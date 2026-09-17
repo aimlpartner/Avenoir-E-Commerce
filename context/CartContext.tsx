@@ -133,7 +133,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   const cartSubtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const freeShippingThreshold = 150.0;
+  const freeShippingThreshold = 60.0;
 
   return (
     <CartContext.Provider

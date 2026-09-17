@@ -140,20 +140,20 @@ export default function HoneyClient() {
 
         <div className="max-w-3xl relative z-10 text-white">
           <p className="text-[11px] sm:text-sm font-bold tracking-widest text-amber-300 uppercase mb-1">
-            Terroir Department &bull; Raw Sussex Apiary
+            Seasonal Harvests &bull; New Jersey Hives
           </p>
           <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">
-            Raw Honey Products &amp; <span className="text-amber-300">Terroir Reserves</span>
+            New Jersey Harvested Honey &amp; <span className="text-amber-300">Seasonal Samplers</span>
           </h1>
           <p className="text-amber-100/90 text-xs sm:text-base leading-relaxed mb-4 sm:mb-6">
-            100% raw, unheated, cold-extracted varietals harvested directly from our protected Sussex County apiaries along the Kittatinny Ridge. Hand-bottled into apothecary glassware and solid walnut presentation vaults.
+            Small-batch honey harvested from our New Jersey hives, bottled with the story of the season still inside. Honey for everyday rituals, thoughtful gifts, and tables worth gathering around.
           </p>
 
           {/* Quick Pillars */}
           <div className="flex flex-wrap gap-3 sm:gap-6 text-[11px] sm:text-xs text-amber-200/90 font-medium pt-1">
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Never heated &gt; 95&deg;F</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Preserved live pollen</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Heirloom packaging</span>
+            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Raw &amp; minimally handled</span>
+            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Traceable Hive Passport</span>
+            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Free shipping over $60</span>
           </div>
         </div>
       </div>

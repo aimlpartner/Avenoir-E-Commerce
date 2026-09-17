@@ -193,28 +193,28 @@ export default function CorporateClient() {
 
         <div className="max-w-3xl relative z-10 space-y-3">
           <p className="text-[11px] sm:text-sm font-bold tracking-widest text-amber-300 uppercase">
-            Private Commissions &bull; Sussex County
+            Corporate &amp; Event Gifting &bull; Maison Avenoir
           </p>
           <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Heirloom Presentation Trunks &amp; <span className="text-amber-300">Corporate Dispatch</span>
+            Gifts your clients will <span className="text-amber-300">actually remember.</span>
           </h1>
 
           <p className="text-stone-300 text-xs sm:text-base leading-relaxed max-w-2xl font-normal">
-            Cabinet-grade American walnut and birdseye maple trunks, solid C360 architectural brass plaques engraved with your insignia, and white-glove individual recipient dispatch.
+            Locally harvested New Jersey honey and beautifully packed gift boxes for client appreciation, employee recognition, events, closings, and seasonal giving.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-stone-700/80 text-xs text-stone-200">
             <div className="flex items-center gap-2">
               <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>Volume Tiers (10% to 25% Advantage)</span>
+              <span>Volume Pricing &amp; Custom Curations</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>C360 Architectural Brass Engraving</span>
+              <span>Custom Branded Tags, Sleeves &amp; Seals</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>Individual Multi-Address Courier</span>
+              <span>Direct Multi-Address Recipient Shipping</span>
             </div>
           </div>
         </div>
@@ -230,7 +230,7 @@ export default function CorporateClient() {
               Commission Configurator &amp; Volume Ledger
             </h2>
             <p className="text-xs text-stone-500 mt-1">
-              Select an heirloom presentation item, tailor your order volume, and customize your brass lid inscription.
+              Select an heirloom presentation box or reserve tasting flight, tailor your order volume, and customize your gift dedication.
             </p>
           </div>
 
@@ -553,13 +553,13 @@ export default function CorporateClient() {
               className="w-full py-3.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer flex items-center justify-center gap-2 shadow-xs active:scale-[0.99]"
             >
               <Gift size={16} className="text-amber-400" />
-              <span>Add {quantity} Corporate Vaults to Order</span>
+              <span>Add {quantity} Gift Boxes to Order</span>
             </button>
 
             {addedSuccess && (
               <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-medium flex items-center justify-center gap-2 animate-in fade-in">
                 <CheckCircle2 size={14} className="text-emerald-700" />
-                <span>Added {quantity} bespoke units to your order with engraved brass plaque.</span>
+                <span>Added {quantity} bespoke units to your order with custom engraved plaque.</span>
               </div>
             )}
           </div>
@@ -604,13 +604,13 @@ export default function CorporateClient() {
                 <div className="w-2 h-0.5 bg-[#3a2507] rotate-60" />
               </div>
 
-              {/* Sussex Apiary Hallmark */}
+              {/* Maison Avenoir Hallmark */}
               <div className="space-y-0.5">
                 <span className="text-[9px] tracking-[0.25em] uppercase font-bold text-[#3d270c] block">
-                  Avenoir &bull; Sussex County Apiary
+                  Maison Avenoir &bull; New Jersey Hives
                 </span>
                 <span className="text-[8px] tracking-[0.18em] uppercase text-[#4d3210]/80 block">
-                  New Jersey &bull; Established 2018
+                  Harvest House &bull; Est. 2026
                 </span>
               </div>
 
@@ -697,7 +697,7 @@ export default function CorporateClient() {
 
             <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs text-stone-800 space-y-1">
               <div className="flex items-center justify-between font-mono text-[11px]">
-                <span>corporate@avenoirhoney.com</span>
+                <span>concierge@maisonavenoir.com</span>
                 <span className="text-emerald-800 font-semibold">(973) 555-MIEL</span>
               </div>
             </div>
@@ -898,10 +898,10 @@ export default function CorporateClient() {
             Custom Consultation Desk
           </span>
           <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal">
-            Request Formal Proposal &amp; Proof Sheet
+            Request a Gift Proposal &amp; Proof Sheet
           </h3>
           <p className="text-xs text-stone-300 leading-relaxed">
-            Need custom wood species, specialized harvest years, or have a recipient list exceeding 250 locations? Our concierge desk will prepare full proof renders within 2 hours.
+            Need custom curations, specialized gift box pairings, or have a recipient list exceeding 250 locations? Our concierge desk will prepare a full proposal and proof renders within 2 hours.
           </p>
         </div>
 
@@ -910,7 +910,7 @@ export default function CorporateClient() {
             <CheckCircle2 size={26} className="mx-auto text-amber-400" />
             <h4 className="font-serif text-lg font-semibold text-white">Inquiry Received</h4>
             <p className="text-xs text-stone-300">
-              Thank you. An Avenoir corporate director has received your specifications and will follow up with your formal proposal and digital proof rendering within two hours.
+              Thank you. A Maison Avenoir gifting director has received your specifications and will follow up with your formal proposal and digital proof rendering within two hours.
             </p>
           </div>
         ) : (
@@ -946,7 +946,7 @@ export default function CorporateClient() {
             />
             <textarea
               rows={3}
-              placeholder="Notes on brass inscription, custom laser company crest, or multi-destination shipping deadlines..."
+              placeholder="Notes on brass inscription, custom branding sleeves, or multi-destination shipping deadlines..."
               className="sm:col-span-2 px-3.5 py-2.5 rounded-lg bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-amber-400 resize-none"
             />
             <div className="sm:col-span-2 pt-1">
@@ -954,7 +954,7 @@ export default function CorporateClient() {
                 type="submit"
                 className="px-6 py-3 rounded-lg bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer shadow-xs"
               >
-                Send Request to Concierge Director &rarr;
+                Request a Gift Proposal &rarr;
               </button>
             </div>
           </form>

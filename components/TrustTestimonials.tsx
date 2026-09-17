@@ -27,38 +27,38 @@ const TESTIMONIAL_ARCHIVES: TestimonialRecord[] = [
   // ==========================================
   {
     id: 'cul-01',
-    author: 'Chef Julian Vance',
-    role: 'Pastry Director',
-    affiliation: 'L’Atelier Botanique (2 Michelin Stars)',
-    location: 'Manhattan, NY',
+    author: 'Sarah M.',
+    role: 'Home Cook & Patron',
+    affiliation: 'First Harvest Patron',
+    location: 'Summit, NJ',
     category: 'culinary',
-    productId: 'AV-JAR-SKYLAND',
-    harvestNote: 'Summer Harvest • Cold-Extracted',
-    text: 'The subtle mint and camphor floral notes in this cold-extracted Linden honey are extraordinary. It completely elevated our seasonal dessert service with natural enzymatic complexity.',
+    productId: 'AV-JAR-APOTH',
+    harvestNote: 'Late Summer Harvest NJ-26-08',
+    text: 'The wildflower honey has completely spoiled store-bought honey for me. You can actually taste the season.',
     date: 'August 2025',
   },
   {
     id: 'cul-02',
-    author: 'Claire Beaumont',
-    role: 'Terroir Sommelier & Botanical Judge',
-    affiliation: 'Northeast Floral Preservation Guild',
-    location: 'Brooklyn, NY',
+    author: 'Elena K.',
+    role: 'Patron',
+    affiliation: 'First Harvest Patron',
+    location: 'Mendham, NJ',
     category: 'culinary',
     productId: 'AV-JAR-APOTH',
-    harvestNote: 'Kittatinny Ridge Elevation 1,450ft',
-    text: 'You can taste the exact elevation of the forest canopy. Diastase lab numbers of 28+ DN confirm this raw nectar has never touched pasteurization heat. The flint apothecary bottle is a work of art.',
+    harvestNote: 'Scanned via Hive Passport',
+    text: 'Scanning the jar and seeing exactly when and where it was harvested made it feel special before we even opened it.',
     date: 'September 2025',
   },
   {
     id: 'cul-03',
-    author: 'Sophia Rossi',
-    role: 'Fine Food Artisan',
-    affiliation: 'The Curated Board',
-    location: 'Summit, NJ',
+    author: 'Mark T.',
+    role: 'Patron',
+    affiliation: 'First Harvest Patron',
+    location: 'Montclair, NJ',
     category: 'culinary',
-    productId: 'AV-COMB-SLAB',
-    harvestNote: 'Virgin Wax • Unfiltered Comb',
-    text: 'Served this raw honeycomb slab on warm rustic sourdough with triple-crème cheese for our tasting room. Chewing the delicate virgin comb wax is pure culinary nostalgia.',
+    productId: 'AV-JAR-APOTH',
+    harvestNote: 'Late Summer Wildflower',
+    text: 'The best honey I’ve had in years. Deep, warm, not overly sweet. We put it on everything.',
     date: 'September 2025',
   },
   {
@@ -226,14 +226,14 @@ const TESTIMONIAL_ARCHIVES: TestimonialRecord[] = [
   // ==========================================
   {
     id: 'gift-01',
-    author: 'Marcus Sterling',
-    role: 'Managing Partner',
-    affiliation: 'Sterling & Cross Partners',
-    location: 'Boston, MA',
+    author: 'David R.',
+    role: 'Partner & Client Lead',
+    affiliation: 'First Harvest Patron',
+    location: 'Princeton, NJ',
     category: 'gifting',
     productId: 'AV-BOX-WALNUT',
-    harvestNote: 'Custom Commission • 40 Keepsake Trunks',
-    text: 'We commissioned 40 custom brass-engraved walnut trunks for our executive retreat. The joinery, wax seals, and provenance certificates were breathtaking. Our international clients were enthralled.',
+    harvestNote: 'The Honeyed Host Gift Boxes',
+    text: 'I sent the Honeyed Host gift box to three clients this year. Every single one texted me within an hour of opening it.',
     date: 'October 2025',
   },
   {
@@ -364,13 +364,13 @@ export default function TrustTestimonials() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-stone-200/80 text-left">
           <div className="max-w-2xl space-y-2">
             <p className="text-xs font-semibold tracking-widest uppercase text-stone-500">
-              Patron Dispatches &amp; Field Records
+              From The First Harvest
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 leading-tight">
-              Observations from Michelin Kitchens, Apiary Yards &amp; Private Cellars
+              From The First Harvest: Notes &amp; Reviews
             </h2>
             <p className="text-sm text-stone-600 leading-relaxed pt-1">
-              Field testing notes on cold-extracted raw varietals, cabinet-grade cedar joinery, and heirloom gift trunks. Click any dispatch to inspect harvest provenance.
+              What our patrons, chefs, and gift recipients are saying about Maison Avenoir New Jersey raw honey, seasonal samplers, and gift boxes.
             </p>
           </div>
 

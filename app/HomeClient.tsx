@@ -81,16 +81,16 @@ export default function HomeClient() {
                 ))}
               </div>
               <span className="font-bold text-slate-900 text-[11px] sm:text-xs">4.9 / 5</span>
-              <span className="text-slate-500 text-[11px] hidden sm:inline">&bull; 800+ Verified Patrons</span>
+              <span className="text-slate-500 text-[11px] hidden sm:inline">&bull; First Harvest Reviews</span>
             </div>
 
             <div className="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono text-slate-700">
               <span className="flex items-center gap-1.5 font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                <span>Sussex County &bull; Active Harvest</span>
+                <span>New Jersey Hives &bull; Active Seasonal Harvest</span>
               </span>
               <span className="hidden md:inline text-slate-300">|</span>
-              <span className="hidden md:inline">Same-Day Dispatch before 2 PM EST</span>
+              <span className="hidden md:inline">Free Shipping Over $60 &bull; Local Pickup Available</span>
             </div>
           </div>
 
@@ -102,17 +102,16 @@ export default function HomeClient() {
               
               <div className="space-y-1.5 sm:space-y-2">
                 <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.25em] text-emerald-900 uppercase block">
-                  Sussex County Apiary &bull; Kittatinny Ridge
+                  Maison Avenoir Honey &bull; New Jersey Harvested
                 </span>
 
                 <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-slate-900 leading-[1.08] tracking-tight">
-                  Pure Raw Honey. <br className="hidden sm:inline" />
-                  <span className="text-amber-800">Master Apiary Gear.</span> <br className="hidden sm:inline" />
-                  <span className="text-slate-900">Bespoke Gift Trunks.</span>
+                  The taste of a <br className="hidden sm:inline" />
+                  <span className="text-amber-800">New Jersey season.</span>
                 </h1>
 
                 <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed max-w-xl pt-0.5">
-                  Cold-spun unheated varietals harvested below 95&deg;F, commercial-grade ventilated apiary hardware, and solid American walnut presentation chests.
+                  Small-batch honey harvested from our New Jersey hives, bottled with the story of the season still inside.
                 </p>
               </div>
 
@@ -124,7 +123,7 @@ export default function HomeClient() {
                   className="flex items-center justify-center gap-1.5 py-2.5 px-3 sm:px-5 rounded-xl bg-emerald-950 hover:bg-emerald-900 text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider transition cursor-pointer shadow-sm hover:shadow-md group text-center"
                 >
                   <Droplets size={14} strokeWidth={2.4} className="text-amber-400 shrink-0" />
-                  <span>Shop Honey</span>
+                  <span>Shop the Harvest</span>
                   <ArrowRight size={13} strokeWidth={2.4} className="hidden sm:inline group-hover:translate-x-1 transition-transform shrink-0" />
                 </Link>
 
@@ -134,7 +133,7 @@ export default function HomeClient() {
                   className="flex items-center justify-center gap-1.5 py-2.5 px-3 sm:px-5 rounded-xl bg-white/95 hover:bg-white text-slate-900 border border-slate-300 hover:border-emerald-800 font-bold text-[11px] sm:text-xs uppercase tracking-wider transition cursor-pointer shadow-2xs text-center"
                 >
                   <Shield size={14} strokeWidth={2.4} className="text-emerald-800 shrink-0" />
-                  <span>Shop Gear</span>
+                  <span>Beekeeping Gear</span>
                 </Link>
 
                 <Link
@@ -143,7 +142,7 @@ export default function HomeClient() {
                   className="flex items-center justify-center gap-1.5 py-2.5 px-3 sm:px-5 rounded-xl bg-amber-50/90 hover:bg-amber-100 text-amber-950 border border-amber-300 hover:border-amber-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider transition cursor-pointer shadow-2xs text-center"
                 >
                   <Gift size={14} strokeWidth={2.4} className="text-amber-800 shrink-0" />
-                  <span>Gift Trunks</span>
+                  <span>Send a Gift</span>
                 </Link>
               </div>
 
@@ -286,15 +285,15 @@ export default function HomeClient() {
           <div className="grid grid-cols-3 divide-x divide-slate-200/90 bg-white/90 backdrop-blur-xs rounded-xl border border-slate-200/80 py-1.5 sm:py-2 px-2 text-center shadow-2xs shrink-0 max-w-2xl mx-auto w-full">
             <div className="px-1 flex items-center justify-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-semibold text-slate-700">
               <Check size={11} className="text-emerald-700 shrink-0" />
-              <span className="truncate">Free Insured Ship $150+</span>
+              <span className="truncate">Free Shipping Over $60</span>
             </div>
             <div className="px-1 flex items-center justify-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-semibold text-slate-700">
               <Check size={11} className="text-emerald-700 shrink-0" />
-              <span className="truncate">Cold-Spun &le; 95&deg;F</span>
+              <span className="truncate">Raw &amp; Minimally Handled</span>
             </div>
             <div className="px-1 flex items-center justify-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-semibold text-slate-700">
               <Check size={11} className="text-emerald-700 shrink-0" />
-              <span className="truncate">Volume Gifting Tiers</span>
+              <span className="truncate">Traceable Hive Passport</span>
             </div>
           </div>
 
@@ -305,13 +304,13 @@ export default function HomeClient() {
       <section className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16">
         <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10 space-y-1.5 sm:space-y-2">
           <span className="text-[11px] sm:text-sm font-bold tracking-widest text-emerald-800 uppercase block">
-            Sussex County Apiary
+            Maison Avenoir Collections
           </span>
           <h2 className="font-serif text-2xl sm:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
-            Shop By Department
+            Honey, Gifts &amp; Apiary Supplies
           </h2>
           <p className="text-xs sm:text-sm text-slate-500">
-            Choose a collection to view full assortments, field testing, and availability.
+            Honey for everyday rituals, thoughtful gifts, and tables worth gathering around.
           </p>
         </div>
 
@@ -344,9 +343,9 @@ export default function HomeClient() {
             <div className="p-4 sm:p-6 flex items-center justify-between gap-3 bg-white">
               <div>
                 <h3 className="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-emerald-900 transition">
-                  Raw Honey Products
+                  New Jersey Raw Honey
                 </h3>
-                <span className="text-xs text-slate-500">Single-origin jars from $42</span>
+                <span className="text-xs text-slate-500">Seasonal small-batch jars from $24</span>
               </div>
               <span className="p-2 sm:p-2.5 rounded-xl bg-emerald-50 text-emerald-900 group-hover:bg-emerald-900 group-hover:text-white transition shrink-0">
                 <ArrowRight size={18} />
@@ -382,7 +381,7 @@ export default function HomeClient() {
                 <h3 className="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-emerald-900 transition">
                   Beekeeping Supplies
                 </h3>
-                <span className="text-xs text-slate-500">Ventilated suits &amp; tools from $34</span>
+                <span className="text-xs text-slate-500">Ventilated suits &amp; apiary tools</span>
               </div>
               <span className="p-2 sm:p-2.5 rounded-xl bg-emerald-50 text-emerald-900 group-hover:bg-emerald-900 group-hover:text-white transition shrink-0">
                 <ArrowRight size={18} />
@@ -407,7 +406,7 @@ export default function HomeClient() {
               />
               <div className="absolute top-3 left-3">
                 <span className="bg-emerald-950/90 text-amber-300 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md backdrop-blur-xs shadow-xs">
-                  Office &amp; Client Gifts
+                  Office &amp; Host Gifts
                 </span>
               </div>
             </div>
@@ -416,9 +415,9 @@ export default function HomeClient() {
             <div className="p-4 sm:p-6 flex items-center justify-between gap-3 bg-white">
               <div>
                 <h3 className="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-emerald-900 transition">
-                  Executive Gift Vaults
+                  Thoughtful Gift Boxes
                 </h3>
-                <span className="text-xs text-slate-500">Custom brass engraving &bull; Volume tiers</span>
+                <span className="text-xs text-slate-500">Curated honey sets, tea pairings &amp; custom boxes</span>
               </div>
               <span className="p-2 sm:p-2.5 rounded-xl bg-emerald-50 text-emerald-900 group-hover:bg-emerald-900 group-hover:text-white transition shrink-0">
                 <ArrowRight size={18} />
@@ -434,10 +433,10 @@ export default function HomeClient() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 pb-4">
           <div>
             <span className="text-xs sm:text-sm font-bold tracking-widest text-emerald-800 uppercase block mb-1">
-              From The Honey Apiary
+              Seasonal Harvests
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-              Curated Honey Bestsellers
+              New Jersey Honey &amp; Samplers
             </h2>
           </div>
           <Link
@@ -493,37 +492,37 @@ export default function HomeClient() {
           <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 space-y-6 flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.25em] text-amber-400 uppercase block">
-                Terroir Guide &bull; Sussex County, NJ
+                The Hive Passport &bull; Sussex &amp; Morris County, NJ
               </span>
               <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white">
-                The Chemistry of Elevation &amp; <span className="text-amber-300">Wild Terroirs</span>
+                Not all honey tells you where it came from. <span className="text-amber-300">Ours does.</span>
               </h2>
               <p className="text-slate-300 text-xs sm:text-sm lg:text-base leading-relaxed max-w-xl">
-                From the 1,400-foot Kittatinny Ridge where colonies gather honeydew and mountain aster, to acidic Pine Barrens cranberry bogs. Explore our interactive botanical flavor profiles and 2026 harvest calendar.
+                We keep our hives in New Jersey and bottle honey in small seasonal batches. Every jar carries a Hive Passport, so you can see the harvest story, the season, the floral forage, and the beekeepers behind it.
               </p>
             </div>
 
             {/* 4 Purity Badges */}
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 pt-1">
               <div className="p-3 sm:p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-0.5">
-                <span className="text-[9px] sm:text-[10px] uppercase font-bold text-amber-400">Purity Standard</span>
-                <span className="font-serif text-sm sm:text-lg font-bold block text-white">&le; 95&deg;F Hive Temp</span>
-                <p className="text-[10px] sm:text-xs text-slate-400">Zero enzyme loss</p>
+                <span className="text-[9px] sm:text-[10px] uppercase font-bold text-amber-400">Origin</span>
+                <span className="font-serif text-sm sm:text-lg font-bold block text-white">New Jersey Hives</span>
+                <p className="text-[10px] sm:text-xs text-slate-400">Sussex, Morris &amp; Hunterdon</p>
               </div>
               <div className="p-3 sm:p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-0.5">
-                <span className="text-[9px] sm:text-[10px] uppercase font-bold text-amber-400">Lab Analysis</span>
-                <span className="font-serif text-sm sm:text-lg font-bold block text-white">&gt; 28 DN Diastase</span>
-                <p className="text-[10px] sm:text-xs text-slate-400">Certified biologically active</p>
+                <span className="text-[9px] sm:text-[10px] uppercase font-bold text-amber-400">Handling</span>
+                <span className="font-serif text-sm sm:text-lg font-bold block text-white">Raw &amp; Minimally Handled</span>
+                <p className="text-[10px] sm:text-xs text-slate-400">Bottled unheated to protect enzymes</p>
               </div>
               <div className="p-3 sm:p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-0.5">
-                <span className="text-[9px] sm:text-[10px] uppercase font-bold text-amber-400">Joinery</span>
-                <span className="font-serif text-sm sm:text-lg font-bold block text-white">American Walnut</span>
-                <p className="text-[10px] sm:text-xs text-slate-400">Beeswax buffed heirloom timber</p>
+                <span className="text-[9px] sm:text-[10px] uppercase font-bold text-amber-400">Traceability</span>
+                <span className="font-serif text-sm sm:text-lg font-bold block text-white">Jar Hive Passport</span>
+                <p className="text-[10px] sm:text-xs text-slate-400">Scan QR code for harvest story</p>
               </div>
               <div className="p-3 sm:p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-0.5">
-                <span className="text-[9px] sm:text-[10px] uppercase font-bold text-amber-400">Protection</span>
-                <span className="font-serif text-sm sm:text-lg font-bold block text-white">3-Layer Air Mesh</span>
-                <p className="text-[10px] sm:text-xs text-slate-400">Zero sting penetration guarantee</p>
+                <span className="text-[9px] sm:text-[10px] uppercase font-bold text-amber-400">Gifting</span>
+                <span className="font-serif text-sm sm:text-lg font-bold block text-white">Gift-Ready Packaging</span>
+                <p className="text-[10px] sm:text-xs text-slate-400">Custom handwritten notes included</p>
               </div>
             </div>
 
@@ -533,7 +532,7 @@ export default function HomeClient() {
                 prefetch={true}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold uppercase tracking-wider transition shadow-sm"
               >
-                <span>Explore Terroir Profiles</span>
+                <span>Explore the Hive Story</span>
                 <ArrowRight size={14} />
               </Link>
             </div>
@@ -552,7 +551,7 @@ export default function HomeClient() {
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
               <div className="bg-slate-950/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 text-[11px] text-white font-mono shadow-md inline-flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Kittatinny Ridge &bull; 1,400 FT Study Site</span>
+                <span>New Jersey Hives &bull; Late Summer Harvest NJ-26-08</span>
               </div>
             </div>
           </div>
@@ -571,13 +570,13 @@ export default function HomeClient() {
           <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 space-y-5 flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.25em] text-amber-900 uppercase block">
-                Executive Gifting Concierge &bull; Bespoke Atelier
+                Corporate &amp; Event Gifting &bull; Maison Avenoir
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight">
-                Heirloom Corporate Presentation Trunks
+                Gifts your clients will actually remember.
               </h3>
               <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed max-w-xl">
-                Order customized timber honey chests engraved with your company&apos;s custom brass plaque. Save up to 25% on volume tiers with automated multi-address CSV recipient dispatch.
+                Locally harvested New Jersey honey and beautifully packed gift boxes for client appreciation, employee recognition, events, closings, and seasonal giving.
               </p>
             </div>
 
@@ -585,15 +584,15 @@ export default function HomeClient() {
             <div className="space-y-2 py-1">
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-800">
                 <Check size={14} className="text-amber-600 shrink-0" />
-                <span>Custom Engraved Solid Brass Dedication Plaques</span>
+                <span>Custom Branded Tags, Sleeves &amp; Wax Seals</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-800">
                 <Check size={14} className="text-amber-600 shrink-0" />
-                <span>Tiered Corporate Volume Discounts (10% to 25% Off)</span>
+                <span>Tiered Corporate Volume Discounts &amp; Curated Tiers</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-800">
                 <Check size={14} className="text-amber-600 shrink-0" />
-                <span>White-Glove Multi-Destination Insured Courier Delivery</span>
+                <span>Direct Multi-Address Recipient Courier Dispatch</span>
               </div>
             </div>
 
@@ -603,7 +602,7 @@ export default function HomeClient() {
                 prefetch={true}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-950 hover:bg-emerald-900 text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-sm"
               >
-                <span>Calculate Volume Savings</span>
+                <span>Request a Gift Proposal</span>
                 <ArrowRight size={14} className="text-amber-400" />
               </Link>
             </div>
@@ -622,7 +621,7 @@ export default function HomeClient() {
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
               <div className="bg-slate-950/85 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 text-[11px] text-amber-200 font-mono shadow-md inline-flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-400"></span>
-                <span>Solid American Walnut &bull; Beeswax Finished</span>
+                <span>Maison Avenoir &bull; Gift-Ready Presentation</span>
               </div>
             </div>
           </div>

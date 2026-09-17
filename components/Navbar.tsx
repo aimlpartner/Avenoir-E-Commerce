@@ -91,8 +91,8 @@ export default function Navbar() {
           className="flex items-center cursor-pointer select-none group py-1"
           onClick={() => { setNavDropdown(null); setMobileMenuOpen(false); }}
         >
-          <span className="font-serif text-2xl font-bold tracking-[0.18em] text-slate-900 group-hover:text-emerald-950 transition">
-            AVENOIR
+          <span className="font-serif text-xl sm:text-2xl font-bold tracking-[0.14em] text-slate-900 group-hover:text-emerald-950 transition">
+            MAISON AVENOIR
           </span>
         </Link>
 
@@ -483,9 +483,9 @@ export default function Navbar() {
                     href="/"
                     prefetch={true}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="font-serif text-2xl font-bold tracking-[0.18em] text-slate-900 select-none"
+                    className="font-serif text-xl font-bold tracking-[0.14em] text-slate-900 select-none"
                   >
-                    AVENOIR
+                    MAISON AVENOIR
                   </Link>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
@@ -500,7 +500,7 @@ export default function Navbar() {
                 <div className="flex-1 overflow-y-auto p-5 space-y-4">
                   {/* Apiary Atelier Subtitle */}
                   <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-emerald-900 px-1">
-                    Sussex County Apiary Atelier
+                    New Jersey Harvest House &bull; Est. 2026
                   </p>
 
                   {/* 1. Honey Products Accordion Card */}

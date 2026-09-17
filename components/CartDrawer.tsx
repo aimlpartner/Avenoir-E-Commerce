@@ -6,6 +6,10 @@ import Link from 'next/link';
 import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Truck, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useCart } from '@/context/CartContext';
+import { PRODUCTS, ProductItem } from '@/lib/products';
+
+const ADDON_IDS = ['AV-JAR-MINI', 'AV-ACC-WAND', 'AV-CANDLE-TAPER'];
+const cartAddOns = ADDON_IDS.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean) as ProductItem[];
 
 export default function CartDrawer() {
   const { 
@@ -15,7 +19,8 @@ export default function CartDrawer() {
     updateQuantity, 
     removeFromCart, 
     cartSubtotal, 
-    freeShippingThreshold 
+    freeShippingThreshold,
+    addToCart 
   } = useCart();
 
   const progress = Math.min(100, Math.round((cartSubtotal / freeShippingThreshold) * 100));
@@ -66,8 +71,8 @@ export default function CartDrawer() {
                   <span className="flex items-center gap-2 text-amber-950 font-bold">
                     <Truck size={17} strokeWidth={2.4} className="text-amber-800" />
                     {remainingForFreeShipping > 0
-                      ? `Add $${remainingForFreeShipping.toFixed(2)} more for Free Express Delivery`
-                      : 'You unlocked Free Express Insured Delivery!'}
+                      ? `Add $${remainingForFreeShipping.toFixed(2)} more for Free Shipping (over $60)`
+                      : 'You unlocked Free Shipping over $60!'}
                   </span>
                   <span className="font-extrabold text-amber-900 text-sm">{progress}%</span>
                 </div>
@@ -89,7 +94,7 @@ export default function CartDrawer() {
                   </div>
                   <h4 className="font-serif text-lg font-bold text-slate-800 mb-1">Your bag is currently empty</h4>
                   <p className="text-xs text-slate-500 mb-6 max-w-xs mx-auto">
-                    Discover raw terroir honeys from New Jersey or explore professional apiary equipment.
+                    Discover small-batch raw honey from our New Jersey hives or explore thoughtful gift boxes.
                   </p>
                   <div className="flex flex-col gap-2 max-w-xs mx-auto">
                     <Link
@@ -98,15 +103,15 @@ export default function CartDrawer() {
                       onClick={() => setIsCartOpen(false)}
                       className="px-5 py-2.5 rounded-xl bg-emerald-900 text-white text-xs font-bold hover:bg-emerald-800 transition text-center shadow-xs"
                     >
-                      Shop Raw Honey Reserves
+                      Shop the Harvest
                     </Link>
                     <Link
-                      href="/beekeeping"
+                      href="/corporate"
                       prefetch={true}
                       onClick={() => setIsCartOpen(false)}
                       className="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold hover:bg-slate-200 transition text-center"
                     >
-                      Shop Beekeeping Gear
+                      Send a Gift
                     </Link>
                   </div>
                 </div>
@@ -182,6 +187,60 @@ export default function CartDrawer() {
                   </div>
                 ))
               )}
+
+              {/* Cart Offer Sequence: Dipper, Beeswax Candle, or Mini Jar */}
+              {cartItems.length > 0 && cartAddOns.length > 0 && (
+                <div className="pt-3 border-t border-slate-200/90 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                      <Sparkles size={13} className="text-amber-500" />
+                      Complete Your Honey Ritual
+                    </span>
+                    <span className="text-[11px] text-slate-500">Curated Add-ons</span>
+                  </div>
+
+                  <div className="space-y-2">
+                    {cartAddOns.map((addon) => {
+                      const inCart = cartItems.some((i) => i.productId === addon.id);
+                      return (
+                        <div
+                          key={addon.id}
+                          className="p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 hover:bg-slate-50 transition flex items-center justify-between gap-3"
+                        >
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-white shrink-0 border border-slate-200">
+                              <Image
+                                src={addon.imageUrl}
+                                alt={addon.name}
+                                fill
+                                sizes="44px"
+                                className="object-cover"
+                              />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-xs font-bold text-slate-900 truncate">
+                                {addon.name}
+                              </p>
+                              <p className="text-[11px] text-emerald-900 font-extrabold">
+                                ${addon.price.toFixed(2)}
+                              </p>
+                            </div>
+                          </div>
+
+                          <button
+                            onClick={() => addToCart(addon)}
+                            className="shrink-0 px-2.5 py-1.5 rounded-lg bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-bold transition flex items-center gap-1 cursor-pointer active:scale-95"
+                            aria-label={`Add ${addon.name} to bag`}
+                          >
+                            <Plus size={12} strokeWidth={2.4} />
+                            <span>{inCart ? 'Add Another' : 'Add'}</span>
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Footer / Checkout */}
@@ -232,7 +291,7 @@ export default function CartDrawer() {
                     256-Bit SSL Encrypted
                   </span>
                   <span>•</span>
-                  <span>Authentic Apiary Harvest</span>
+                  <span>Traceable New Jersey Honey</span>
                 </div>
               </div>
             )}

@@ -31,16 +31,16 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.APP_URL || 'http://localhost:3001'),
+  metadataBase: new URL(process.env.APP_URL || 'http://localhost:3000'),
   title: {
-    default: 'Avenoir | Artisanal Raw Honey, Apiary Hardware & Bespoke Gifting',
-    template: '%s | Avenoir Apiary',
+    default: 'Maison Avenoir Honey | New Jersey Harvested. Beautifully Shared.',
+    template: '%s | Maison Avenoir',
   },
-  description: 'Definitive luxury raw honey e-commerce atelier, bespoke personalized gift vaults, corporate concierge, and professional commercial apiary supplies.',
-  keywords: ['raw honey', 'artisan honey', 'sussex county apiary', 'beekeeping supplies', 'executive gifting', 'heirloom trunks'],
+  description: 'A premium New Jersey honey house: warm, editorial, traceable, and gift-first. Small-batch raw honey bottled with the story of the season still inside.',
+  keywords: ['Maison Avenoir', 'raw honey', 'New Jersey honey', 'Hive Passport', 'artisan honey', 'honey gift boxes', 'corporate gifting'],
   openGraph: {
-    title: 'Avenoir | Artisanal Raw Honey & Bespoke Gifting',
-    description: 'Definitive luxury raw honey e-commerce atelier, bespoke personalized gift vaults, corporate concierge, and professional commercial apiary supplies.',
+    title: 'Maison Avenoir Honey | New Jersey Harvested. Beautifully Shared.',
+    description: 'A premium New Jersey honey house: warm, editorial, traceable, and gift-first. Small-batch raw honey bottled with the story of the season still inside.',
     type: 'website',
   },
 };

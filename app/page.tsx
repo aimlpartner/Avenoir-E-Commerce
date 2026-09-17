@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
 
 export const metadata: Metadata = {
-  title: 'Artisanal Sussex Apiary, Raw Honey & Bespoke Gifting',
-  description: '100% cold-spun raw unheated honeys from protected Sussex County apiaries along the Kittatinny Ridge, field-tested commercial beekeeping supplies, and handcrafted corporate presentation trunks.',
+  title: 'Maison Avenoir Honey | New Jersey Harvested. Beautifully Shared.',
+  description: 'A premium New Jersey honey house: warm, editorial, traceable, and gift-first. Small-batch raw honey bottled with the story of the season still inside.',
   openGraph: {
-    title: 'Avenoir | Artisanal Sussex Apiary, Raw Honey & Bespoke Gifting',
-    description: 'Cold-spun raw honeys, commercial beekeeping gear, and heirloom corporate presentation trunks.',
+    title: 'Maison Avenoir Honey | New Jersey Harvested. Beautifully Shared.',
+    description: 'A premium New Jersey honey house: warm, editorial, traceable, and gift-first. Small-batch raw honey bottled with the story of the season still inside.',
     images: ['/images/hero-apiary-landscape.jpg'],
   },
 };

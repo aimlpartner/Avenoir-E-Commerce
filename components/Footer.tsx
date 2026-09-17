@@ -26,11 +26,11 @@ export default function Footer() {
           <div className="text-center md:text-left max-w-md">
             <div className="mb-2">
               <span className="font-serif text-2xl font-bold tracking-[0.18em] text-white block">
-                AVENOIR
+                MAISON AVENOIR
               </span>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Cold-extracted Sussex County raw honeys preserved in solid timber keepsake vaults, alongside master apiary gear and protective equipment.
+              Small-batch honey harvested from our New Jersey hives, bottled with the story of the season still inside. New Jersey Harvested. Beautifully Shared.
             </p>
           </div>
 
@@ -38,7 +38,7 @@ export default function Footer() {
             {newsletterSubscribed ? (
               <div className="flex items-center gap-2 text-emerald-400 bg-emerald-950/60 px-4 sm:px-5 py-3 rounded-xl border border-emerald-800">
                 <CheckCircle2 size={16} />
-                <span className="font-medium text-xs">You have been subscribed to our Seasonal Terroir Dispatch.</span>
+                <span className="font-medium text-xs">You have joined the hive list. We&apos;ll send our New Jersey Honey Pairing Guide shortly.</span>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-2 w-full max-w-md">
@@ -49,7 +49,7 @@ export default function Footer() {
                     required
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
-                    placeholder="Enter email for private reserves..."
+                    placeholder="Enter email to join the hive list..."
                     className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-amber-400"
                   />
                 </div>
@@ -57,7 +57,7 @@ export default function Footer() {
                   type="submit"
                   className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition cursor-pointer shrink-0"
                 >
-                  Join Dispatch
+                  Join Hive List
                 </button>
               </form>
             )}
@@ -174,27 +174,27 @@ export default function Footer() {
             Purity Standards
           </span>
           <ul className="space-y-2 text-slate-400">
-            <li>Cold-Extracted ≤ 95°F</li>
-            <li>Diastase Index Tested</li>
-            <li>Zero Antibiotics or Syrups</li>
-            <li>Sussex County Terroir</li>
-            <li>FSC Sustainable Walnut</li>
+            <li>Raw &amp; Minimally Handled</li>
+            <li>Traceable Hive Passport</li>
+            <li>Seasonal Small-Batch</li>
+            <li>New Jersey Hives</li>
+            <li>Zero Syrups or Blending</li>
           </ul>
         </div>
 
         {/* Col 6: Support & Atelier Location */}
         <div className="space-y-3 col-span-2 sm:col-span-1">
           <span className="text-xs uppercase tracking-wider text-slate-200 font-bold block">
-            Atelier Headquarters
+            Honey House
           </span>
           <p className="text-slate-400 leading-relaxed">
-            Avenoir Estate & Honey Apiary<br />
-            Kittatinny Ridge Trailways<br />
-            Sussex County, NJ 07860
+            Maison Avenoir Honey House<br />
+            Harvested across Sussex &amp; Morris Counties, NJ<br />
+            New Jersey, USA
           </p>
           <div className="pt-2">
-            <span className="block text-slate-200 font-medium">Bespoke Concierge</span>
-            <span className="text-amber-400">concierge@avenoirhoney.com</span>
+            <span className="block text-slate-200 font-medium">Customer &amp; Gift Inquiries</span>
+            <span className="text-amber-400">hello@maisonavenoir.com</span>
           </div>
         </div>
 
@@ -204,21 +204,21 @@ export default function Footer() {
       <div className="w-full overflow-hidden border-t border-slate-800/80 pt-8 sm:pt-14 pb-2 sm:pb-6 select-none text-center relative">
         <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12">
           <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.35em] uppercase text-emerald-400/70 block mb-2 sm:mb-3">
-            Sussex County Apiary &bull; Kittatinny Ridge Reserve
+            New Jersey Harvested &bull; Beautifully Shared
           </span>
           <span className="font-heading font-black tracking-[0.06em] sm:tracking-[0.12em] text-[15vw] 2xl:text-[235px] leading-[0.8] block bg-gradient-to-b from-slate-700/90 via-slate-800/60 to-slate-900/20 bg-clip-text text-transparent hover:from-amber-400/90 hover:via-amber-300/50 hover:to-slate-900/20 transition-all duration-700 cursor-default">
-            AVENOIR
+            MAISON AVENOIR
           </span>
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-slate-800/90 py-6 px-4 sm:px-8 xl:px-12 text-center sm:flex sm:justify-between sm:items-center w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto text-[11px] text-slate-500">
-        <p>© {new Date().getFullYear()} Avenoir Luxury Gifting LLC. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Maison Avenoir Honey. All rights reserved.</p>
         <div className="flex justify-center gap-6 mt-3 sm:mt-0">
           <span className="hover:text-slate-400 cursor-pointer">Privacy Charter</span>
           <span className="hover:text-slate-400 cursor-pointer">Terms of Gifting</span>
-          <span className="hover:text-slate-400 cursor-pointer">Apiary Certification</span>
+          <span className="hover:text-slate-400 cursor-pointer">Hive Certification</span>
         </div>
       </div>
 

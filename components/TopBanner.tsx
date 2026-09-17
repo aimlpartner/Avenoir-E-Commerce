@@ -8,9 +8,9 @@ import { Sparkles, Megaphone, ShieldCheck } from 'lucide-react';
 export default function TopBanner() {
   const { activeTicker } = useAdmin();
 
-  const displayText = activeTicker?.text || 'Complimentary Insured Courier on Orders Over $150 & All Heirloom Vaults';
-  const highlight = activeTicker?.highlightText || 'Sussex County Apiary';
-  const linkLabel = activeTicker?.linkText || 'Corporate Concierge';
+  const displayText = activeTicker?.text || 'Harvested in New Jersey · Free shipping over $60 · Local pickup available';
+  const highlight = activeTicker?.highlightText || 'Maison Avenoir Hives';
+  const linkLabel = activeTicker?.linkText || 'Corporate Gifting';
   const linkUrl = activeTicker?.linkHref || '/corporate';
 
   return (

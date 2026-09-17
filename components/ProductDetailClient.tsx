@@ -89,7 +89,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-sm ${
                 isHoney ? 'bg-amber-100 text-amber-950 border border-amber-300/70' : 'bg-emerald-100 text-emerald-950 border border-emerald-300/70'
               }`}>
-                {isHoney ? 'Pure Honey Reserve' : 'Professional Apiary Supply'}
+                {isHoney ? 'New Jersey Honey' : 'Professional Apiary Supply'}
               </span>
             </div>
 
@@ -105,12 +105,12 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             <div className="p-2 sm:p-3 rounded-xl bg-white border border-slate-200 text-center space-y-0.5 sm:space-y-1">
               <Truck size={16} className="mx-auto text-emerald-700" />
               <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 block truncate">Express Dispatch</span>
-              <p className="text-[9px] sm:text-[10px] text-slate-500">Free over $150</p>
+              <p className="text-[9px] sm:text-[10px] text-slate-500">Free over $60</p>
             </div>
             <div className="p-2 sm:p-3 rounded-xl bg-white border border-slate-200 text-center space-y-0.5 sm:space-y-1">
               <ShieldCheck size={16} className="mx-auto text-emerald-700" />
-              <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 block truncate">Sussex Terroir</span>
-              <p className="text-[9px] sm:text-[10px] text-slate-500">100% Certified</p>
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 block truncate">New Jersey Hives</span>
+              <p className="text-[9px] sm:text-[10px] text-slate-500">Traceable Batch</p>
             </div>
             <div className="p-2 sm:p-3 rounded-xl bg-white border border-slate-200 text-center space-y-0.5 sm:space-y-1">
               <RotateCcw size={16} className="mx-auto text-emerald-700" />
@@ -257,7 +257,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             {/* Product Specifications List */}
             <div className="pt-6 border-t border-slate-200 space-y-2">
               <span className="text-xs uppercase tracking-wider font-bold text-slate-800 block">
-                Atelier Specifications
+                Harvest &amp; Product Details
               </span>
               <ul className="space-y-1.5 text-xs text-slate-600">
                 {product.details.map((detail, idx) => (
@@ -330,7 +330,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               <span className="text-[10px] text-slate-400">3 days ago</span>
             </div>
             <p className="text-xs text-slate-700 italic leading-relaxed">
-              &quot;The craftsmanship of this piece is exceptional. You can genuinely taste the raw unfiltered complexity of Sussex County flora.&quot;
+              &quot;The wildflower honey has completely spoiled store-bought honey for me. You can actually taste the season.&quot;
             </p>
             <div className="flex items-center gap-2 pt-1 border-t border-slate-200/60">
               <span className="text-xs font-bold text-slate-800">Eleanor V.</span>
