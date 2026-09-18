@@ -138,22 +138,31 @@ export default function HoneyClient() {
           <div className="absolute inset-0 bg-slate-950/20" />
         </div>
 
-        <div className="max-w-3xl relative z-10 text-white">
-          <p className="text-[11px] sm:text-sm font-bold tracking-widest text-amber-300 uppercase mb-1">
-            Seasonal Harvests &bull; New Jersey Hives
+        <div className="max-w-3xl relative z-10 text-white space-y-2">
+          <p className="text-[11px] sm:text-sm font-bold tracking-widest text-amber-300 uppercase">
+            Local: Made by New Jersey Bees &bull; Sussex &amp; Morris Counties
           </p>
-          <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">
+          <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
             New Jersey Harvested Honey &amp; <span className="text-amber-300">Seasonal Samplers</span>
           </h1>
-          <p className="text-amber-100/90 text-xs sm:text-base leading-relaxed mb-4 sm:mb-6">
-            Small-batch honey harvested from our New Jersey hives, bottled with the story of the season still inside. Honey for everyday rituals, thoughtful gifts, and tables worth gathering around.
+          <p className="text-amber-100/90 text-xs sm:text-base leading-relaxed max-w-2xl font-normal">
+            Spring wildflower honey from our New Jersey hives and late-summer harvests shaped by local field and garden blooms. Bottled in small batches for kitchens, gifts, and gatherings.
           </p>
 
-          {/* Quick Pillars */}
-          <div className="flex flex-wrap gap-3 sm:gap-6 text-[11px] sm:text-xs text-amber-200/90 font-medium pt-1">
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Raw &amp; minimally handled</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Traceable Hive Passport</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Free shipping over $60</span>
+          {/* Campaign Lines & Quick Pillars */}
+          <div className="flex flex-wrap gap-2 sm:gap-3 text-[11px] sm:text-xs text-amber-200/90 font-medium pt-2">
+            <span className="flex items-center gap-1.5 bg-amber-900/60 px-2.5 py-1 rounded-md border border-amber-800/80">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              A little jar. A real New Jersey story.
+            </span>
+            <span className="flex items-center gap-1.5 bg-amber-900/60 px-2.5 py-1 rounded-md border border-amber-800/80">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              See the harvest behind your jar
+            </span>
+            <span className="flex items-center gap-1.5 bg-amber-900/60 px-2.5 py-1 rounded-md border border-amber-800/80">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              Good for your pantry. Better when shared.
+            </span>
           </div>
         </div>
       </div>

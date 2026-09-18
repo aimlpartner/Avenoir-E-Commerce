@@ -17,9 +17,14 @@ import {
   Droplets,
   Shield,
   Layers,
-  Award
+  Award,
+  Leaf,
+  MapPin,
+  Gift,
+  HelpCircle,
+  ChevronDown
 } from 'lucide-react';
-import { ProductItem } from '@/lib/products';
+import { PRODUCTS, ProductItem } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
 import ProductCard from '@/components/ProductCard';
 
@@ -36,13 +41,25 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
   );
   const [customInscription, setCustomInscription] = useState('');
   const [addedSuccess, setAddedSuccess] = useState(false);
+  const [faqOpen, setFaqOpen] = useState(false);
+  const [addedAddonId, setAddedAddonId] = useState<string | null>(null);
 
   const isHoney = product.department === 'honey';
+
+  const pairWellWithProducts = PRODUCTS.filter(
+    (p) => ['AV-JAR-MINI', 'AV-ACC-WAND', 'AV-CANDLE-TAPER'].includes(p.id) && p.id !== product.id
+  ).slice(0, 3);
 
   const handleAdd = () => {
     addToCart(product, quantity, selectedFinish || undefined, customInscription || undefined);
     setAddedSuccess(true);
     setTimeout(() => setAddedSuccess(false), 2500);
+  };
+
+  const handleAddAddon = (item: ProductItem) => {
+    addToCart(item, 1);
+    setAddedAddonId(item.id);
+    setTimeout(() => setAddedAddonId(null), 2000);
   };
 
   return (
@@ -101,19 +118,24 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
           </div>
 
           {/* Trust Guarantees */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-2">
-            <div className="p-2 sm:p-3 rounded-xl bg-white border border-slate-200 text-center space-y-0.5 sm:space-y-1">
-              <Truck size={16} className="mx-auto text-emerald-700" />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 pt-2">
+            <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 text-center space-y-0.5">
+              <Truck size={15} className="mx-auto text-emerald-700" />
               <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 block truncate">Express Dispatch</span>
               <p className="text-[9px] sm:text-[10px] text-slate-500">Free over $60</p>
             </div>
-            <div className="p-2 sm:p-3 rounded-xl bg-white border border-slate-200 text-center space-y-0.5 sm:space-y-1">
-              <ShieldCheck size={16} className="mx-auto text-emerald-700" />
-              <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 block truncate">New Jersey Hives</span>
-              <p className="text-[9px] sm:text-[10px] text-slate-500">Traceable Batch</p>
+            <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 text-center space-y-0.5">
+              <MapPin size={15} className="mx-auto text-emerald-700" />
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 block truncate">Local Pickup</span>
+              <p className="text-[9px] sm:text-[10px] text-slate-500">Sussex County, NJ</p>
             </div>
-            <div className="p-2 sm:p-3 rounded-xl bg-white border border-slate-200 text-center space-y-0.5 sm:space-y-1">
-              <RotateCcw size={16} className="mx-auto text-emerald-700" />
+            <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 text-center space-y-0.5">
+              <ShieldCheck size={15} className="mx-auto text-emerald-700" />
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 block truncate">Traceable QR</span>
+              <p className="text-[9px] sm:text-[10px] text-slate-500">Hive Passport</p>
+            </div>
+            <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 text-center space-y-0.5">
+              <RotateCcw size={15} className="mx-auto text-emerald-700" />
               <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 block truncate">Guarantee</span>
               <p className="text-[9px] sm:text-[10px] text-slate-500">30-Day Policy</p>
             </div>
@@ -143,13 +165,28 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             </div>
 
             {/* Title & Subtitle */}
-            <div>
-              <span className="text-[11px] sm:text-xs font-bold tracking-widest text-emerald-800 uppercase block mb-1">
-                {product.subtitle}
-              </span>
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[11px] sm:text-xs font-bold tracking-widest text-emerald-800 uppercase block">
+                  {product.subtitle}
+                </span>
+                {isHoney && (
+                  <span className="text-[10px] sm:text-[11px] font-mono font-medium text-amber-900 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200/80">
+                    Harvested from our New Jersey hives &bull; Sussex &amp; Morris Counties
+                  </span>
+                )}
+              </div>
               <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
                 {product.name}
               </h1>
+              {isHoney && (
+                <div className="text-xs font-medium text-emerald-950 bg-emerald-50/90 p-3 rounded-xl border border-emerald-200/70 flex items-start gap-2">
+                  <Leaf size={15} className="text-emerald-700 shrink-0 mt-0.5" />
+                  <p className="leading-relaxed">
+                    <strong>Honest Process:</strong> Raw &amp; unfiltered &mdash; bottled unheated to protect natural live enzymes, wild pollen, and microclimate floral aromatics.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Price Display */}
@@ -252,10 +289,73 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                   <span>Item added to your shopping bag! Cart drawer is open.</span>
                 </div>
               )}
+
+              {/* Shipping & Gifting Dispatch Notices */}
+              <div className="space-y-2 pt-1">
+                <div className="flex items-center gap-2 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80">
+                  <Gift size={14} className="text-amber-700 shrink-0" />
+                  <span>Complimentary gift wrapping &amp; handwritten note included at checkout. &ldquo;A sweeter way to say thank you.&rdquo;</span>
+                </div>
+                <div className="flex items-center gap-2 text-[11px] text-amber-950 bg-amber-50/90 p-2.5 rounded-xl border border-amber-200/80">
+                  <Truck size={14} className="text-amber-800 shrink-0" />
+                  <span><strong>Holiday Gift Notice:</strong> Order by Dec 18 for guaranteed delivery by Dec 24. Local pickup available through Dec 23.</span>
+                </div>
+              </div>
             </div>
 
+            {/* Pairs Well With Section */}
+            {pairWellWithProducts.length > 0 && (
+              <div className="pt-5 border-t border-slate-200 space-y-2.5">
+                <span className="text-xs uppercase tracking-wider font-bold text-slate-800 block">
+                  Pairs Well With
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  {pairWellWithProducts.map((addon) => (
+                    <div
+                      key={addon.id}
+                      className="p-2.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition flex flex-col justify-between gap-2 shadow-2xs"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-slate-100 shrink-0">
+                          <Image
+                            src={addon.imageUrl}
+                            alt={addon.name}
+                            fill
+                            sizes="40px"
+                            className="object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <h4 className="text-xs font-bold text-slate-900 truncate">{addon.name}</h4>
+                          <span className="text-[11px] text-slate-500 font-semibold">${addon.price.toFixed(2)}</span>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleAddAddon(addon)}
+                        className="w-full py-1 px-2 rounded-lg bg-slate-100 hover:bg-emerald-900 hover:text-white text-slate-800 text-[11px] font-bold transition flex items-center justify-center gap-1 cursor-pointer"
+                      >
+                        {addedAddonId === addon.id ? (
+                          <>
+                            <CheckCircle2 size={12} className="text-emerald-400" />
+                            <span>Added</span>
+                          </>
+                        ) : (
+                          <>
+                            <Plus size={12} />
+                            <span>Add</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Product Specifications List */}
-            <div className="pt-6 border-t border-slate-200 space-y-2">
+            <div className="pt-5 border-t border-slate-200 space-y-2">
               <span className="text-xs uppercase tracking-wider font-bold text-slate-800 block">
                 Harvest &amp; Product Details
               </span>
@@ -286,6 +386,40 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                 )}
               </ul>
             </div>
+
+            {/* Crystallization FAQ (Honey Products) */}
+            {isHoney && (
+              <div className="pt-4 border-t border-slate-200">
+                <button
+                  type="button"
+                  onClick={() => setFaqOpen(!faqOpen)}
+                  className="w-full flex items-center justify-between text-left p-3 rounded-xl bg-amber-50/70 hover:bg-amber-50 border border-amber-200/80 transition cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <HelpCircle size={15} className="text-amber-800 shrink-0" />
+                    <span className="text-xs font-bold text-amber-950">
+                      Why does real honey crystallize?
+                    </span>
+                  </div>
+                  <ChevronDown
+                    size={15}
+                    className={`text-amber-800 transition-transform duration-200 ${
+                      faqOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {faqOpen && (
+                  <div className="p-3.5 mt-2 rounded-xl bg-white border border-amber-200 text-xs text-slate-700 leading-relaxed space-y-2 animate-in fade-in duration-200">
+                    <p>
+                      Crystallization is completely natural and a hallmark of raw, unprocessed honey. It proves the honey has never been micro-filtered or superheated, leaving natural glucose, beneficial live enzymes, and wild flower pollen 100% intact.
+                    </p>
+                    <p className="text-slate-600 font-medium">
+                      <strong>To return it to liquid:</strong> Gently place the glass jar in a warm water bath (under 100&deg;F) for a few minutes. Never microwave, as high heat destroys fragile enzymes.
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
 
           </div>
         </div>

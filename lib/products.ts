@@ -353,7 +353,7 @@ export const PRODUCTS: ProductItem[] = [
     subcategory: "honey-comb",
     price: 54.00,
     badge: "Raw Comb",
-    description: "Straight from the hive wooden frame: natural hexagon beeswax cells filled with capping nectar. Delicious on warm sourdough, aged cheeses, or savored straight.",
+    description: "Straight from the hive wooden frame: raw hexagon beeswax cells filled with capped seasonal nectar. Pairs with warm sourdough, aged cheeses, or savored directly from the comb.",
     longDescription: "Cut by hand directly from fresh wooden super frames. Every cell was built by worker bees from virgin wax and capped with pure white beeswax wax seals. Biting into raw comb releases an explosion of aromatic, viscous nectar coupled with delicate natural chew.",
     details: [
       "Untouched by mechanical extractors",

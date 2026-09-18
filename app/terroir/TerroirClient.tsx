@@ -260,7 +260,7 @@ export default function TerroirClient() {
         <div className="max-w-3xl relative z-10 space-y-3 sm:space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em]">
-              Microclimates &bull; Melissopalynology
+              Transparent &bull; See the Harvest Behind Your Jar
             </span>
             <span className="text-emerald-300/80 text-[11px] sm:text-xs font-mono">
               Sussex County Research Yard &bull; Elevation 1,450 ft
@@ -272,7 +272,7 @@ export default function TerroirClient() {
           </h1>
           
           <p className="text-emerald-100/90 text-xs sm:text-base leading-relaxed max-w-2xl">
-            Just as fine Burgundy wine captures soil minerality, unheated raw honey preserves the microclimate, diurnal temperature swings, and indigenous floral blooms within our apiaries’ 3-mile foraging circumference.
+            This transparency is not filler&mdash;it is the reason our patrons trust us more than an anonymous grocery shelf product. From live hive inspections and selective frame pulls to unheated extraction, natural crystallization, and care for colony health, explore the exact harvest data behind every jar.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-emerald-800/60">

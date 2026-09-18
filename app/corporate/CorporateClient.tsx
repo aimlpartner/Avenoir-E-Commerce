@@ -193,28 +193,28 @@ export default function CorporateClient() {
 
         <div className="max-w-3xl relative z-10 space-y-3">
           <p className="text-[11px] sm:text-sm font-bold tracking-widest text-amber-300 uppercase">
-            Corporate &amp; Event Gifting &bull; Maison Avenoir
+            Shareable &bull; Honey is better when it becomes a gift
           </p>
           <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
             Gifts your clients will <span className="text-amber-300">actually remember.</span>
           </h1>
 
           <p className="text-stone-300 text-xs sm:text-base leading-relaxed max-w-2xl font-normal">
-            Locally harvested New Jersey honey and beautifully packed gift boxes for client appreciation, employee recognition, events, closings, and seasonal giving.
+            Lead with warmth, not just ingredients. A sweeter way to say thank you. Send honey, not another generic gift&mdash;a little jar with a real New Jersey story, packaged for client appreciation, employee recognition, and celebrations.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-stone-700/80 text-xs text-stone-200">
             <div className="flex items-center gap-2">
               <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>Volume Pricing &amp; Custom Curations</span>
+              <span>&ldquo;A sweeter way to say thank you.&rdquo;</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>Custom Branded Tags, Sleeves &amp; Seals</span>
+              <span>&ldquo;From our hives to your table.&rdquo;</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>Direct Multi-Address Recipient Shipping</span>
+              <span>&ldquo;Good for your pantry. Better when shared.&rdquo;</span>
             </div>
           </div>
         </div>

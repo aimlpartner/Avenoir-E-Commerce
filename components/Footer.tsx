@@ -23,14 +23,17 @@ export default function Footer() {
       {/* Brand & Newsletter Highlight */}
       <div className="border-b border-slate-800/80 py-8 sm:py-12 px-4 sm:px-8 xl:px-12">
         <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
-          <div className="text-center md:text-left max-w-md">
-            <div className="mb-2">
+          <div className="text-center md:text-left max-w-md space-y-1.5">
+            <div>
               <span className="font-serif text-2xl font-bold tracking-[0.18em] text-white block">
                 MAISON AVENOIR
               </span>
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
-              Small-batch honey harvested from our New Jersey hives, bottled with the story of the season still inside. New Jersey Harvested. Beautifully Shared.
+            <p className="text-slate-300 text-xs font-medium leading-relaxed">
+              Get early access to the next harvest, tasting drops, and local hive days.
+            </p>
+            <p className="text-amber-400 text-[11px] leading-relaxed">
+              Plus: a free printable New Jersey Honey Pairing Guide.
             </p>
           </div>
 
@@ -38,7 +41,7 @@ export default function Footer() {
             {newsletterSubscribed ? (
               <div className="flex items-center gap-2 text-emerald-400 bg-emerald-950/60 px-4 sm:px-5 py-3 rounded-xl border border-emerald-800">
                 <CheckCircle2 size={16} />
-                <span className="font-medium text-xs">You have joined the hive list. We&apos;ll send our New Jersey Honey Pairing Guide shortly.</span>
+                <span className="font-medium text-xs">You&apos;re on the list. Your Honey Pairing Guide is on the way.</span>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-2 w-full max-w-md">
@@ -49,7 +52,7 @@ export default function Footer() {
                     required
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
-                    placeholder="Enter email to join the hive list..."
+                    placeholder="Your email for harvest access..."
                     className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-amber-400"
                   />
                 </div>
@@ -57,7 +60,7 @@ export default function Footer() {
                   type="submit"
                   className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition cursor-pointer shrink-0"
                 >
-                  Join Hive List
+                  Get Early Access
                 </button>
               </form>
             )}
@@ -204,7 +207,7 @@ export default function Footer() {
       <div className="w-full overflow-hidden border-t border-slate-800/80 pt-8 sm:pt-14 pb-2 sm:pb-6 select-none text-center relative">
         <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12">
           <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.35em] uppercase text-emerald-400/70 block mb-2 sm:mb-3">
-            New Jersey Harvested &bull; Beautifully Shared
+            Made by New Jersey Bees &bull; Good for Your Pantry. Better When Shared.
           </span>
           <span className="font-heading font-black tracking-[0.06em] sm:tracking-[0.12em] text-[15vw] 2xl:text-[235px] leading-[0.8] block bg-gradient-to-b from-slate-700/90 via-slate-800/60 to-slate-900/20 bg-clip-text text-transparent hover:from-amber-400/90 hover:via-amber-300/50 hover:to-slate-900/20 transition-all duration-700 cursor-default">
             MAISON AVENOIR

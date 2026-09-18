@@ -551,7 +551,7 @@ export default function CartClient() {
                         <span>Complimentary Handwritten Gift Inscription</span>
                       </div>
                       <p className="text-[11px] text-amber-900/80 leading-relaxed">
-                        We tuck a handwritten botanical gift card into the box and omit all financial pricing from the courier manifest.
+                        Lead with warmth, not just ingredients. A sweeter way to say thank you. We tuck a handwritten botanical gift card into the box and omit all financial pricing from the courier manifest.
                       </p>
                       <input
                         type="text"
