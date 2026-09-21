@@ -703,3 +703,415 @@ export const TERROIR_ZONES: TerroirZone[] = [
     dominantFlora: ["Japanese Knotweed", "Black Locust", "Purple Loosestrife", "Marsh Mallow"]
   }
 ];
+
+// ==========================================
+// 3. GIFTING & BOX BUILDER DATASETS
+// ==========================================
+
+export interface GiftBoxTier {
+  id: '3-jar' | '6-jar' | '12-jar';
+  name: string;
+  capacity: number;
+  regularPrice: number;
+  bundlePrice: number;
+  discountPercent: number;
+  perJarPrice: number;
+  badge?: string;
+  isPopular?: boolean;
+  freeShipping: boolean;
+  description: string;
+  includedPackaging: string;
+}
+
+export const GIFT_BOX_TIERS: GiftBoxTier[] = [
+  {
+    id: '3-jar',
+    name: '3-Jar Tasting Stack',
+    capacity: 3,
+    regularPrice: 72.00,
+    bundlePrice: 64.00,
+    discountPercent: 11,
+    perJarPrice: 21.33,
+    badge: 'Tasting Trio',
+    freeShipping: false,
+    description: 'Perfect for intimate gifting, hostess appreciation, or tasting seasonal pairings.',
+    includedPackaging: 'Signature Linen Textured Presentation Box with Forest Ribbon'
+  },
+  {
+    id: '6-jar',
+    name: '6-Jar Connoisseur Box',
+    capacity: 6,
+    regularPrice: 144.00,
+    bundlePrice: 115.00,
+    discountPercent: 20,
+    perJarPrice: 19.16,
+    badge: 'Most Popular',
+    isPopular: true,
+    freeShipping: true,
+    description: 'Our signature gifting collection. Mix & match reserve raw honeys, whips, and botanical infusions.',
+    includedPackaging: 'Luxury Rigid Drawer Box with Embossed Gold Seal + Dipper'
+  },
+  {
+    id: '12-jar',
+    name: '12-Jar Grand Reserve Cellar',
+    capacity: 12,
+    regularPrice: 288.00,
+    bundlePrice: 216.00,
+    discountPercent: 25,
+    perJarPrice: 18.00,
+    badge: 'Best Value',
+    freeShipping: true,
+    description: 'The ultimate cellar collection. Stock the culinary pantry or send an unforgettable statement gift.',
+    includedPackaging: 'Master Apiary Dual Tier Presentation Casing + Tasting Wand'
+  }
+];
+
+export interface BoxFlavorItem {
+  id: string;
+  name: string;
+  subtitle: string;
+  category: 'raw' | 'creamed' | 'infused' | 'botanical';
+  categoryLabel: string;
+  tastingNotes: string[];
+  description: string;
+  imageUrl: string;
+  badge?: string;
+  netWeight: string;
+  bestPairedWith: string;
+}
+
+export const BOX_FLAVORS: BoxFlavorItem[] = [
+  {
+    id: 'AV-JAR-APOTH',
+    name: 'New Jersey Wildflower Honey',
+    subtitle: 'Late Summer Harvest · Batch NJ-26-08',
+    category: 'raw',
+    categoryLabel: 'Raw & Terroir',
+    tastingNotes: ['Wild meadow bloom', 'Warm caramel', 'Sunlit clover'],
+    description: 'Our flagship raw wildflower honey harvested cold and unfiltered from New Jersey apiaries.',
+    imageUrl: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&q=80&w=800',
+    badge: 'Flagship Raw',
+    netWeight: '12 oz (340g)',
+    bestPairedWith: 'Morning sourdough, goat cheese, Earl Grey'
+  },
+  {
+    id: 'AV-JAR-SKYLAND',
+    name: 'High Skylands Mountain Nectar',
+    subtitle: 'High-Elevation Ridge Micro-Batch',
+    category: 'raw',
+    categoryLabel: 'Raw & Terroir',
+    tastingNotes: ['Elderflower', 'Summer pear', 'Soft mineral peach'],
+    description: 'Collected at 1,400 feet elevation along Sussex County ridges with notes of mountain pear.',
+    imageUrl: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&q=80&w=800',
+    badge: 'Single Apiary',
+    netWeight: '12 oz (340g)',
+    bestPairedWith: 'Triple crème brie, crisp green apples, matcha'
+  },
+  {
+    id: 'AV-INF-VANILLA',
+    name: 'Bourbon Vanilla Whipped Honey',
+    subtitle: '72-Hour Micro-Spun Creamed Silk',
+    category: 'creamed',
+    categoryLabel: 'Whipped & Creamed',
+    tastingNotes: ['Madagascar Bourbon vanilla', 'Buttery silk', 'Sweet cream'],
+    description: 'Slowly micro-spun at cellar temperature and folded with whole Madagascar vanilla bean caviar.',
+    imageUrl: 'https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&q=80&w=800',
+    badge: 'Customer Favorite',
+    netWeight: '10 oz (285g)',
+    bestPairedWith: 'Warm croissants, waffles, espresso, Greek yogurt'
+  },
+  {
+    id: 'AV-INF-LAVENDER',
+    name: 'Wild French Lavender Honey',
+    subtitle: 'Botanical Steeped Reserve',
+    category: 'botanical',
+    categoryLabel: 'Botanical & Floral',
+    tastingNotes: ['Provence lavender', 'Ethereal floral', 'Subtle citrus mint'],
+    description: 'Sun-drenched clover honey gently steeped with organic Provence lavender blossoms.',
+    imageUrl: 'https://images.unsplash.com/photo-1517456793572-1d8efd6dc135?auto=format&fit=crop&q=80&w=800',
+    badge: 'Botanical Calm',
+    netWeight: '11 oz (310g)',
+    bestPairedWith: 'Chamomile tea, lemon ricotta pancakes, vanilla ice cream'
+  },
+  {
+    id: 'AV-INF-CHIPOTLE',
+    name: 'Smoked Chipotle & Hot Chili Honey',
+    subtitle: 'Artisan Heat & Woodsmoke Infusion',
+    category: 'infused',
+    categoryLabel: 'Artisan Infusions',
+    tastingNotes: ['Mesquite smoke', 'Vibrant habanero glow', 'Caramel sweetness'],
+    description: 'Slow-steeped with woodsmoked chipotle peppers and red chilies for a luxurious hot-honey balance.',
+    imageUrl: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&q=80&w=800',
+    badge: 'Sweet & Heat',
+    netWeight: '12 oz (340g)',
+    bestPairedWith: 'Wood-fired pepperoni pizza, fried chicken, aged cheddar'
+  },
+  {
+    id: 'AV-INF-ESPRESSO',
+    name: 'Dark Roast Salted Espresso Honey',
+    subtitle: 'Single-Origin Cold Brew Steep',
+    category: 'creamed',
+    categoryLabel: 'Whipped & Creamed',
+    tastingNotes: ['Artisan espresso', 'Dark cocoa nibs', 'Flaky Maldon salt'],
+    description: 'Rich whipped raw honey infused with coarse-ground single-origin roast coffee and sea salt.',
+    imageUrl: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=800',
+    badge: 'Morning Ritual',
+    netWeight: '10 oz (285g)',
+    bestPairedWith: 'Oatmeal, cappuccino foam, tiramisu drizzle, toasted brioche'
+  },
+  {
+    id: 'AV-RAW-BLUEBERRY',
+    name: 'Pine Barrens Blueberry Blossom',
+    subtitle: 'Spring May Harvest · South Jersey Barrens',
+    category: 'raw',
+    categoryLabel: 'Raw & Terroir',
+    tastingNotes: ['Tart wild berry', 'Warm molasses', 'Citrus blossom finish'],
+    description: 'Dark amber nectar harvested when hives pollinate heirloom highbush blueberry fields.',
+    imageUrl: 'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&q=80&w=800',
+    badge: 'Rare Harvest',
+    netWeight: '12 oz (340g)',
+    bestPairedWith: 'Pork tenderloin glazes, sheep milk cheeses, yogurt bowls'
+  },
+  {
+    id: 'AV-INF-LEMON-THYME',
+    name: 'Meyer Lemon & Garden Thyme Honey',
+    subtitle: 'Sun-Infused Mediterranean Botanical',
+    category: 'botanical',
+    categoryLabel: 'Botanical & Floral',
+    tastingNotes: ['Meyer lemon zest', 'Herbal crushed thyme', 'Bright floral acidity'],
+    description: 'Infused with organic sun-dried Meyer lemon peel and hand-harvested aromatic garden thyme.',
+    imageUrl: 'https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&q=80&w=800',
+    badge: 'Bright & Crisp',
+    netWeight: '11 oz (310g)',
+    bestPairedWith: 'Green teas, roasted root vegetables, burrata & peaches'
+  },
+  {
+    id: 'AV-RAW-BLOSSOM',
+    name: 'Spring Orchard Apple Blossom',
+    subtitle: 'April First-Flow · Hunterdon County',
+    category: 'raw',
+    categoryLabel: 'Raw & Terroir',
+    tastingNotes: ['Crisp apple blossom', 'Delicate clover', 'Silky butterscotch'],
+    description: 'The first golden honey of spring, gathered as hundreds of apple trees bloom across New Jersey hills.',
+    imageUrl: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&q=80&w=800',
+    badge: 'First Flow',
+    netWeight: '12 oz (340g)',
+    bestPairedWith: 'Granola parfaits, white teas, mascarpone pastries'
+  },
+  {
+    id: 'AV-INF-CINNAMON',
+    name: 'Ceylon Cinnamon Whipped Honey',
+    subtitle: 'Cold-Whipped True Cinnamon Silk',
+    category: 'creamed',
+    categoryLabel: 'Whipped & Creamed',
+    tastingNotes: ['Sri Lankan Ceylon cinnamon', 'Warm holiday spice', 'Honey butter'],
+    description: 'Whipped raw honey paired with delicate sweet organic Ceylon cinnamon bark powder.',
+    imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800',
+    badge: 'Warm & Cozy',
+    netWeight: '10 oz (285g)',
+    bestPairedWith: 'Warm toast, baked apples, chai lattes, oatmeal'
+  },
+  {
+    id: 'AV-RAW-BASSWOOD',
+    name: 'Basswood Mint Blossom Reserve',
+    subtitle: 'Water-White Rare Forest Canopy',
+    category: 'raw',
+    categoryLabel: 'Raw & Terroir',
+    tastingNotes: ['Menthol herbal cooling', 'Linden tree blossoms', 'Clean citrus'],
+    description: 'Exceptionally light and rare nectar from towering American basswood trees with a refreshing herbal finish.',
+    imageUrl: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&q=80&w=800',
+    badge: 'Rare Forage',
+    netWeight: '12 oz (340g)',
+    bestPairedWith: 'Mint and jasmine teas, fruit tarts, mild goat cheese'
+  },
+  {
+    id: 'AV-INF-GINGER',
+    name: 'Wild Ginger & Raw Turmeric Honey',
+    subtitle: 'Golden Wellness Botanical Elixir',
+    category: 'botanical',
+    categoryLabel: 'Botanical & Floral',
+    tastingNotes: ['Spicy ginger root', 'Earthy golden turmeric', 'Citrus warmth'],
+    description: 'Formulated with organic ginger juice and raw turmeric root for daily immune and digestive vitality.',
+    imageUrl: 'https://images.unsplash.com/photo-1517456793572-1d8efd6dc135?auto=format&fit=crop&q=80&w=800',
+    badge: 'Vitality Tonic',
+    netWeight: '11 oz (310g)',
+    bestPairedWith: 'Hot lemon water, spiced golden milk, wellness tonics'
+  }
+];
+
+export interface CuratedBundle {
+  id: string;
+  name: string;
+  subtitle: string;
+  tierId: '3-jar' | '6-jar' | '12-jar';
+  tierLabel: string;
+  price: number;
+  originalPrice: number;
+  discountPercent: number;
+  badge: string;
+  description: string;
+  imageUrl: string;
+  itemIds: string[];
+  includedAddons?: string[];
+  highlights: string[];
+}
+
+export const CURATED_BUNDLES: CuratedBundle[] = [
+  {
+    id: 'bundle-three-jars-story',
+    name: '“Three Jars, One Harvest Story” Sampler',
+    subtitle: 'Subscriber Launch Flight • Spring, Summer & Autumn',
+    tierId: '3-jar',
+    tierLabel: '3-Jar Launch Sampler',
+    price: 64.00,
+    originalPrice: 72.00,
+    discountPercent: 11,
+    badge: 'Subscriber Exclusive',
+    description: 'Available exclusively for launch week: three single-harvest varietals tracing the seasonal bloom from May ridge blossoms to late-autumn mountain nectar. Includes hand-bound harvest story card and embossed tasting notes.',
+    imageUrl: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&q=80&w=800',
+    itemIds: ['AV-RAW-BLOSSOM', 'AV-JAR-APOTH', 'AV-JAR-SKYLAND'],
+    includedAddons: ['Terroir Harvest Story Folio', 'Wax-Sealed Botanical Tasting Card'],
+    highlights: [
+      'Available only to email subscribers for launch week',
+      'Three single-harvest terroir jars (12 oz each)',
+      'Complimentary wax-sealed tasting card & seasonal recipe included'
+    ]
+  },
+  {
+    id: 'bundle-harvest-trio',
+    name: 'The Seasonal Harvest Trio',
+    subtitle: 'Three Full-Size Signature Terroirs',
+    tierId: '3-jar',
+    tierLabel: '3-Jar Gift Set',
+    price: 64.00,
+    originalPrice: 72.00,
+    discountPercent: 11,
+    badge: 'Bestseller',
+    description: 'Experience the full seasonal arc of New Jersey apiaries: Spring Orchard Blossom, Late Summer Wildflower, and High Skylands Nectar.',
+    imageUrl: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&q=80&w=800',
+    itemIds: ['AV-RAW-BLOSSOM', 'AV-JAR-APOTH', 'AV-JAR-SKYLAND'],
+    highlights: ['Includes 3x 12 oz Raw Reserve Jars', 'Linen Presentation Gift Box Included', 'Numbered Hive Passport Harvest Cards']
+  },
+  {
+    id: 'bundle-sweet-heat',
+    name: 'The Chef’s Sweet & Heat Flight',
+    subtitle: 'Culinary Pairings for Cheese, Pizza & Brunch',
+    tierId: '3-jar',
+    tierLabel: '3-Jar Gift Set',
+    price: 64.00,
+    originalPrice: 74.00,
+    discountPercent: 13,
+    badge: 'Artisan Pairing',
+    description: 'Curated for discerning home chefs: Smoked Chipotle Hot Honey, Bourbon Vanilla Whipped, and New Jersey Wildflower Honey.',
+    imageUrl: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&q=80&w=800',
+    itemIds: ['AV-INF-CHIPOTLE', 'AV-INF-VANILLA', 'AV-JAR-APOTH'],
+    includedAddons: ['Lathe-Turned FSC Beechwood Dipper'],
+    highlights: ['Pair with sourdough, pizza & charcuterie', 'Beechwood Tasting Dipper Included', 'Chef Pairing Guide Insert']
+  },
+  {
+    id: 'bundle-tea-botanical',
+    name: 'The Botanical Tea Sanctuary',
+    subtitle: 'Herbal Infusions & Soothing Nectars',
+    tierId: '3-jar',
+    tierLabel: '3-Jar Gift Set',
+    price: 64.00,
+    originalPrice: 76.00,
+    discountPercent: 15,
+    badge: 'Wellness & Calm',
+    description: 'Crafted for tea lovers and evening rituals: Wild French Lavender Honey, Meyer Lemon & Thyme, and Basswood Mint Blossom.',
+    imageUrl: 'https://images.unsplash.com/photo-1517456793572-1d8efd6dc135?auto=format&fit=crop&q=80&w=800',
+    itemIds: ['AV-INF-LAVENDER', 'AV-INF-LEMON-THYME', 'AV-RAW-BASSWOOD'],
+    highlights: ['Ideal companion for Earl Grey, green tea & chamomile', 'Organic botanicals steeped cold', 'Satin gift ribbon tied by hand']
+  },
+  {
+    id: 'bundle-connoisseur-6',
+    name: 'The Master Connoisseur 6-Pack',
+    subtitle: 'The Definitive Maison Avenoir Tasting Flight',
+    tierId: '6-jar',
+    tierLabel: '6-Jar Luxury Box',
+    price: 115.00,
+    originalPrice: 144.00,
+    discountPercent: 20,
+    badge: 'Most Popular Gift',
+    description: 'Our most sought-after gift set. Features 6 distinct profiles spanning raw mountain nectars, creamed silks, and botanical infusions.',
+    imageUrl: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800',
+    itemIds: [
+      'AV-JAR-APOTH',
+      'AV-JAR-SKYLAND',
+      'AV-INF-VANILLA',
+      'AV-INF-LAVENDER',
+      'AV-INF-CHIPOTLE',
+      'AV-RAW-BLUEBERRY'
+    ],
+    includedAddons: ['Lathe-Turned Brass Tasting Wand', 'Personalized Calligraphy Gift Card'],
+    highlights: [
+      'Free Express Courier Shipping included',
+      'Solid Brass Tasting Wand included',
+      'Luxury sliding gift chest with gold foil seal',
+      'Full 6-jar seasonal variety'
+    ]
+  },
+  {
+    id: 'bundle-grand-cellar-12',
+    name: 'The Grand Apiary Cellar (12-Jar Hamper)',
+    subtitle: 'The Ultimate Heirloom Honey Vault',
+    tierId: '12-jar',
+    tierLabel: '12-Jar Master Collection',
+    price: 216.00,
+    originalPrice: 288.00,
+    discountPercent: 25,
+    badge: 'Grand Reserve',
+    description: 'The complete harvest collection. All 12 artisan varietals delivered in dual presentation casing with pairing notes and tasting tools.',
+    imageUrl: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800',
+    itemIds: [
+      'AV-JAR-APOTH',
+      'AV-JAR-SKYLAND',
+      'AV-INF-VANILLA',
+      'AV-INF-LAVENDER',
+      'AV-INF-CHIPOTLE',
+      'AV-INF-ESPRESSO',
+      'AV-RAW-BLUEBERRY',
+      'AV-INF-LEMON-THYME',
+      'AV-RAW-BLOSSOM',
+      'AV-INF-CINNAMON',
+      'AV-RAW-BASSWOOD',
+      'AV-INF-GINGER'
+    ],
+    includedAddons: ['Brass Tasting Wand', 'Pair of Hand-Rolled Beeswax Tapers', 'Heirloom Wax Seal Certificate'],
+    highlights: [
+      'Save 25% ($72 total savings)',
+      'Free Courier Shipping',
+      'Includes Pair of Apiary Beeswax Tapers',
+      'Full master catalog of every Maison Avenoir honey'
+    ]
+  }
+];
+
+export interface PackagingOption {
+  id: 'linen' | 'walnut';
+  name: string;
+  tagline: string;
+  priceDelta: number;
+  imageUrl: string;
+  description: string;
+}
+
+export const PACKAGING_OPTIONS: PackagingOption[] = [
+  {
+    id: 'linen',
+    name: 'Signature Cream Linen Gift Box',
+    tagline: 'Complimentary with all bundles',
+    priceDelta: 0,
+    imageUrl: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800',
+    description: 'Rigid board box crafted from recycled cotton-linen fiber, stamped with gold-foil emblem and tied with forest twill ribbon.'
+  },
+  {
+    id: 'walnut',
+    name: 'Heirloom Solid American Walnut Chest',
+    tagline: 'Artisan hand-buffed keepsake',
+    priceDelta: 35.00,
+    imageUrl: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800',
+    description: 'Handcrafted solid Black Walnut joinery buffed with raw beeswax and finished with solid brass hinges and recessed emerald velvet.'
+  }
+];
+

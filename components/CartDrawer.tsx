@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Truck, Sparkles } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Truck, Sparkles, Gift, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useCart } from '@/context/CartContext';
 import { PRODUCTS, ProductItem } from '@/lib/products';
@@ -23,8 +23,12 @@ export default function CartDrawer() {
     addToCart 
   } = useCart();
 
-  const progress = Math.min(100, Math.round((cartSubtotal / freeShippingThreshold) * 100));
+  const GIFT_THRESHOLD = 75;
+  const hasUnlockedFreeShipping = cartSubtotal >= freeShippingThreshold;
   const remainingForFreeShipping = Math.max(0, freeShippingThreshold - cartSubtotal);
+  const hasUnlockedGiftWrap = cartSubtotal >= GIFT_THRESHOLD;
+  const remainingForGiftWrap = Math.max(0, GIFT_THRESHOLD - cartSubtotal);
+  const giftProgress = Math.min(100, Math.round((cartSubtotal / GIFT_THRESHOLD) * 100));
 
   return (
     <AnimatePresence>
@@ -65,22 +69,51 @@ export default function CartDrawer() {
                 </button>
               </div>
 
-              {/* Free Shipping Progress Meter */}
-              <div className="mt-4 p-3.5 rounded-2xl bg-amber-50 border border-amber-300">
-                <div className="flex items-center justify-between text-xs sm:text-sm mb-1.5 font-medium">
+              {/* Dual Value-Add Progress Meter: Free Shipping ($60) & Free Gift Note/Wrap ($75) */}
+              <div className="mt-4 p-3.5 rounded-2xl bg-gradient-to-br from-amber-50 to-emerald-50/40 border border-amber-300/80 space-y-2.5">
+                <div className="flex items-center justify-between text-xs sm:text-sm font-medium">
                   <span className="flex items-center gap-2 text-amber-950 font-bold">
-                    <Truck size={17} strokeWidth={2.4} className="text-amber-800" />
-                    {remainingForFreeShipping > 0
-                      ? `Add $${remainingForFreeShipping.toFixed(2)} more for Free Shipping (over $60)`
-                      : 'You unlocked Free Shipping over $60!'}
+                    {!hasUnlockedFreeShipping ? (
+                      <>
+                        <Truck size={16} strokeWidth={2.4} className="text-amber-800" />
+                        <span>Add ${remainingForFreeShipping.toFixed(2)} for Free Shipping ($60)</span>
+                      </>
+                    ) : !hasUnlockedGiftWrap ? (
+                      <>
+                        <Gift size={16} strokeWidth={2.4} className="text-emerald-800" />
+                        <span>Add ${remainingForGiftWrap.toFixed(2)} for Free Gift Note &amp; Wrap ($75)</span>
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles size={16} strokeWidth={2.4} className="text-emerald-700" />
+                        <span>Unlocked: Free Shipping + Free Gift Wrap ($75+)</span>
+                      </>
+                    )}
                   </span>
-                  <span className="font-extrabold text-amber-900 text-sm">{progress}%</span>
+                  <span className="font-extrabold text-amber-900 text-xs">
+                    {hasUnlockedGiftWrap ? '100%' : `${giftProgress}%`}
+                  </span>
                 </div>
-                <div className="w-full h-2.5 bg-amber-200/60 rounded-full overflow-hidden">
+
+                <div className="w-full h-2 bg-amber-200/60 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-amber-500 rounded-full transition-all duration-300"
-                    style={{ width: `${progress}%` }}
+                    className={`h-full rounded-full transition-all duration-300 ${
+                      hasUnlockedGiftWrap ? 'bg-emerald-600' : 'bg-amber-500'
+                    }`}
+                    style={{ width: `${giftProgress}%` }}
                   />
+                </div>
+
+                {/* Milestone Indicators */}
+                <div className="flex items-center justify-between text-[10px] font-semibold text-slate-600 pt-0.5">
+                  <span className={`flex items-center gap-1 ${hasUnlockedFreeShipping ? 'text-emerald-800 font-bold' : ''}`}>
+                    <CheckCircle2 size={11} className={hasUnlockedFreeShipping ? 'text-emerald-600' : 'text-slate-300'} />
+                    $60 Free Shipping
+                  </span>
+                  <span className={`flex items-center gap-1 ${hasUnlockedGiftWrap ? 'text-emerald-800 font-bold' : ''}`}>
+                    <CheckCircle2 size={11} className={hasUnlockedGiftWrap ? 'text-emerald-600' : 'text-slate-300'} />
+                    $75 Free Gift Note &amp; Wrap
+                  </span>
                 </div>
               </div>
             </div>
@@ -135,17 +168,36 @@ export default function CartDrawer() {
                     {/* Item Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-2">
-                        <Link 
-                          href={`/products/${item.productId}`}
-                          prefetch={true}
-                          onClick={() => setIsCartOpen(false)}
-                          className="font-serif text-base font-bold text-slate-900 hover:text-emerald-900 transition line-clamp-1"
-                        >
-                          {item.name}
-                        </Link>
+                        <div>
+                          {item.isBundle && (
+                            <span className="inline-block px-2 py-0.5 rounded bg-amber-100 text-amber-900 text-[10px] font-extrabold uppercase tracking-wider mb-0.5">
+                              {item.bundleTier || 'Artisan Bundle'}
+                            </span>
+                          )}
+                          {item.isBundle ? (
+                            <Link 
+                              href="/gifting"
+                              prefetch={true}
+                              onClick={() => setIsCartOpen(false)}
+                              className="font-serif text-base font-bold text-slate-900 hover:text-emerald-900 transition line-clamp-1 block"
+                            >
+                              {item.name}
+                            </Link>
+                          ) : (
+                            <Link 
+                              href={`/products/${item.productId}`}
+                              prefetch={true}
+                              onClick={() => setIsCartOpen(false)}
+                              className="font-serif text-base font-bold text-slate-900 hover:text-emerald-900 transition line-clamp-1 block"
+                            >
+                              {item.name}
+                            </Link>
+                          )}
+                        </div>
+
                         <button
                           onClick={() => removeFromCart(item.id)}
-                          className="text-slate-400 hover:text-rose-600 transition p-1 cursor-pointer"
+                          className="text-slate-400 hover:text-rose-600 transition p-1 cursor-pointer shrink-0"
                           aria-label="Remove item"
                         >
                           <Trash2 size={16} strokeWidth={2.2} />
@@ -153,8 +205,31 @@ export default function CartDrawer() {
                       </div>
 
                       {item.finish && (
-                        <span className="text-xs text-slate-600 block mt-0.5 font-semibold">
-                          Finish: {item.finish}
+                        <span className="text-xs text-slate-600 block mt-0.5 font-medium">
+                          Packaging: {item.finish}
+                        </span>
+                      )}
+
+                      {/* Bundle Items Manifest Breakdown */}
+                      {item.bundleItems && item.bundleItems.length > 0 && (
+                        <div className="mt-1.5 p-2 rounded-lg bg-stone-50 border border-slate-150 text-[11px] text-slate-600 space-y-0.5">
+                          <span className="font-bold text-slate-700 block text-[10px] uppercase tracking-wide">
+                            Included Jars ({item.bundleItems.length}):
+                          </span>
+                          <div className="max-h-20 overflow-y-auto space-y-0.5 pr-1">
+                            {item.bundleItems.map((sub, idx) => (
+                              <div key={idx} className="truncate text-slate-700 flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                                <span className="truncate">{sub.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {item.customNote && (
+                        <span className="text-[11px] text-amber-800 italic block mt-1 bg-amber-50/70 p-1.5 rounded border border-amber-200/80">
+                          ✍ {item.customNote}
                         </span>
                       )}
 

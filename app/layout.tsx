@@ -10,6 +10,7 @@ import CartDrawer from '@/components/CartDrawer';
 import Footer from '@/components/Footer';
 import RoutePreheater from '@/components/RoutePreheater';
 import NavigationProgress from '@/components/NavigationProgress';
+import FirstOrderValueModal from '@/components/FirstOrderValueModal';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -58,6 +59,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             <TopBanner />
             <Navbar />
             <CartDrawer />
+            <FirstOrderValueModal />
             <main className="flex-1">
               {children}
             </main>

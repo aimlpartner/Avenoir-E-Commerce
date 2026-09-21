@@ -288,21 +288,52 @@ export default function CartClient() {
                       />
                     </div>
                     <div>
-                      <Link
-                        href={`/products/${item.productId}`}
-                        prefetch={true}
-                        className="font-serif text-sm sm:text-base font-bold text-slate-900 hover:text-emerald-900 transition"
-                      >
-                        {item.name}
-                      </Link>
-                      {item.finish && (
-                        <span className="text-xs text-slate-500 block mt-0.5">
-                          Artisan Finish: {item.finish}
+                      {item.isBundle && (
+                        <span className="inline-block px-2 py-0.5 rounded bg-amber-100 text-amber-900 text-[10px] font-extrabold uppercase tracking-wider mb-1">
+                          {item.bundleTier || 'Artisan Bundle'}
                         </span>
                       )}
+                      {item.isBundle ? (
+                        <Link
+                          href="/gifting"
+                          prefetch={true}
+                          className="font-serif text-sm sm:text-base font-bold text-slate-900 hover:text-emerald-900 transition block"
+                        >
+                          {item.name}
+                        </Link>
+                      ) : (
+                        <Link
+                          href={`/products/${item.productId}`}
+                          prefetch={true}
+                          className="font-serif text-sm sm:text-base font-bold text-slate-900 hover:text-emerald-900 transition block"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                      {item.finish && (
+                        <span className="text-xs text-slate-500 block mt-0.5">
+                          Packaging: {item.finish}
+                        </span>
+                      )}
+                      {/* Bundle Items Breakdown */}
+                      {item.bundleItems && item.bundleItems.length > 0 && (
+                        <div className="mt-2 p-2.5 rounded-xl bg-stone-50 border border-slate-200 text-xs text-slate-700 max-w-sm space-y-1">
+                          <span className="font-bold text-slate-800 text-[11px] uppercase tracking-wider block">
+                            Box Manifest ({item.bundleItems.length} Jars):
+                          </span>
+                          <div className="space-y-1">
+                            {item.bundleItems.map((sub, idx) => (
+                              <div key={idx} className="flex items-center gap-1.5 text-slate-600 truncate">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                                <span className="truncate">{sub.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                       {item.customNote && (
-                        <span className="text-xs text-amber-800 italic block mt-0.5">
-                          Note: &quot;{item.customNote}&quot;
+                        <span className="text-xs text-amber-900 italic block mt-1.5 bg-amber-50/80 p-2 rounded-lg border border-amber-200">
+                          ✍ Gift Message: &quot;{item.customNote}&quot;
                         </span>
                       )}
                       <span className="text-xs text-slate-400 block mt-1">

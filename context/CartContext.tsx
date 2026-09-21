@@ -3,6 +3,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ProductItem } from '@/lib/products';
 
+export interface BundleSubItem {
+  id: string;
+  name: string;
+  imageUrl?: string;
+  quantity?: number;
+}
+
 export interface CartItem {
   id: string;
   productId: string;
@@ -12,11 +19,25 @@ export interface CartItem {
   quantity: number;
   finish?: string;
   customNote?: string;
+  isBundle?: boolean;
+  bundleTier?: string;
+  bundleItems?: BundleSubItem[];
+  packagingStyle?: string;
 }
 
 interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: ProductItem, quantity?: number, finish?: string, customNote?: string) => void;
+  addBundleToCart: (bundleData: {
+    bundleId?: string;
+    name: string;
+    tier: string;
+    price: number;
+    imageUrl: string;
+    items: BundleSubItem[];
+    packagingStyle?: string;
+    customNote?: string;
+  }) => void;
   removeFromCart: (itemId: string) => void;
   updateQuantity: (itemId: string, delta: number) => void;
   clearCart: () => void;
@@ -109,6 +130,34 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setIsCartOpen(true);
   };
 
+  const addBundleToCart = (bundleData: {
+    bundleId?: string;
+    name: string;
+    tier: string;
+    price: number;
+    imageUrl: string;
+    items: BundleSubItem[];
+    packagingStyle?: string;
+    customNote?: string;
+  }) => {
+    const newItem: CartItem = {
+      id: `bundle-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+      productId: bundleData.bundleId || `custom-bundle-${Date.now()}`,
+      name: bundleData.name,
+      price: bundleData.price,
+      imageUrl: bundleData.imageUrl,
+      quantity: 1,
+      finish: bundleData.packagingStyle,
+      customNote: bundleData.customNote,
+      isBundle: true,
+      bundleTier: bundleData.tier,
+      bundleItems: bundleData.items,
+      packagingStyle: bundleData.packagingStyle
+    };
+    setCartItems((prev) => [...prev, newItem]);
+    setIsCartOpen(true);
+  };
+
   const removeFromCart = (itemId: string) => {
     setCartItems((prev) => prev.filter((item) => item.id !== itemId));
   };
@@ -140,6 +189,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       value={{
         cartItems,
         addToCart,
+        addBundleToCart,
         removeFromCart,
         updateQuantity,
         clearCart,

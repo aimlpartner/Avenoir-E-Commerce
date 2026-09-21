@@ -19,8 +19,11 @@ import {
   Compass, 
   CheckCircle2,
   SlidersHorizontal,
+  Sliders,
   GraduationCap,
-  HeartHandshake
+  HeartHandshake,
+  Store,
+  ArrowRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useCart } from '@/context/CartContext';
@@ -30,7 +33,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { cartCount, setIsCartOpen } = useCart();
   
-  const [navDropdown, setNavDropdown] = useState<'honey' | 'beekeeping' | 'services' | null>(null);
+  const [navDropdown, setNavDropdown] = useState<'shop' | 'services' | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<'honey' | 'beekeeping' | 'services' | null>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -64,7 +67,7 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [mobileMenuOpen]);
 
-  const handleMouseEnter = (dept: 'honey' | 'beekeeping' | 'services') => {
+  const handleMouseEnter = (dept: 'shop' | 'services') => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
@@ -77,6 +80,7 @@ export default function Navbar() {
     }, 180);
   };
 
+  const totalCount = PRODUCTS.length;
   const honeyCount = PRODUCTS.filter(p => p.department === 'honey').length;
   const beekeepingCount = PRODUCTS.filter(p => p.department === 'beekeeping').length;
 
@@ -96,168 +100,157 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Navigation Links - Center (With Dropdowns & Individual Page Links) */}
-        <nav aria-label="Primary" className="hidden xl:flex items-center gap-2 shrink-0">
+        {/* Navigation Links - Center (Streamlined: Shop ∨, Build Your Box, Services ∨, Corporate) */}
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
           
-          {/* 1. Honey Products Dropdown */}
+          {/* 1. Shop Dropdown */}
           <div 
             className="relative shrink-0"
-            onMouseEnter={() => handleMouseEnter('honey')}
+            onMouseEnter={() => handleMouseEnter('shop')}
             onMouseLeave={handleMouseLeave}
           >
             <Link
-              href="/honey"
+              href="/shop"
               prefetch={true}
               onClick={() => setNavDropdown(null)}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
-                pathname.startsWith('/honey') || navDropdown === 'honey'
+              className={`px-3.5 xl:px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
+                pathname.startsWith('/shop') || pathname.startsWith('/honey') || pathname.startsWith('/beekeeping') || navDropdown === 'shop'
                   ? 'bg-emerald-900 text-white shadow-xs' 
                   : 'text-slate-800 hover:text-emerald-950 hover:bg-slate-100'
               }`}
-              aria-expanded={navDropdown === 'honey'}
+              aria-expanded={navDropdown === 'shop'}
               aria-haspopup="true"
             >
-              <Droplets size={17} strokeWidth={2.4} className={pathname.startsWith('/honey') || navDropdown === 'honey' ? 'text-amber-400' : 'text-amber-600'} />
-              <span className="text-[14px]">Honey Products</span>
+              <Store size={17} strokeWidth={2.4} className={pathname.startsWith('/shop') || pathname.startsWith('/honey') || pathname.startsWith('/beekeeping') || navDropdown === 'shop' ? 'text-amber-400' : 'text-amber-600'} />
+              <span className="text-[14px]">Shop</span>
               <ChevronDown 
                 size={16} 
                 strokeWidth={2.4}
-                className={`transition-transform duration-200 ${navDropdown === 'honey' ? 'rotate-180 text-amber-300' : 'text-slate-400'}`} 
+                className={`transition-transform duration-200 ${navDropdown === 'shop' ? 'rotate-180 text-amber-300' : 'text-slate-400'}`} 
               />
             </Link>
 
-            {/* Honey Dropdown Menu Panel */}
+            {/* Shop Mega Dropdown Menu Panel */}
             <AnimatePresence>
-              {navDropdown === 'honey' && (
+              {navDropdown === 'shop' && (
                 <motion.div
                   initial={{ opacity: 0, y: 8, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 6, scale: 0.98 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl p-3 shadow-2xl border border-slate-200/90 z-50 text-left"
+                  className="absolute top-full left-0 mt-2 w-96 bg-white rounded-2xl p-3.5 shadow-2xl border border-slate-200/90 z-50 text-left"
                 >
-                  <div className="px-3.5 pt-2 pb-1.5 text-xs font-extrabold tracking-wider text-slate-500 uppercase">
-                    Honey Categories
+                  <div className="flex items-center justify-between px-2 pb-2.5 border-b border-slate-100 mb-2">
+                    <span className="text-xs font-extrabold tracking-wider text-slate-500 uppercase">
+                      Apiary Catalogue
+                    </span>
+                    <Link
+                      href="/shop"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="text-xs font-bold text-emerald-900 hover:text-emerald-700 flex items-center gap-1"
+                    >
+                      <span>All Items ({totalCount})</span>
+                      <ArrowRight size={12} />
+                    </Link>
                   </div>
 
                   <div className="space-y-1">
-                    {HONEY_SUBCATEGORIES.map((sub) => (
-                      <Link
-                        key={sub.id}
-                        href={`/honey?sub=${sub.id}`}
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-800 hover:text-emerald-950 hover:bg-emerald-50/70 transition group"
-                      >
-                        <span className="text-amber-600 group-hover:text-amber-700 transition shrink-0">
-                          {sub.id === 'honey-raw' && <Droplets size={18} />}
-                          {sub.id === 'honey-comb' && <Layers size={18} />}
-                          {sub.id === 'honey-vaults' && <Gift size={18} />}
-                          {sub.id === 'honey-infused' && <Sparkles size={18} />}
-                        </span>
-                        <span className="flex-1 leading-snug">{sub.name}</span>
-                        <ChevronRight size={15} className="text-slate-300 group-hover:text-emerald-800 group-hover:translate-x-0.5 transition" />
-                      </Link>
-                    ))}
-                  </div>
+                    {/* Build Your Own Box - Highlighted */}
+                    <Link
+                      href="/gifting"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="flex items-center gap-3 p-2.5 rounded-xl bg-amber-50/90 hover:bg-amber-100 border border-amber-200/70 transition group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-amber-200/90 text-amber-950 flex items-center justify-center shrink-0">
+                        <Gift size={16} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-slate-900 group-hover:text-emerald-950 text-sm">Build Your Own Box</span>
+                          <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-300 text-amber-950">Save 25%</span>
+                        </div>
+                        <p className="text-[11px] text-slate-600 font-normal">Custom 3, 6, or 12-jar stack &amp; wax note</p>
+                      </div>
+                    </Link>
 
-                  <div className="mt-2 pt-2 border-t border-slate-100">
+                    {/* Honey Products */}
                     <Link
                       href="/honey"
                       prefetch={true}
                       onClick={() => setNavDropdown(null)}
-                      className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold text-emerald-900 bg-emerald-50/50 hover:bg-emerald-100/70 transition group"
+                      className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition group"
                     >
-                      <span>All Honey Products</span>
-                      <span className="text-xs font-semibold text-emerald-700 group-hover:translate-x-0.5 transition-transform">
-                        ({honeyCount}) &rarr;
-                      </span>
+                      <div className="w-8 h-8 rounded-lg bg-amber-100/70 text-amber-800 flex items-center justify-center shrink-0">
+                        <Droplets size={16} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-slate-900 group-hover:text-emerald-950 text-sm">Pure Honey Products</span>
+                          <span className="text-xs text-slate-400 font-semibold">({honeyCount})</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-normal">Raw single-origin, comb, and creamed whips</p>
+                      </div>
                     </Link>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
 
-          {/* 2. Beekeeping Products Dropdown */}
-          <div 
-            className="relative shrink-0"
-            onMouseEnter={() => handleMouseEnter('beekeeping')}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Link
-              href="/beekeeping"
-              prefetch={true}
-              onClick={() => setNavDropdown(null)}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
-                pathname.startsWith('/beekeeping') || navDropdown === 'beekeeping'
-                  ? 'bg-emerald-900 text-white shadow-xs' 
-                  : 'text-slate-800 hover:text-emerald-950 hover:bg-slate-100'
-              }`}
-              aria-expanded={navDropdown === 'beekeeping'}
-              aria-haspopup="true"
-            >
-              <Shield size={17} strokeWidth={2.4} className={pathname.startsWith('/beekeeping') || navDropdown === 'beekeeping' ? 'text-amber-400' : 'text-emerald-700'} />
-              <span className="text-[14px]">Beekeeping Products</span>
-              <ChevronDown 
-                size={16} 
-                strokeWidth={2.4}
-                className={`transition-transform duration-200 ${navDropdown === 'beekeeping' ? 'rotate-180 text-amber-300' : 'text-slate-400'}`} 
-              />
-            </Link>
-
-            {/* Beekeeping Dropdown Menu Panel */}
-            <AnimatePresence>
-              {navDropdown === 'beekeeping' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 6, scale: 0.98 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl p-3 shadow-2xl border border-slate-200/90 z-50 text-left"
-                >
-                  <div className="px-3.5 pt-2 pb-1.5 text-xs font-extrabold tracking-wider text-slate-500 uppercase">
-                    Apiary Equipment
-                  </div>
-
-                  <div className="space-y-1">
-                    {BEEKEEPING_SUBCATEGORIES.map((sub) => (
-                      <Link
-                        key={sub.id}
-                        href={`/beekeeping?sub=${sub.id}`}
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-800 hover:text-emerald-950 hover:bg-emerald-50/70 transition group"
-                      >
-                        <span className="text-emerald-700 group-hover:text-emerald-800 transition shrink-0">
-                          {sub.id === 'bee-apparel' && <Shield size={18} />}
-                          {sub.id === 'bee-tools' && <Wrench size={18} />}
-                          {sub.id === 'bee-hardware' && <Layers size={18} />}
-                          {sub.id === 'bee-harvest' && <Compass size={18} />}
-                        </span>
-                        <span className="flex-1 leading-snug">{sub.name}</span>
-                        <ChevronRight size={15} className="text-slate-300 group-hover:text-emerald-800 group-hover:translate-x-0.5 transition" />
-                      </Link>
-                    ))}
-                  </div>
-
-                  <div className="mt-2 pt-2 border-t border-slate-100">
+                    {/* Beekeeping Products */}
                     <Link
                       href="/beekeeping"
                       prefetch={true}
                       onClick={() => setNavDropdown(null)}
-                      className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold text-emerald-900 bg-emerald-50/50 hover:bg-emerald-100/70 transition group"
+                      className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition group"
                     >
-                      <span>All Beekeeping Supplies</span>
-                      <span className="text-xs font-semibold text-emerald-700 group-hover:translate-x-0.5 transition-transform">
-                        ({beekeepingCount}) &rarr;
-                      </span>
+                      <div className="w-8 h-8 rounded-lg bg-emerald-100/70 text-emerald-800 flex items-center justify-center shrink-0">
+                        <Shield size={16} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-slate-900 group-hover:text-emerald-950 text-sm">Beekeeping Equipment</span>
+                          <span className="text-xs text-slate-400 font-semibold">({beekeepingCount})</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-normal">Suits, smokers, tools &amp; hive components</p>
+                      </div>
+                    </Link>
+
+                    {/* Botanical Terroir Profiles */}
+                    <Link
+                      href="/terroir"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-sky-100/70 text-sky-800 flex items-center justify-center shrink-0">
+                        <Compass size={16} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-slate-900 group-hover:text-emerald-950 text-sm">Botanical Terroir</span>
+                          <ChevronRight size={14} className="text-slate-300 group-hover:text-emerald-800 transition" />
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-normal">Sussex County floral maps &amp; microclimates</p>
+                      </div>
                     </Link>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
+
+          {/* 2. Build Your Box - Highlighted Direct Link */}
+          <Link
+            href="/gifting"
+            prefetch={true}
+            className={`px-3.5 xl:px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
+              pathname.startsWith('/gifting') || pathname.startsWith('/build-your-box')
+                ? 'bg-emerald-900 text-white shadow-xs' 
+                : 'text-amber-950 bg-amber-50 hover:bg-amber-100/90 border border-amber-200/80'
+            }`}
+          >
+            <Gift size={16} className={pathname.startsWith('/gifting') ? 'text-amber-400' : 'text-amber-700'} />
+            <span className="text-[14px]">Build Your Box</span>
+            <span className="px-1.5 py-0.2 text-[10px] font-black rounded bg-amber-400 text-emerald-950">Save 25%</span>
+          </Link>
 
           {/* 3. Services Dropdown (Educate, Bee Removal, Bee Keeping) */}
           <div 
@@ -269,7 +262,7 @@ export default function Navbar() {
               href="/services"
               prefetch={true}
               onClick={() => setNavDropdown(null)}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
+              className={`px-3.5 xl:px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer flex items-center gap-2 whitespace-nowrap shrink-0 ${
                 pathname.startsWith('/services') || navDropdown === 'services'
                   ? 'bg-emerald-900 text-white shadow-xs' 
                   : 'text-slate-800 hover:text-emerald-950 hover:bg-slate-100'
@@ -383,24 +376,11 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          {/* 4. Terroir Profiles Page */}
-          <Link 
-            href="/terroir"
-            prefetch={true}
-            className={`px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer whitespace-nowrap shrink-0 ${
-              pathname === '/terroir' 
-                ? 'bg-emerald-900 text-white shadow-xs' 
-                : 'text-slate-800 hover:text-emerald-950 hover:bg-slate-100'
-            }`}
-          >
-            <span className="text-[14px]">Terroir Profiles</span>
-          </Link>
-
-          {/* 5. Corporate Gifting Page */}
+          {/* 4. Corporate Gifting Page */}
           <Link 
             href="/corporate"
             prefetch={true}
-            className={`px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer whitespace-nowrap shrink-0 ${
+            className={`px-3.5 xl:px-4 py-2 rounded-xl text-sm font-semibold tracking-wide transition cursor-pointer whitespace-nowrap shrink-0 ${
               pathname === '/corporate' 
                 ? 'bg-emerald-900 text-white shadow-xs' 
                 : 'text-slate-800 hover:text-emerald-950 hover:bg-slate-100'
@@ -440,23 +420,24 @@ export default function Navbar() {
             </span>
           </button>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Navigation Menu Toggle Button (Hamburger) - Visible on all viewports */}
           <button
             onClick={() => setMobileMenuOpen(prev => !prev)}
-            className="xl:hidden w-10 h-10 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center cursor-pointer transition"
+            className="flex items-center gap-1.5 px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold cursor-pointer transition active:scale-95 shrink-0"
             aria-label="Toggle Navigation Menu"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={17} /> : <Menu size={17} />}
+            <span className="hidden sm:inline">Menu</span>
           </button>
         </div>
 
       </div>
 
-      {/* Mobile Slide-over Sidebar & Overlay (Mounted to body via Portal to prevent header stacking context issues) */}
+      {/* Slide-over Navigation Sidebar & Overlay (Mounted to body via Portal to prevent header stacking context issues) */}
       {isClient && createPortal(
         <AnimatePresence>
           {mobileMenuOpen && (
-            <div className="fixed inset-0 z-[100] xl:hidden">
+            <div className="fixed inset-0 z-[100]">
               {/* Dark Backdrop */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -474,7 +455,7 @@ export default function Navbar() {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 26, stiffness: 280 }}
-                aria-label="Mobile Navigation Sidebar"
+                aria-label="Navigation Sidebar"
                 className="fixed inset-y-0 right-0 w-[85vw] max-w-sm bg-white shadow-2xl flex flex-col justify-between overflow-hidden z-[100] text-left border-l border-slate-200"
               >
                 {/* Header */}
@@ -502,6 +483,29 @@ export default function Navbar() {
                   <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-emerald-900 px-1">
                     New Jersey Harvest House &bull; Est. 2026
                   </p>
+
+                  {/* Shop All Departments Primary Card */}
+                  <Link
+                    href="/shop"
+                    prefetch={true}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-4 rounded-2xl bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-900 text-white shadow-sm hover:shadow-md transition group border border-emerald-800/80"
+                  >
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <Store size={17} className="text-amber-400" />
+                        <span className="font-serif text-base font-bold text-white group-hover:text-amber-300 transition">
+                          Shop All Departments
+                        </span>
+                      </div>
+                      <span className="text-[11px] font-black px-2 py-0.5 rounded-md bg-amber-400 text-emerald-950">
+                        {totalCount} Items
+                      </span>
+                    </div>
+                    <p className="text-xs text-emerald-200/80 leading-relaxed font-normal">
+                      Sussex County single-origin raw honeys, custom gift boxes, and beekeeping gear.
+                    </p>
+                  </Link>
 
                   {/* 1. Honey Products Accordion Card */}
                   <div className="border border-amber-200/90 rounded-2xl p-3.5 bg-gradient-to-br from-amber-50/60 to-white space-y-2">
@@ -695,6 +699,29 @@ export default function Navbar() {
 
                   {/* Additional Destination Links */}
                   <div className="space-y-2 pt-1">
+                    {/* Gifting & Box Builder Mobile Card */}
+                    <Link
+                      href="/gifting"
+                      prefetch={true}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`w-full py-3.5 px-4 rounded-2xl text-sm font-semibold flex items-center justify-between transition border ${
+                        pathname.startsWith('/gifting') || pathname.startsWith('/build-your-box')
+                          ? 'bg-emerald-900 text-white border-emerald-800 shadow-xs'
+                          : 'bg-amber-50/80 border-amber-200 text-amber-950 hover:bg-amber-100'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <Gift size={17} className={pathname.startsWith('/gifting') ? 'text-amber-400' : 'text-amber-700'} />
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold">Build Your Own Box</span>
+                            <span className="text-[10px] font-black px-1.5 py-0.2 rounded bg-amber-400 text-emerald-950">Save 25%</span>
+                          </div>
+                          <p className="text-[11px] opacity-75 font-normal">Custom honey stacks &amp; curated bundles</p>
+                        </div>
+                      </div>
+                      <ChevronRight size={16} className="text-amber-700" />
+                    </Link>
                     <Link
                       href="/terroir"
                       prefetch={true}

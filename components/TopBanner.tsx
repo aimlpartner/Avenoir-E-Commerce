@@ -8,10 +8,10 @@ import { Sparkles, Megaphone, ShieldCheck } from 'lucide-react';
 export default function TopBanner() {
   const { activeTicker } = useAdmin();
 
-  const displayText = activeTicker?.text || 'Harvested in New Jersey · Free shipping over $60 · Local pickup available';
-  const highlight = activeTicker?.highlightText || 'Maison Avenoir Hives';
-  const linkLabel = activeTicker?.linkText || 'Corporate Gifting';
-  const linkUrl = activeTicker?.linkHref || '/corporate';
+  const displayText = activeTicker?.text || 'Founding Harvest Club: Complimentary tasting card & seasonal recipe with your first order · Free gift wrap over $75';
+  const highlight = activeTicker?.highlightText || 'Value-Add Welcome';
+  const linkLabel = activeTicker?.linkText || 'Join the Club';
+  const linkUrl = activeTicker?.linkHref || '/gifting';
 
   return (
     <aside aria-label="Announcement" className="bg-[#064E3B] text-emerald-100 text-xs py-2 px-4 border-b border-emerald-900/60 transition-colors">

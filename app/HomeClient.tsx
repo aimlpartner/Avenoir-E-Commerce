@@ -362,7 +362,7 @@ export default function HomeClient() {
 
           {/* 2. For Gifting */}
           <Link
-            href="/corporate"
+            href="/gifting"
             prefetch={true}
             className="group relative rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer"
           >
@@ -374,18 +374,21 @@ export default function HomeClient() {
                 sizes="(max-width: 768px) 100vw, 550px"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute top-3 left-3">
+              <div className="absolute top-3 left-3 flex items-center gap-1.5">
                 <span className="bg-emerald-950/90 text-amber-300 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md backdrop-blur-xs shadow-xs">
-                  Personal Gifts
+                  Personal Gifting
+                </span>
+                <span className="bg-amber-400 text-emerald-950 text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md shadow-xs">
+                  Save 25%
                 </span>
               </div>
             </div>
             <div className="p-4 sm:p-6 flex items-center justify-between gap-3 bg-white">
               <div>
                 <h3 className="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-emerald-900 transition">
-                  For Gifting
+                  Build Your Own Box
                 </h3>
-                <span className="text-xs text-slate-500">Curated gift sets with handwritten notes</span>
+                <span className="text-xs text-slate-500">Custom honey stacks &amp; curated bundles</span>
               </div>
               <span className="p-2 sm:p-2.5 rounded-xl bg-emerald-50 text-emerald-900 group-hover:bg-emerald-900 group-hover:text-white transition shrink-0">
                 <ArrowRight size={18} />
