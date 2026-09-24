@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${dmSans.variable} ${interTight.variable} ${jetbrainsMono.variable} antialiased`}>
-      <body suppressHydrationWarning className="bg-[#F8FAF9] text-slate-900 font-sans flex flex-col min-h-screen">
+      <body suppressHydrationWarning className="bg-white text-stone-900 font-sans flex flex-col min-h-screen">
         <Suspense fallback={null}>
           <NavigationProgress />
         </Suspense>

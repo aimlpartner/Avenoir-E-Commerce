@@ -7,10 +7,22 @@
   --font-heading: var(--font-heading), var(--font-sans), system-ui, sans-serif;
   --font-mono: var(--font-mono), monospace;
   
-  --color-brand-gold: #D4AF37;
-  --color-brand-gold-dark: #AA7C11;
-  --color-brand-cream: #FCFAF2;
-  --color-brand-charcoal: #1C1B19;
+  --color-brand-gold: #C5A265;
+  --color-brand-gold-dark: #9E7A38;
+  --color-brand-gold-light: #F9F9F8;
+  --color-brand-cream: #FFFFFF;
+  --color-brand-charcoal: #171614;
+  --color-brand-forest: #15241B;
+  --color-brand-forest-dark: #0F1A13;
+
+  /* Sleek, professional luxury border-radius scale (toned down from bubbly values) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-2xl: 12px;
+  --radius-3xl: 14px;
 }
 
 @keyframes marquee {

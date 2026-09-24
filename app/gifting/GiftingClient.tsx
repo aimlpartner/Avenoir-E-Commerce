@@ -162,44 +162,44 @@ export default function GiftingClient() {
     <div className="py-6 sm:py-10 px-4 sm:px-8 xl:px-12 2xl:px-16 w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto space-y-8 pb-24">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-emerald-950 text-white border border-amber-400 shadow-2xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold animate-in fade-in slide-in-from-top-4 duration-300">
-          <CheckCircle2 size={18} className="text-amber-400 shrink-0" />
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-md bg-[#15231A] text-white border border-[#C5A265] shadow-2xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold animate-in fade-in slide-in-from-top-4 duration-300">
+          <CheckCircle2 size={18} className="text-[#C5A265] shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-500">
-        <Link href="/" prefetch={true} className="hover:text-emerald-900 transition">Home</Link>
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-stone-500">
+        <Link href="/" prefetch={true} className="hover:text-stone-900 transition">Home</Link>
         <ChevronRight size={12} />
-        <Link href="/shop" prefetch={true} className="hover:text-emerald-900 transition">Shop</Link>
+        <Link href="/shop" prefetch={true} className="hover:text-stone-900 transition">Shop</Link>
         <ChevronRight size={12} />
-        <span className="text-emerald-950 font-bold">Build Your Own Box &amp; Gifting</span>
+        <span className="text-stone-900 font-bold">Build Your Own Box &amp; Gifting</span>
       </nav>
 
       {/* Contained Luxury Hero Banner */}
-      <div className="rounded-3xl p-6 sm:p-10 lg:p-12 border border-emerald-900/60 relative overflow-hidden shadow-md text-left bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white">
-        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#d97706_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none select-none" />
+      <div className="rounded-xl p-6 sm:p-10 lg:p-12 border border-[#223528] relative overflow-hidden shadow-md text-left bg-gradient-to-br from-[#141F18] via-[#11100E] to-[#15231A] text-white">
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C5A265_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none select-none" />
         
         <div className="relative max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-900/90 border border-amber-400/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider backdrop-blur-xs">
-            <Gift size={13} className="text-amber-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xs bg-stone-900/90 border border-[#C5A265]/40 text-[#E8D7B5] text-[11px] font-bold uppercase tracking-wider backdrop-blur-xs">
+            <Gift size={13} className="text-[#C5A265]" />
             <span>Maison Avenoir Bespoke Gifting Studio</span>
           </div>
 
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
             Build Your Own Box <br />
-            <span className="italic font-normal text-amber-300">&amp; Curated Honey Flights</span>
+            <span className="italic font-normal text-[#E8D7B5]">&amp; Curated Honey Flights</span>
           </h1>
 
-          <p className="text-sm sm:text-base text-emerald-100/90 font-serif leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base text-stone-300 font-serif leading-relaxed max-w-2xl">
             Curate a personalized assortment of cold-extracted raw nectars, whipped honey silks, and botanical infusions. Hand-packed in New Jersey with complimentary wax-sealed calligraphy.
           </p>
 
           {/* Social Proof & Trust Badges */}
-          <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-emerald-200/90 font-medium">
+          <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-stone-300 font-medium">
             <div className="flex items-center gap-1.5">
-              <div className="flex text-amber-400">
+              <div className="flex text-[#C5A265]">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={13} fill="currentColor" />
                 ))}
@@ -209,12 +209,12 @@ export default function GiftingClient() {
             </div>
 
             <div className="flex items-center gap-1.5">
-              <Truck size={13} className="text-amber-400" />
+              <Truck size={13} className="text-[#C5A265]" />
               <span>Free Courier Shipping over $60</span>
             </div>
 
             <div className="flex items-center gap-1.5">
-              <ShieldCheck size={13} className="text-amber-400" />
+              <ShieldCheck size={13} className="text-[#C5A265]" />
               <span>100% Provenance Guaranteed</span>
             </div>
           </div>
@@ -222,13 +222,13 @@ export default function GiftingClient() {
       </div>
 
       {/* View Switcher Tabs */}
-      <div className="bg-white rounded-2xl p-1.5 shadow-sm border border-slate-200 max-w-md mx-auto flex items-center gap-1">
+      <div className="bg-white rounded-lg p-1 shadow-2xs border border-stone-200/90 max-w-md mx-auto flex items-center gap-1">
         <button
           onClick={() => setActiveTab('custom')}
-          className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
+          className={`flex-1 py-2.5 px-4 rounded-md text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
             activeTab === 'custom'
-              ? 'bg-emerald-900 text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              ? 'bg-[#15231A] text-white shadow-2xs'
+              : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
           }`}
         >
           <Sliders size={15} />
@@ -237,10 +237,10 @@ export default function GiftingClient() {
 
         <button
           onClick={() => setActiveTab('curated')}
-          className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
+          className={`flex-1 py-2.5 px-4 rounded-md text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
             activeTab === 'curated'
-              ? 'bg-emerald-900 text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              ? 'bg-[#15231A] text-white shadow-2xs'
+              : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
           }`}
         >
           <Gift size={15} />
@@ -258,7 +258,7 @@ export default function GiftingClient() {
           />
 
             {/* Split Builder Layout: Flavors Grid (60%) + Sticky Summary Drawer (40%) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-4 border-t border-slate-200/80">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-4 border-t border-stone-200">
               {/* Left Column: Flavors Grid */}
               <div className="lg:col-span-7 xl:col-span-8">
                 <FlavorSelectorGrid
@@ -300,74 +300,74 @@ export default function GiftingClient() {
         )}
 
         {/* Gifting Assurance & FAQs Section */}
-        <section className="mt-24 pt-16 border-t border-slate-200">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
+        <section className="mt-20 pt-14 border-t border-stone-200">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-bold text-[#8C6B28] uppercase tracking-widest block mb-1">
               Gifting Etiquette &amp; Details
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
               The Maison Avenoir Gifting Experience
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1">
+            <p className="text-xs sm:text-sm text-stone-600 mt-1">
               Every detail is considered—from zero-pricing receipts to handwritten envelopes.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center">
-                <Feather size={20} className="text-amber-800" />
+            <div className="p-6 rounded-lg bg-white border border-stone-200/90 shadow-2xs space-y-2.5">
+              <div className="w-10 h-10 rounded-md bg-stone-50 border border-stone-200 text-[#8C6B28] flex items-center justify-center">
+                <Feather size={18} />
               </div>
-              <h3 className="font-serif text-lg font-bold text-slate-900">
+              <h3 className="font-serif text-lg font-bold text-stone-900">
                 Discreet Gifting Dispatch
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-stone-600 leading-relaxed">
                 All gift boxes are shipped with blind packing slips. No receipts, prices, or invoices are ever included in the recipient package.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center">
-                <Sparkles size={20} className="text-emerald-800" />
+            <div className="p-6 rounded-lg bg-white border border-stone-200/90 shadow-2xs space-y-2.5">
+              <div className="w-10 h-10 rounded-md bg-stone-50 border border-stone-200 text-[#8C6B28] flex items-center justify-center">
+                <Sparkles size={18} />
               </div>
-              <h3 className="font-serif text-lg font-bold text-slate-900">
+              <h3 className="font-serif text-lg font-bold text-stone-900">
                 Wax-Sealed Presentation
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-stone-600 leading-relaxed">
                 Your custom note is penned on heavyweight cotton rag stock and sealed by hand with molten apiary beeswax and our brass hive crest.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-stone-100 text-slate-900 flex items-center justify-center">
-                <Truck size={20} className="text-slate-800" />
+            <div className="p-6 rounded-lg bg-white border border-stone-200/90 shadow-2xs space-y-2.5">
+              <div className="w-10 h-10 rounded-md bg-stone-50 border border-stone-200 text-[#8C6B28] flex items-center justify-center">
+                <Truck size={18} />
               </div>
-              <h3 className="font-serif text-lg font-bold text-slate-900">
+              <h3 className="font-serif text-lg font-bold text-stone-900">
                 Insulated Fragile Transit
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-stone-600 leading-relaxed">
                 Each French flint glass jar is nestled in custom-cut shock-absorbent recycled kraft cells to ensure pristine arrival across the US.
               </p>
             </div>
           </div>
 
           {/* Corporate Gifting Callout */}
-          <div className="mt-12 p-8 rounded-3xl bg-gradient-to-br from-emerald-950 to-slate-900 text-white max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-emerald-800">
+          <div className="mt-12 p-8 rounded-xl bg-[#142118] text-white max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md border border-[#223528]">
             <div className="text-center sm:text-left space-y-1">
-              <span className="text-[10px] font-black uppercase tracking-widest text-amber-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#C5A265]">
                 Looking for 25+ Boxes?
               </span>
-              <h3 className="font-serif text-xl sm:text-2xl font-bold">
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-white">
                 Custom Corporate Gifting &amp; Event Favors
               </h3>
-              <p className="text-xs text-emerald-200/80 max-w-lg">
+              <p className="text-xs text-stone-300 max-w-lg">
                 Custom engraved brass plaques, multi-recipient spreadsheet dispatch, and volume enterprise pricing.
               </p>
             </div>
 
             <Link
               href="/corporate"
-              className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-emerald-950 font-bold text-xs sm:text-sm transition shrink-0 shadow-md cursor-pointer flex items-center gap-1.5"
+              className="px-6 py-3 rounded-md bg-[#C5A265] hover:bg-[#B38E46] text-stone-950 font-bold text-xs sm:text-sm transition shrink-0 shadow-xs cursor-pointer flex items-center gap-1.5"
             >
               <span>Explore Corporate Concierge</span>
               <ChevronRight size={16} />

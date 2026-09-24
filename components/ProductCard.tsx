@@ -20,12 +20,12 @@ export default function ProductCard({ product }: ProductCardProps) {
     : BEEKEEPING_SUBCATEGORIES.find((s) => s.id === product.subcategory);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between text-left group relative overflow-hidden">
+    <div className="bg-white rounded-md border border-stone-200/90 shadow-2xs hover:shadow-md transition-shadow flex flex-col justify-between text-left group relative overflow-hidden">
       {/* Edge-to-edge Product Image without side padding */}
       <Link 
         href={`/products/${product.id}`} 
         prefetch={true}
-        className="block relative aspect-square w-full overflow-hidden bg-slate-100 cursor-pointer"
+        className="block relative aspect-square w-full overflow-hidden bg-stone-100 cursor-pointer"
       >
         <Image
           src={product.imageUrl}
@@ -37,17 +37,17 @@ export default function ProductCard({ product }: ProductCardProps) {
         />
 
         {/* Top Badges */}
-        <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex flex-col gap-1 sm:gap-1.5 items-start">
+        <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 flex flex-col gap-1 items-start">
           {product.badge && (
-            <span className="bg-emerald-950 text-amber-300 text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-sm shadow-xs">
+            <span className="bg-stone-900 text-[#E8D7B5] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-xs shadow-2xs">
               {product.badge}
             </span>
           )}
           <span
-            className={`text-[9px] sm:text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-sm shadow-2xs backdrop-blur-xs ${
+            className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-xs shadow-2xs backdrop-blur-xs ${
               isHoney
-                ? 'bg-amber-100 text-amber-950 border border-amber-300'
-                : 'bg-emerald-100 text-emerald-950 border border-emerald-300'
+                ? 'bg-white/95 text-stone-900 border border-stone-200'
+                : 'bg-stone-100/95 text-stone-800 border border-stone-300'
             }`}
           >
             {isHoney ? 'Honey Reserve' : 'Apiary Gear'}
@@ -55,51 +55,51 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Customer Rating */}
-        <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-white/95 backdrop-blur-xs px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md text-[10px] sm:text-xs font-bold text-slate-800 flex items-center gap-1 shadow-xs border border-slate-200">
-          <Star size={11} strokeWidth={2.5} className="text-amber-500 fill-amber-500 sm:w-[13px] sm:h-[13px]" />
+        <div className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-xs text-[10px] sm:text-xs font-bold text-stone-800 flex items-center gap-1 shadow-2xs border border-stone-200">
+          <Star size={11} strokeWidth={2.4} className="text-[#C5A265] fill-[#C5A265] sm:w-[12px] sm:h-[12px]" />
           <span>{product.rating}</span>
-          <span className="text-slate-500 text-[9px] sm:text-[11px] font-semibold">({product.reviewsCount})</span>
+          <span className="text-stone-400 text-[9px] sm:text-[10px] font-semibold">({product.reviewsCount})</span>
         </div>
       </Link>
 
       {/* Card Body with comfortable padding */}
-      <div className="p-3.5 sm:p-5 flex flex-col flex-1 justify-between">
+      <div className="p-3.5 sm:p-4 flex flex-col flex-1 justify-between">
         <div>
           {/* Subcategory Label */}
           {subMeta && (
-            <span className="text-[10px] sm:text-xs font-bold text-emerald-900 uppercase tracking-wider block mb-0.5 sm:mb-1">
+            <span className="text-[10px] sm:text-[11px] font-bold text-[#8C6B28] uppercase tracking-wider block mb-0.5">
               {subMeta.name}
             </span>
           )}
 
           {/* Title linking to individual product page */}
           <Link href={`/products/${product.id}`} prefetch={true} className="group/title block">
-            <h3 className="font-serif text-sm sm:text-lg font-bold text-slate-900 mb-0.5 sm:mb-1 leading-snug group-hover/title:text-emerald-900 transition flex items-center justify-between">
+            <h3 className="font-serif text-sm sm:text-base font-bold text-stone-900 mb-0.5 leading-snug group-hover/title:text-[#15231A] transition flex items-center justify-between">
               <span className="line-clamp-1">{product.name}</span>
-              <ArrowUpRight size={16} strokeWidth={2.4} className="text-slate-500 opacity-0 group-hover/title:opacity-100 transition shrink-0 ml-1 hidden sm:inline" />
+              <ArrowUpRight size={15} strokeWidth={2.2} className="text-stone-400 opacity-0 group-hover/title:opacity-100 transition shrink-0 ml-1 hidden sm:inline" />
             </h3>
           </Link>
 
-          <p className="text-[11px] sm:text-sm text-slate-600 font-medium mb-2.5 sm:mb-4 line-clamp-1">
+          <p className="text-[11px] sm:text-xs text-stone-500 font-medium mb-2.5 sm:mb-3 line-clamp-1">
             {product.subtitle}
           </p>
         </div>
 
         {/* Footer / Price & Add to Bag */}
-        <div className="pt-2.5 sm:pt-3.5 border-t border-slate-100 flex items-center justify-between gap-2">
+        <div className="pt-2 sm:pt-3 border-t border-stone-100 flex items-center justify-between gap-2">
           <div>
-            <span className="text-[9px] sm:text-[11px] text-slate-500 block uppercase font-bold tracking-wider">Price</span>
-            <span className="text-sm sm:text-xl font-extrabold text-emerald-950">
+            <span className="text-[9px] sm:text-[10px] text-stone-400 block uppercase font-bold tracking-wider">Price</span>
+            <span className="text-sm sm:text-lg font-bold text-stone-900">
               ${product.price.toFixed(2)}
             </span>
           </div>
 
           <button
             onClick={() => addToCart(product, 1, product.finishes ? product.finishes[0] : undefined)}
-            className="px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-xl bg-emerald-900 hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold tracking-wide transition cursor-pointer flex items-center gap-1 sm:gap-2 shadow-xs active:scale-95 shrink-0"
+            className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-semibold tracking-wide transition cursor-pointer flex items-center gap-1 sm:gap-1.5 shadow-2xs active:scale-98 shrink-0"
             aria-label={`Add ${product.name} to Bag`}
           >
-            <Plus size={14} strokeWidth={2.5} className="sm:w-4 sm:h-4" />
+            <Plus size={13} strokeWidth={2.4} className="sm:w-3.5 sm:h-3.5" />
             <span className="hidden sm:inline">Add to Bag</span>
             <span className="sm:hidden">Add</span>
           </button>

@@ -52,66 +52,66 @@ export default function CartDrawer() {
             className="fixed top-0 right-0 h-full w-full sm:w-115 bg-white z-50 shadow-2xl flex flex-col justify-between"
           >
             {/* Header */}
-            <div className="p-6 border-b border-slate-200">
+            <div className="p-6 border-b border-stone-200">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <h3 className="font-serif text-2xl font-bold text-slate-900">Your Shopping Bag</h3>
-                  <span className="bg-emerald-100 text-emerald-950 text-xs font-bold px-2.5 py-1 rounded-md">
+                  <h3 className="font-serif text-2xl font-bold text-stone-900">Your Shopping Bag</h3>
+                  <span className="bg-stone-900 text-[#E8D7B5] text-xs font-bold px-2.5 py-1 rounded-xs">
                     {cartItems.reduce((acc, i) => acc + i.quantity, 0)} items
                   </span>
                 </div>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 flex items-center justify-center transition cursor-pointer"
+                  className="w-8 h-8 rounded-md bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 flex items-center justify-center transition cursor-pointer"
                   aria-label="Close Shopping Bag"
                 >
-                  <X size={20} strokeWidth={2.5} />
+                  <X size={18} strokeWidth={2.5} />
                 </button>
               </div>
 
               {/* Dual Value-Add Progress Meter: Free Shipping ($60) & Free Gift Note/Wrap ($75) */}
-              <div className="mt-4 p-3.5 rounded-2xl bg-gradient-to-br from-amber-50 to-emerald-50/40 border border-amber-300/80 space-y-2.5">
+              <div className="mt-4 p-3.5 rounded-md bg-stone-50 border border-stone-200/90 space-y-2.5">
                 <div className="flex items-center justify-between text-xs sm:text-sm font-medium">
-                  <span className="flex items-center gap-2 text-amber-950 font-bold">
+                  <span className="flex items-center gap-2 text-stone-900 font-bold">
                     {!hasUnlockedFreeShipping ? (
                       <>
-                        <Truck size={16} strokeWidth={2.4} className="text-amber-800" />
+                        <Truck size={16} strokeWidth={2.4} className="text-[#8C6B28]" />
                         <span>Add ${remainingForFreeShipping.toFixed(2)} for Free Shipping ($60)</span>
                       </>
                     ) : !hasUnlockedGiftWrap ? (
                       <>
-                        <Gift size={16} strokeWidth={2.4} className="text-emerald-800" />
+                        <Gift size={16} strokeWidth={2.4} className="text-[#8C6B28]" />
                         <span>Add ${remainingForGiftWrap.toFixed(2)} for Free Gift Note &amp; Wrap ($75)</span>
                       </>
                     ) : (
                       <>
-                        <Sparkles size={16} strokeWidth={2.4} className="text-emerald-700" />
+                        <Sparkles size={16} strokeWidth={2.4} className="text-[#8C6B28]" />
                         <span>Unlocked: Free Shipping + Free Gift Wrap ($75+)</span>
                       </>
                     )}
                   </span>
-                  <span className="font-extrabold text-amber-900 text-xs">
+                  <span className="font-bold text-stone-900 text-xs">
                     {hasUnlockedGiftWrap ? '100%' : `${giftProgress}%`}
                   </span>
                 </div>
 
-                <div className="w-full h-2 bg-amber-200/60 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-stone-200 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-300 ${
-                      hasUnlockedGiftWrap ? 'bg-emerald-600' : 'bg-amber-500'
+                      hasUnlockedGiftWrap ? 'bg-[#15231A]' : 'bg-[#C5A265]'
                     }`}
                     style={{ width: `${giftProgress}%` }}
                   />
                 </div>
 
                 {/* Milestone Indicators */}
-                <div className="flex items-center justify-between text-[10px] font-semibold text-slate-600 pt-0.5">
-                  <span className={`flex items-center gap-1 ${hasUnlockedFreeShipping ? 'text-emerald-800 font-bold' : ''}`}>
-                    <CheckCircle2 size={11} className={hasUnlockedFreeShipping ? 'text-emerald-600' : 'text-slate-300'} />
+                <div className="flex items-center justify-between text-[10px] font-semibold text-stone-500 pt-0.5">
+                  <span className={`flex items-center gap-1 ${hasUnlockedFreeShipping ? 'text-stone-900 font-bold' : ''}`}>
+                    <CheckCircle2 size={11} className={hasUnlockedFreeShipping ? 'text-[#8C6B28]' : 'text-stone-300'} />
                     $60 Free Shipping
                   </span>
-                  <span className={`flex items-center gap-1 ${hasUnlockedGiftWrap ? 'text-emerald-800 font-bold' : ''}`}>
-                    <CheckCircle2 size={11} className={hasUnlockedGiftWrap ? 'text-emerald-600' : 'text-slate-300'} />
+                  <span className={`flex items-center gap-1 ${hasUnlockedGiftWrap ? 'text-stone-900 font-bold' : ''}`}>
+                    <CheckCircle2 size={11} className={hasUnlockedGiftWrap ? 'text-[#8C6B28]' : 'text-stone-300'} />
                     $75 Free Gift Note &amp; Wrap
                   </span>
                 </div>
@@ -122,11 +122,11 @@ export default function CartDrawer() {
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
               {cartItems.length === 0 ? (
                 <div className="text-center py-16">
-                  <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mx-auto mb-4">
-                    <Sparkles size={24} />
+                  <div className="w-14 h-14 rounded-full bg-stone-100 flex items-center justify-center text-stone-400 mx-auto mb-4">
+                    <Sparkles size={22} className="text-[#8C6B28]" />
                   </div>
-                  <h4 className="font-serif text-lg font-bold text-slate-800 mb-1">Your bag is currently empty</h4>
-                  <p className="text-xs text-slate-500 mb-6 max-w-xs mx-auto">
+                  <h4 className="font-serif text-lg font-bold text-stone-800 mb-1">Your bag is currently empty</h4>
+                  <p className="text-xs text-stone-500 mb-6 max-w-xs mx-auto">
                     Discover small-batch raw honey from our New Jersey hives or explore thoughtful gift boxes.
                   </p>
                   <div className="flex flex-col gap-2 max-w-xs mx-auto">
@@ -134,7 +134,7 @@ export default function CartDrawer() {
                       href="/honey"
                       prefetch={true}
                       onClick={() => setIsCartOpen(false)}
-                      className="px-5 py-2.5 rounded-xl bg-emerald-900 text-white text-xs font-bold hover:bg-emerald-800 transition text-center shadow-xs"
+                      className="px-5 py-2.5 rounded-md bg-[#15231A] text-white text-xs font-bold hover:bg-[#1E3326] transition text-center shadow-2xs cursor-pointer"
                     >
                       Shop the Harvest
                     </Link>
@@ -142,7 +142,7 @@ export default function CartDrawer() {
                       href="/corporate"
                       prefetch={true}
                       onClick={() => setIsCartOpen(false)}
-                      className="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold hover:bg-slate-200 transition text-center"
+                      className="px-5 py-2.5 rounded-md bg-stone-100 text-stone-800 text-xs font-bold hover:bg-stone-200 transition text-center cursor-pointer"
                     >
                       Send a Gift
                     </Link>
@@ -152,10 +152,10 @@ export default function CartDrawer() {
                 cartItems.map((item) => (
                   <div
                     key={item.id}
-                    className="p-4 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 transition flex gap-3.5 relative"
+                    className="p-4 rounded-md border border-stone-200/90 bg-white hover:border-stone-300 transition flex gap-3.5 relative shadow-2xs"
                   >
                     {/* Item Image */}
-                    <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-slate-100 shrink-0 border border-slate-100">
+                    <div className="relative w-20 h-20 rounded-sm overflow-hidden bg-stone-100 shrink-0 border border-stone-200">
                       <Image
                         src={item.imageUrl}
                         alt={item.name}
@@ -170,7 +170,7 @@ export default function CartDrawer() {
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           {item.isBundle && (
-                            <span className="inline-block px-2 py-0.5 rounded bg-amber-100 text-amber-900 text-[10px] font-extrabold uppercase tracking-wider mb-0.5">
+                            <span className="inline-block px-2 py-0.5 rounded-xs bg-stone-100 text-[#8C6B28] border border-stone-200 text-[10px] font-bold uppercase tracking-wider mb-0.5">
                               {item.bundleTier || 'Artisan Bundle'}
                             </span>
                           )}
@@ -179,7 +179,7 @@ export default function CartDrawer() {
                               href="/gifting"
                               prefetch={true}
                               onClick={() => setIsCartOpen(false)}
-                              className="font-serif text-base font-bold text-slate-900 hover:text-emerald-900 transition line-clamp-1 block"
+                              className="font-serif text-base font-bold text-stone-900 hover:text-stone-700 transition line-clamp-1 block"
                             >
                               {item.name}
                             </Link>
@@ -188,7 +188,7 @@ export default function CartDrawer() {
                               href={`/products/${item.productId}`}
                               prefetch={true}
                               onClick={() => setIsCartOpen(false)}
-                              className="font-serif text-base font-bold text-slate-900 hover:text-emerald-900 transition line-clamp-1 block"
+                              className="font-serif text-base font-bold text-stone-900 hover:text-stone-700 transition line-clamp-1 block"
                             >
                               {item.name}
                             </Link>
@@ -197,7 +197,7 @@ export default function CartDrawer() {
 
                         <button
                           onClick={() => removeFromCart(item.id)}
-                          className="text-slate-400 hover:text-rose-600 transition p-1 cursor-pointer shrink-0"
+                          className="text-stone-400 hover:text-rose-600 transition p-1 cursor-pointer shrink-0"
                           aria-label="Remove item"
                         >
                           <Trash2 size={16} strokeWidth={2.2} />
@@ -205,21 +205,21 @@ export default function CartDrawer() {
                       </div>
 
                       {item.finish && (
-                        <span className="text-xs text-slate-600 block mt-0.5 font-medium">
+                        <span className="text-xs text-stone-600 block mt-0.5 font-medium">
                           Packaging: {item.finish}
                         </span>
                       )}
 
                       {/* Bundle Items Manifest Breakdown */}
                       {item.bundleItems && item.bundleItems.length > 0 && (
-                        <div className="mt-1.5 p-2 rounded-lg bg-stone-50 border border-slate-150 text-[11px] text-slate-600 space-y-0.5">
-                          <span className="font-bold text-slate-700 block text-[10px] uppercase tracking-wide">
+                        <div className="mt-1.5 p-2 rounded-md bg-stone-50 border border-stone-200 text-[11px] text-stone-600 space-y-0.5">
+                          <span className="font-bold text-stone-700 block text-[10px] uppercase tracking-wide">
                             Included Jars ({item.bundleItems.length}):
                           </span>
                           <div className="max-h-20 overflow-y-auto space-y-0.5 pr-1">
                             {item.bundleItems.map((sub, idx) => (
-                              <div key={idx} className="truncate text-slate-700 flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                              <div key={idx} className="truncate text-stone-700 flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#C5A265] shrink-0" />
                                 <span className="truncate">{sub.name}</span>
                               </div>
                             ))}
@@ -228,33 +228,33 @@ export default function CartDrawer() {
                       )}
 
                       {item.customNote && (
-                        <span className="text-[11px] text-amber-800 italic block mt-1 bg-amber-50/70 p-1.5 rounded border border-amber-200/80">
+                        <span className="text-[11px] text-stone-800 italic block mt-1 bg-stone-50 p-1.5 rounded-xs border border-stone-200">
                           ✍ {item.customNote}
                         </span>
                       )}
 
                       <div className="flex items-center justify-between mt-3">
-                        <div className="flex items-center border border-slate-300 rounded-lg bg-slate-50">
+                        <div className="flex items-center border border-stone-300 rounded-md bg-stone-50">
                           <button
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="w-8 h-8 flex items-center justify-center text-slate-700 hover:text-slate-950 transition cursor-pointer"
+                            className="w-8 h-8 flex items-center justify-center text-stone-700 hover:text-stone-950 transition cursor-pointer"
                             aria-label="Decrease quantity"
                           >
                             <Minus size={14} strokeWidth={2.4} />
                           </button>
-                          <span className="w-8 text-center text-xs sm:text-sm font-bold text-slate-900">
+                          <span className="w-8 text-center text-xs sm:text-sm font-bold text-stone-900">
                             {item.quantity}
                           </span>
                           <button
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="w-8 h-8 flex items-center justify-center text-slate-700 hover:text-slate-900 transition cursor-pointer"
+                            className="w-8 h-8 flex items-center justify-center text-stone-700 hover:text-stone-900 transition cursor-pointer"
                             aria-label="Increase quantity"
                           >
                             <Plus size={14} strokeWidth={2.4} />
                           </button>
                         </div>
 
-                        <span className="text-base font-extrabold text-emerald-950">
+                        <span className="text-base font-extrabold text-stone-900">
                           ${(item.price * item.quantity).toFixed(2)}
                         </span>
                       </div>
@@ -265,13 +265,13 @@ export default function CartDrawer() {
 
               {/* Cart Offer Sequence: Dipper, Beeswax Candle, or Mini Jar */}
               {cartItems.length > 0 && cartAddOns.length > 0 && (
-                <div className="pt-3 border-t border-slate-200/90 space-y-2.5">
+                <div className="pt-3 border-t border-stone-200 space-y-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                      <Sparkles size={13} className="text-amber-500" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-stone-800 flex items-center gap-1.5">
+                      <Sparkles size={13} className="text-[#8C6B28]" />
                       Complete Your Honey Ritual
                     </span>
-                    <span className="text-[11px] text-slate-500">Curated Add-ons</span>
+                    <span className="text-[11px] text-stone-500">Curated Add-ons</span>
                   </div>
 
                   <div className="space-y-2">
@@ -280,10 +280,10 @@ export default function CartDrawer() {
                       return (
                         <div
                           key={addon.id}
-                          className="p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 hover:bg-slate-50 transition flex items-center justify-between gap-3"
+                          className="p-2.5 rounded-md border border-stone-200/90 bg-stone-50/70 hover:bg-stone-50 transition flex items-center justify-between gap-3"
                         >
                           <div className="flex items-center gap-2.5 min-w-0">
-                            <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-white shrink-0 border border-slate-200">
+                            <div className="relative w-11 h-11 rounded-sm overflow-hidden bg-white shrink-0 border border-stone-200">
                               <Image
                                 src={addon.imageUrl}
                                 alt={addon.name}
@@ -293,10 +293,10 @@ export default function CartDrawer() {
                               />
                             </div>
                             <div className="min-w-0">
-                              <p className="text-xs font-bold text-slate-900 truncate">
+                              <p className="text-xs font-bold text-stone-900 truncate">
                                 {addon.name}
                               </p>
-                              <p className="text-[11px] text-emerald-900 font-extrabold">
+                              <p className="text-[11px] text-stone-800 font-extrabold">
                                 ${addon.price.toFixed(2)}
                               </p>
                             </div>
@@ -304,7 +304,7 @@ export default function CartDrawer() {
 
                           <button
                             onClick={() => addToCart(addon)}
-                            className="shrink-0 px-2.5 py-1.5 rounded-lg bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-bold transition flex items-center gap-1 cursor-pointer active:scale-95"
+                            className="shrink-0 px-2.5 py-1.5 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-bold transition flex items-center gap-1 cursor-pointer active:scale-95"
                             aria-label={`Add ${addon.name} to bag`}
                           >
                             <Plus size={12} strokeWidth={2.4} />
@@ -320,23 +320,23 @@ export default function CartDrawer() {
 
             {/* Footer / Checkout */}
             {cartItems.length > 0 && (
-              <div className="p-6 border-t border-slate-200 bg-slate-50/90 space-y-4">
+              <div className="p-6 border-t border-stone-200 bg-stone-50/90 space-y-4">
                 <div className="space-y-2 text-xs sm:text-sm">
-                  <div className="flex justify-between text-slate-700 font-medium">
+                  <div className="flex justify-between text-stone-700 font-medium">
                     <span>Subtotal</span>
-                    <span className="font-bold text-slate-900">${cartSubtotal.toFixed(2)}</span>
+                    <span className="font-bold text-stone-900">${cartSubtotal.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-slate-700 font-medium">
+                  <div className="flex justify-between text-stone-700 font-medium">
                     <span>Courier Delivery</span>
-                    <span className="font-bold text-emerald-900">
+                    <span className="font-bold text-stone-900">
                       {remainingForFreeShipping === 0 ? 'FREE' : '$12.00'}
                     </span>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-200 flex justify-between items-baseline">
-                  <span className="text-base font-bold text-slate-900">Estimated Total</span>
-                  <span className="text-2xl sm:text-3xl font-extrabold text-emerald-950">
+                <div className="pt-2 border-t border-stone-200 flex justify-between items-baseline">
+                  <span className="text-base font-bold text-stone-900">Estimated Total</span>
+                  <span className="text-2xl sm:text-3xl font-extrabold text-stone-900">
                     ${(cartSubtotal + (remainingForFreeShipping === 0 ? 0 : 12)).toFixed(2)}
                   </span>
                 </div>
@@ -346,23 +346,23 @@ export default function CartDrawer() {
                     href="/cart"
                     prefetch={true}
                     onClick={() => setIsCartOpen(false)}
-                    className="w-full py-4 rounded-xl bg-emerald-900 hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold tracking-wide transition flex items-center justify-center gap-2.5 shadow-sm cursor-pointer active:scale-98"
+                    className="w-full py-3.5 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white text-xs sm:text-sm font-bold tracking-wide transition flex items-center justify-center gap-2.5 shadow-2xs cursor-pointer active:scale-98"
                   >
                     <span>Proceed to Secure Checkout</span>
-                    <ArrowRight size={17} strokeWidth={2.5} />
+                    <ArrowRight size={16} strokeWidth={2.5} className="text-[#C5A265]" />
                   </Link>
 
                   <button
                     onClick={() => setIsCartOpen(false)}
-                    className="w-full py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-700 hover:text-slate-950 transition cursor-pointer text-center"
+                    className="w-full py-2 rounded-md text-xs sm:text-sm font-bold text-stone-600 hover:text-stone-900 transition cursor-pointer text-center"
                   >
                     Continue Shopping
                   </button>
                 </div>
 
-                <div className="flex items-center justify-center gap-4 pt-1 text-xs text-slate-500 font-medium">
+                <div className="flex items-center justify-center gap-4 pt-1 text-xs text-stone-500 font-medium">
                   <span className="flex items-center gap-1.5">
-                    <ShieldCheck size={14} strokeWidth={2.2} className="text-emerald-700" />
+                    <ShieldCheck size={14} strokeWidth={2.2} className="text-[#8C6B28]" />
                     256-Bit SSL Encrypted
                   </span>
                   <span>•</span>

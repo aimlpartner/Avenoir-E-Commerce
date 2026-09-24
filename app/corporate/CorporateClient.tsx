@@ -937,22 +937,22 @@ export default function CorporateClient() {
               type="text"
               required
               placeholder="Company / Organization Name"
-              className="px-3.5 py-2.5 rounded-lg bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-amber-400"
+              className="px-3.5 py-2.5 rounded-md bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-[#C5A265]"
             />
             <input
               type="text"
               placeholder="Target Delivery Date (e.g. Nov 20, 2026)"
-              className="px-3.5 py-2.5 rounded-lg bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-amber-400"
+              className="px-3.5 py-2.5 rounded-md bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-[#C5A265]"
             />
             <textarea
               rows={3}
               placeholder="Notes on brass inscription, custom branding sleeves, or multi-destination shipping deadlines..."
-              className="sm:col-span-2 px-3.5 py-2.5 rounded-lg bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-amber-400 resize-none"
+              className="sm:col-span-2 px-3.5 py-2.5 rounded-md bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-[#C5A265] resize-none"
             />
             <div className="sm:col-span-2 pt-1">
               <button
                 type="submit"
-                className="px-6 py-3 rounded-lg bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer shadow-xs"
+                className="px-6 py-3 rounded-md bg-[#C5A265] hover:bg-[#B38E46] text-stone-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer shadow-xs"
               >
                 Request a Gift Proposal &rarr;
               </button>
