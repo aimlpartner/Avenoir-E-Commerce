@@ -7,15 +7,11 @@ import {
   Check, 
   X, 
   ShoppingBag, 
-  Sparkles, 
   Feather, 
-  Package, 
-  Truck, 
   Trash2, 
   ChevronUp, 
   ChevronDown 
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 import GiftNoteModal from './GiftNoteModal';
 
 interface VisualBoxDrawerProps {
@@ -52,13 +48,10 @@ export default function VisualBoxDrawer({
   const count = selectedItems.length;
   const remaining = capacity - count;
   const isFull = count >= capacity;
-  const progressPercent = Math.min(100, Math.round((count / capacity) * 100));
 
   const basePrice = tier.bundlePrice;
   const packagingDelta = packaging.priceDelta;
   const finalPrice = basePrice + packagingDelta;
-  const originalTotal = tier.regularPrice + packagingDelta;
-  const savings = originalTotal - finalPrice;
 
   const hasGiftNote = Boolean(giftMessage || giftRecipient);
 
@@ -68,19 +61,16 @@ export default function VisualBoxDrawer({
   return (
     <>
       {/* Desktop Sticky Panel / Mobile Bottom Drawer */}
-      <div className="w-full lg:sticky lg:top-24 bg-white rounded-lg border border-stone-200/90 shadow-md overflow-hidden flex flex-col">
+      <div className="w-full lg:sticky lg:top-24 bg-white rounded-lg border border-stone-200/90 shadow-xs overflow-hidden flex flex-col">
         
         {/* Header Bar */}
-        <div className="p-5 sm:p-6 bg-[#142118] text-white flex items-center justify-between border-b border-[#223528]">
+        <div className="p-5 bg-stone-50/90 border-b border-stone-200/80 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#C5A265] block mb-0.5">
-              Step 3: Box Summary
+            <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block mb-1">
+              Box Summary
             </span>
-            <h3 className="font-serif text-lg sm:text-xl font-bold flex items-center gap-2">
-              <span>{tier.name}</span>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded-xs bg-stone-900 border border-stone-700 text-[#E8D7B5]">
-                {count}/{capacity} Filled
-              </span>
+            <h3 className="font-serif text-xl font-normal text-stone-900">
+              {tier.name}
             </h3>
           </div>
 
@@ -88,18 +78,18 @@ export default function VisualBoxDrawer({
             {count > 0 && (
               <button
                 onClick={onClearAll}
-                className="text-xs text-stone-300 hover:text-white transition flex items-center gap-1 p-1 cursor-pointer"
+                className="text-xs text-stone-400 hover:text-stone-700 transition flex items-center gap-1 p-1 cursor-pointer"
                 title="Clear all jars"
               >
                 <Trash2 size={13} />
-                <span className="hidden sm:inline">Reset</span>
+                <span className="hidden sm:inline font-mono text-[11px]">Clear</span>
               </button>
             )}
 
             {/* Mobile Expand/Collapse Button */}
             <button
               onClick={() => setMobileExpanded(!mobileExpanded)}
-              className="lg:hidden w-8 h-8 rounded-md bg-stone-800 text-stone-200 flex items-center justify-center transition cursor-pointer"
+              className="lg:hidden w-8 h-8 rounded-md bg-stone-100 text-stone-600 flex items-center justify-center transition cursor-pointer"
               aria-label="Toggle Box Details"
             >
               {mobileExpanded ? <ChevronDown size={18} /> : <ChevronUp size={18} />}
@@ -107,29 +97,10 @@ export default function VisualBoxDrawer({
           </div>
         </div>
 
-        {/* Progress Bar & Status Text */}
-        <div className="p-4 sm:p-5 bg-stone-50 border-b border-stone-200">
-          <div className="flex items-center justify-between text-xs font-bold mb-2">
-            <span className={isFull ? 'text-stone-900 font-extrabold flex items-center gap-1.5' : 'text-stone-700'}>
-              {isFull ? (
-                <>
-                  <Check size={14} strokeWidth={3} className="text-[#8C6B28]" />
-                  Your box is complete &amp; ready for gifting!
-                </>
-              ) : (
-                `Add ${remaining} more jar${remaining === 1 ? '' : 's'} to complete your ${tier.capacity}-pack`
-              )}
-            </span>
-            <span className="text-stone-900 font-bold">{progressPercent}%</span>
-          </div>
-          <div className="w-full h-1.5 bg-stone-200 rounded-full overflow-hidden">
-            <motion.div
-              className={`h-full rounded-full transition-all duration-300 ${
-                isFull ? 'bg-[#15231A]' : 'bg-[#C5A265]'
-              }`}
-              style={{ width: `${progressPercent}%` }}
-            />
-          </div>
+        {/* Quiet Status Row */}
+        <div className="px-5 py-2.5 bg-stone-100/60 border-b border-stone-200/80 flex items-center justify-between text-xs font-mono text-stone-600">
+          <span>{isFull ? 'Box complete' : `Select ${remaining} more jar${remaining === 1 ? '' : 's'}`}</span>
+          <span>{count} / {capacity}</span>
         </div>
 
         {/* Content Section (Collapsible on Mobile, always open on Desktop) */}
@@ -137,9 +108,9 @@ export default function VisualBoxDrawer({
           
           {/* Visual Box Slots Grid */}
           <div>
-            <div className="flex items-center justify-between mb-3 text-xs font-bold text-stone-800 uppercase tracking-wider">
-              <span>Box Slots ({capacity} Jars)</span>
-              <span className="text-[11px] font-normal text-stone-500">Tap &apos;×&apos; to remove</span>
+            <div className="flex items-center justify-between mb-3 text-[11px] font-mono tracking-wider uppercase text-stone-400">
+              <span>Selected Jars</span>
+              <span className="text-[10px] normal-case text-stone-400">Hover &lsquo;×&rsquo; to remove</span>
             </div>
 
             <div
@@ -156,8 +127,8 @@ export default function VisualBoxDrawer({
                   key={idx}
                   className={`relative rounded-md border transition-all duration-200 aspect-square flex flex-col items-center justify-center p-1 text-center ${
                     item
-                      ? 'border-stone-300 bg-stone-50 shadow-2xs'
-                      : 'border-dashed border-stone-300 bg-stone-50/50 text-stone-400'
+                      ? 'border-stone-200 bg-stone-50 shadow-2xs'
+                      : 'border-dashed border-stone-200 bg-stone-50/40 text-stone-300'
                   }`}
                 >
                   {item ? (
@@ -169,26 +140,25 @@ export default function VisualBoxDrawer({
                           fill
                           className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                        <span className="absolute bottom-1 inset-x-1 text-[9px] font-bold text-white line-clamp-1 leading-tight drop-shadow-xs">
+                        <span className="absolute bottom-1 inset-x-1 text-[9px] font-medium text-stone-900 bg-white/80 backdrop-blur-xs rounded-xs px-1 line-clamp-1 leading-tight text-center">
                           {item.name.replace('Honey', '').trim()}
                         </span>
                       </div>
                       <button
                         onClick={() => onRemoveItem(idx)}
-                        className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-xs bg-stone-900 hover:bg-rose-700 text-white flex items-center justify-center shadow-md transition cursor-pointer z-10"
+                        className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-stone-800 hover:bg-stone-950 text-white flex items-center justify-center shadow-xs transition cursor-pointer z-10"
                         title="Remove jar"
                       >
-                        <X size={12} strokeWidth={2.6} />
+                        <X size={11} strokeWidth={2} />
                       </button>
                     </>
                   ) : (
                     <div className="flex flex-col items-center justify-center p-1">
-                      <span className="w-5 h-5 rounded-xs border border-stone-300 flex items-center justify-center text-stone-400 text-xs font-bold mb-1">
+                      <span className="text-stone-300 text-xs font-light mb-0.5">
                         +
                       </span>
-                      <span className="text-[9px] font-semibold text-stone-400 uppercase tracking-wider">
-                        Slot {idx + 1}
+                      <span className="text-[9px] font-mono text-stone-400 uppercase">
+                        Jar {idx + 1}
                       </span>
                     </div>
                   )}
@@ -198,9 +168,8 @@ export default function VisualBoxDrawer({
           </div>
 
           {/* Packaging Style Option */}
-          <div className="pt-4 border-t border-stone-200">
-            <span className="block text-xs font-bold text-stone-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <Package size={14} className="text-[#8C6B28]" />
+          <div className="pt-5 border-t border-stone-200/80">
+            <span className="block text-[11px] font-mono tracking-wider uppercase text-stone-400 mb-2.5">
               Packaging Presentation
             </span>
 
@@ -213,39 +182,33 @@ export default function VisualBoxDrawer({
                     onClick={() => onChangePackaging(opt)}
                     className={`p-3 rounded-md border text-left cursor-pointer transition flex items-center justify-between gap-3 ${
                       isSelected
-                        ? 'border-[#15231A] bg-stone-50 shadow-2xs'
-                        : 'border-stone-200 bg-white hover:bg-stone-50'
+                        ? 'border-stone-900 bg-stone-50'
+                        : 'border-stone-200/80 bg-white hover:bg-stone-50/60'
                     }`}
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-xs sm:text-sm text-stone-900 leading-tight">
+                        <span className="font-serif text-sm text-stone-900 leading-tight">
                           {opt.name}
                         </span>
-                        {opt.priceDelta === 0 ? (
-                          <span className="text-[10px] font-bold text-stone-800 bg-stone-100 border border-stone-200 px-1.5 py-0.5 rounded-xs">
-                            Free
-                          </span>
-                        ) : (
-                          <span className="text-[10px] font-bold text-[#8C6B28] bg-stone-100 border border-stone-200 px-1.5 py-0.5 rounded-xs">
+                        {opt.priceDelta > 0 && (
+                          <span className="text-[11px] font-mono text-stone-500">
                             +${opt.priceDelta.toFixed(2)}
                           </span>
                         )}
                       </div>
-                      <p className="text-[11px] text-stone-500 line-clamp-1 mt-0.5">
+                      <p className="text-xs text-stone-400 line-clamp-1 mt-0.5">
                         {opt.tagline}
                       </p>
                     </div>
 
                     <div
-                      className={`w-4 h-4 rounded-xs flex items-center justify-center shrink-0 ${
+                      className={`w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 ${
                         isSelected
-                          ? 'bg-[#15231A] text-white'
+                          ? 'border-4 border-[#15231A]'
                           : 'border border-stone-300'
                       }`}
-                    >
-                      {isSelected && <Check size={10} strokeWidth={3} />}
-                    </div>
+                    />
                   </div>
                 );
               })}
@@ -253,33 +216,32 @@ export default function VisualBoxDrawer({
           </div>
 
           {/* Complimentary Handwritten Gift Note */}
-          <div className="pt-4 border-t border-stone-200">
+          <div className="pt-5 border-t border-stone-200/80">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
-                <Feather size={14} className="text-[#8C6B28]" />
-                Wax-Sealed Gift Note
+              <span className="text-[11px] font-mono tracking-wider uppercase text-stone-400">
+                Calligraphy Note
               </span>
-              <span className="text-[10px] font-bold text-[#8C6B28] bg-stone-100 border border-stone-200 px-2 py-0.5 rounded-xs">
+              <span className="text-[11px] font-mono text-stone-400">
                 Complimentary
               </span>
             </div>
 
             {hasGiftNote ? (
               <div className="p-3.5 rounded-md bg-stone-50 border border-stone-200 text-left space-y-1 relative group">
-                <div className="flex items-center justify-between text-xs font-bold text-stone-900">
+                <div className="flex items-center justify-between text-xs font-serif text-stone-900">
                   <span>To: {giftRecipient || 'Recipient'}</span>
                   <button
                     onClick={() => setIsNoteModalOpen(true)}
-                    className="text-[#8C6B28] hover:text-stone-950 underline text-[11px] font-semibold cursor-pointer"
+                    className="text-stone-500 hover:text-stone-900 underline text-xs cursor-pointer"
                   >
-                    Edit Note
+                    Edit
                   </button>
                 </div>
-                <p className="text-xs italic text-stone-700 line-clamp-2">
-                  &quot;{giftMessage || 'Warmest wishes from Maison Avenoir'}&quot;
+                <p className="text-xs italic text-stone-600 line-clamp-2 font-serif">
+                  &ldquo;{giftMessage || 'Warmest wishes from Maison Avenoir'}&rdquo;
                 </p>
                 {giftSender && (
-                  <p className="text-[11px] text-stone-500 font-medium text-right">
+                  <p className="text-xs text-stone-400 text-right font-serif">
                     — {giftSender}
                   </p>
                 )}
@@ -287,67 +249,52 @@ export default function VisualBoxDrawer({
             ) : (
               <button
                 onClick={() => setIsNoteModalOpen(true)}
-                className="w-full p-3 rounded-md border border-dashed border-stone-300 bg-stone-50 hover:bg-stone-100 text-stone-800 text-xs font-bold flex items-center justify-center gap-2 transition cursor-pointer"
+                className="w-full p-2.5 rounded-md border border-stone-200 bg-stone-50/50 hover:bg-stone-50 text-stone-600 text-xs font-mono transition flex items-center justify-center gap-1.5 cursor-pointer"
               >
-                <Feather size={14} className="text-[#8C6B28]" />
-                <span>+ Add Calligraphy Note (Free)</span>
+                <Feather size={13} className="text-stone-500" />
+                <span>+ Add Calligraphy Note</span>
               </button>
             )}
           </div>
 
-          {/* Price Breakdown */}
-          <div className="pt-4 border-t border-stone-200 space-y-1.5 text-xs">
-            <div className="flex justify-between text-stone-500">
-              <span>Standard Value:</span>
-              <span className="line-through">${originalTotal.toFixed(2)}</span>
-            </div>
-
-            <div className="flex justify-between text-[#8C6B28] font-bold">
-              <span>Bundle Tier Savings ({tier.discountPercent}%):</span>
-              <span>-${savings.toFixed(2)}</span>
-            </div>
-
+          {/* Clean Price Display */}
+          <div className="pt-5 border-t border-stone-200/80 space-y-1.5">
             {packagingDelta > 0 && (
-              <div className="flex justify-between text-stone-800 font-medium">
-                <span>Heirloom Walnut Upgrade:</span>
+              <div className="flex justify-between text-xs text-stone-500 font-serif">
+                <span>Walnut Presentation Box:</span>
                 <span>+${packagingDelta.toFixed(2)}</span>
               </div>
             )}
 
-            <div className="flex justify-between items-baseline pt-2 border-t border-stone-200 text-stone-900">
-              <span className="font-serif text-base font-bold">Total Bundle Price:</span>
-              <div className="text-right">
-                <span className="font-serif text-2xl font-extrabold text-stone-900">
-                  ${finalPrice.toFixed(2)}
-                </span>
-              </div>
+            <div className="flex justify-between items-baseline pt-1 text-stone-900">
+              <span className="font-serif text-sm text-stone-600">Total</span>
+              <span className="font-serif text-2xl font-normal text-stone-900">
+                ${finalPrice.toFixed(2)}
+              </span>
             </div>
 
-            {tier.freeShipping && (
-              <div className="flex items-center gap-1 text-[11px] font-bold text-[#8C6B28] pt-1">
-                <Truck size={13} />
-                <span>Free Express Courier Shipping Included</span>
-              </div>
-            )}
+            <p className="text-[11px] font-mono text-stone-400 pt-0.5">
+              Discreet blind packing slip • Fragile courier delivery
+            </p>
           </div>
         </div>
 
         {/* Footer / Add to Cart CTA Bar */}
-        <div className="p-4 sm:p-5 bg-stone-50 border-t border-stone-200">
+        <div className="p-4 sm:p-5 bg-stone-50/90 border-t border-stone-200/80">
           <button
             onClick={onAddToCart}
             disabled={!isFull}
-            className={`w-full py-3.5 px-5 rounded-md font-bold text-sm transition flex items-center justify-center gap-2 cursor-pointer shadow-2xs ${
+            className={`w-full py-3 px-5 rounded-md text-xs font-medium uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer ${
               isFull
-                ? 'bg-[#15231A] text-white hover:bg-[#1E3326] active:scale-[0.99]'
-                : 'bg-stone-200 text-stone-500 cursor-not-allowed opacity-75'
+                ? 'bg-[#15231A] text-white hover:bg-[#1E3326]'
+                : 'bg-stone-200 text-stone-400 cursor-not-allowed'
             }`}
           >
-            <ShoppingBag size={18} className={isFull ? 'text-[#C5A265]' : ''} />
+            <ShoppingBag size={14} />
             <span>
               {isFull
-                ? `Add Custom ${tier.capacity}-Jar Box to Cart • $${finalPrice.toFixed(2)}`
-                : `Select ${remaining} More Jar${remaining === 1 ? '' : 's'} to Add to Cart`}
+                ? `Add to Cart • $${finalPrice.toFixed(2)}`
+                : `Select ${remaining} More Jar${remaining === 1 ? '' : 's'}`}
             </span>
           </button>
         </div>
@@ -365,3 +312,4 @@ export default function VisualBoxDrawer({
     </>
   );
 }
+

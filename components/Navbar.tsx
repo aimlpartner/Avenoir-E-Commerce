@@ -365,13 +365,13 @@ export default function Navbar() {
         >
           <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 py-8 lg:py-10">
               {navDropdown === 'shop' && (
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 xl:gap-16">
-                  {/* Col 1: Terroir Honey */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-14 xl:gap-16">
+                  {/* Col 1: Honey Products */}
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#8C6B28] font-semibold mb-4">
-                      Single-Origin Terroir
-                    </p>
-                    <div className="space-y-3.5">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-stone-400 font-medium block mb-4">
+                      Honey Collection
+                    </span>
+                    <div className="space-y-3">
                       <Link
                         href="/honey"
                         prefetch={true}
@@ -379,127 +379,77 @@ export default function Navbar() {
                         className="group block"
                       >
                         <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Raw Varietal Honey
+                          All Honey Reserves
                         </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Sussex &amp; Morris single-origin jars ({honeyCount})
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Explore all single-origin jars and seasonal reserves ({honeyCount})
                         </p>
                       </Link>
 
                       <Link
-                        href="/honey?cat=honey-comb"
+                        href="/honey?sub=honey-raw"
                         prefetch={true}
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
                         <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Raw Honeycomb Slabs
+                          Raw &amp; Terroir Jars
                         </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          100% edible raw virgin comb cuts
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Unheated, unpasteurized Sussex County varietals
                         </p>
                       </Link>
 
                       <Link
-                        href="/honey?cat=honey-infused"
+                        href="/honey?sub=honey-comb"
                         prefetch={true}
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
                         <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Infused &amp; Creamed Delicacies
+                          Cut Honeycomb &amp; Flights
                         </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Whipped Madagascar vanilla &amp; botanicals
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          100% edible virgin comb slabs and flight trios
                         </p>
                       </Link>
 
                       <Link
-                        href="/terroir"
+                        href="/honey?sub=honey-infused"
                         prefetch={true}
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
                         <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Botanical Bloom Map
+                          Infused &amp; Creamed
                         </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Northern New Jersey terroir &amp; nectar flows
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Whipped Bourbon vanilla caviar and raw botanicals
+                        </p>
+                      </Link>
+
+                      <Link
+                        href="/honey?sub=honey-vaults"
+                        prefetch={true}
+                        onClick={() => setNavDropdown(null)}
+                        className="group block"
+                      >
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                          Gift Vaults &amp; Chests
+                        </p>
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Heirloom American walnut and maple tasting boxes
                         </p>
                       </Link>
                     </div>
                   </div>
 
-                  {/* Col 2: Gift Studio */}
+                  {/* Col 2: Beekeeping Gear */}
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#8C6B28] font-semibold mb-4">
-                      Bespoke Gifting
-                    </p>
-                    <div className="space-y-3.5">
-                      <Link
-                        href="/gifting"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Build a Gift Box
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Wax-sealed bespoke gift atelier
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/honey?cat=honey-vaults"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Curated Tasting Stacks
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          American walnut presentation chests
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/corporate"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Corporate &amp; Event Gifting
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Custom wax seals &amp; volume atelier
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/beekeeping?cat=bee-harvest"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Turned Brass Accents
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Solid brass wands &amp; pure beeswax tapers
-                        </p>
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Col 3: Apiary Equipment */}
-                  <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#8C6B28] font-semibold mb-4">
-                      Apiary Stewardship
-                    </p>
-                    <div className="space-y-3.5">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-stone-400 font-medium block mb-4">
+                      Beekeeping Equipment
+                    </span>
+                    <div className="space-y-3">
                       <Link
                         href="/beekeeping"
                         prefetch={true}
@@ -507,15 +457,15 @@ export default function Navbar() {
                         className="group block"
                       >
                         <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Beekeeping Gear
+                          All Apiary Equipment
                         </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Suits, smokers &amp; woodenware ({beekeepingCount})
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Tools, suits, smokers, and hive hardware ({beekeepingCount})
                         </p>
                       </Link>
 
                       <Link
-                        href="/beekeeping?cat=bee-apparel"
+                        href="/beekeeping?sub=bee-apparel"
                         prefetch={true}
                         onClick={() => setNavDropdown(null)}
                         className="group block"
@@ -523,13 +473,13 @@ export default function Navbar() {
                         <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
                           Protective Apparel
                         </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Triple-layer ventilated suits &amp; veils
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Ventilated suits, round veils, and goatskin gauntlets
                         </p>
                       </Link>
 
                       <Link
-                        href="/beekeeping?cat=bee-tools"
+                        href="/beekeeping?sub=bee-tools"
                         prefetch={true}
                         onClick={() => setNavDropdown(null)}
                         className="group block"
@@ -537,38 +487,52 @@ export default function Navbar() {
                         <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
                           Tools &amp; Smokers
                         </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Stainless smokers &amp; J-hook frame lifters
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Stainless smokers, frame grips, and J-hook lifters
                         </p>
                       </Link>
 
                       <Link
-                        href="/beekeeping?cat=bee-hardware"
+                        href="/beekeeping?sub=bee-hardware"
                         prefetch={true}
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
                         <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Cedar Hive Woodenware
+                          Hive Hardware &amp; Woodenware
                         </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Western Red Cedar Langstroth brood boxes
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Western Red Cedar Langstroth brood boxes and frames
+                        </p>
+                      </Link>
+
+                      <Link
+                        href="/beekeeping?sub=bee-harvest"
+                        prefetch={true}
+                        onClick={() => setNavDropdown(null)}
+                        className="group block"
+                      >
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                          Harvest &amp; Wax Craft
+                        </p>
+                        <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
+                          Turned brass tasting wands and pure beeswax sheets
                         </p>
                       </Link>
                     </div>
                   </div>
 
-                  {/* Col 4: Spotlight & Direct Action */}
-                  <div className="border-l border-stone-200 pl-6 xl:pl-8 flex flex-col justify-between">
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-400">
-                        Seasonal Harvest
+                  {/* Col 3: Direct Shop Catalog Action */}
+                  <div className="border-t md:border-t-0 md:border-l border-stone-200 pt-6 md:pt-0 md:pl-8 lg:pl-10 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-400 font-medium block">
+                        Full Catalog
                       </span>
-                      <h4 className="font-serif text-lg text-stone-900 mt-1 mb-2 font-normal">
-                        Autumn Wildflower Reserve
+                      <h4 className="font-serif text-lg text-stone-900 font-normal">
+                        Browse All Products
                       </h4>
-                      <p className="text-xs text-stone-500 leading-relaxed font-light">
-                        Raw late-season nectar from northern New Jersey ridges. Unheated, enzyme-rich, and packaged in biophotonic ultraviolet glass.
+                      <p className="text-xs text-stone-500 leading-relaxed font-serif">
+                        Explore our complete harvest collection of raw varietal honeys and certified apiary equipment.
                       </p>
                     </div>
                     <div className="pt-6">
@@ -587,168 +551,90 @@ export default function Navbar() {
               )}
 
               {navDropdown === 'services' && (
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 xl:gap-16">
-                  {/* Col 1: Education */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-10 xl:gap-12">
+                  {/* Service 1: Education */}
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#8C6B28] font-semibold mb-4">
-                      The Academy
-                    </p>
-                    <div className="space-y-3.5">
-                      <Link
-                        href="/services/educate"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Apiary Masterclasses
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Seasonal colony inspections &amp; brood care
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/services/educate"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Apprentice Workshops
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Hands-on frame manipulation &amp; safety
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/services/educate"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Sensory Honey Tastings
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Mono-floral origin profiling &amp; pairings
-                        </p>
-                      </Link>
-                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-stone-400 font-medium block mb-4">
+                      Education
+                    </span>
+                    <Link
+                      href="/services/educate"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="group block space-y-1.5"
+                    >
+                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        Apiary Academy &amp; Workshops
+                      </p>
+                      <p className="text-xs text-stone-500 font-serif leading-relaxed">
+                        Masterclasses, hands-on apprentice inspections, and guided sensory honey tasting sessions.
+                      </p>
+                      <span className="text-xs font-medium text-[#8C6B28] inline-flex items-center gap-1 pt-1 group-hover:underline">
+                        <span>Explore Classes</span>
+                        <ArrowRight size={12} />
+                      </span>
+                    </Link>
                   </div>
 
-                  {/* Col 2: Swarm Stewardship */}
+                  {/* Service 2: Humane Bee Removal */}
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#8C6B28] font-semibold mb-4">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-stone-400 font-medium block mb-4">
                       Conservation
-                    </p>
-                    <div className="space-y-3.5">
-                      <Link
-                        href="/services/bee-removal"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Humane Bee Removal
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          100% pesticide-free live swarm relocation
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/services/bee-removal"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Structural Extraction
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Gentle colony removal from soffits &amp; structures
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/services/bee-removal"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Sanctuary Apiary Transfer
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Relocated to protected conservation reserves
-                        </p>
-                      </Link>
-                    </div>
+                    </span>
+                    <Link
+                      href="/services/bee-removal"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="group block space-y-1.5"
+                    >
+                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        Humane Bee Removal
+                      </p>
+                      <p className="text-xs text-stone-500 font-serif leading-relaxed">
+                        100% pesticide-free live swarm rescue and structural colony extractions relocated to sanctuary apiaries.
+                      </p>
+                      <span className="text-xs font-medium text-[#8C6B28] inline-flex items-center gap-1 pt-1 group-hover:underline">
+                        <span>Request Removal</span>
+                        <ArrowRight size={12} />
+                      </span>
+                    </Link>
                   </div>
 
-                  {/* Col 3: Estate Hive Care */}
+                  {/* Service 3: Estate Hive Stewardship */}
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#8C6B28] font-semibold mb-4">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-stone-400 font-medium block mb-4">
                       Private Apiaries
-                    </p>
-                    <div className="space-y-3.5">
-                      <Link
-                        href="/services/beekeeping"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Estate Hive Stewardship
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Turnkey cedar hive installation &amp; care
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/services/beekeeping"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Bi-Weekly Health Audits
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Queen assessment, mite monitoring &amp; feeding
-                        </p>
-                      </Link>
-
-                      <Link
-                        href="/services/beekeeping"
-                        prefetch={true}
-                        onClick={() => setNavDropdown(null)}
-                        className="group block"
-                      >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-                          Bespoke Harvest Bottling
-                        </p>
-                        <p className="text-xs text-stone-500 font-light mt-0.5">
-                          Custom labeled raw honey from your estate
-                        </p>
-                      </Link>
-                    </div>
+                    </span>
+                    <Link
+                      href="/services/beekeeping"
+                      prefetch={true}
+                      onClick={() => setNavDropdown(null)}
+                      className="group block space-y-1.5"
+                    >
+                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        Estate Hive Stewardship
+                      </p>
+                      <p className="text-xs text-stone-500 font-serif leading-relaxed">
+                        Turnkey cedar hive installation, seasonal health audits, and custom estate harvest bottling.
+                      </p>
+                      <span className="text-xs font-medium text-[#8C6B28] inline-flex items-center gap-1 pt-1 group-hover:underline">
+                        <span>Estate Inquiry</span>
+                        <ArrowRight size={12} />
+                      </span>
+                    </Link>
                   </div>
 
                   {/* Col 4: Services Overview */}
-                  <div className="border-l border-stone-200 pl-6 xl:pl-8 flex flex-col justify-between">
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-400">
-                        Consultation
+                  <div className="border-t md:border-t-0 md:border-l border-stone-200 pt-6 md:pt-0 md:pl-8 lg:pl-10 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-400 font-medium block">
+                        Overview
                       </span>
-                      <h4 className="font-serif text-lg text-stone-900 mt-1 mb-2 font-normal">
-                        Apiary Stewardship Inquiries
+                      <h4 className="font-serif text-lg text-stone-900 font-normal">
+                        All Apiary Services
                       </h4>
-                      <p className="text-xs text-stone-500 leading-relaxed font-light">
-                        Consult with our master beekeeper for estate feasibility studies, commercial pollination, or custom apiary programs.
+                      <p className="text-xs text-stone-500 leading-relaxed font-serif">
+                        Learn about our mission to protect New Jersey honeybees through education, ethical rescue, and private apiaries.
                       </p>
                     </div>
                     <div className="pt-6">
@@ -975,7 +861,7 @@ export default function Navbar() {
                     </Link>
 
                     <Link
-                      href="/honey?cat=honey-comb"
+                      href="/honey?sub=honey-comb"
                       prefetch={true}
                       onClick={() => setMobileMenuOpen(false)}
                       className="block py-2 text-sm text-stone-600 hover:text-stone-900 transition pl-3"

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Feather, Check, Sparkles } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface GiftNoteModalProps {
@@ -48,143 +48,129 @@ export default function GiftNoteModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs"
+            className="fixed inset-0 bg-stone-900/50 backdrop-blur-xs"
           />
 
           {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            initial={{ opacity: 0, scale: 0.97, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            className="relative w-full max-w-2xl bg-white rounded-lg shadow-2xl border border-stone-300 overflow-hidden z-10 flex flex-col max-h-[90vh]"
+            exit={{ opacity: 0, scale: 0.97, y: 10 }}
+            className="relative w-full max-w-xl bg-white rounded-lg shadow-xl border border-stone-200 overflow-hidden z-10 flex flex-col max-h-[90vh]"
           >
             {/* Header */}
-            <div className="p-5 border-b border-[#223528] flex items-center justify-between bg-[#141F18] text-white">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-md bg-stone-900 border border-[#C5A265]/40 text-[#C5A265] flex items-center justify-center">
-                  <Feather size={18} />
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-white">
-                    Complimentary Handwritten Gift Note
-                  </h3>
-                  <p className="text-xs text-stone-300">
-                    Penned on heavyweight cotton rag paper, folded in a gold-embossed envelope with a raw beeswax seal.
-                  </p>
-                </div>
+            <div className="p-5 border-b border-stone-200 bg-stone-50 flex items-center justify-between">
+              <div>
+                <span className="text-[11px] font-mono tracking-widest uppercase text-stone-400 block mb-0.5">
+                  Personalization
+                </span>
+                <h3 className="font-serif text-xl font-normal text-stone-900">
+                  Calligraphy Gift Note
+                </h3>
               </div>
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-md bg-white/10 hover:bg-white/20 text-stone-300 hover:text-white flex items-center justify-center transition cursor-pointer"
+                className="w-8 h-8 rounded-md text-stone-400 hover:text-stone-700 flex items-center justify-center transition cursor-pointer"
               >
                 <X size={18} />
               </button>
             </div>
 
             {/* Body: Inputs + Live Parchment Preview */}
-            <div className="p-6 overflow-y-auto space-y-6">
+            <div className="p-5 sm:p-6 overflow-y-auto space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1.5">
-                    To (Recipient Name)
+                  <label className="block text-[11px] font-mono tracking-wider uppercase text-stone-500 mb-1.5">
+                    To (Recipient)
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. Eleanor Vance"
                     value={recipient}
                     onChange={(e) => setRecipient(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-md border border-stone-300 bg-white text-stone-900 text-sm focus:outline-none focus:ring-1 focus:ring-stone-800 transition"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-stone-200 bg-stone-50/50 text-stone-900 text-sm focus:outline-none focus:border-stone-400 focus:bg-white transition"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1.5">
-                    From (Your Name)
+                  <label className="block text-[11px] font-mono tracking-wider uppercase text-stone-500 mb-1.5">
+                    From (Sender)
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Thomas &amp; Claire"
+                    placeholder="e.g. Thomas"
                     value={sender}
                     onChange={(e) => setSender(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-md border border-stone-300 bg-white text-stone-900 text-sm focus:outline-none focus:ring-1 focus:ring-stone-800 transition"
+                    className="w-full px-3.5 py-2.5 rounded-md border border-stone-200 bg-stone-50/50 text-stone-900 text-sm focus:outline-none focus:border-stone-400 focus:bg-white transition"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-bold text-stone-700 uppercase tracking-wider">
-                    Personalized Message
+                  <label className="block text-[11px] font-mono tracking-wider uppercase text-stone-500">
+                    Message
                   </label>
-                  <span className="text-[11px] text-stone-400">
-                    {msg.length} / 250 characters
+                  <span className="text-[10px] font-mono text-stone-400">
+                    {msg.length} / 250
                   </span>
                 </div>
                 <textarea
                   rows={3}
                   maxLength={250}
-                  placeholder="Wishing you warmth, sweet mornings, and gentle joy in every spoonful..."
+                  placeholder="Wishing you warmth and gentle joy in every spoonful..."
                   value={msg}
                   onChange={(e) => setMsg(e.target.value)}
-                  className="w-full p-3.5 rounded-md border border-stone-300 bg-white text-stone-900 text-sm focus:outline-none focus:ring-1 focus:ring-stone-800 transition leading-relaxed resize-none"
+                  className="w-full p-3.5 rounded-md border border-stone-200 bg-stone-50/50 text-stone-900 text-sm focus:outline-none focus:border-stone-400 focus:bg-white transition leading-relaxed resize-none font-serif"
                 />
               </div>
 
-              {/* Live Preview Card */}
-              <div className="p-5 rounded-md bg-stone-50 border border-stone-200 relative overflow-hidden shadow-2xs">
-                <div className="flex items-center justify-between mb-3 text-stone-800 text-xs font-bold uppercase tracking-wider">
-                  <span className="flex items-center gap-1.5">
-                    <Sparkles size={14} className="text-[#8C6B28]" />
-                    Live Stationery Card Preview
-                  </span>
-                  <span className="text-[10px] text-[#8C6B28] font-semibold">Wax Seal Enclosed</span>
-                </div>
+              {/* Stationery Card Preview */}
+              <div className="p-4 rounded-md bg-stone-50 border border-stone-200/80">
+                <span className="text-[10px] font-mono tracking-wider uppercase text-stone-400 block mb-3">
+                  Card Preview
+                </span>
 
-                <div className="bg-white p-5 rounded-md border border-stone-200/90 shadow-2xs font-serif text-stone-800 space-y-2 relative">
-                  <div className="text-xs font-bold text-stone-900 uppercase tracking-widest text-center border-b border-stone-100 pb-2">
+                <div className="bg-white p-5 rounded-sm border border-stone-200/70 font-serif text-stone-800 space-y-2">
+                  <div className="text-[11px] font-mono tracking-widest text-stone-400 uppercase text-center border-b border-stone-100 pb-2">
                     Maison Avenoir · Apiary Note
                   </div>
 
-                  <p className="text-xs font-semibold text-stone-600 italic">
+                  <p className="text-xs text-stone-500 italic">
                     Dearest {recipient || '[Recipient Name]'},
                   </p>
 
-                  <p className="text-sm italic leading-relaxed text-stone-800 min-h-[40px]">
-                    &quot;{msg || 'Wishing you radiant health and sweet rituals from our New Jersey apiaries.'}&quot;
+                  <p className="text-xs sm:text-sm italic leading-relaxed text-stone-800 min-h-[36px]">
+                    &ldquo;{msg || 'Wishing you radiant health and sweet rituals from our New Jersey apiaries.'}&rdquo;
                   </p>
 
-                  <p className="text-xs font-semibold text-right text-stone-700 italic pt-2">
+                  <p className="text-xs text-right text-stone-500 italic pt-1">
                     Warmly, {sender || '[Your Name]'}
                   </p>
-
-                  {/* Wax Seal Graphic Badge */}
-                  <div className="absolute -bottom-2 -left-2 w-7 h-7 rounded-full bg-[#8C6B28] text-white flex items-center justify-center font-bold text-[10px] shadow-xs border border-[#C5A265]">
-                    A
-                  </div>
                 </div>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="p-4 sm:p-5 border-t border-stone-200 bg-white flex items-center justify-between gap-3">
+            <div className="p-4 sm:p-5 border-t border-stone-200 bg-stone-50 flex items-center justify-between gap-3">
               <button
                 onClick={handleClear}
-                className="px-3 py-1.5 text-xs font-semibold text-stone-500 hover:text-rose-700 transition cursor-pointer"
+                className="text-xs text-stone-400 hover:text-stone-700 transition cursor-pointer font-mono"
               >
                 Clear Note
               </button>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={onClose}
-                  className="px-4 py-2 rounded-md border border-stone-300 bg-white text-xs font-bold text-stone-700 hover:bg-stone-50 transition cursor-pointer"
+                  className="px-4 py-2 rounded-md border border-stone-200 bg-white text-xs text-stone-600 hover:bg-stone-50 transition cursor-pointer font-mono"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleSave}
-                  className="px-5 py-2 rounded-md bg-[#15231A] text-white text-xs font-bold hover:bg-[#1E3326] transition flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  className="px-5 py-2 rounded-md bg-[#15231A] text-white text-xs font-mono uppercase tracking-wider hover:bg-[#1E3326] transition flex items-center gap-1.5 cursor-pointer"
                 >
-                  <Check size={14} />
-                  <span>Save Note to Box</span>
+                  <Check size={13} />
+                  <span>Save Note</span>
                 </button>
               </div>
             </div>
@@ -194,3 +180,4 @@ export default function GiftNoteModal({
     </AnimatePresence>
   );
 }
+

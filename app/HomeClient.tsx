@@ -1,26 +1,84 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
   ArrowRight, 
-  Star, 
   ShoppingBag,
   Truck,
   CheckCircle2,
   Mail,
-  Check
+  Check,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { PRODUCTS } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
 import ProductCard from '@/components/ProductCard';
+
+const TESTIMONIALS = [
+  {
+    quote:
+      'The flavor complexity is unreal. You can taste the wildflowers immediately. Highly recommended for anyone looking to elevate their everyday table.',
+    author: 'Elena Rostova',
+    role: 'Pastry Chef, Tribeca',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+  },
+  {
+    quote:
+      "A must-have luxury for dinner hosts. It has completely ruined supermarket honey for our entire household. The jar presentation is museum grade.",
+    author: 'Julian Vance',
+    role: 'Creative Director, Soho',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
+  },
+  {
+    quote:
+      'The results are always impressive. The Bourbon Vanilla whipped honey spreads like velvet cream and has made our weekend brunch unforgettable.',
+    author: 'Claire Sinclair',
+    role: 'Culinary Consultant, Rumson NJ',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200',
+  },
+  {
+    quote:
+      'We keep High Skylands raw wildflower on our counter at all times. Pure, unadulterated cold-extracted nectar that nothing else compares to.',
+    author: 'Marcus Chen',
+    role: 'Restaurateur, Jersey City',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200',
+  },
+  {
+    quote:
+      'Opening the walnut gift box felt like receiving fine jewelry. The floral botanical aroma filled the room before we even broke the beeswax seal.',
+    author: 'Sophie Laurent',
+    role: 'Sommelier, Princeton',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
+  },
+  {
+    quote:
+      'Ordered forty bespoke boxes for year-end client gifting. The raw linen cases and lathe-turned honey dippers made an indelible impression.',
+    author: 'David Montgomery',
+    role: 'Estate Owner, Sussex County',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200',
+  },
+];
 
 export default function HomeClient() {
   const { addToCart, setIsCartOpen } = useCart();
   const [harvestAdded, setHarvestAdded] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
+  const testimonialCarouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollTestimonials = (direction: 'left' | 'right') => {
+    if (testimonialCarouselRef.current) {
+      const card = testimonialCarouselRef.current.querySelector<HTMLElement>('[data-testimonial-card]');
+      const cardWidth = card ? card.offsetWidth + 24 : 380;
+      testimonialCarouselRef.current.scrollBy({
+        left: direction === 'left' ? -cardWidth : cardWidth,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   // Active Flagship Seasonal Harvest (12 oz Raw Wildflower Honey)
   const currentHarvest = PRODUCTS.find((p) => p.id === 'AV-JAR-APOTH') || PRODUCTS[0];
@@ -50,9 +108,8 @@ export default function HomeClient() {
   };
 
   return (
-    <div className="space-y-16 sm:space-y-24 pb-20">
+    <div className="space-y-16 sm:space-y-24">
       
-      {/* =========================================================================
       {/* =========================================================================
           1. HERO — EDITORIAL 2-COLUMN LUXURY WITH TRANSPARENT PRODUCT
           ========================================================================= */}
@@ -300,14 +357,15 @@ export default function HomeClient() {
         <div className="bg-stone-50/80 rounded-2xl overflow-hidden p-6 sm:p-10 lg:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Clean Product Photo with NO badge overlays */}
-            <div className="lg:col-span-6 relative aspect-square sm:aspect-4/3 lg:aspect-square w-full rounded-xl overflow-hidden bg-white shadow-2xs group">
+            {/* Real Product Image with Transparent Background */}
+            <div className="lg:col-span-6 relative aspect-square sm:aspect-4/3 lg:aspect-square w-full rounded-xl flex items-center justify-center p-4 sm:p-8 lg:p-10 group">
               <Image
-                src={currentHarvest.imageUrl}
+                src="/images/nj-wildflower-honey-transparent.png"
                 alt={currentHarvest.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 650px"
-                className="object-cover group-hover:scale-103 transition-transform duration-700"
+                className="object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
+                priority
               />
             </div>
 
@@ -487,77 +545,76 @@ export default function HomeClient() {
       </section>
 
       {/* =========================================================================
-          7. PATRON REVIEWS — HIGH TRUST SOCIAL PROOF (BORDERLESS)
+          7. PATRON TESTIMONIALS — EDITORIAL CAROUSEL (MAISON AVENOIR THEME)
           ========================================================================= */}
-      <section className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16 text-left">
-        <div className="text-center max-w-xl mx-auto mb-12 sm:mb-14 space-y-2.5">
-          <div className="flex justify-center text-[#C5A265] gap-1 pb-1">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} size={15} fill="currentColor" />
-            ))}
-          </div>
-          <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block">
-            Patron Testimonials
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
-            Loved by Chefs &amp; Patrons
-          </h2>
-          <p className="text-sm text-stone-500 font-serif leading-relaxed">
-            Real feedback from our New Jersey apiary subscribers and gift recipients.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="w-full text-stone-900 text-left">
+        <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16">
           
-          <div className="space-y-3 flex flex-col justify-between">
-            <div className="space-y-2">
-              <div className="flex text-[#C5A265]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill="currentColor" />
-                ))}
-              </div>
-              <p className="text-xs sm:text-sm text-stone-700 font-serif leading-relaxed italic">
-                &ldquo;The flavor complexity is unreal. You can taste the wildflowers immediately. It has completely ruined supermarket honey for our entire household.&rdquo;
-              </p>
+          {/* Header Row: Eyebrow + Heading on Left, Pagination Controls on Right */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12">
+            <div>
+              <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block mb-2 sm:mb-3">
+                Testimonials
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-tight">
+                People love us, you know.
+              </h2>
             </div>
-            <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-xs">
-              <span className="font-bold text-stone-900">Sarah M.</span>
-              <span className="text-stone-400">Sussex County, NJ</span>
+
+            <div className="flex items-center gap-2.5 shrink-0">
+              <button
+                onClick={() => scrollTestimonials('left')}
+                className="w-10 h-10 rounded-full border border-stone-300 hover:border-stone-900 text-stone-600 hover:text-stone-900 bg-white flex items-center justify-center transition cursor-pointer shadow-2xs"
+                aria-label="Previous Testimonials"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => scrollTestimonials('right')}
+                className="w-10 h-10 rounded-full border border-stone-300 hover:border-stone-900 text-stone-600 hover:text-stone-900 bg-white flex items-center justify-center transition cursor-pointer shadow-2xs"
+                aria-label="Next Testimonials"
+              >
+                <ChevronRight size={18} />
+              </button>
             </div>
           </div>
 
-          <div className="space-y-3 flex flex-col justify-between">
-            <div className="space-y-2">
-              <div className="flex text-[#C5A265]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill="currentColor" />
-                ))}
-              </div>
-              <p className="text-xs sm:text-sm text-stone-700 font-serif leading-relaxed italic">
-                &ldquo;Ordered the Host Gift Box for our holiday clients. The wax seal, packaging, and lathe-turned honey dipper made a huge impression. Exceptional luxury.&rdquo;
-              </p>
-            </div>
-            <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-xs">
-              <span className="font-bold text-stone-900">David L.</span>
-              <span className="text-stone-400">Princeton, NJ</span>
-            </div>
-          </div>
+          {/* Cards Track / Horizontal Snap Carousel */}
+          <div
+            ref={testimonialCarouselRef}
+            className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth pb-2"
+          >
+            {TESTIMONIALS.map((t, idx) => (
+              <div
+                key={idx}
+                data-testimonial-card
+                className="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start bg-white border border-stone-200/90 hover:border-stone-300 rounded-2xl p-7 sm:p-8 flex flex-col justify-between min-h-[260px] sm:min-h-[280px] shadow-2xs transition duration-200"
+              >
+                <p className="font-serif text-stone-700 text-base sm:text-[17px] leading-relaxed font-normal">
+                  {t.quote}
+                </p>
 
-          <div className="space-y-3 flex flex-col justify-between">
-            <div className="space-y-2">
-              <div className="flex text-[#C5A265]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill="currentColor" />
-                ))}
+                <div className="flex items-center gap-3.5 pt-8 sm:pt-10 border-t border-stone-100">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-stone-200 shadow-2xs">
+                    <Image
+                      src={t.avatar}
+                      alt={t.author}
+                      fill
+                      sizes="40px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-sm font-semibold text-stone-900 leading-tight">
+                      {t.author}
+                    </h3>
+                    <p className="text-xs text-stone-400 font-serif mt-0.5">
+                      {t.role}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <p className="text-xs sm:text-sm text-stone-700 font-serif leading-relaxed italic">
-                &ldquo;The Bourbon Vanilla whipped honey on fresh sourdough has become our favorite weekend ritual. It spreads like velvet butter. We are on our third jar.&rdquo;
-              </p>
-            </div>
-            <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-xs">
-              <span className="font-bold text-stone-900">Elena K.</span>
-              <span className="text-stone-400">Mendham, NJ</span>
-            </div>
+            ))}
           </div>
 
         </div>

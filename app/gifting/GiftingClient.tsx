@@ -19,13 +19,9 @@ import VisualBoxDrawer from '@/components/gifting/VisualBoxDrawer';
 import CuratedBundlesSection from '@/components/gifting/CuratedBundlesSection';
 import { 
   Gift, 
-  Sparkles, 
   Sliders, 
   CheckCircle2, 
-  ChevronRight, 
-  HelpCircle,
-  Feather,
-  Truck
+  ChevronRight 
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -175,13 +171,16 @@ export default function GiftingClient() {
         <span className="text-stone-900 font-bold">Build Your Own Box &amp; Gifting</span>
       </nav>
 
-      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
-      <div className="pt-1 pb-8 border-b border-stone-200">
+      {/* Editorial Header */}
+      <div className="pt-2 pb-8 border-b border-stone-200">
+        <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block mb-2">
+          The Gifting Atelier
+        </span>
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
           Build a Gift Box &amp; <br className="hidden sm:inline" />
           <span className="italic text-[#8C6B28]">Curated Honey Flights.</span>
         </h1>
-        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+        <p className="text-sm sm:text-base text-stone-500 font-serif mt-2.5 max-w-xl leading-relaxed">
           Curate a personalized assortment of cold-extracted raw nectars, whipped honey, and botanical infusions hand-packed in New Jersey.
         </p>
       </div>
@@ -264,69 +263,60 @@ export default function GiftingClient() {
           </div>
         )}
 
-        {/* Gifting Assurance & Details Section - Clean Editorial */}
+        {/* Gifting Assurance & Details Section - Clean Editorial (No Icon Boxes) */}
         <section className="mt-16 pt-12 border-t border-stone-200 text-left">
-          <div className="mb-8">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#8C6B28] block mb-1">
-              Gifting Etiquette &amp; Details
+          <div className="mb-10 sm:mb-12">
+            <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block mb-1.5">
+              Gifting Etiquette
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">
-              The Maison Avenoir Gifting Experience
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900">
+              The Maison Avenoir Experience
             </h2>
-            <p className="text-xs sm:text-sm text-stone-500 font-serif mt-1 max-w-xl">
-              Every detail is considered—from zero-pricing receipts to handwritten wax-sealed envelopes.
+            <p className="text-sm text-stone-500 font-serif mt-1.5 max-w-xl leading-relaxed">
+              Every detail considered—from discreet unpriced packing slips to wax-sealed presentation cards.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-stone-200">
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-md bg-stone-100 text-[#8C6B28] flex items-center justify-center">
-                <Feather size={16} />
-              </div>
-              <h3 className="font-serif text-base font-semibold text-stone-900">
-                Discreet Gifting Dispatch
+            <div className="border-t border-stone-200/80 pt-6 space-y-1.5">
+              <h3 className="font-serif text-base font-normal text-stone-900">
+                Discreet Dispatch
               </h3>
-              <p className="text-xs text-stone-600 leading-relaxed font-serif">
-                All gift boxes are shipped with blind packing slips. No receipts, prices, or invoices are ever included in the recipient package.
+              <p className="text-xs sm:text-sm text-stone-500 font-serif leading-relaxed">
+                All boxes arrive with blind slips. Zero pricing or invoices are ever included.
               </p>
             </div>
 
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-md bg-stone-100 text-[#8C6B28] flex items-center justify-center">
-                <Sparkles size={16} />
-              </div>
-              <h3 className="font-serif text-base font-semibold text-stone-900">
-                Wax-Sealed Presentation
+            <div className="border-t border-stone-200/80 pt-6 space-y-1.5">
+              <h3 className="font-serif text-base font-normal text-stone-900">
+                Wax-Sealed Notes
               </h3>
-              <p className="text-xs text-stone-600 leading-relaxed font-serif">
-                Your custom note is penned on heavyweight cotton rag stock and sealed by hand with molten apiary beeswax and our brass hive crest.
+              <p className="text-xs sm:text-sm text-stone-500 font-serif leading-relaxed">
+                Your message is pressed on cotton rag paper and sealed with raw apiary beeswax.
               </p>
             </div>
 
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-md bg-stone-100 text-[#8C6B28] flex items-center justify-center">
-                <Truck size={16} />
-              </div>
-              <h3 className="font-serif text-base font-semibold text-stone-900">
-                Insulated Fragile Transit
+            <div className="border-t border-stone-200/80 pt-6 space-y-1.5">
+              <h3 className="font-serif text-base font-normal text-stone-900">
+                Fragile Transit
               </h3>
-              <p className="text-xs text-stone-600 leading-relaxed font-serif">
-                Each French flint glass jar is nestled in custom-cut shock-absorbent recycled kraft cells to ensure pristine arrival across the US.
+              <p className="text-xs sm:text-sm text-stone-500 font-serif leading-relaxed">
+                Heavy French flint glass cushioned in shock-absorbent recycled kraft cells.
               </p>
             </div>
           </div>
 
-          {/* Corporate Gifting Callout Strip - Clean Editorial, No Floating Card */}
+          {/* Corporate Gifting Callout Strip */}
           <div className="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="space-y-1">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#8C6B28] block">
-                Looking for 25+ Boxes?
+              <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block">
+                Volume Concierge
               </span>
               <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
                 Custom Corporate Gifting &amp; Event Favors
               </h3>
-              <p className="text-xs text-stone-500 font-serif max-w-xl">
-                Custom engraved brass plaques, multi-recipient spreadsheet dispatch, and volume commission pricing.
+              <p className="text-xs sm:text-sm text-stone-500 font-serif max-w-xl">
+                Custom engraved plaques, multi-recipient spreadsheet dispatch, and volume allocations.
               </p>
             </div>
 
