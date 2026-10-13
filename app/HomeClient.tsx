@@ -4,13 +4,9 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
-  Droplets, 
   ArrowRight, 
   Star, 
   ShoppingBag,
-  Gift,
-  MapPin,
-  Layers,
   Truck,
   CheckCircle2,
   Mail,
@@ -57,35 +53,25 @@ export default function HomeClient() {
     <div className="space-y-16 sm:space-y-24 pb-20">
       
       {/* =========================================================================
-          1. HERO — CLEAN, EDITORIAL LUXURY (CENTERED)
+      {/* =========================================================================
+          1. HERO — EDITORIAL 2-COLUMN LUXURY WITH TRANSPARENT PRODUCT
           ========================================================================= */}
-      <section className="relative bg-[#FAFAF8] border-b border-stone-200 px-4 sm:px-8 xl:px-12 2xl:px-16 overflow-hidden min-h-[500px] lg:min-h-[620px] flex items-center justify-center py-20 sm:py-28 text-center">
+      <section className="relative bg-[#F4EFE6] border-b border-[#E6DDD0] px-4 sm:px-8 xl:px-12 2xl:px-16 overflow-hidden min-h-[480px] lg:min-h-[580px] flex items-center py-12 sm:py-16 lg:py-20">
         
-        {/* Minimalist Background Image & Editorial Softening */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
-          <Image
-            src="/images/hero-zen-minimal.jpg"
-            alt="Warm morning light and linen editorial background"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center opacity-80 sm:opacity-90"
-          />
-          <div className="absolute inset-0 bg-radial from-transparent via-[#FAFAF8]/25 to-[#FAFAF8]/60" />
-        </div>
-
-        <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto relative z-10 flex flex-col items-center justify-center">
-          <div className="max-w-2xl mx-auto space-y-6 text-center">
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-stone-900 tracking-tight leading-[1.06]">
+        <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Left Column: Headline, Description & CTAs */}
+          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal text-stone-900 tracking-tight leading-[1.06]">
               Raw honey, <br />
               <span className="italic text-[#8C6B28]">bottled by the season.</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-stone-700 font-serif leading-relaxed max-w-lg mx-auto">
+            <p className="text-base sm:text-lg text-stone-700 font-serif leading-relaxed max-w-xl mx-auto lg:mx-0">
               Unheated, unfiltered raw honey from Sussex County apiaries.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
               <a
                 href="#bestsellers"
                 className="py-3.5 px-8 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition shadow-xs active:scale-98"
@@ -102,6 +88,39 @@ export default function HomeClient() {
               </Link>
             </div>
           </div>
+
+          {/* Right Column: Honey Products Showcase (Glass Jar + Cut Honeycomb in Front) */}
+          <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
+            <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] h-[340px] sm:h-[420px] lg:h-[460px] flex items-center justify-center">
+              {/* Subtle ambient warm pedestal glow */}
+              <div className="absolute inset-4 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+              
+              {/* Main Product: French Hexagonal Honey Jar (Standing in background) */}
+              <div className="absolute right-0 sm:right-4 top-2 sm:top-4 w-[220px] sm:w-[280px] lg:w-[310px] aspect-3/4 drop-shadow-[0_20px_35px_rgba(60,35,15,0.16)] z-10 pointer-events-none select-none">
+                <Image
+                  src="/images/hero-honey-product-transparent.png"
+                  alt="Maison Avenoir Raw Golden Honey Jar"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 280px, 310px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Second Product in Different Form: Raw Cut Honeycomb & Carved Dipper (In front) */}
+              <div className="absolute left-0 sm:left-2 bottom-2 sm:bottom-4 w-[180px] sm:w-[230px] lg:w-[260px] aspect-4/3 drop-shadow-[0_16px_28px_rgba(60,35,15,0.20)] z-20 pointer-events-none select-none">
+                <Image
+                  src="/images/hero-honeycomb-product-transparent.png"
+                  alt="Fresh Raw Cut Honeycomb Slab with Dipper"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 230px, 260px"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -109,22 +128,22 @@ export default function HomeClient() {
           2. BESTSELLERS PRODUCT GRID — THE HEART OF THE STORE
           ========================================================================= */}
       <section id="bestsellers" className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16 scroll-mt-24 text-left">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 border-b border-stone-200 pb-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-12 border-b border-stone-200 pb-5">
           <div>
-            <span className="text-xs font-bold tracking-widest text-[#8C6B28] uppercase block mb-1">
+            <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block mb-1.5">
               Seasonal Favorites
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
               Our Most Loved Harvests
             </h2>
-            <p className="text-sm text-stone-600 mt-1">
+            <p className="text-sm sm:text-base text-stone-500 font-serif leading-relaxed mt-1.5">
               Handcrafted in limited runs. Ready to ship directly from our New Jersey honey house.
             </p>
           </div>
           <Link
             href="/honey"
             prefetch={true}
-            className="text-xs sm:text-sm font-semibold text-stone-900 hover:text-[#8C6B28] flex items-center gap-1.5 transition shrink-0 group"
+            className="text-xs sm:text-sm font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1.5 transition shrink-0 group font-serif"
           >
             <span>View All Honeys</span>
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -140,115 +159,136 @@ export default function HomeClient() {
       </section>
 
       {/* =========================================================================
-          3. SHOP BY CATEGORY — VISUAL TILES
+          3. SHOP BY CATEGORY — ASYMMETRIC BENTO EDITORIAL (CLEAN, NO TEXT CLUTTER)
           ========================================================================= */}
-      <section className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16 text-left">
-        <div className="mb-8">
-          <span className="text-xs font-bold tracking-widest text-[#8C6B28] uppercase block mb-1">
-            Curated Collections
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
-            Shop by Category
-          </h2>
+      <section className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16 py-20 sm:py-28 text-left">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-12 border-b border-stone-200 pb-5">
+          <div>
+            <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block mb-1.5">
+              Curated Collections
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+              Shop by Category
+            </h2>
+          </div>
+          <Link
+            href="/shop"
+            prefetch={true}
+            className="text-xs sm:text-sm font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1.5 transition shrink-0 group font-serif"
+          >
+            <span>View Full Catalog</span>
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Asymmetric Bento Layout — Visually Distinct from Product Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
           
-          {/* Card 1: Raw Honey Jars */}
+          {/* Tile 1: Large Raw Honey Feature (Left, 6 cols, tall) */}
           <Link
             href="/honey?cat=honey-raw"
             prefetch={true}
-            className="group relative h-80 rounded-lg overflow-hidden transition duration-300 flex flex-col justify-end p-6"
+            className="group relative lg:col-span-6 h-[400px] sm:h-[460px] lg:h-[530px] rounded-xl overflow-hidden flex flex-col justify-end p-7 sm:p-9 cursor-pointer"
           >
             <Image
               src="/images/banner-honey-terroir.jpg"
-              alt="Raw Honey Jars"
+              alt="Raw Varietal Honey"
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover group-hover:scale-104 transition-transform duration-700"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover group-hover:scale-103 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent" />
-            <div className="relative z-10 text-white space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#E8D7B5]">Reserve Jars</span>
-              <h3 className="font-serif text-xl font-bold text-white">Raw Varietal Honey</h3>
-              <p className="text-xs text-stone-300 line-clamp-1">Wildflower, black locust &amp; mountain blossom</p>
-              <span className="text-xs font-semibold text-[#C5A265] flex items-center gap-1 pt-1 group-hover:underline">
-                Explore Jars <ArrowRight size={12} />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-stone-950/20 to-transparent" />
+            <div className="relative z-10 flex items-end justify-between">
+              <h3 className="font-serif text-2xl sm:text-3xl font-normal text-white">
+                Raw Varietal Honey
+              </h3>
+              <span className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xs border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-stone-900 transition-colors shrink-0">
+                <ArrowRight size={16} />
               </span>
             </div>
           </Link>
 
-          {/* Card 2: Luxury Gift Boxes */}
-          <Link
-            href="/gifting"
-            prefetch={true}
-            className="group relative h-80 rounded-lg overflow-hidden transition duration-300 flex flex-col justify-end p-6"
-          >
-            <Image
-              src="/images/dept-gift-vaults.jpg"
-              alt="Luxury Gift Boxes"
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover group-hover:scale-104 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent" />
-            <div className="relative z-10 text-white space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#E8D7B5]">Gift Vaults</span>
-              <h3 className="font-serif text-xl font-bold text-white">Curated Gift Boxes</h3>
-              <p className="text-xs text-stone-300 line-clamp-1">Wax seals, brass wands &amp; pairing folios</p>
-              <span className="text-xs font-semibold text-[#C5A265] flex items-center gap-1 pt-1 group-hover:underline">
-                Build a Gift Box <ArrowRight size={12} />
-              </span>
-            </div>
-          </Link>
+          {/* Right Side: 6 cols with 1 Wide Card on top + 2 Small Cards below */}
+          <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-6">
+            
+            {/* Tile 2: Curated Gift Boxes (Wide) */}
+            <Link
+              href="/gifting"
+              prefetch={true}
+              className="group relative h-[220px] sm:h-[240px] lg:h-[250px] rounded-xl overflow-hidden flex flex-col justify-end p-6 sm:p-7 cursor-pointer"
+            >
+              <Image
+                src="/images/dept-gift-vaults.jpg"
+                alt="Curated Gift Boxes"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-103 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-stone-950/20 to-transparent" />
+              <div className="relative z-10 flex items-end justify-between">
+                <h3 className="font-serif text-xl sm:text-2xl font-normal text-white">
+                  Curated Gift Boxes
+                </h3>
+                <span className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-xs border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-stone-900 transition-colors shrink-0">
+                  <ArrowRight size={15} />
+                </span>
+              </div>
+            </Link>
 
-          {/* Card 3: Honeycomb */}
-          <Link
-            href="/honey?cat=honey-comb"
-            prefetch={true}
-            className="group relative h-80 rounded-lg overflow-hidden transition duration-300 flex flex-col justify-end p-6"
-          >
-            <Image
-              src="/images/dept-honey-comb.jpg"
-              alt="Raw Honeycomb"
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover group-hover:scale-104 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent" />
-            <div className="relative z-10 text-white space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#E8D7B5]">Pure Comb</span>
-              <h3 className="font-serif text-xl font-bold text-white">Cut Honeycomb Slabs</h3>
-              <p className="text-xs text-stone-300 line-clamp-1">100% edible virgin beeswax cells</p>
-              <span className="text-xs font-semibold text-[#C5A265] flex items-center gap-1 pt-1 group-hover:underline">
-                View Honeycomb <ArrowRight size={12} />
-              </span>
-            </div>
-          </Link>
+            {/* Bottom Row: 2 Split Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 flex-1">
+              
+              {/* Tile 3: Cut Honeycomb */}
+              <Link
+                href="/honey?cat=honey-comb"
+                prefetch={true}
+                className="group relative h-[200px] sm:h-auto rounded-xl overflow-hidden flex flex-col justify-end p-6 cursor-pointer"
+              >
+                <Image
+                  src="/images/dept-honey-comb.jpg"
+                  alt="Cut Honeycomb Slabs"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-103 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-stone-950/20 to-transparent" />
+                <div className="relative z-10 flex items-end justify-between">
+                  <h3 className="font-serif text-lg sm:text-xl font-normal text-white">
+                    Cut Honeycomb
+                  </h3>
+                  <span className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-xs border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-stone-900 transition-colors shrink-0">
+                    <ArrowRight size={14} />
+                  </span>
+                </div>
+              </Link>
 
-          {/* Card 4: Infused & Whipped */}
-          <Link
-            href="/honey?cat=honey-infused"
-            prefetch={true}
-            className="group relative h-80 rounded-lg overflow-hidden transition duration-300 flex flex-col justify-end p-6"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&q=80&w=800"
-              alt="Whipped Creamed Honey"
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover group-hover:scale-104 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent" />
-            <div className="relative z-10 text-white space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#E8D7B5]">Artisan Whips</span>
-              <h3 className="font-serif text-xl font-bold text-white">Whipped &amp; Infused</h3>
-              <p className="text-xs text-stone-300 line-clamp-1">Bourbon vanilla caviar &amp; wild botanicals</p>
-              <span className="text-xs font-semibold text-[#C5A265] flex items-center gap-1 pt-1 group-hover:underline">
-                Explore Infusions <ArrowRight size={12} />
-              </span>
+              {/* Tile 4: Whipped & Infused */}
+              <Link
+                href="/honey?cat=honey-infused"
+                prefetch={true}
+                className="group relative h-[200px] sm:h-auto rounded-xl overflow-hidden flex flex-col justify-end p-6 cursor-pointer"
+              >
+                <Image
+                  src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&q=80&w=800"
+                  alt="Whipped &amp; Infused Honey"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-103 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-stone-950/20 to-transparent" />
+                <div className="relative z-10 flex items-end justify-between">
+                  <h3 className="font-serif text-lg sm:text-xl font-normal text-white">
+                    Whipped &amp; Infused
+                  </h3>
+                  <span className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-xs border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-stone-900 transition-colors shrink-0">
+                    <ArrowRight size={14} />
+                  </span>
+                </div>
+              </Link>
+
             </div>
-          </Link>
+
+          </div>
 
         </div>
       </section>
@@ -274,15 +314,15 @@ export default function HomeClient() {
             {/* Product Details & Instant Purchase */}
             <div className="lg:col-span-6 space-y-6">
               <div className="space-y-3">
-                <span className="text-xs font-mono font-bold tracking-widest text-[#8C6B28] uppercase">
+                <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block">
                   Current Harvest &bull; Batch #NJ-26-08
                 </span>
 
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight leading-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-tight">
                   {currentHarvest.name}
                 </h2>
 
-                <p className="text-sm sm:text-base text-stone-600 leading-relaxed font-serif">
+                <p className="text-sm sm:text-base text-stone-500 leading-relaxed font-serif">
                   Bottled straight from our late summer extraction along the Kittatinny Ridge. Rich, fragrant, and golden—carrying the natural character of wild asters, goldenrod, and summer meadow blossoms.
                 </p>
 
@@ -307,7 +347,7 @@ export default function HomeClient() {
               <div className="pt-4 border-t border-stone-200 space-y-3">
                 <div className="flex items-baseline justify-between">
                   <div>
-                    <span className="font-serif text-3xl sm:text-4xl font-black text-stone-900">
+                    <span className="font-serif text-3xl sm:text-4xl font-normal text-stone-900">
                       ${currentHarvest.price.toFixed(2)}
                     </span>
                     <span className="text-xs text-stone-500 ml-2 font-medium">/ 12 oz jar</span>
@@ -356,60 +396,48 @@ export default function HomeClient() {
       </section>
 
       {/* =========================================================================
-          5. THE AVENOIR STANDARD — PUNCHY PILLARS (BORDERLESS)
+          5. THE AVENOIR STANDARD — MINIMALIST EDITORIAL (GENEROUS SPACE, NO ICONS)
           ========================================================================= */}
-      <section className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16 text-left">
-        <div className="max-w-2xl mb-8 space-y-1">
-          <span className="text-xs font-bold tracking-widest text-[#8C6B28] uppercase block">
+      <section className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16 py-24 sm:py-32 lg:py-36 text-left">
+        <div className="max-w-xl mb-14 sm:mb-16 space-y-2.5">
+          <span className="text-[11px] font-medium tracking-[0.2em] text-stone-400 uppercase block font-mono">
             The Pure Harvest Standard
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
             Why It Tastes Different
           </h2>
-          <p className="text-sm text-stone-600">
+          <p className="text-sm sm:text-base text-stone-500 font-serif leading-relaxed">
             No ultra-filtration. No anonymous industrial drums. Just pure, living honey.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-14">
           
-          <div className="space-y-2.5">
-            <div className="w-10 h-10 rounded-md bg-stone-100 text-[#8C6B28] flex items-center justify-center">
-              <Droplets size={20} />
-            </div>
-            <h3 className="font-serif text-lg font-bold text-stone-900">100% Raw &amp; Cold-Bottled</h3>
-            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Never heated above hive warmth (95&deg;F). Protects natural bio-enzymes, rich aromatics, and wild meadow pollen intact.
+          <div className="border-t border-stone-200/80 pt-6 space-y-2">
+            <h3 className="font-serif text-lg font-normal text-stone-900">Cold-Bottled Raw</h3>
+            <p className="text-xs sm:text-sm text-stone-500 font-serif leading-relaxed">
+              Never heated above hive warmth. Living enzymes intact.
             </p>
           </div>
 
-          <div className="space-y-2.5">
-            <div className="w-10 h-10 rounded-md bg-stone-100 text-[#8C6B28] flex items-center justify-center">
-              <Layers size={20} />
-            </div>
-            <h3 className="font-serif text-lg font-bold text-stone-900">True Micro-Batches</h3>
-            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Extracted yard-by-yard in numbered seasonal lots. Every jar reflects the exact 3-week bloom of that specific meadow.
+          <div className="border-t border-stone-200/80 pt-6 space-y-2">
+            <h3 className="font-serif text-lg font-normal text-stone-900">True Micro-Batches</h3>
+            <p className="text-xs sm:text-sm text-stone-500 font-serif leading-relaxed">
+              Numbered seasonal lots from individual Sussex County yards.
             </p>
           </div>
 
-          <div className="space-y-2.5">
-            <div className="w-10 h-10 rounded-md bg-stone-100 text-[#8C6B28] flex items-center justify-center">
-              <MapPin size={20} />
-            </div>
-            <h3 className="font-serif text-lg font-bold text-stone-900">New Jersey Provenance</h3>
-            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Foraged exclusively by our bees across northern New Jersey—from black locust ridges to Sussex wildflower bogs.
+          <div className="border-t border-stone-200/80 pt-6 space-y-2">
+            <h3 className="font-serif text-lg font-normal text-stone-900">Single Terroir</h3>
+            <p className="text-xs sm:text-sm text-stone-500 font-serif leading-relaxed">
+              Foraged exclusively across northern New Jersey flora.
             </p>
           </div>
 
-          <div className="space-y-2.5">
-            <div className="w-10 h-10 rounded-md bg-stone-100 text-[#8C6B28] flex items-center justify-center">
-              <Gift size={20} />
-            </div>
-            <h3 className="font-serif text-lg font-bold text-stone-900">Gift-Ready Packaging</h3>
-            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Bottled in heavy French flint glass with wax seal accents, linen presentation boxes, and bespoke pairing guides.
+          <div className="border-t border-stone-200/80 pt-6 space-y-2">
+            <h3 className="font-serif text-lg font-normal text-stone-900">Flint Glass</h3>
+            <p className="text-xs sm:text-sm text-stone-500 font-serif leading-relaxed">
+              Heavy French apothecary jars finished with hand-poured wax.
             </p>
           </div>
 
@@ -424,7 +452,7 @@ export default function HomeClient() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             <div className="lg:col-span-8 space-y-3">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#C5A265] uppercase block">
+              <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-[#C5A265]/80 uppercase block">
                 Artisanal Gifting Concierge
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white tracking-tight leading-[1.1]">
@@ -462,16 +490,19 @@ export default function HomeClient() {
           7. PATRON REVIEWS — HIGH TRUST SOCIAL PROOF (BORDERLESS)
           ========================================================================= */}
       <section className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16 text-left">
-        <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
-          <div className="flex justify-center text-[#C5A265] gap-1">
+        <div className="text-center max-w-xl mx-auto mb-12 sm:mb-14 space-y-2.5">
+          <div className="flex justify-center text-[#C5A265] gap-1 pb-1">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={16} fill="currentColor" />
+              <Star key={i} size={15} fill="currentColor" />
             ))}
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+          <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block">
+            Patron Testimonials
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
             Loved by Chefs &amp; Patrons
           </h2>
-          <p className="text-xs sm:text-sm text-stone-500">
+          <p className="text-sm text-stone-500 font-serif leading-relaxed">
             Real feedback from our New Jersey apiary subscribers and gift recipients.
           </p>
         </div>
@@ -536,14 +567,14 @@ export default function HomeClient() {
           8. NEWSLETTER / HARVEST ALERT — FULL-WIDTH EDGE-TO-EDGE
           ========================================================================= */}
       <section className="w-full bg-stone-100/70 border-t border-stone-200 py-16 sm:py-20 text-center">
-        <div className="w-full max-w-2xl mx-auto px-4 sm:px-8 space-y-4">
-          <span className="text-xs font-mono font-bold tracking-widest text-[#8C6B28] uppercase block">
+        <div className="w-full max-w-2xl mx-auto px-4 sm:px-8 space-y-3">
+          <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block">
             The Harvest Society
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
             Taste the Season First
           </h2>
-          <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto leading-relaxed">
+          <p className="text-sm text-stone-500 font-serif max-w-md mx-auto leading-relaxed">
             Get notified when new seasonal micro-batches are spun, plus enjoy 10% off your first order.
           </p>
 
