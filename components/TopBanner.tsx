@@ -14,7 +14,7 @@ export default function TopBanner() {
   const linkUrl = activeTicker?.linkHref || '/gifting';
 
   return (
-    <aside aria-label="Announcement" className="bg-[#141F18] text-stone-200 text-xs py-2 px-4 border-b border-[#233529] transition-colors">
+    <aside aria-label="Announcement" className="bg-[#141F18] text-stone-200 text-xs py-2 border-b border-[#233529] transition-colors">
       <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 flex flex-col md:flex-row items-center justify-between gap-2 text-center md:text-left">
         <div className="flex items-center gap-2">
           {activeTicker?.type === 'seasonal' && <Sparkles size={13} className="text-[#C5A265] shrink-0" />}

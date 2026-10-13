@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import { PRODUCTS, HONEY_SUBCATEGORIES, Subcategory } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
-import GridViewSelector, { GridColumns } from '@/components/GridViewSelector';
 import ProductFilterModal from '@/components/ProductFilterModal';
 
 export default function HoneyClient() {
@@ -25,7 +24,6 @@ export default function HoneyClient() {
   const [userSelectedSub, setUserSelectedSub] = useState<Subcategory | 'all' | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'rating'>('featured');
-  const [gridCols, setGridCols] = useState<GridColumns>(4);
   
   // Modal & Extended Filter States
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -109,82 +107,46 @@ export default function HoneyClient() {
     <div className="py-6 sm:py-12 px-4 sm:px-8 xl:px-12 2xl:px-16 w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto space-y-8">
       
       {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-500">
-        <Link href="/" prefetch={true} className="hover:text-emerald-900 transition">Home</Link>
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-stone-500">
+        <Link href="/" prefetch={true} className="hover:text-stone-900 transition">Home</Link>
         <ChevronRight size={12} />
-        <span className="text-emerald-950 font-bold">Honey Products</span>
+        <span className="text-stone-900 font-medium">Honey Collection</span>
         {activeSubMeta && (
           <>
             <ChevronRight size={12} />
-            <span className="text-amber-700 font-semibold">{activeSubMeta.shortName}</span>
+            <span className="text-[#8C6B28] font-medium">{activeSubMeta.shortName}</span>
           </>
         )}
       </nav>
 
-      {/* Page Hero Header */}
-      <div className="rounded-2xl p-5 sm:p-10 lg:p-12 border border-amber-900/40 relative overflow-hidden shadow-md text-left bg-amber-950">
-        {/* Editorial Kittatinny Ridge Apiary Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
-          <Image
-            src="/images/banner-honey-terroir.jpg"
-            alt="Kittatinny Ridge Raw Honey Apiaries"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[center_40%]"
-          />
-          {/* Typographic Scrim Gradient: Clear contrast for text on left, panoramic honey harvest visible on right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-amber-950/95 via-amber-950/80 to-amber-950/30 sm:from-amber-950/90 sm:via-amber-950/70 sm:to-transparent" />
-          <div className="absolute inset-0 bg-slate-950/20" />
-        </div>
-
-        <div className="max-w-3xl relative z-10 text-white space-y-2">
-          <p className="text-[11px] sm:text-sm font-bold tracking-widest text-amber-300 uppercase">
-            Local: Made by New Jersey Bees &bull; Sussex &amp; Morris Counties
-          </p>
-          <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            New Jersey Harvested Honey &amp; <span className="text-amber-300">Seasonal Samplers</span>
-          </h1>
-          <p className="text-amber-100/90 text-xs sm:text-base leading-relaxed max-w-2xl font-normal">
-            Spring wildflower honey from our New Jersey hives and late-summer harvests shaped by local field and garden blooms. Bottled in small batches for kitchens, gifts, and gatherings.
-          </p>
-
-          {/* Campaign Lines & Quick Pillars */}
-          <div className="flex flex-wrap gap-2 sm:gap-3 text-[11px] sm:text-xs text-amber-200/90 font-medium pt-2">
-            <span className="flex items-center gap-1.5 bg-amber-900/60 px-2.5 py-1 rounded-md border border-amber-800/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              A little jar. A real New Jersey story.
-            </span>
-            <span className="flex items-center gap-1.5 bg-amber-900/60 px-2.5 py-1 rounded-md border border-amber-800/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              See the harvest behind your jar
-            </span>
-            <span className="flex items-center gap-1.5 bg-amber-900/60 px-2.5 py-1 rounded-md border border-amber-800/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              Good for your pantry. Better when shared.
-            </span>
-          </div>
-        </div>
+      {/* Editorial Collection Header - Minimalist, Pure Typography, No Cards, No AI Images */}
+      <div className="pt-1 pb-6 border-b border-stone-200">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+          Honey Collection
+        </h1>
+        <p className="text-sm sm:text-base text-stone-500 font-serif mt-2">
+          Raw, unheated single-origin harvests and honeycomb from New Jersey apiaries.
+        </p>
       </div>
 
-      {/* Unified Search & Filter Control Bar */}
-      <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+      {/* Clean Utility Control Bar - Borderless, Minimalist */}
+      <div className="space-y-3">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           
           {/* Search Input */}
           <div className="relative flex-1">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search raw honey, vaults, flights, comb..."
-              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-700/30 focus:border-emerald-700 transition"
+              placeholder="Search raw honey, flights, comb..."
+              className="w-full pl-10 pr-9 py-2.5 rounded-lg bg-white border border-stone-200 text-xs text-stone-800 placeholder-stone-400 focus:outline-hidden focus:ring-1 focus:ring-stone-400 focus:border-stone-400 transition"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer p-1"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 cursor-pointer p-1"
                 aria-label="Clear search"
               >
                 <X size={14} />
@@ -198,28 +160,28 @@ export default function HoneyClient() {
             {/* Dedicated Filters Modal Trigger Button */}
             <button
               onClick={() => setIsFilterModalOpen(true)}
-              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 border shadow-xs min-h-[40px] sm:min-h-[42px] whitespace-nowrap ${
+              className={`flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs font-medium transition cursor-pointer flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 border min-h-[40px] whitespace-nowrap ${
                 activeFilterCount > 0
-                  ? 'bg-emerald-900 text-white border-emerald-950 hover:bg-emerald-800'
-                  : 'bg-white text-slate-800 border-slate-200 hover:bg-slate-50'
+                  ? 'bg-stone-900 text-white border-stone-950 hover:bg-stone-800'
+                  : 'bg-white text-stone-800 border-stone-200 hover:bg-stone-50'
               }`}
             >
-              <SlidersHorizontal size={14} className={activeFilterCount > 0 ? 'text-amber-300' : 'text-slate-600'} />
+              <SlidersHorizontal size={14} />
               <span>Filters</span>
               {activeFilterCount > 0 && (
-                <span className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-extrabold flex items-center justify-center">
+                <span className="w-4 h-4 rounded-full bg-[#8C6B28] text-white text-[10px] font-bold flex items-center justify-center">
                   {activeFilterCount}
                 </span>
               )}
             </button>
 
             {/* Quick Sort Dropdown */}
-            <div className="flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-1 bg-slate-50 border border-slate-200 rounded-xl px-2 sm:px-3 py-1.5 h-[40px] sm:h-[42px] min-w-0">
-              <span className="text-[11px] text-slate-500 font-medium hidden md:inline">Sort:</span>
+            <div className="flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-1 bg-white border border-stone-200 rounded-lg px-2 sm:px-3 py-1.5 h-[40px] min-w-0">
+              <span className="text-[11px] text-stone-400 font-medium hidden md:inline">Sort:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-transparent text-xs text-slate-800 font-semibold focus:outline-hidden cursor-pointer w-full sm:w-auto text-center sm:text-left truncate"
+                className="bg-transparent text-xs text-stone-800 font-medium focus:outline-hidden cursor-pointer w-full sm:w-auto text-center sm:text-left truncate"
               >
                 <option value="featured">Featured</option>
                 <option value="price-low">Price: Low to High</option>
@@ -227,12 +189,6 @@ export default function HoneyClient() {
                 <option value="rating">Highest Rating</option>
               </select>
             </div>
-
-            {/* Grid Columns Selector */}
-            <GridViewSelector
-              columns={gridCols}
-              onChange={(cols) => setGridCols(cols)}
-            />
           </div>
         </div>
 
@@ -371,19 +327,9 @@ export default function HoneyClient() {
         totalProductsCount={honeyProducts.length}
       />
 
-      {/* Product Grid - User-Controlled Columns (Min 2, up to 5 on Desktop) */}
+      {/* Product Grid - 3 Columns Only */}
       {filteredProducts.length > 0 ? (
-        <div
-          className={`grid ${
-            gridCols === 2
-              ? 'grid-cols-2 max-w-5xl mx-auto gap-3.5 sm:gap-6 lg:gap-8'
-              : gridCols === 3
-              ? 'grid-cols-2 sm:grid-cols-3 max-w-6xl mx-auto gap-3 sm:gap-5 lg:gap-7'
-              : gridCols === 5
-              ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 max-w-7xl mx-auto gap-2.5 sm:gap-4 lg:gap-5'
-              : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 max-w-7xl mx-auto gap-3 sm:gap-5 lg:gap-6'
-          }`}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

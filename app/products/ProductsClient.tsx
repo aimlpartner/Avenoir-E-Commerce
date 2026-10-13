@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import { PRODUCTS, Department } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
-import GridViewSelector, { GridColumns } from '@/components/GridViewSelector';
 
 export default function ProductsClient() {
   const searchParams = useSearchParams();
@@ -25,7 +24,6 @@ export default function ProductsClient() {
   );
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'rating'>('featured');
-  const [gridCols, setGridCols] = useState<GridColumns>(4);
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
@@ -71,22 +69,14 @@ export default function ProductsClient() {
         <span className="text-emerald-950 font-bold">All Products &amp; Catalog</span>
       </nav>
 
-      {/* Page Header */}
-      <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-sm text-left">
-        <div className="max-w-3xl relative z-10 space-y-2 sm:space-y-3">
-          <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.2em] text-amber-400 uppercase block">
-            Sussex County Atelier Catalog
-          </span>
-          <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Complete Apiary Collection
-          </h1>
-          <p className="text-xs sm:text-base text-slate-300 max-w-2xl leading-relaxed">
-            Browse our full assortment of single-origin unheated honeys, certified commercial apiculture hardware, and bespoke corporate presentation trunks.
-          </p>
-        </div>
-        <div className="absolute -right-8 -bottom-10 opacity-5 pointer-events-none hidden lg:block text-white">
-          <Layers size={360} />
-        </div>
+      {/* Page Header - Clean Editorial Typography */}
+      <div className="pt-1 pb-6 border-b border-stone-200 text-left">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+          Complete Apiary Collection
+        </h1>
+        <p className="text-sm sm:text-base text-stone-500 font-serif mt-2 max-w-2xl">
+          Single-origin unheated honeys, certified commercial apiculture equipment, and heirloom presentation boxes.
+        </p>
       </div>
 
       {/* Department Filter Navigation Pills */}
@@ -162,8 +152,6 @@ export default function ProductsClient() {
             <option value="price-high">Price: High to Low</option>
             <option value="rating">Highest Rated</option>
           </select>
-
-          <GridViewSelector columns={gridCols} onChange={setGridCols} />
         </div>
       </div>
 
@@ -176,7 +164,7 @@ export default function ProductsClient() {
               setSelectedDept('all');
               setSearchQuery('');
             }}
-            className="text-emerald-800 font-semibold hover:underline flex items-center gap-1 cursor-pointer"
+            className="text-stone-800 font-semibold hover:underline flex items-center gap-1 cursor-pointer"
           >
             <RotateCcw size={12} />
             <span>Reset All Filters</span>
@@ -184,15 +172,9 @@ export default function ProductsClient() {
         )}
       </div>
 
-      {/* Products Grid */}
+      {/* Products Grid - 3 Columns Editorial Layout */}
       {filteredProducts.length > 0 ? (
-        <div className={`grid gap-6 ${
-          gridCols === 2
-            ? 'grid-cols-1 sm:grid-cols-2'
-            : gridCols === 3
-            ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-        }`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

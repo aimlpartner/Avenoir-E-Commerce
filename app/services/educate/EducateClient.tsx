@@ -99,59 +99,15 @@ export default function EducateClient() {
         <span className="text-emerald-950 font-bold">Educate &bull; Apiary Academy</span>
       </nav>
 
-      {/* 1. Hero Showcase with High-Visibility Photography */}
-      <div className="rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12">
-        
-        {/* Left Column: Academy Narrative */}
-        <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 space-y-5 flex flex-col justify-between">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-emerald-800 uppercase">
-              <GraduationCap size={16} className="text-amber-600" />
-              <span>Avenoir Apiary Academy &bull; Kittatinny Ridge</span>
-            </div>
-
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
-              Step Inside the Hive. <br />
-              <span className="text-amber-800">Learn Master Apiary Arts.</span>
-            </h1>
-
-            <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed font-normal">
-              Whether you are preparing to establish your first country estate colony, a chef seeking deeper knowledge of enzymatic terroir, or an enthusiast fascinated by the superorganism. Our Sussex County master apiarists provide unmatched hands-on instruction.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100 text-xs">
-            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-0.5">
-              <span className="font-mono text-[10px] uppercase font-bold text-emerald-800 block">Class Ratio</span>
-              <span className="font-bold text-slate-900 text-sm">1 Instructor : 4 Students</span>
-              <p className="text-[11px] text-slate-500">Uncompromising safety and focus</p>
-            </div>
-            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-0.5">
-              <span className="font-mono text-[10px] uppercase font-bold text-amber-800 block">Protective Gear</span>
-              <span className="font-bold text-slate-900 text-sm">Full Suits Provided</span>
-              <p className="text-[11px] text-slate-500">Triple-layer ventilated mesh</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: 100% Clearly Visible High-Resolution Photo */}
-        <div className="lg:col-span-6 relative min-h-[340px] sm:min-h-[420px] lg:min-h-full w-full overflow-hidden bg-slate-100 border-t lg:border-t-0 lg:border-l border-slate-200">
-          <Image
-            src="/images/service-educate-hero.jpg"
-            alt="Master Apiarist Teaching Live Honeybee Frame Inspection"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 750px"
-            className="object-cover object-center opacity-100"
-          />
-          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
-            <div className="bg-slate-950/85 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 text-[11px] text-white font-mono shadow-md inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
-              <span>Sussex County Apiary Sanctuary &bull; Live Field Training</span>
-            </div>
-          </div>
-        </div>
-
+      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
+      <div className="pt-1 pb-8 border-b border-stone-200">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+          Apiary Academy &amp; <br className="hidden sm:inline" />
+          <span className="italic text-[#8C6B28]">Field Masterclasses.</span>
+        </h1>
+        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+          Hands-on live hive inspections, colony biology, and master apiarist apprenticeships hosted at our Kittatinny Ridge sanctuary.
+        </p>
       </div>
 
       {/* 2. Course Catalog & Interactive Curriculum */}

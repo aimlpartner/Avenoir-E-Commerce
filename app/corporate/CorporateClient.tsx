@@ -174,50 +174,15 @@ export default function CorporateClient() {
         <span className="text-stone-900 font-semibold">Private Client &amp; Corporate Commissions</span>
       </nav>
 
-      {/* Editorial Header Banner */}
-      <div className="bg-stone-950 text-stone-100 rounded-2xl p-5 sm:p-10 lg:p-12 border border-stone-800 shadow-md relative overflow-hidden">
-        {/* Bespoke Executive Walnut Trunks Boardroom Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
-          <Image
-            src="/images/banner-corporate-trunks.jpg"
-            alt="Heirloom Presentation Trunks in Executive Boardroom"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[center_35%]"
-          />
-          {/* Typographic Scrim Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/85 to-stone-950/40 sm:from-stone-950/90 sm:via-stone-950/70 sm:to-transparent" />
-          <div className="absolute inset-0 bg-slate-950/30" />
-        </div>
-
-        <div className="max-w-3xl relative z-10 space-y-3">
-          <p className="text-[11px] sm:text-sm font-bold tracking-widest text-amber-300 uppercase">
-            Shareable &bull; Honey is better when it becomes a gift
-          </p>
-          <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Gifts your clients will <span className="text-amber-300">actually remember.</span>
-          </h1>
-
-          <p className="text-stone-300 text-xs sm:text-base leading-relaxed max-w-2xl font-normal">
-            Lead with warmth, not just ingredients. A sweeter way to say thank you. Send honey, not another generic gift&mdash;a little jar with a real New Jersey story, packaged for client appreciation, employee recognition, and celebrations.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-stone-700/80 text-xs text-stone-200">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>&ldquo;A sweeter way to say thank you.&rdquo;</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>&ldquo;From our hives to your table.&rdquo;</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={15} className="text-amber-400 shrink-0" />
-              <span>&ldquo;Good for your pantry. Better when shared.&rdquo;</span>
-            </div>
-          </div>
-        </div>
+      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
+      <div className="pt-1 pb-8 border-b border-stone-200">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+          Corporate &amp; Private <br className="hidden sm:inline" />
+          <span className="italic text-[#8C6B28]">Client Commissions.</span>
+        </h1>
+        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+          Bespoke wooden presentation boxes, wax-sealed single-origin jars, and custom volumes for client appreciation and corporate milestones.
+        </p>
       </div>
 
       {/* Interactive Commission Studio (2-Column Planner) */}
@@ -891,25 +856,25 @@ export default function CorporateClient() {
         </div>
       </section>
 
-      {/* Direct Quote Inquiry Form */}
-      <section className="bg-stone-900 text-stone-100 rounded-2xl p-6 sm:p-10 border border-stone-800 shadow-sm space-y-6">
+      {/* Direct Quote Inquiry Section - Clean Editorial */}
+      <section className="pt-10 border-t border-stone-200 text-left space-y-6">
         <div className="max-w-xl space-y-1.5">
-          <span className="text-[10px] font-bold text-amber-300 uppercase tracking-widest block">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#8C6B28] block">
             Custom Consultation Desk
           </span>
-          <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal">
+          <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">
             Request a Gift Proposal &amp; Proof Sheet
           </h3>
-          <p className="text-xs text-stone-300 leading-relaxed">
-            Need custom curations, specialized gift box pairings, or have a recipient list exceeding 250 locations? Our concierge desk will prepare a full proposal and proof renders within 2 hours.
+          <p className="text-xs sm:text-base text-stone-500 font-serif leading-relaxed">
+            Need custom curations, specialized gift box pairings, or recipient lists exceeding 250 locations? Our concierge desk will prepare a full proposal and proof renders within 2 hours.
           </p>
         </div>
 
         {inquirySubmitted ? (
-          <div className="p-6 rounded-xl bg-stone-800/80 border border-stone-700 text-center space-y-2 max-w-lg">
-            <CheckCircle2 size={26} className="mx-auto text-amber-400" />
-            <h4 className="font-serif text-lg font-semibold text-white">Inquiry Received</h4>
-            <p className="text-xs text-stone-300">
+          <div className="p-6 rounded-lg bg-stone-50 border border-stone-200 text-center space-y-2 max-w-lg">
+            <CheckCircle2 size={26} className="mx-auto text-emerald-700" />
+            <h4 className="font-serif text-lg font-semibold text-stone-900">Inquiry Received</h4>
+            <p className="text-xs text-stone-600">
               Thank you. A Maison Avenoir gifting director has received your specifications and will follow up with your formal proposal and digital proof rendering within two hours.
             </p>
           </div>
@@ -925,34 +890,34 @@ export default function CorporateClient() {
               type="text"
               required
               placeholder="Your Full Name"
-              className="px-3.5 py-2.5 rounded-lg bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-amber-400"
+              className="px-3.5 py-2.5 rounded-lg bg-white border border-stone-200 text-xs text-stone-900 placeholder-stone-400 focus:outline-hidden focus:border-stone-400"
             />
             <input
               type="email"
               required
               placeholder="Corporate Email Address"
-              className="px-3.5 py-2.5 rounded-lg bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-amber-400"
+              className="px-3.5 py-2.5 rounded-lg bg-white border border-stone-200 text-xs text-stone-900 placeholder-stone-400 focus:outline-hidden focus:border-stone-400"
             />
             <input
               type="text"
               required
               placeholder="Company / Organization Name"
-              className="px-3.5 py-2.5 rounded-md bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-[#C5A265]"
+              className="px-3.5 py-2.5 rounded-lg bg-white border border-stone-200 text-xs text-stone-900 placeholder-stone-400 focus:outline-hidden focus:border-stone-400"
             />
             <input
               type="text"
               placeholder="Target Delivery Date (e.g. Nov 20, 2026)"
-              className="px-3.5 py-2.5 rounded-md bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-[#C5A265]"
+              className="px-3.5 py-2.5 rounded-lg bg-white border border-stone-200 text-xs text-stone-900 placeholder-stone-400 focus:outline-hidden focus:border-stone-400"
             />
             <textarea
               rows={3}
               placeholder="Notes on brass inscription, custom branding sleeves, or multi-destination shipping deadlines..."
-              className="sm:col-span-2 px-3.5 py-2.5 rounded-md bg-stone-800 border border-stone-700 text-xs text-white placeholder-stone-400 focus:outline-hidden focus:border-[#C5A265] resize-none"
+              className="sm:col-span-2 px-3.5 py-2.5 rounded-lg bg-white border border-stone-200 text-xs text-stone-900 placeholder-stone-400 focus:outline-hidden focus:border-stone-400 resize-none"
             />
             <div className="sm:col-span-2 pt-1">
               <button
                 type="submit"
-                className="px-6 py-3 rounded-md bg-[#C5A265] hover:bg-[#B38E46] text-stone-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer shadow-xs"
+                className="px-6 py-3 rounded-lg bg-[#15231A] hover:bg-[#1E3326] text-white font-medium text-xs uppercase tracking-wider transition cursor-pointer"
               >
                 Request a Gift Proposal &rarr;
               </button>

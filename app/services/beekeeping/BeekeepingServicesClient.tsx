@@ -94,59 +94,15 @@ export default function BeekeepingServicesClient() {
         <span className="text-emerald-950 font-bold">Bee Keeping &bull; Estate Apiary Stewardship</span>
       </nav>
 
-      {/* 1. Hero Showcase with High-Visibility Photography */}
-      <div className="rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12">
-        
-        {/* Left Column: Narrative */}
-        <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 space-y-5 flex flex-col justify-between">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-emerald-800 uppercase">
-              <Wrench size={16} className="text-emerald-700" />
-              <span>Private Client &bull; Apiary Management</span>
-            </div>
-
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
-              Your Private Apiary. <br />
-              <span className="text-amber-800">Masterfully Managed.</span>
-            </h1>
-
-            <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed font-normal">
-              Introducing honeybee colonies to your country estate enriches wildflower meadows, multiplies garden fruit yields, and produces private-reserve raw honey bottled exclusively for your household. Avenoir handles every facet of hive joinery, disease prevention, and harvest bottling.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100 text-xs">
-            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-0.5">
-              <span className="font-mono text-[10px] uppercase font-bold text-emerald-800 block">Hive Craftsmanship</span>
-              <span className="font-bold text-slate-900 text-sm">Western Red Cedar</span>
-              <p className="text-[11px] text-slate-500">Natural rot resistance &amp; copper roof</p>
-            </div>
-            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-0.5">
-              <span className="font-mono text-[10px] uppercase font-bold text-amber-800 block">Estate Harvest</span>
-              <span className="font-bold text-slate-900 text-sm">Custom Bottling</span>
-              <p className="text-[11px] text-slate-500">Apothecary glass with family crest</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: 100% Clearly Visible High-Resolution Photo */}
-        <div className="lg:col-span-6 relative min-h-[340px] sm:min-h-[420px] lg:min-h-full w-full overflow-hidden bg-slate-100 border-t lg:border-t-0 lg:border-l border-slate-200">
-          <Image
-            src="/images/service-beekeeping-hero.jpg"
-            alt="Handcrafted Western Red Cedar Beehives on Private Country Estate with Master Apiarist"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 750px"
-            className="object-cover object-center opacity-100"
-          />
-          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
-            <div className="bg-slate-950/85 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 text-[11px] text-white font-mono shadow-md inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Turnkey Western Red Cedar Langstroth Hives &bull; Private Estate</span>
-            </div>
-          </div>
-        </div>
-
+      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
+      <div className="pt-1 pb-8 border-b border-stone-200">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+          Private Apiaries &amp; <br className="hidden sm:inline" />
+          <span className="italic text-[#8C6B28]">Estate Stewardship.</span>
+        </h1>
+        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+          Introducing honeybee colonies to your country estate with complete hive joinery, inspection schedules, and custom bottled private reserves.
+        </p>
       </div>
 
       {/* 2. Stewardship Programs */}

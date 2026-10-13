@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import { Suspense } from 'react';
-import { DM_Sans, Inter_Tight, JetBrains_Mono } from 'next/font/google';
+import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
 import { AdminProvider } from '@/context/AdminContext';
@@ -12,16 +12,15 @@ import RoutePreheater from '@/components/RoutePreheater';
 import NavigationProgress from '@/components/NavigationProgress';
 import FirstOrderValueModal from '@/components/FirstOrderValueModal';
 
-const dmSans = DM_Sans({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-const interTight = Inter_Tight({
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-heading',
+  variable: '--font-serif',
   display: 'swap',
 });
 
@@ -48,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${interTight.variable} ${jetbrainsMono.variable} antialiased`}>
+    <html lang="en" className={`${plusJakartaSans.variable} ${fraunces.variable} ${jetbrainsMono.variable} antialiased`}>
       <body suppressHydrationWarning className="bg-white text-stone-900 font-sans flex flex-col min-h-screen">
         <Suspense fallback={null}>
           <NavigationProgress />

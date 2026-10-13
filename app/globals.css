@@ -2,9 +2,9 @@
 
 @theme {
   --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
-  --font-serif: var(--font-heading), var(--font-sans), system-ui, sans-serif;
-  --font-display: var(--font-heading), var(--font-sans), system-ui, sans-serif;
-  --font-heading: var(--font-heading), var(--font-sans), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, Cambria, serif;
+  --font-display: var(--font-serif), Georgia, Cambria, serif;
+  --font-heading: var(--font-serif), Georgia, Cambria, serif;
   --font-mono: var(--font-mono), monospace;
   
   --color-brand-gold: #C5A265;

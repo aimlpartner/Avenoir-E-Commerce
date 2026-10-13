@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
-  HeartHandshake, 
+  HeartHandshake,
   ChevronRight, 
   PhoneCall, 
   ShieldCheck, 
@@ -76,65 +76,34 @@ export default function BeeRemovalClient() {
         <span className="text-emerald-950 font-bold">Bee Removal &bull; 100% Humane Live Rescue</span>
       </nav>
 
-      {/* 1. Hero Showcase with High-Visibility Photography */}
-      <div className="rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12">
-        
-        {/* Left Column: Humane Charter */}
-        <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 space-y-5 flex flex-col justify-between">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-emerald-800 uppercase">
-              <HeartHandshake size={16} className="text-emerald-600" />
-              <span>Sussex County Humane Live Rescue Program</span>
-            </div>
+      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
+      <div className="pt-1 pb-8 border-b border-stone-200">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+          Humane Bee Removal &amp; <br className="hidden sm:inline" />
+          <span className="italic text-[#8C6B28]">Live Swarm Rescue.</span>
+        </h1>
+        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+          100% no-kill live swarm extractions and structural relocations to our protected Kittatinny Ridge apiary sanctuary.
+        </p>
 
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
-              Never Spray. Never Kill. <br />
-              <span className="text-amber-800">We Save Every Colony.</span>
-            </h1>
-
-            <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed font-normal">
-              Honeybees are essential agricultural keystones. Exterminators apply neurotoxins that leave gallons of rotting fermented honey inside your walls, attracting rodents and moths. Avenoir safely relocates the living colony to our protected Kittatinny Ridge mountain apiary sanctuary.
+        {/* Emergency Hotline Strip - Clean Minimal */}
+        <div className="mt-6 p-4 rounded-md bg-stone-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 max-w-xl">
+          <div className="space-y-0.5 text-center sm:text-left">
+            <span className="text-[10px] font-mono tracking-widest text-[#C5A265] uppercase font-semibold">
+              24/7 Swarm Dispatch Hotline
+            </span>
+            <p className="text-sm sm:text-base font-mono font-bold text-white">
+              (973) 824-HIVE &bull; (973) 824-4483
             </p>
           </div>
-
-          {/* Emergency Hotline Strip */}
-          <div className="p-4 rounded-2xl bg-emerald-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-emerald-900">
-            <div className="space-y-0.5 text-center sm:text-left">
-              <span className="text-[10px] font-mono tracking-widest text-amber-300 uppercase font-bold">
-                24/7 Swarm Dispatch Hotline
-              </span>
-              <p className="text-base sm:text-lg font-mono font-bold text-white">
-                (973) 824-HIVE &bull; (973) 824-4483
-              </p>
-            </div>
-            <a
-              href="tel:9738244483"
-              className="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition shrink-0 flex items-center gap-2 cursor-pointer"
-            >
-              <PhoneCall size={14} />
-              <span>Call Dispatch</span>
-            </a>
-          </div>
+          <a
+            href="tel:9738244483"
+            className="px-4 py-2 rounded-md bg-[#C5A265] hover:bg-[#b08e54] text-stone-950 font-semibold text-xs uppercase tracking-wider transition shrink-0 flex items-center gap-2 cursor-pointer"
+          >
+            <PhoneCall size={13} />
+            <span>Call Dispatch</span>
+          </a>
         </div>
-
-        {/* Right Column: 100% Clearly Visible High-Resolution Photo */}
-        <div className="lg:col-span-6 relative min-h-[340px] sm:min-h-[420px] lg:min-h-full w-full overflow-hidden bg-slate-100 border-t lg:border-t-0 lg:border-l border-slate-200">
-          <Image
-            src="/images/service-removal-hero.jpg"
-            alt="Professional Sussex Apiarist Gently Rescuing Honeybee Swarm into Cedar Box"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 750px"
-            className="object-cover object-center opacity-100"
-          />
-          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
-            <div className="bg-slate-950/85 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 text-[11px] text-white font-mono shadow-md inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>100% Non-Toxic &bull; Cedar Transport Box Relocation</span>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       {/* 2. Removal Scenarios */}

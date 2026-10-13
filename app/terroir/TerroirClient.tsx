@@ -241,64 +241,40 @@ export default function TerroirClient() {
         </div>
       </div>
 
-      {/* Hero Header */}
-      <div className="bg-slate-950 text-white rounded-2xl p-5 sm:p-10 lg:p-14 border border-emerald-800/80 shadow-md relative overflow-hidden">
-        {/* Authentic Kittatinny Ridge Elevation Research Site Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
-          <Image
-            src="/images/spotlight-terroir.jpg"
-            alt="Kittatinny Ridge Microclimate Study Site at Elevation"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[center_35%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-emerald-950/85 to-slate-950/50 sm:from-slate-950/90 sm:via-emerald-950/70 sm:to-transparent" />
-          <div className="absolute inset-0 bg-slate-950/30" />
+      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
+      <div className="pt-1 pb-8 border-b border-stone-200">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+          Botanical Terroir &amp; <br className="hidden sm:inline" />
+          <span className="italic text-[#8C6B28]">Apiary Climate Data.</span>
+        </h1>
+        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+          Live microclimate telemetry, nectar flow bloom schedules, and enzymatic laboratory metrics from Sussex County research yards.
+        </p>
+      </div>
+
+      {/* Telemetry Metrics Strip - Clean Minimal Panel */}
+      <div className="bg-stone-50 border border-stone-200 rounded-lg p-5 sm:p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+        <div>
+          <span className="text-[10px] uppercase font-mono tracking-wider text-stone-500 block">Hive Temperature</span>
+          <span className="text-lg font-mono font-semibold text-stone-900">&le; 95.0&deg;F</span>
+          <span className="text-xs text-stone-500 font-serif block mt-0.5">100% Unheated Raw</span>
         </div>
-
-        <div className="max-w-3xl relative z-10 space-y-3 sm:space-y-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em]">
-              Transparent &bull; See the Harvest Behind Your Jar
-            </span>
-            <span className="text-emerald-300/80 text-[11px] sm:text-xs font-mono">
-              Sussex County Research Yard &bull; Elevation 1,450 ft
-            </span>
-          </div>
-
-          <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            The Science of Botanical Honey Terroir
-          </h1>
-          
-          <p className="text-emerald-100/90 text-xs sm:text-base leading-relaxed max-w-2xl">
-            This transparency is not filler&mdash;it is the reason our patrons trust us more than an anonymous grocery shelf product. From live hive inspections and selective frame pulls to unheated extraction, natural crystallization, and care for colony health, explore the exact harvest data behind every jar.
-          </p>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-emerald-800/60">
-            <div>
-              <span className="text-[9px] sm:text-[10px] uppercase font-mono tracking-wider text-emerald-300 block">Hive Temp</span>
-              <span className="text-base sm:text-lg font-mono font-bold text-white">&le; 95.0&deg;F</span>
-              <span className="text-[10px] sm:text-[11px] text-emerald-200/70 block">100% Unheated</span>
-            </div>
-            <div>
-              <span className="text-[9px] sm:text-[10px] uppercase font-mono tracking-wider text-emerald-300 block">Diastase Enzyme</span>
-              <span className="text-base sm:text-lg font-mono font-bold text-amber-300">&gt; 28 DN</span>
-              <span className="text-[10px] sm:text-[11px] text-emerald-200/70 block">Active &amp; Live</span>
-            </div>
-            <div>
-              <span className="text-[9px] sm:text-[10px] uppercase font-mono tracking-wider text-emerald-300 block">Micro-Filtration</span>
-              <span className="text-base sm:text-lg font-mono font-bold text-white">0% Filtered</span>
-              <span className="text-[10px] sm:text-[11px] text-emerald-200/70 block">Pollen intact</span>
-            </div>
-            <div>
-              <span className="text-[9px] sm:text-[10px] uppercase font-mono tracking-wider text-emerald-300 block">Sussex Weather</span>
-              <span className="text-base sm:text-lg font-mono font-bold text-white">
-                {currentZone.telemetry.ambientTempF}&deg;F / {currentZone.telemetry.relativeHumidityPct}%
-              </span>
-              <span className="text-[10px] sm:text-[11px] text-emerald-200/70 block">Optimal Flight</span>
-            </div>
-          </div>
+        <div>
+          <span className="text-[10px] uppercase font-mono tracking-wider text-stone-500 block">Diastase Enzyme</span>
+          <span className="text-lg font-mono font-semibold text-[#8C6B28]">&gt; 28 DN</span>
+          <span className="text-xs text-stone-500 font-serif block mt-0.5">Active &amp; Live</span>
+        </div>
+        <div>
+          <span className="text-[10px] uppercase font-mono tracking-wider text-stone-500 block">Micro-Filtration</span>
+          <span className="text-lg font-mono font-semibold text-stone-900">0% Filtered</span>
+          <span className="text-xs text-stone-500 font-serif block mt-0.5">Pollen Intact</span>
+        </div>
+        <div>
+          <span className="text-[10px] uppercase font-mono tracking-wider text-stone-500 block">Sussex Weather</span>
+          <span className="text-lg font-mono font-semibold text-stone-900">
+            {currentZone.telemetry.ambientTempF}&deg;F / {currentZone.telemetry.relativeHumidityPct}%
+          </span>
+          <span className="text-xs text-stone-500 font-serif block mt-0.5">Optimal Nectar Flow</span>
         </div>
       </div>
 

@@ -18,7 +18,6 @@ import {
 } from 'lucide-react';
 import { PRODUCTS, Department } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
-import GridViewSelector, { GridColumns } from '@/components/GridViewSelector';
 
 export default function ShopClient() {
   const searchParams = useSearchParams();
@@ -29,7 +28,6 @@ export default function ShopClient() {
   );
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'rating'>('featured');
-  const [gridCols, setGridCols] = useState<GridColumns>(4);
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
@@ -78,87 +76,14 @@ export default function ShopClient() {
         <span className="text-stone-900 font-bold">Shop All Departments</span>
       </nav>
 
-      {/* Featured Department Banners */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        
-        {/* 1. Build Your Own Box Banner */}
-        <Link
-          href="/gifting"
-          prefetch={true}
-          className="group relative rounded-lg overflow-hidden bg-[#142118] text-white p-7 flex flex-col justify-between min-h-[220px] shadow-sm hover:shadow-md transition-all border border-[#223528]"
-        >
-          <div>
-            <div className="flex items-center gap-2 mb-2.5">
-              <span className="px-2.5 py-0.5 rounded-xs bg-[#C5A265] text-stone-950 text-[10px] font-bold uppercase tracking-wider">
-                Featured Experience
-              </span>
-              <span className="text-xs text-[#E8D7B5] font-semibold">Save up to 25%</span>
-            </div>
-            <h2 className="font-serif text-2xl font-bold text-white leading-tight group-hover:text-[#C5A265] transition">
-              Build Your Own Box
-            </h2>
-            <p className="text-xs text-stone-300 mt-1.5 line-clamp-2 leading-relaxed">
-              Design a custom 3, 6, or 12-jar honey stack with handwritten wax-sealed calligraphy.
-            </p>
-          </div>
-          <div className="flex items-center justify-between pt-4 border-t border-[#223528] text-xs font-bold text-[#C5A265]">
-            <span>Launch Box Builder</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </div>
-        </Link>
-
-        {/* 2. Honey Collections Banner */}
-        <Link
-          href="/honey"
-          prefetch={true}
-          className="group relative rounded-lg overflow-hidden bg-white text-stone-900 p-7 flex flex-col justify-between min-h-[220px] shadow-2xs hover:shadow-md transition-all border border-stone-200/90 hover:border-stone-400"
-        >
-          <div>
-            <div className="flex items-center gap-2 mb-2.5">
-              <span className="px-2.5 py-0.5 rounded-xs bg-stone-100 border border-stone-200 text-stone-800 text-[10px] font-bold uppercase tracking-wider">
-                Pure Provenance
-              </span>
-              <span className="text-xs text-stone-500 font-semibold">{honeyCount} Reserves</span>
-            </div>
-            <h2 className="font-serif text-2xl font-bold text-stone-900 leading-tight group-hover:text-stone-700 transition">
-              Honey Products
-            </h2>
-            <p className="text-xs text-stone-600 mt-1.5 line-clamp-2 leading-relaxed">
-              Single-origin raw nectar, whipped Madagascar vanilla cream, and edible comb slabs.
-            </p>
-          </div>
-          <div className="flex items-center justify-between pt-4 border-t border-stone-100 text-xs font-bold text-stone-900">
-            <span>Explore Raw Honey</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform text-[#8C6B28]" />
-          </div>
-        </Link>
-
-        {/* 3. Beekeeping Gear Banner */}
-        <Link
-          href="/beekeeping"
-          prefetch={true}
-          className="group relative rounded-lg overflow-hidden bg-white text-stone-900 p-7 flex flex-col justify-between min-h-[220px] shadow-2xs hover:shadow-md transition-all border border-stone-200/90 hover:border-stone-400"
-        >
-          <div>
-            <div className="flex items-center gap-2 mb-2.5">
-              <span className="px-2.5 py-0.5 rounded-xs bg-stone-100 border border-stone-200 text-stone-800 text-[10px] font-bold uppercase tracking-wider">
-                Commercial Grade
-              </span>
-              <span className="text-xs text-stone-500 font-semibold">{beekeepingCount} Supplies</span>
-            </div>
-            <h2 className="font-serif text-2xl font-bold text-stone-900 leading-tight group-hover:text-stone-700 transition">
-              Beekeeping Gear
-            </h2>
-            <p className="text-xs text-stone-600 mt-1.5 line-clamp-2 leading-relaxed">
-              3-layer ventilated sting-proof suits, stainless smokers, and Cedar Langstroth woodenware.
-            </p>
-          </div>
-          <div className="flex items-center justify-between pt-4 border-t border-stone-100 text-xs font-bold text-stone-900">
-            <span>Explore Equipment</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform text-[#8C6B28]" />
-          </div>
-        </Link>
-
+      {/* Editorial Header - Pure Typography, No Floating Cards */}
+      <div className="pt-1 pb-6 border-b border-stone-200 text-left">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+          Shop All Collections
+        </h1>
+        <p className="text-sm sm:text-base text-stone-500 font-serif mt-2 max-w-2xl">
+          Single-origin raw harvests, curated gift flights, and master beekeeping hardware.
+        </p>
       </div>
 
       {/* Catalog Controls: Filter Tabs + Search + Sort */}
@@ -241,23 +166,13 @@ export default function ShopClient() {
               <option value="rating">Top Rated</option>
             </select>
 
-            {/* Grid Column Selector on Desktop */}
-            <div className="hidden lg:block">
-              <GridViewSelector columns={gridCols} onChange={setGridCols} />
-            </div>
           </div>
         </div>
       </div>
 
-      {/* Product Grid */}
+      {/* Product Grid - 3 Columns Editorial Layout */}
       <div>
-        <div
-          className={`grid gap-5 sm:gap-6 ${
-            gridCols === 3
-              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-              : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
-          }`}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -284,23 +199,23 @@ export default function ShopClient() {
         )}
       </div>
 
-      {/* Terroir & Concierge Banner Footer */}
-      <div className="p-8 rounded-xl bg-white border border-stone-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="space-y-1 text-center md:text-left">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#8C6B28]">
+      {/* Terroir & Concierge Footer Strip */}
+      <div className="pt-8 pb-4 border-t border-stone-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-left">
+        <div className="space-y-1">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-[#8C6B28]">
             Botanical Provenance
           </span>
-          <h3 className="font-serif text-xl sm:text-2xl font-bold text-stone-900">
+          <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
             Explore Our Four Microclimate Terroirs
           </h3>
-          <p className="text-xs text-stone-600 max-w-xl">
-            Learn how elevation, mountain ridges, and Pine Barrens blossoms shape the distinct tasting notes of each seasonal harvest.
+          <p className="text-xs text-stone-500 max-w-xl font-serif">
+            Elevation, Kittatinny ridges, and Pine Barrens flora shape the distinct tasting notes of each seasonal harvest.
           </p>
         </div>
 
         <Link
           href="/terroir"
-          className="px-5 py-2.5 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white font-bold text-xs transition shrink-0 flex items-center gap-1.5 shadow-2xs"
+          className="px-5 py-2.5 rounded-lg bg-[#15231A] hover:bg-[#1E3326] text-white font-medium text-xs transition shrink-0 flex items-center gap-1.5"
         >
           <Compass size={15} className="text-[#C5A265]" />
           <span>View Terroir Profiles</span>

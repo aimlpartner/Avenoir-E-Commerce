@@ -8,13 +8,7 @@ import {
   HeartHandshake, 
   Wrench, 
   ArrowRight, 
-  ShieldCheck, 
-  Sparkles, 
-  PhoneCall, 
-  CheckCircle2, 
-  Calendar,
-  Layers,
-  Award
+  PhoneCall
 } from 'lucide-react';
 
 export default function ServicesClient() {
@@ -73,45 +67,24 @@ export default function ServicesClient() {
   ];
 
   return (
-    <div className="py-8 sm:py-14 px-4 sm:px-8 xl:px-12 2xl:px-16 w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto space-y-12 sm:space-y-16 text-left">
+    <div className="py-6 sm:py-12 px-4 sm:px-8 xl:px-12 2xl:px-16 w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto space-y-10 sm:space-y-14 text-left">
       
-      {/* 1. Services Editorial Header */}
-      <div className="relative rounded-3xl overflow-hidden bg-slate-950 text-white p-6 sm:p-12 lg:p-16 border border-slate-800 shadow-2xl">
-        <div className="absolute inset-0 z-0 pointer-events-none select-none">
-          <Image
-            src="/images/hero-apiary-landscape.jpg"
-            alt="Avenoir Sussex County Apiaries"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[center_35%] opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent sm:from-slate-950 sm:via-slate-950/70 sm:to-slate-950/20" />
-        </div>
+      {/* Breadcrumbs */}
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-stone-500">
+        <Link href="/" prefetch={true} className="hover:text-stone-900 transition">Home</Link>
+        <span className="text-stone-300">/</span>
+        <span className="text-stone-900 font-medium">Apiary Services</span>
+      </nav>
 
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Sussex County Apiary Atelier Services</span>
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
-            Master Apiary Services. <br />
-            <span className="text-amber-400">Stewardship, Safety &amp; Academics.</span>
-          </h1>
-
-          <p className="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed max-w-2xl font-normal">
-            Rooted along the Kittatinny Ridge of Sussex County, Avenoir extends professional apiary governance beyond pure honey reserves. From hands-on masterclasses and humane live swarm relocations to private estate hive stewardship.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-slate-300 font-mono">
-            <span className="flex items-center gap-1.5"><ShieldCheck size={16} className="text-emerald-400" /> NJ Licensed &amp; Insured</span>
-            <span>&bull;</span>
-            <span className="flex items-center gap-1.5"><Award size={16} className="text-amber-400" /> Master Apiarists</span>
-            <span>&bull;</span>
-            <span className="flex items-center gap-1.5"><HeartHandshake size={16} className="text-emerald-400" /> 100% No-Kill Policy</span>
-          </div>
-        </div>
+      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
+      <div className="pt-1 pb-8 border-b border-stone-200">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+          Apiary Services &amp; <br className="hidden sm:inline" />
+          <span className="italic text-[#8C6B28]">Estate Stewardship.</span>
+        </h1>
+        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+          Professional apiary management, humane colony relocation, and hands-on masterclasses across Sussex County.
+        </p>
       </div>
 
       {/* 2. Three Core Service Pillars */}
@@ -119,52 +92,47 @@ export default function ServicesClient() {
         {servicePillars.map((service) => (
           <div
             key={service.id}
-            className="group rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-800 transition-all duration-300 flex flex-col justify-between"
+            className="group rounded-lg bg-white border border-stone-200 overflow-hidden hover:border-stone-400 transition-colors flex flex-col justify-between"
           >
-            {/* Service Image - High Definition & Clearly Visible */}
-            <div className="relative h-64 sm:h-72 w-full bg-slate-100 overflow-hidden">
+            {/* Service Image */}
+            <div className="relative h-60 sm:h-64 w-full bg-stone-100 overflow-hidden">
               <Image
                 src={service.imageUrl}
                 alt={service.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 450px"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-102 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
               
-              <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                <span className="bg-emerald-950/90 text-amber-300 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-lg backdrop-blur-xs shadow-xs">
+              <div className="absolute top-3 left-3">
+                <span className="bg-stone-900/85 text-white text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-xs backdrop-blur-xs">
                   {service.badge}
                 </span>
               </div>
 
-              <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-between text-white">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-xl bg-emerald-900/90 backdrop-blur-md flex items-center justify-center">
-                    {service.icon}
-                  </div>
-                  <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white">
-                    {service.title}
-                  </span>
-                </div>
+              <div className="absolute bottom-3 left-4 right-4 text-white">
+                <span className="font-serif text-xl sm:text-2xl font-normal text-white">
+                  {service.title}
+                </span>
               </div>
             </div>
 
             {/* Content Body */}
-            <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-6">
+            <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
               <div className="space-y-3">
-                <h3 className="font-serif text-lg font-bold text-slate-900">
+                <h3 className="font-serif text-base font-semibold text-stone-900">
                   {service.subtitle}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* Feature Highlights */}
-                <div className="space-y-2 pt-2 border-t border-slate-100">
+                <div className="space-y-1.5 pt-3 border-t border-stone-100">
                   {service.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                      <CheckCircle2 size={14} className="text-emerald-700 shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2 text-xs text-stone-600">
+                      <span className="text-[#8C6B28] font-bold">&bull;</span>
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -175,41 +143,41 @@ export default function ServicesClient() {
               <Link
                 href={service.href}
                 prefetch={true}
-                className="w-full py-3.5 px-5 rounded-xl bg-emerald-950 hover:bg-emerald-900 text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-xs group-hover:shadow-md cursor-pointer"
+                className="w-full py-3 px-5 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white font-semibold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>{service.ctaText}</span>
-                <ArrowRight size={14} className="text-amber-400 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={13} className="text-[#C5A265]" />
               </Link>
             </div>
           </div>
         ))}
       </div>
 
-      {/* 3. Emergency Dispatch & Inquiry Contact Strip */}
-      <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-amber-50 via-white to-emerald-50/40 border border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="space-y-1 text-center sm:text-left">
-          <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-amber-800 block">
+      {/* 3. Emergency Dispatch & Inquiry Contact Strip - Clean Editorial */}
+      <div className="pt-8 pb-4 border-t border-stone-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="space-y-1 text-left">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#8C6B28] block">
             Emergency Swarm or Custom Estate Inquiry
           </span>
-          <h3 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">
+          <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
             Have a live bee swarm or need private estate apiary counsel?
           </h3>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
-            Our Sussex County apiarists are on call across the Tristate area for humane extractions and bespoke estate setup consultations.
+          <p className="text-xs sm:text-sm text-stone-500 font-serif max-w-xl">
+            Our Sussex County apiarists are on call across Northern New Jersey for humane extractions and bespoke estate setup consultations.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
           <Link
             href="/services/bee-removal"
-            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition text-center shadow-xs flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-5 py-3 rounded-lg bg-[#15231A] hover:bg-[#1E3326] text-white font-medium text-xs uppercase tracking-wider transition text-center flex items-center justify-center gap-2"
           >
             <PhoneCall size={14} />
             <span>Emergency Swarm Dispatch</span>
           </Link>
           <Link
             href="/services/beekeeping"
-            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 font-bold text-xs uppercase tracking-wider transition text-center shadow-2xs"
+            className="w-full sm:w-auto px-5 py-3 rounded-lg bg-white hover:bg-stone-50 text-stone-900 border border-stone-300 font-medium text-xs uppercase tracking-wider transition text-center"
           >
             <span>Book Apiary Consultation</span>
           </Link>
