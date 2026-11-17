@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import BrandLogo from '@/components/BrandLogo';
+import ApiaryProofSection from '@/components/ApiaryProofSection';
+import { APIARY_VIDEO_CLIPS } from '@/lib/apiaryVideos';
 import { 
   Wrench, 
   ChevronRight, 
@@ -94,15 +97,21 @@ export default function BeekeepingServicesClient() {
         <span className="text-emerald-950 font-bold">Bee Keeping &bull; Estate Apiary Stewardship</span>
       </nav>
 
-      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
-      <div className="pt-1 pb-8 border-b border-stone-200">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
-          Private Apiaries &amp; <br className="hidden sm:inline" />
-          <span className="italic text-[#8C6B28]">Estate Stewardship.</span>
-        </h1>
-        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
-          Introducing honeybee colonies to your country estate with complete hive joinery, inspection schedules, and custom bottled private reserves.
-        </p>
+      {/* Editorial Header */}
+      <div className="pt-1 pb-8 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-1.5">
+            Singing Bee Private Apiaries
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+            Private Apiaries &amp; <br className="hidden sm:inline" />
+            <span className="italic text-[#D64500]">Estate Stewardship.</span>
+          </h1>
+          <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+            Introducing honeybee colonies to your country estate with complete hive joinery, inspection schedules, and custom bottled private reserves.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* 2. Stewardship Programs */}
@@ -242,7 +251,7 @@ export default function BeekeepingServicesClient() {
               <div className="rounded-xl bg-white/5 border border-white/10 p-4 space-y-2">
                 <div className="flex text-amber-400 text-xs">★★★★★</div>
                 <p className="text-xs italic text-slate-200 leading-relaxed">
-                  &ldquo;Avenoir installed 3 cedar hives along our wildflower meadow. We received 160 bespoke jars of raw honey with our estate crest for the holidays, and our orchard fruit set doubled.&rdquo;
+                  &ldquo;Singing Bee installed 3 cedar hives along our wildflower meadow. We received 160 bespoke jars of raw honey with our estate crest for the holidays, and our orchard fruit set doubled.&rdquo;
                 </p>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-amber-300/80">
                   — Roderick &amp; Evelyn B., Tewksbury Township
@@ -254,7 +263,7 @@ export default function BeekeepingServicesClient() {
             <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
               <div>
                 <span className="text-slate-400 text-[11px] block">Estate Consultation Hotline</span>
-                <span className="text-amber-300 font-mono font-semibold">estates@avenoirhoney.com</span>
+                <span className="text-amber-300 font-mono font-semibold">estates@singingbeehoney.com</span>
               </div>
               <span className="text-[11px] font-mono text-emerald-300/90 font-bold bg-emerald-900/60 px-2.5 py-1 rounded-md border border-emerald-700/50">
                 (973) 824-HIVE
@@ -401,6 +410,21 @@ export default function BeekeepingServicesClient() {
             )}
           </div>
         </div>
+      </div>
+
+      {/* Live Estate Hive Work Clips */}
+      <div className="rounded-2xl overflow-hidden border border-stone-200">
+        <ApiaryProofSection
+          compact
+          clips={[
+            APIARY_VIDEO_CLIPS[0],
+            APIARY_VIDEO_CLIPS[2],
+            APIARY_VIDEO_CLIPS[3],
+            APIARY_VIDEO_CLIPS[4],
+          ]}
+          heading="Real Bi-Weekly Apiary Care in Practice"
+          subheading="See how our master apiarists open brood boxes, inspect frames gently with steel hive tools, and tend healthy colonies across northern New Jersey."
+        />
       </div>
 
     </div>

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import BrandLogo from '@/components/BrandLogo';
 import { 
   HeartHandshake,
   ChevronRight, 
@@ -76,20 +77,28 @@ export default function BeeRemovalClient() {
         <span className="text-emerald-950 font-bold">Bee Removal &bull; 100% Humane Live Rescue</span>
       </nav>
 
-      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
+      {/* Editorial Header */}
       <div className="pt-1 pb-8 border-b border-stone-200">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
-          Humane Bee Removal &amp; <br className="hidden sm:inline" />
-          <span className="italic text-[#8C6B28]">Live Swarm Rescue.</span>
-        </h1>
-        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
-          100% no-kill live swarm extractions and structural relocations to our protected Kittatinny Ridge apiary sanctuary.
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-1.5">
+              Singing Bee Living Rescue
+            </span>
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+              Humane Bee Removal &amp; <br className="hidden sm:inline" />
+              <span className="italic text-[#D64500]">Live Swarm Rescue.</span>
+            </h1>
+            <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+              100% no-kill live swarm extractions and structural relocations to our protected Kittatinny Ridge apiary sanctuary.
+            </p>
+          </div>
+          <BrandLogo variant="seal" className="self-start sm:self-end" />
+        </div>
 
         {/* Emergency Hotline Strip - Clean Minimal */}
         <div className="mt-6 p-4 rounded-md bg-stone-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 max-w-xl">
           <div className="space-y-0.5 text-center sm:text-left">
-            <span className="text-[10px] font-mono tracking-widest text-[#C5A265] uppercase font-semibold">
+            <span className="text-[10px] font-mono tracking-widest text-[#FB5601] uppercase font-semibold">
               24/7 Swarm Dispatch Hotline
             </span>
             <p className="text-sm sm:text-base font-mono font-bold text-white">
@@ -98,7 +107,7 @@ export default function BeeRemovalClient() {
           </div>
           <a
             href="tel:9738244483"
-            className="px-4 py-2 rounded-md bg-[#C5A265] hover:bg-[#b08e54] text-stone-950 font-semibold text-xs uppercase tracking-wider transition shrink-0 flex items-center gap-2 cursor-pointer"
+            className="px-4 py-2 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white font-semibold text-xs uppercase tracking-wider transition shrink-0 flex items-center gap-2 cursor-pointer"
           >
             <PhoneCall size={13} />
             <span>Call Dispatch</span>
@@ -182,10 +191,10 @@ export default function BeeRemovalClient() {
                   Rescue Charter
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-white tracking-tight">
-                  The Avenoir Living Rescue Guarantee
+                  The Singing Bee Living Rescue Guarantee
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Unlike exterminators who spray neurotoxins leaving gallons of rotting honey inside your walls, Avenoir extracts the living superorganism intact.
+                  Unlike exterminators who spray neurotoxins leaving gallons of rotting honey inside your walls, Singing Bee extracts the living superorganism intact.
                 </p>
               </div>
 
@@ -226,7 +235,7 @@ export default function BeeRemovalClient() {
               <div className="rounded-xl bg-white/5 border border-white/10 p-4 space-y-2">
                 <div className="flex text-amber-400 text-xs">★★★★★</div>
                 <p className="text-xs italic text-slate-200 leading-relaxed">
-                  &ldquo;A 40,000-bee swarm landed on our pergola before an outdoor wedding. Avenoir arrived in 40 minutes, gently transferred the queen to a cedar nuc, and left without a single sting.&rdquo;
+                  &ldquo;A 40,000-bee swarm landed on our pergola before an outdoor wedding. Singing Bee arrived in 40 minutes, gently transferred the queen to a cedar nuc, and left without a single sting.&rdquo;
                 </p>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-amber-300/80">
                   — Julian &amp; Claire T., Bedminster NJ

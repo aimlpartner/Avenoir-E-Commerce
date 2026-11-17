@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
 
 export const metadata: Metadata = {
-  title: 'Maison Avenoir Honey | New Jersey Harvested. Beautifully Shared.',
-  description: 'A premium New Jersey honey house: warm, editorial, traceable, and gift-first. Small-batch raw honey bottled with the story of the season still inside.',
+  title: 'Singing Bee Wildflower Honey | New Jersey Harvested. Raw & Unfiltered.',
+  description: 'Small-batch raw wildflower honey harvested by hand in Sussex County, New Jersey and bottled unheated with full apiary provenance.',
   openGraph: {
-    title: 'Maison Avenoir Honey | New Jersey Harvested. Beautifully Shared.',
-    description: 'A premium New Jersey honey house: warm, editorial, traceable, and gift-first. Small-batch raw honey bottled with the story of the season still inside.',
-    images: ['/images/hero-apiary-landscape.jpg'],
+    title: 'Singing Bee Wildflower Honey | New Jersey Harvested. Raw & Unfiltered.',
+    description: 'Small-batch raw wildflower honey harvested by hand in Sussex County, New Jersey.',
+    images: ['/media/brand/singing-bee-logo.png'],
   },
 };
 

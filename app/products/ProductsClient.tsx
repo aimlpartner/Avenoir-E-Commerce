@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { PRODUCTS, Department } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function ProductsClient() {
   const searchParams = useSearchParams();
@@ -69,14 +70,20 @@ export default function ProductsClient() {
         <span className="text-emerald-950 font-bold">All Products &amp; Catalog</span>
       </nav>
 
-      {/* Page Header - Clean Editorial Typography */}
-      <div className="pt-1 pb-6 border-b border-stone-200 text-left">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
-          Complete Apiary Collection
-        </h1>
-        <p className="text-sm sm:text-base text-stone-500 font-serif mt-2 max-w-2xl">
-          Single-origin unheated honeys, certified commercial apiculture equipment, and heirloom presentation boxes.
-        </p>
+      {/* Page Header */}
+      <div className="pt-1 pb-6 border-b border-stone-200 text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-1.5">
+            Singing Bee Full Catalog
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+            Complete Apiary Collection
+          </h1>
+          <p className="text-sm sm:text-base text-stone-500 font-serif mt-2 max-w-2xl">
+            Single-origin unheated honeys, certified commercial apiculture equipment, and heirloom presentation boxes.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* Department Filter Navigation Pills */}

@@ -20,6 +20,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { useCart } from '@/context/CartContext';
 import { HONEY_SUBCATEGORIES, BEEKEEPING_SUBCATEGORIES, PRODUCTS } from '@/lib/products';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -149,9 +150,7 @@ export default function Navbar() {
             className="flex items-center cursor-pointer select-none group py-1"
             onClick={() => { setNavDropdown(null); setMobileMenuOpen(false); }}
           >
-            <span className="font-serif text-2xl lg:text-[26px] font-normal tracking-[0.22em] text-stone-900 group-hover:text-[#8C6B28] transition-colors">
-              AVENOIR
-            </span>
+            <BrandLogo variant="navbar" />
           </Link>
         </div>
 
@@ -278,9 +277,12 @@ export default function Navbar() {
                   transition={{ duration: 0.15 }}
                   className="absolute right-0 top-full w-64 bg-white border border-stone-200 border-t-0 p-3 shadow-xl z-50 text-left"
                 >
-                  <div className="pb-2.5 mb-2 border-b border-stone-100">
-                    <p className="text-xs font-bold text-stone-900">Patron Account</p>
-                    <p className="text-[11px] text-stone-500">Avenoir Collector</p>
+                  <div className="pb-2.5 mb-2 border-b border-stone-100 flex items-center justify-between gap-2">
+                    <div>
+                      <p className="text-xs font-bold text-stone-900">Patron Account</p>
+                      <p className="text-[11px] text-[#D64500] font-medium">Singing Bee Collector</p>
+                    </div>
+                    <BrandLogo variant="mark" className="w-7 h-7" />
                   </div>
 
                   <div className="space-y-1 text-xs">
@@ -327,7 +329,7 @@ export default function Navbar() {
           {/* 3. Shopping Bag Button */}
           <button 
             onClick={() => setIsCartOpen(true)}
-            className="h-10 px-3 flex items-center gap-1.5 text-stone-900 hover:text-[#8C6B28] transition cursor-pointer rounded-full hover:bg-stone-100"
+            className="h-10 px-3 flex items-center gap-1.5 text-stone-900 hover:text-[#D64500] transition cursor-pointer rounded-full hover:bg-[#FFF4ED]"
             aria-label={`Shopping bag containing ${cartCount} items`}
             title="Shopping Bag"
           >
@@ -378,7 +380,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           All Honey Reserves
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -392,7 +394,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           Raw &amp; Terroir Jars
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -406,7 +408,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           Cut Honeycomb &amp; Flights
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -420,7 +422,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           Infused &amp; Creamed
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -434,7 +436,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           Gift Vaults &amp; Chests
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -456,7 +458,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           All Apiary Equipment
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -470,7 +472,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           Protective Apparel
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -484,7 +486,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           Tools &amp; Smokers
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -498,7 +500,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           Hive Hardware &amp; Woodenware
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -512,7 +514,7 @@ export default function Navbar() {
                         onClick={() => setNavDropdown(null)}
                         className="group block"
                       >
-                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                        <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                           Harvest &amp; Wax Craft
                         </p>
                         <p className="text-xs text-stone-500 font-light mt-0.5 font-serif">
@@ -524,23 +526,18 @@ export default function Navbar() {
 
                   {/* Col 3: Direct Shop Catalog Action */}
                   <div className="border-t md:border-t-0 md:border-l border-stone-200 pt-6 md:pt-0 md:pl-8 lg:pl-10 flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-400 font-medium block">
-                        Full Catalog
-                      </span>
+                    <div className="space-y-3">
+                      <BrandLogo variant="pill" />
                       <h4 className="font-serif text-lg text-stone-900 font-normal">
-                        Browse All Products
+                        Full Harvest Catalog
                       </h4>
-                      <p className="text-xs text-stone-500 leading-relaxed font-serif">
-                        Explore our complete harvest collection of raw varietal honeys and certified apiary equipment.
-                      </p>
                     </div>
-                    <div className="pt-6">
+                    <div className="pt-4">
                       <Link
                         href="/shop"
                         prefetch={true}
                         onClick={() => setNavDropdown(null)}
-                        className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-stone-900 hover:text-[#8C6B28] transition-colors group cursor-pointer"
+                        className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-stone-900 hover:text-[#D64500] transition-colors group cursor-pointer"
                       >
                         <span>View All Products ({totalCount})</span>
                         <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
@@ -563,13 +560,13 @@ export default function Navbar() {
                       onClick={() => setNavDropdown(null)}
                       className="group block space-y-1.5"
                     >
-                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                         Apiary Academy &amp; Workshops
                       </p>
                       <p className="text-xs text-stone-500 font-serif leading-relaxed">
                         Masterclasses, hands-on apprentice inspections, and guided sensory honey tasting sessions.
                       </p>
-                      <span className="text-xs font-medium text-[#8C6B28] inline-flex items-center gap-1 pt-1 group-hover:underline">
+                      <span className="text-xs font-medium text-[#D64500] inline-flex items-center gap-1 pt-1 group-hover:underline">
                         <span>Explore Classes</span>
                         <ArrowRight size={12} />
                       </span>
@@ -587,13 +584,13 @@ export default function Navbar() {
                       onClick={() => setNavDropdown(null)}
                       className="group block space-y-1.5"
                     >
-                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                         Humane Bee Removal
                       </p>
                       <p className="text-xs text-stone-500 font-serif leading-relaxed">
                         100% pesticide-free live swarm rescue and structural colony extractions relocated to sanctuary apiaries.
                       </p>
-                      <span className="text-xs font-medium text-[#8C6B28] inline-flex items-center gap-1 pt-1 group-hover:underline">
+                      <span className="text-xs font-medium text-[#D64500] inline-flex items-center gap-1 pt-1 group-hover:underline">
                         <span>Request Removal</span>
                         <ArrowRight size={12} />
                       </span>
@@ -611,13 +608,13 @@ export default function Navbar() {
                       onClick={() => setNavDropdown(null)}
                       className="group block space-y-1.5"
                     >
-                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition-colors">
+                      <p className="text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition-colors">
                         Estate Hive Stewardship
                       </p>
                       <p className="text-xs text-stone-500 font-serif leading-relaxed">
                         Turnkey cedar hive installation, seasonal health audits, and custom estate harvest bottling.
                       </p>
-                      <span className="text-xs font-medium text-[#8C6B28] inline-flex items-center gap-1 pt-1 group-hover:underline">
+                      <span className="text-xs font-medium text-[#D64500] inline-flex items-center gap-1 pt-1 group-hover:underline">
                         <span>Estate Inquiry</span>
                         <ArrowRight size={12} />
                       </span>
@@ -626,23 +623,18 @@ export default function Navbar() {
 
                   {/* Col 4: Services Overview */}
                   <div className="border-t md:border-t-0 md:border-l border-stone-200 pt-6 md:pt-0 md:pl-8 lg:pl-10 flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-400 font-medium block">
-                        Overview
-                      </span>
+                    <div className="space-y-3">
+                      <BrandLogo variant="pill" />
                       <h4 className="font-serif text-lg text-stone-900 font-normal">
                         All Apiary Services
                       </h4>
-                      <p className="text-xs text-stone-500 leading-relaxed font-serif">
-                        Learn about our mission to protect New Jersey honeybees through education, ethical rescue, and private apiaries.
-                      </p>
                     </div>
-                    <div className="pt-6">
+                    <div className="pt-4">
                       <Link
                         href="/services"
                         prefetch={true}
                         onClick={() => setNavDropdown(null)}
-                        className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-stone-900 hover:text-[#8C6B28] transition-colors group cursor-pointer"
+                        className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-stone-900 hover:text-[#D64500] transition-colors group cursor-pointer"
                       >
                         <span>Services Overview</span>
                         <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
@@ -685,7 +677,8 @@ export default function Navbar() {
                   
                   {/* Search Bar Input */}
                   <form onSubmit={handleSearchSubmit} className="relative flex items-center border-b border-stone-200 px-4 py-3.5 sm:py-4">
-                    <Search size={20} className="text-stone-400 shrink-0 mr-3" />
+                    <BrandLogo variant="mark" className="w-6 h-6 mr-2" />
+                    <Search size={18} className="text-[#D64500] shrink-0 mr-2.5" />
                     <input
                       ref={searchInputRef}
                       type="text"
@@ -731,11 +724,11 @@ export default function Navbar() {
                                     src={product.imageUrl}
                                     alt={product.name}
                                     fill
-                                    className="object-cover"
+                                    className={product.imageUrl.includes('singing-bee-bottle') ? 'object-contain p-0.5' : 'object-cover'}
                                   />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <h4 className="font-serif text-sm font-medium text-stone-900 group-hover:text-[#8C6B28] transition truncate">
+                                  <h4 className="font-serif text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition truncate">
                                     {product.name}
                                   </h4>
                                   <p className="text-xs text-stone-500 truncate">{product.subtitle}</p>
@@ -826,10 +819,10 @@ export default function Navbar() {
                 className="fixed inset-y-0 right-0 w-[80vw] max-w-xs bg-white shadow-xl flex flex-col justify-between overflow-hidden z-[100] text-left border-l border-stone-200"
               >
                 {/* Header */}
-                <div className="p-5 border-b border-stone-200 flex items-center justify-between">
-                  <span className="font-serif text-xl font-normal tracking-[0.2em] text-stone-900">
-                    AVENOIR
-                  </span>
+                <div className="p-4 border-b border-stone-200 flex items-center justify-between">
+                  <Link href="/" prefetch={true} onClick={() => setMobileMenuOpen(false)}>
+                    <BrandLogo variant="compact" />
+                  </Link>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-1.5 text-stone-600 hover:text-stone-900 transition"
@@ -846,7 +839,7 @@ export default function Navbar() {
                       href="/shop"
                       prefetch={true}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-2.5 text-base font-serif text-stone-900 hover:text-[#8C6B28] transition"
+                      className="block py-2.5 text-base font-serif text-stone-900 hover:text-[#D64500] transition"
                     >
                       Shop All Honey ({totalCount})
                     </Link>
@@ -884,7 +877,7 @@ export default function Navbar() {
                       href="/gifting"
                       prefetch={true}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-2 text-base font-serif text-stone-900 hover:text-[#8C6B28] transition"
+                      className="block py-2 text-base font-serif text-stone-900 hover:text-[#D64500] transition"
                     >
                       Build a Gift Box
                     </Link>
@@ -893,7 +886,7 @@ export default function Navbar() {
                       href="/corporate"
                       prefetch={true}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-2 text-base font-serif text-stone-900 hover:text-[#8C6B28] transition"
+                      className="block py-2 text-base font-serif text-stone-900 hover:text-[#D64500] transition"
                     >
                       Corporate Gifting
                     </Link>
@@ -902,7 +895,7 @@ export default function Navbar() {
                       href="/services"
                       prefetch={true}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-2 text-base font-serif text-stone-900 hover:text-[#8C6B28] transition"
+                      className="block py-2 text-base font-serif text-stone-900 hover:text-[#D64500] transition"
                     >
                       Apiary Services
                     </Link>
@@ -911,7 +904,7 @@ export default function Navbar() {
                       href="/terroir"
                       prefetch={true}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-2 text-base font-serif text-stone-900 hover:text-[#8C6B28] transition"
+                      className="block py-2 text-base font-serif text-stone-900 hover:text-[#D64500] transition"
                     >
                       Botanical Terroir Map
                     </Link>

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicesClient from './ServicesClient';
 
 export const metadata: Metadata = {
-  title: 'Atelier Services | Educate, Humane Bee Removal & Estate Beekeeping',
-  description: 'Avenoir Sussex County Apiary services: Apiary Academy & Masterclasses, 100% Humane Live Honeybee Swarm Removal, and Full-Service Private Estate Beekeeping Management.',
+  title: 'Apiary Services | Educate, Humane Bee Removal & Estate Beekeeping',
+  description: 'Singing Bee Sussex County Apiary services: Apiary Academy & Masterclasses, 100% Humane Live Honeybee Swarm Removal, and Full-Service Private Estate Beekeeping Management.',
   keywords: [
     'beekeeping education',
     'bee removal sussex county',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'live swarm rescue'
   ],
   openGraph: {
-    title: 'Avenoir Apiary Services | Educate, Removal & Estate Stewardship',
+    title: 'Singing Bee Apiary Services | Educate, Removal & Estate Stewardship',
     description: 'Master beekeeping workshops, zero-chemical humane live bee swarm relocations, and private estate apiary management across the Sussex County & Tristate area.',
     type: 'website',
   },

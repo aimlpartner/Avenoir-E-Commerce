@@ -39,6 +39,7 @@ import {
 } from 'lucide-react';
 import { useAdmin, InventoryItem, Order, CustomerAccount, SiteTicker, OrderStatus, PaymentStatus } from '@/context/AdminContext';
 import { HONEY_SUBCATEGORIES, BEEKEEPING_SUBCATEGORIES, Department, Subcategory } from '@/lib/products';
+import BrandLogo from '@/components/BrandLogo';
 
 type AdminTab = 'overview' | 'inventory' | 'sales' | 'tickers' | 'customers' | 'accounts';
 
@@ -91,7 +92,7 @@ export default function AdminClient() {
     lowStockThreshold: 10,
     locationBin: 'SUS-BAY-A-1',
     description: '',
-    imageUrl: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=800',
+    imageUrl: '/media/products/singing-bee-bottle.png',
     materials: 'Raw Sussex County Honey',
     details: ['100% Unheated Raw', 'Estate Extracted'],
   });
@@ -258,8 +259,8 @@ export default function AdminClient() {
         {/* Editorial Commercial Apiary Operations Background Image */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
           <Image
-            src="/images/banner-beekeeping-gear.jpg"
-            alt="Commercial Apiary Operations & Hardware"
+            src="/media/apiary/photos/sunset-hives-row.jpeg"
+            alt="Madisonville Apiary Hives"
             fill
             priority
             sizes="100vw"
@@ -271,17 +272,19 @@ export default function AdminClient() {
         </div>
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
-          <div className="space-y-2">
-            {/* Clean Typographic Eyebrow (No Pill Badge) */}
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Live Atelier OS &bull; Sussex Apiary</span>
-              <span className="text-slate-500">&bull;</span>
-              <span className="text-slate-400 font-mono text-[11px] lowercase">v2.6 enterprise</span>
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <BrandLogo variant="pill" theme="dark" />
+              <div className="flex flex-wrap items-center gap-2 text-xs font-mono font-semibold tracking-wider text-[#FB5601] uppercase">
+                <span className="w-2 h-2 rounded-full bg-[#FB5601] animate-pulse" />
+                <span>Live Apiary OS &bull; Sussex Apiary</span>
+                <span className="text-slate-500">&bull;</span>
+                <span className="text-slate-400 font-mono text-[11px] lowercase">v2.6 enterprise</span>
+              </div>
             </div>
             
             <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Operations &amp; Commerce Atelier
+              Operations &amp; Commerce Portal
             </h1>
             <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
               Unified governance for reserve honey inventory, harvest bin hardware, client accounts, customer ledger, sales fulfillment, and active store tickers.
@@ -1600,7 +1603,7 @@ export default function AdminClient() {
                   lowStockThreshold: Number(newProdForm.lowStockThreshold),
                   locationBin: newProdForm.locationBin,
                   description: newProdForm.description,
-                  imageUrl: newProdForm.imageUrl || 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=800',
+                  imageUrl: newProdForm.imageUrl || '/media/products/singing-bee-bottle.png',
                   materials: newProdForm.materials,
                   details: newProdForm.details,
                   rating: 5.0,

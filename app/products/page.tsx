@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'All Products & Apiary Catalog',
   description: 'Complete collection of single-origin unheated raw honeys, commercial-grade beekeeping supplies, and handcrafted executive presentation trunks.',
   openGraph: {
-    title: 'All Products & Apiary Catalog | Avenoir Apiary',
+    title: 'All Products & Apiary Catalog | Singing Bee Honey',
     description: 'Explore the full Sussex County apiary inventory across honey, hardware, and luxury gifts.',
   },
 };

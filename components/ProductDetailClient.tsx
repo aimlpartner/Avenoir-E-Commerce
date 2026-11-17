@@ -27,6 +27,7 @@ import {
 import { PRODUCTS, ProductItem } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
 import ProductCard from '@/components/ProductCard';
+import BrandLogo from '@/components/BrandLogo';
 
 interface ProductDetailClientProps {
   product: ProductItem;
@@ -45,6 +46,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
   const [addedAddonId, setAddedAddonId] = useState<string | null>(null);
 
   const isHoney = product.department === 'honey';
+  const isBottleCutout = product.imageUrl.includes('singing-bee-bottle');
 
   const pairWellWithProducts = PRODUCTS.filter(
     (p) => ['AV-JAR-MINI', 'AV-ACC-WAND', 'AV-CANDLE-TAPER'].includes(p.id) && p.id !== product.id
@@ -85,21 +87,25 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
         
         {/* Left: Product Image Stage */}
         <div className="lg:col-span-6 space-y-4">
-          <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-stone-100 border border-stone-200/90 shadow-xs">
+          <div
+            className={`relative aspect-square w-full rounded-lg overflow-hidden border border-stone-200/90 shadow-xs ${
+              isBottleCutout ? 'bg-gradient-to-b from-[#FAF7F2] to-[#F2EAE0]' : 'bg-stone-100'
+            }`}
+          >
             <Image
               src={product.imageUrl}
               alt={product.name}
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className={isBottleCutout ? 'object-contain p-6 sm:p-10 drop-shadow-xl' : 'object-cover'}
               referrerPolicy="no-referrer"
             />
 
             {/* Badges */}
             <div className="absolute top-4 left-4 flex flex-col gap-1.5 items-start">
               {product.badge && (
-                <span className="bg-stone-900 text-[#E8D7B5] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-xs shadow-xs">
+                <span className="bg-[#FB5601] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-xs shadow-xs">
                   {product.badge}
                 </span>
               )}
@@ -108,6 +114,11 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               }`}>
                 {isHoney ? 'New Jersey Honey' : 'Professional Apiary Supply'}
               </span>
+            </div>
+
+            {/* Singing Bee Certified Seal */}
+            <div className="absolute top-4 right-4 z-10">
+              <BrandLogo variant="seal" />
             </div>
 
             {/* Stock status */}
@@ -120,22 +131,22 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
           {/* Trust Guarantees */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 pt-2">
             <div className="p-2 sm:p-2.5 rounded-md bg-white border border-stone-200/90 text-center space-y-0.5 shadow-2xs">
-              <Truck size={15} className="mx-auto text-[#8C6B28]" />
+              <Truck size={15} className="mx-auto text-[#D64500]" />
               <span className="text-[10px] sm:text-[11px] font-bold text-stone-800 block truncate">Express Dispatch</span>
               <p className="text-[9px] sm:text-[10px] text-stone-500">Free over $60</p>
             </div>
             <div className="p-2 sm:p-2.5 rounded-md bg-white border border-stone-200/90 text-center space-y-0.5 shadow-2xs">
-              <MapPin size={15} className="mx-auto text-[#8C6B28]" />
+              <MapPin size={15} className="mx-auto text-[#D64500]" />
               <span className="text-[10px] sm:text-[11px] font-bold text-stone-800 block truncate">Local Pickup</span>
               <p className="text-[9px] sm:text-[10px] text-stone-500">Sussex County, NJ</p>
             </div>
             <div className="p-2 sm:p-2.5 rounded-md bg-white border border-stone-200/90 text-center space-y-0.5 shadow-2xs">
-              <ShieldCheck size={15} className="mx-auto text-[#8C6B28]" />
+              <ShieldCheck size={15} className="mx-auto text-[#D64500]" />
               <span className="text-[10px] sm:text-[11px] font-bold text-stone-800 block truncate">Traceable QR</span>
               <p className="text-[9px] sm:text-[10px] text-stone-500">Hive Passport</p>
             </div>
             <div className="p-2 sm:p-2.5 rounded-md bg-white border border-stone-200/90 text-center space-y-0.5 shadow-2xs">
-              <RotateCcw size={15} className="mx-auto text-[#8C6B28]" />
+              <RotateCcw size={15} className="mx-auto text-[#D64500]" />
               <span className="text-[10px] sm:text-[11px] font-bold text-stone-800 block truncate">Guarantee</span>
               <p className="text-[9px] sm:text-[10px] text-stone-500">30-Day Policy</p>
             </div>
@@ -148,10 +159,10 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             
             {/* Rating & SKU */}
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500">
-              <div className="flex items-center gap-1 text-[#C5A265] font-bold">
+              <div className="flex items-center gap-1 text-[#FB5601] font-bold">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={13} className="fill-[#C5A265] text-[#C5A265]" />
+                    <Star key={i} size={13} className="fill-[#FB5601] text-[#FB5601]" />
                   ))}
                 </div>
                 <span className="text-stone-800 font-extrabold ml-1">{product.rating}</span>
@@ -167,7 +178,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             {/* Title & Subtitle */}
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[11px] sm:text-xs font-bold tracking-widest text-[#8C6B28] uppercase block">
+                <span className="text-[11px] sm:text-xs font-bold tracking-widest text-[#D64500] uppercase block">
                   {product.subtitle}
                 </span>
                 {isHoney && (
@@ -181,7 +192,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               </h1>
               {isHoney && (
                 <div className="text-xs font-medium text-stone-800 bg-stone-50 p-3 rounded-md border border-stone-200 flex items-start gap-2">
-                  <Leaf size={15} className="text-[#8C6B28] shrink-0 mt-0.5" />
+                  <Leaf size={15} className="text-[#D64500] shrink-0 mt-0.5" />
                   <p className="leading-relaxed">
                     <strong>Honest Process:</strong> Raw &amp; unfiltered &mdash; bottled unheated to protect natural live enzymes, wild pollen, and microclimate floral aromatics.
                   </p>
@@ -278,14 +289,14 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                   onClick={handleAdd}
                   className="flex-1 py-3 px-6 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white font-bold text-xs uppercase tracking-wider transition cursor-pointer flex items-center justify-center gap-2 shadow-2xs active:scale-98 min-h-[48px]"
                 >
-                  <ShoppingBag size={16} className="text-[#C5A265]" />
+                  <ShoppingBag size={16} className="text-[#FB5601]" />
                   <span>{addedSuccess ? 'Added to Bag!' : `Add to Bag • $${(product.price * quantity).toFixed(2)}`}</span>
                 </button>
               </div>
 
               {addedSuccess && (
                 <div className="p-3 bg-[#142118] text-stone-200 border border-[#223528] rounded-md text-xs font-semibold flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#C5A265] shrink-0" />
+                  <CheckCircle2 size={16} className="text-[#FB5601] shrink-0" />
                   <span>Item added to your shopping bag! Cart drawer is open.</span>
                 </div>
               )}
@@ -293,11 +304,11 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               {/* Shipping & Gifting Dispatch Notices */}
               <div className="space-y-2 pt-1">
                 <div className="flex items-center gap-2 text-[11px] text-stone-600 bg-stone-50 p-2.5 rounded-md border border-stone-200/80">
-                  <Gift size={14} className="text-[#8C6B28] shrink-0" />
+                  <Gift size={14} className="text-[#D64500] shrink-0" />
                   <span>Complimentary gift wrapping &amp; handwritten note included at checkout. &ldquo;A sweeter way to say thank you.&rdquo;</span>
                 </div>
                 <div className="flex items-center gap-2 text-[11px] text-stone-800 bg-stone-50 p-2.5 rounded-md border border-stone-200/80">
-                  <Truck size={14} className="text-[#8C6B28] shrink-0" />
+                  <Truck size={14} className="text-[#D64500] shrink-0" />
                   <span><strong>Holiday Gift Notice:</strong> Order by Dec 18 for guaranteed delivery by Dec 24. Local pickup available through Dec 23.</span>
                 </div>
               </div>
@@ -338,7 +349,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                       >
                         {addedAddonId === addon.id ? (
                           <>
-                            <CheckCircle2 size={12} className="text-[#C5A265]" />
+                            <CheckCircle2 size={12} className="text-[#FB5601]" />
                             <span>Added</span>
                           </>
                         ) : (
@@ -362,25 +373,25 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               <ul className="space-y-1.5 text-xs text-stone-600">
                 {product.details.map((detail, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 size={14} className="text-[#8C6B28] shrink-0 mt-0.5" />
+                    <CheckCircle2 size={14} className="text-[#D64500] shrink-0 mt-0.5" />
                     <span>{detail}</span>
                   </li>
                 ))}
                 {product.materials && (
                   <li className="flex items-start gap-2">
-                    <Layers size={14} className="text-[#8C6B28] shrink-0 mt-0.5" />
+                    <Layers size={14} className="text-[#D64500] shrink-0 mt-0.5" />
                     <span><strong>Craft Materials:</strong> {product.materials}</span>
                   </li>
                 )}
                 {product.weight && (
                   <li className="flex items-start gap-2">
-                    <Sparkles size={14} className="text-[#8C6B28] shrink-0 mt-0.5" />
+                    <Sparkles size={14} className="text-[#D64500] shrink-0 mt-0.5" />
                     <span><strong>Weight:</strong> {product.weight}</span>
                   </li>
                 )}
                 {product.dimensions && (
                   <li className="flex items-start gap-2">
-                    <Award size={14} className="text-[#8C6B28] shrink-0 mt-0.5" />
+                    <Award size={14} className="text-[#D64500] shrink-0 mt-0.5" />
                     <span><strong>Dimensions:</strong> {product.dimensions}</span>
                   </li>
                 )}
@@ -396,14 +407,14 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                   className="w-full flex items-center justify-between text-left p-3 rounded-md bg-stone-50 hover:bg-stone-100 border border-stone-200 transition cursor-pointer"
                 >
                   <div className="flex items-center gap-2">
-                    <HelpCircle size={15} className="text-[#8C6B28] shrink-0" />
+                    <HelpCircle size={15} className="text-[#D64500] shrink-0" />
                     <span className="text-xs font-bold text-stone-900">
                       Why does real honey crystallize?
                     </span>
                   </div>
                   <ChevronDown
                     size={15}
-                    className={`text-[#8C6B28] transition-transform duration-200 ${
+                    className={`text-[#D64500] transition-transform duration-200 ${
                       faqOpen ? 'rotate-180' : ''
                     }`}
                   />
@@ -444,9 +455,9 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               </span>
               <span className="text-[10px] text-stone-400">out of 5 stars</span>
             </div>
-            <div className="flex text-[#C5A265]">
+            <div className="flex text-[#FB5601]">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={18} className="fill-[#C5A265]" />
+                <Star key={i} size={18} className="fill-[#FB5601]" />
               ))}
             </div>
           </div>
@@ -456,9 +467,9 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-5 rounded-md bg-stone-50 border border-stone-200/90 space-y-3">
             <div className="flex items-center justify-between">
-              <div className="flex text-[#C5A265]">
+              <div className="flex text-[#FB5601]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="fill-[#C5A265]" />
+                  <Star key={i} size={12} className="fill-[#FB5601]" />
                 ))}
               </div>
               <span className="text-[10px] text-stone-400">3 days ago</span>
@@ -468,15 +479,15 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             </p>
             <div className="flex items-center gap-2 pt-1 border-t border-stone-200/60">
               <span className="text-xs font-bold text-stone-800">Eleanor V.</span>
-              <span className="text-[10px] text-[#8C6B28] uppercase tracking-wider font-semibold">Verified Buyer</span>
+              <span className="text-[10px] text-[#D64500] uppercase tracking-wider font-semibold">Verified Buyer</span>
             </div>
           </div>
 
           <div className="p-5 rounded-md bg-stone-50 border border-stone-200/90 space-y-3">
             <div className="flex items-center justify-between">
-              <div className="flex text-[#C5A265]">
+              <div className="flex text-[#FB5601]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="fill-[#C5A265]" />
+                  <Star key={i} size={12} className="fill-[#FB5601]" />
                 ))}
               </div>
               <span className="text-[10px] text-stone-400">2 weeks ago</span>
@@ -486,15 +497,15 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             </p>
             <div className="flex items-center gap-2 pt-1 border-t border-stone-200/60">
               <span className="text-xs font-bold text-stone-800">Marcus Thorne</span>
-              <span className="text-[10px] text-[#8C6B28] uppercase tracking-wider font-semibold">Verified Corporate</span>
+              <span className="text-[10px] text-[#D64500] uppercase tracking-wider font-semibold">Verified Corporate</span>
             </div>
           </div>
 
           <div className="p-5 rounded-md bg-stone-50 border border-stone-200/90 space-y-3">
             <div className="flex items-center justify-between">
-              <div className="flex text-[#C5A265]">
+              <div className="flex text-[#FB5601]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="fill-[#C5A265]" />
+                  <Star key={i} size={12} className="fill-[#FB5601]" />
                 ))}
               </div>
               <span className="text-[10px] text-stone-400">1 month ago</span>
@@ -504,7 +515,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             </p>
             <div className="flex items-center gap-2 pt-1 border-t border-stone-200/60">
               <span className="text-xs font-bold text-stone-800">Dr. Julian Hayes</span>
-              <span className="text-[10px] text-[#8C6B28] uppercase tracking-wider font-semibold">Master Apiarist</span>
+              <span className="text-[10px] text-[#D64500] uppercase tracking-wider font-semibold">Master Apiarist</span>
             </div>
           </div>
         </div>
@@ -515,7 +526,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
         <section className="space-y-6 text-left">
           <div className="flex items-end justify-between border-b border-stone-200 pb-4">
             <div>
-              <span className="text-xs font-bold text-[#8C6B28] uppercase tracking-wider block mb-1">
+              <span className="text-xs font-bold text-[#D64500] uppercase tracking-wider block mb-1">
                 More from {isHoney ? 'The Honey Reserve' : 'The Apiary Shop'}
               </span>
               <h3 className="font-serif text-2xl font-bold text-stone-900">

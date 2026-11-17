@@ -29,6 +29,9 @@ import {
 import { TERROIR_PROFILES_DATA, TerroirZoneData, BotanicalFlora } from '@/lib/terroirData';
 import { PRODUCTS, ProductItem } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
+import BrandLogo from '@/components/BrandLogo';
+import ApiaryProofSection from '@/components/ApiaryProofSection';
+import { APIARY_VIDEO_CLIPS } from '@/lib/apiaryVideos';
 
 interface WeatherStationData {
   location: string;
@@ -241,15 +244,21 @@ export default function TerroirClient() {
         </div>
       </div>
 
-      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
-      <div className="pt-1 pb-8 border-b border-stone-200">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
-          Botanical Terroir &amp; <br className="hidden sm:inline" />
-          <span className="italic text-[#8C6B28]">Apiary Climate Data.</span>
-        </h1>
-        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
-          Live microclimate telemetry, nectar flow bloom schedules, and enzymatic laboratory metrics from Sussex County research yards.
-        </p>
+      {/* Editorial Header */}
+      <div className="pt-1 pb-8 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-1.5">
+            Singing Bee Apiary Provenance
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+            Botanical Terroir &amp; <br className="hidden sm:inline" />
+            <span className="italic text-[#D64500]">Apiary Climate Data.</span>
+          </h1>
+          <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+            Live microclimate telemetry, nectar flow bloom schedules, and enzymatic laboratory metrics from Sussex County research yards.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* Telemetry Metrics Strip - Clean Minimal Panel */}
@@ -261,7 +270,7 @@ export default function TerroirClient() {
         </div>
         <div>
           <span className="text-[10px] uppercase font-mono tracking-wider text-stone-500 block">Diastase Enzyme</span>
-          <span className="text-lg font-mono font-semibold text-[#8C6B28]">&gt; 28 DN</span>
+          <span className="text-lg font-mono font-semibold text-[#D64500]">&gt; 28 DN</span>
           <span className="text-xs text-stone-500 font-serif block mt-0.5">Active &amp; Live</span>
         </div>
         <div>
@@ -1134,6 +1143,21 @@ export default function TerroirClient() {
           </div>
         </div>
       )}
+
+      {/* Real Field Comb & Meadow Verification Reels */}
+      <div className="rounded-2xl overflow-hidden border border-stone-200">
+        <ApiaryProofSection
+          compact
+          clips={[
+            APIARY_VIDEO_CLIPS[5],
+            APIARY_VIDEO_CLIPS[6],
+            APIARY_VIDEO_CLIPS[3],
+            APIARY_VIDEO_CLIPS[0],
+          ]}
+          heading="Field-to-Lab Terroir Verification"
+          subheading="Real close-ups of raw unheated golden comb cells and active pasture colonies backing every batch certificate above."
+        />
+      </div>
 
       {/* Flora Inspection Detail Modal */}
       {selectedFloraModal && (

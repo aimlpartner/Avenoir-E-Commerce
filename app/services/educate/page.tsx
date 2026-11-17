@@ -3,7 +3,7 @@ import EducateClient from './EducateClient';
 
 export const metadata: Metadata = {
   title: 'Apiary Academy & Masterclasses | Beekeeping Education',
-  description: 'Hands-on beekeeping masterclasses, hive ecology courses, and private honey terroir tasting seminars hosted at Avenoir Sussex County Apiary.',
+  description: 'Hands-on beekeeping masterclasses, hive ecology courses, and private honey terroir tasting seminars hosted at Singing Bee Sussex County Apiary.',
   keywords: [
     'beekeeping classes nj',
     'apiary academy',
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     'pollinator education'
   ],
   openGraph: {
-    title: 'Educate | Avenoir Apiary Academy & Masterclasses',
-    description: 'Immersive hands-on beekeeping masterclasses and field workshops at Avenoir Sussex County apiary.',
+    title: 'Educate | Singing Bee Apiary Academy & Masterclasses',
+    description: 'Immersive hands-on beekeeping masterclasses and field workshops at Singing Bee Sussex County apiary.',
     type: 'website',
   },
 };

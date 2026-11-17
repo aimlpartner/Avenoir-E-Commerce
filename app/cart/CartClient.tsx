@@ -21,6 +21,7 @@ import {
 import { useCart } from '@/context/CartContext';
 import { useAdmin } from '@/context/AdminContext';
 import { PRODUCTS, ProductItem } from '@/lib/products';
+import BrandLogo from '@/components/BrandLogo';
 
 const ADDON_IDS = ['AV-JAR-MINI', 'AV-ACC-WAND', 'AV-CANDLE-TAPER'];
 const cartAddOns = ADDON_IDS.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean) as ProductItem[];
@@ -106,14 +107,17 @@ export default function CartClient() {
   if (checkoutComplete) {
     return (
       <div className="py-16 sm:py-24 px-4 sm:px-8 max-w-2xl mx-auto text-center space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center mx-auto shadow-sm">
-          <CheckCircle2 size={36} className="text-emerald-700" />
+        <div className="flex justify-center">
+          <BrandLogo variant="seal" />
+        </div>
+        <div className="w-12 h-12 rounded-2xl bg-[#FFF4ED] text-[#D64500] border border-[#FB5601]/30 flex items-center justify-center mx-auto shadow-sm">
+          <CheckCircle2 size={28} className="text-[#FB5601]" />
         </div>
         <h1 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
           Order Confirmed &amp; Staged for Dispatch
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md mx-auto">
-          Thank you for choosing Maison Avenoir. Your order #{orderNumber} has been received by our New Jersey honey house and will be packed with care.
+          Thank you for choosing Singing Bee Wildflower Honey. Your order #{orderNumber} has been received by our New Jersey honey house and will be packed with care.
         </p>
 
         {/* Order Details Summary */}
@@ -213,19 +217,22 @@ export default function CartClient() {
       </nav>
 
       {/* Page Title */}
-      <div className="border-b border-slate-200 pb-3 sm:pb-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 sm:gap-2">
-        <h1 className="font-serif text-2xl sm:text-4xl font-bold text-slate-900">
-          Your Shopping Bag
-        </h1>
-        <span className="text-xs text-slate-500">
+      <div className="border-b border-slate-200 pb-3 sm:pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="flex items-center gap-3">
+          <BrandLogo variant="mark" className="w-9 h-9" />
+          <h1 className="font-serif text-2xl sm:text-4xl font-bold text-slate-900">
+            Your Shopping Bag
+          </h1>
+        </div>
+        <span className="text-xs text-[#D64500] font-semibold">
           {cartItems.reduce((acc, i) => acc + i.quantity, 0)} item{cartItems.length !== 1 ? 's' : ''} in bag
         </span>
       </div>
 
       {cartItems.length === 0 ? (
         <div className="bg-white rounded-2xl p-12 sm:p-20 border border-slate-200 text-center max-w-md mx-auto shadow-xs space-y-4">
-          <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mx-auto">
-            <ShoppingBag size={28} />
+          <div className="flex justify-center">
+            <BrandLogo variant="seal" />
           </div>
           <h2 className="font-serif text-2xl font-bold text-slate-900">Your Bag is Empty</h2>
           <p className="text-xs text-slate-500 leading-relaxed">
@@ -283,7 +290,7 @@ export default function CartClient() {
                         src={item.imageUrl}
                         alt={item.name}
                         fill
-                        className="object-cover"
+                        className={item.imageUrl.includes('singing-bee-bottle') ? 'object-contain p-1' : 'object-cover'}
                         referrerPolicy="no-referrer"
                       />
                     </div>

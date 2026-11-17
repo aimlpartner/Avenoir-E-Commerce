@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { X, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import BrandLogo from '@/components/BrandLogo';
 
 interface GiftNoteModalProps {
   isOpen: boolean;
@@ -130,9 +131,10 @@ export default function GiftNoteModal({
                   Card Preview
                 </span>
 
-                <div className="bg-white p-5 rounded-sm border border-stone-200/70 font-serif text-stone-800 space-y-2">
-                  <div className="text-[11px] font-mono tracking-widest text-stone-400 uppercase text-center border-b border-stone-100 pb-2">
-                    Maison Avenoir · Apiary Note
+                <div className="bg-white p-5 rounded-sm border border-[#FB5601]/30 font-serif text-stone-800 space-y-2.5">
+                  <div className="flex items-center justify-center gap-2 text-[11px] font-mono tracking-widest text-[#D64500] uppercase border-b border-stone-100 pb-2.5">
+                    <BrandLogo variant="mark" className="w-5 h-5" />
+                    <span>Singing Bee · Wildflower Honey</span>
                   </div>
 
                   <p className="text-xs text-stone-500 italic">

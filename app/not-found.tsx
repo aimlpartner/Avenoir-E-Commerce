@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import BrandLogo from '@/components/BrandLogo';
 import { 
   Droplets, 
   Shield, 
@@ -402,10 +403,14 @@ export default function NotFound() {
       {/* 4. Single-Viewport Content Container */}
       <div className="relative z-10 w-full max-w-xl mx-auto text-center space-y-4 sm:space-y-5 my-auto">
         
+        <div className="flex justify-center">
+          <BrandLogo variant="seal" />
+        </div>
+
         {/* Editorial Sub-header */}
         <div className="space-y-1">
-          <span className="text-[10px] sm:text-xs font-mono font-semibold tracking-[0.3em] text-emerald-800 uppercase block">
-            Sussex County Apiary &bull; 404
+          <span className="text-[10px] sm:text-xs font-mono font-semibold tracking-[0.3em] text-[#D64500] uppercase block">
+            Singing Bee Apiary &bull; 404
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Beyond the Foraging Belt

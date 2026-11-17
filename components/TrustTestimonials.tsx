@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { X, Sparkles, ExternalLink } from 'lucide-react';
 import { PRODUCTS, ProductItem } from '@/lib/products';
+import BrandLogo from '@/components/BrandLogo';
 
 type CategoryFilter = 'all' | 'culinary' | 'apiary' | 'gifting';
 
@@ -363,15 +364,15 @@ export default function TrustTestimonials() {
         {/* Editorial Section Header with Upside Filter Tabs */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-stone-200/80 text-left">
           <div className="max-w-2xl space-y-2">
-            <p className="text-xs font-semibold tracking-widest uppercase text-stone-500">
-              From The First Harvest
-            </p>
+            <div className="flex items-center gap-2">
+              <BrandLogo variant="mark" className="w-5 h-5" />
+              <p className="text-xs font-semibold tracking-widest uppercase text-[#D64500]">
+                From The First Harvest
+              </p>
+            </div>
             <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 leading-tight">
-              From The First Harvest: Notes &amp; Reviews
+              From The First Harvest
             </h2>
-            <p className="text-sm text-stone-600 leading-relaxed pt-1">
-              What our patrons, chefs, and gift recipients are saying about Maison Avenoir New Jersey raw honey, seasonal samplers, and gift boxes.
-            </p>
           </div>
 
           {/* Category Filter Tabs - Positioned Upside */}
@@ -569,21 +570,24 @@ export default function TrustTestimonials() {
             </button>
 
             {/* Header / Origin */}
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-xs font-mono text-emerald-800 uppercase tracking-widest">
-                <Sparkles size={13} className="text-emerald-700" />
-                <span>Verified Field Dispatch &bull; {selectedRecord.date}</span>
+            <div className="flex items-start justify-between gap-4">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 text-xs font-mono text-[#D64500] uppercase tracking-widest">
+                  <Sparkles size={13} className="text-[#FB5601]" />
+                  <span>Verified Field Dispatch &bull; {selectedRecord.date}</span>
+                </div>
+                <h3 className="font-serif text-2xl text-stone-900 font-bold">
+                  {selectedRecord.author}
+                </h3>
+                <p className="text-xs text-stone-500 font-sans">
+                  {selectedRecord.role}{selectedRecord.affiliation && <>, <span className="text-stone-700">{selectedRecord.affiliation}</span></>} &bull; {selectedRecord.location}
+                </p>
               </div>
-              <h3 className="font-serif text-2xl text-stone-900 font-bold">
-                {selectedRecord.author}
-              </h3>
-              <p className="text-xs text-stone-500 font-sans">
-                {selectedRecord.role}{selectedRecord.affiliation && <>, <span className="text-stone-700">{selectedRecord.affiliation}</span></>} &bull; {selectedRecord.location}
-              </p>
+              <BrandLogo variant="seal" className="mr-6 hidden sm:inline-flex" />
             </div>
 
             {/* Quote Body */}
-            <blockquote className="font-serif italic text-stone-800 text-lg leading-relaxed border-l-2 border-emerald-800 pl-4 py-1">
+            <blockquote className="font-serif italic text-stone-800 text-lg leading-relaxed border-l-2 border-[#FB5601] pl-4 py-1">
               &ldquo;{selectedRecord.text}&rdquo;
             </blockquote>
 

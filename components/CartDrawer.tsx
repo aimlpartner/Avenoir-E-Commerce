@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { X, Trash2, Plus, Minus, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useCart } from '@/context/CartContext';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function CartDrawer() {
   const { 
@@ -45,18 +46,21 @@ export default function CartDrawer() {
           >
             {/* Minimalist Editorial Header */}
             <div className="px-6 py-5 border-b border-stone-200 flex items-center justify-between">
-              <div>
-                <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
-                  Shopping Bag
-                  <span className="text-stone-400 font-sans text-sm ml-2 font-normal">
-                    ({totalItems})
-                  </span>
-                </h3>
-                <p className="text-xs text-stone-500 font-serif mt-0.5">
-                  {hasUnlockedFreeShipping
-                    ? 'Complimentary courier shipping unlocked'
-                    : `Add $${remainingForFreeShipping.toFixed(2)} for complimentary shipping`}
-                </p>
+              <div className="flex items-center gap-3">
+                <BrandLogo variant="mark" className="w-8 h-8" />
+                <div>
+                  <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
+                    Shopping Bag
+                    <span className="text-[#D64500] font-sans text-sm ml-2 font-semibold">
+                      ({totalItems})
+                    </span>
+                  </h3>
+                  <p className="text-xs text-stone-500 font-serif mt-0.5">
+                    {hasUnlockedFreeShipping
+                      ? 'Complimentary courier shipping unlocked'
+                      : `Add $${remainingForFreeShipping.toFixed(2)} for complimentary shipping`}
+                  </p>
+                </div>
               </div>
 
               <button
@@ -71,7 +75,10 @@ export default function CartDrawer() {
             {/* Cart Items List - Clean, Spacious, No Card Boxes */}
             <div className="flex-1 overflow-y-auto px-6 py-2">
               {cartItems.length === 0 ? (
-                <div className="text-center py-20 space-y-3">
+                <div className="text-center py-16 space-y-4">
+                  <div className="flex justify-center">
+                    <BrandLogo variant="seal" />
+                  </div>
                   <h4 className="font-serif text-lg font-normal text-stone-800">Your bag is empty</h4>
                   <p className="text-xs text-stone-500 max-w-xs mx-auto font-serif">
                     Explore single-origin raw honeys from Sussex County apiaries or curated gift boxes.
@@ -81,7 +88,7 @@ export default function CartDrawer() {
                       href="/honey"
                       prefetch={true}
                       onClick={() => setIsCartOpen(false)}
-                      className="inline-block px-6 py-2.5 rounded-lg bg-[#15231A] text-white text-xs font-medium hover:bg-[#1E3326] transition shadow-2xs"
+                      className="inline-block px-6 py-2.5 rounded-lg bg-[#FB5601] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#D64500] transition shadow-2xs"
                     >
                       Shop Honey
                     </Link>
@@ -97,7 +104,7 @@ export default function CartDrawer() {
                           src={item.imageUrl}
                           alt={item.name}
                           fill
-                          className="object-cover"
+                          className={item.imageUrl.includes('singing-bee-bottle') ? 'object-contain p-1' : 'object-cover'}
                           referrerPolicy="no-referrer"
                         />
                       </div>
@@ -109,7 +116,7 @@ export default function CartDrawer() {
                             href={item.isBundle ? '/gifting' : `/products/${item.productId}`}
                             prefetch={true}
                             onClick={() => setIsCartOpen(false)}
-                            className="font-serif text-sm sm:text-base font-normal text-stone-900 hover:text-[#8C6B28] transition line-clamp-1"
+                            className="font-serif text-sm sm:text-base font-normal text-stone-900 hover:text-[#D64500] transition line-clamp-1"
                           >
                             {item.name}
                           </Link>
@@ -208,7 +215,7 @@ export default function CartDrawer() {
                     className="w-full py-3.5 rounded-lg bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-medium uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Proceed to Checkout</span>
-                    <ArrowRight size={14} className="text-[#C5A265]" />
+                    <ArrowRight size={14} className="text-[#FB5601]" />
                   </Link>
                 </div>
               </div>

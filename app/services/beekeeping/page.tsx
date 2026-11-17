@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Bee Keeping | Private Estate Apiary Stewardship',
-    description: 'Turnkey cedar beehive installation, year-round health management, and private estate honey bottling by Avenoir master apiarists.',
+    description: 'Turnkey cedar beehive installation, year-round health management, and private estate honey bottling by Singing Bee master apiarists.',
     type: 'website',
   },
 };

@@ -13,6 +13,7 @@ import {
   ChevronDown 
 } from 'lucide-react';
 import GiftNoteModal from './GiftNoteModal';
+import BrandLogo from '@/components/BrandLogo';
 
 interface VisualBoxDrawerProps {
   tier: GiftBoxTier;
@@ -65,13 +66,16 @@ export default function VisualBoxDrawer({
         
         {/* Header Bar */}
         <div className="p-5 bg-stone-50/90 border-b border-stone-200/80 flex items-center justify-between">
-          <div>
-            <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block mb-1">
-              Box Summary
-            </span>
-            <h3 className="font-serif text-xl font-normal text-stone-900">
-              {tier.name}
-            </h3>
+          <div className="flex items-center gap-3">
+            <BrandLogo variant="mark" className="w-8 h-8" />
+            <div>
+              <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-0.5">
+                Box Summary
+              </span>
+              <h3 className="font-serif text-xl font-normal text-stone-900">
+                {tier.name}
+              </h3>
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
@@ -138,7 +142,7 @@ export default function VisualBoxDrawer({
                           src={item.imageUrl}
                           alt={item.name}
                           fill
-                          className="object-cover"
+                          className={item.imageUrl.includes('singing-bee-bottle') ? 'object-contain p-1' : 'object-cover'}
                         />
                         <span className="absolute bottom-1 inset-x-1 text-[9px] font-medium text-stone-900 bg-white/80 backdrop-blur-xs rounded-xs px-1 line-clamp-1 leading-tight text-center">
                           {item.name.replace('Honey', '').trim()}
@@ -238,7 +242,7 @@ export default function VisualBoxDrawer({
                   </button>
                 </div>
                 <p className="text-xs italic text-stone-600 line-clamp-2 font-serif">
-                  &ldquo;{giftMessage || 'Warmest wishes from Maison Avenoir'}&rdquo;
+                  &ldquo;{giftMessage || 'Warmest wishes from Singing Bee Honey'}&rdquo;
                 </p>
                 {giftSender && (
                   <p className="text-xs text-stone-400 text-right font-serif">

@@ -18,6 +18,7 @@ import {
 import { PRODUCTS, BEEKEEPING_SUBCATEGORIES, Subcategory } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
 import ProductFilterModal from '@/components/ProductFilterModal';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function BeekeepingClient() {
   const searchParams = useSearchParams();
@@ -116,19 +117,25 @@ export default function BeekeepingClient() {
         {activeSubMeta && (
           <>
             <ChevronRight size={12} />
-            <span className="text-[#8C6B28] font-medium">{activeSubMeta.shortName}</span>
+            <span className="text-[#D64500] font-medium">{activeSubMeta.shortName}</span>
           </>
         )}
       </nav>
 
-      {/* Editorial Collection Header - Minimalist, Pure Typography, No Cards, No AI Images */}
-      <div className="pt-1 pb-6 border-b border-stone-200">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
-          Beekeeping Equipment
-        </h1>
-        <p className="text-sm sm:text-base text-stone-500 font-serif mt-2">
-          Apiary hardware, protective gear, and Langstroth woodenware.
-        </p>
+      {/* Editorial Collection Header */}
+      <div className="pt-1 pb-6 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-1.5">
+            Singing Bee Apiary Supply
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+            Beekeeping Equipment
+          </h1>
+          <p className="text-sm sm:text-base text-stone-500 font-serif mt-2">
+            Apiary hardware, protective gear, and Langstroth woodenware.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* Clean Utility Control Bar - Borderless, Minimalist */}
@@ -171,7 +178,7 @@ export default function BeekeepingClient() {
               <SlidersHorizontal size={14} />
               <span>Filters</span>
               {activeFilterCount > 0 && (
-                <span className="w-4 h-4 rounded-full bg-[#8C6B28] text-white text-[10px] font-bold flex items-center justify-center">
+                <span className="w-4 h-4 rounded-full bg-[#FB5601] text-white text-[10px] font-bold flex items-center justify-center">
                   {activeFilterCount}
                 </span>
               )}

@@ -122,7 +122,7 @@ export default function FlavorSelectorGrid({
             exit={{ opacity: 0, y: -10 }}
             className="mb-6 p-3.5 rounded-md bg-stone-50 border border-stone-200 text-stone-800 flex items-center gap-2.5 text-xs font-serif"
           >
-            <AlertCircle size={16} className="text-[#8C6B28] shrink-0" />
+            <AlertCircle size={16} className="text-[#D64500] shrink-0" />
             <span>{feedbackMessage}</span>
           </motion.div>
         )}
@@ -142,13 +142,23 @@ export default function FlavorSelectorGrid({
               }`}
             >
               {/* Product Image */}
-              <div className="relative aspect-4/3 w-full bg-stone-50 overflow-hidden group">
+              <div
+                className={`relative aspect-4/3 w-full overflow-hidden group ${
+                  flavor.imageUrl.includes('singing-bee-bottle')
+                    ? 'bg-gradient-to-b from-[#FAF7F2] to-[#F2EAE0]'
+                    : 'bg-stone-50'
+                }`}
+              >
                 <Image
                   src={flavor.imageUrl}
                   alt={flavor.name}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-103 transition-transform duration-500"
+                  className={
+                    flavor.imageUrl.includes('singing-bee-bottle')
+                      ? 'object-contain p-3 group-hover:scale-105 transition-transform duration-500'
+                      : 'object-cover group-hover:scale-103 transition-transform duration-500'
+                  }
                 />
 
                 {/* Counter Tag if in box */}

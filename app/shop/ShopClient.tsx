@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { PRODUCTS, Department } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function ShopClient() {
   const searchParams = useSearchParams();
@@ -76,14 +77,20 @@ export default function ShopClient() {
         <span className="text-stone-900 font-bold">Shop All Departments</span>
       </nav>
 
-      {/* Editorial Header - Pure Typography, No Floating Cards */}
-      <div className="pt-1 pb-6 border-b border-stone-200 text-left">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
-          Shop All Collections
-        </h1>
-        <p className="text-sm sm:text-base text-stone-500 font-serif mt-2 max-w-2xl">
-          Single-origin raw harvests, curated gift flights, and master beekeeping hardware.
-        </p>
+      {/* Editorial Header */}
+      <div className="pt-1 pb-6 border-b border-stone-200 text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-1.5">
+            Singing Bee Wildflower Honey
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+            Shop All Collections
+          </h1>
+          <p className="text-sm sm:text-base text-stone-500 font-serif mt-2 max-w-2xl">
+            Single-origin raw harvests, curated gift flights, and master beekeeping hardware.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* Catalog Controls: Filter Tabs + Search + Sort */}
@@ -111,7 +118,7 @@ export default function ShopClient() {
                   : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
               }`}
             >
-              <Droplets size={14} className={selectedCategory === 'honey' ? 'text-[#C5A265]' : 'text-[#8C6B28]'} />
+              <Droplets size={14} className={selectedCategory === 'honey' ? 'text-[#FB5601]' : 'text-[#D64500]'} />
               <span>Honey Products ({honeyCount})</span>
             </button>
 
@@ -123,7 +130,7 @@ export default function ShopClient() {
                   : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
               }`}
             >
-              <Shield size={14} className={selectedCategory === 'beekeeping' ? 'text-[#C5A265]' : 'text-stone-600'} />
+              <Shield size={14} className={selectedCategory === 'beekeeping' ? 'text-[#FB5601]' : 'text-stone-600'} />
               <span>Beekeeping Equipment ({beekeepingCount})</span>
             </button>
 
@@ -135,7 +142,7 @@ export default function ShopClient() {
                   : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
               }`}
             >
-              <Gift size={14} className={selectedCategory === 'gifts' ? 'text-[#C5A265]' : 'text-[#8C6B28]'} />
+              <Gift size={14} className={selectedCategory === 'gifts' ? 'text-[#FB5601]' : 'text-[#D64500]'} />
               <span>Luxury Gift Vaults ({giftCount})</span>
             </button>
           </div>
@@ -202,7 +209,7 @@ export default function ShopClient() {
       {/* Terroir & Concierge Footer Strip */}
       <div className="pt-8 pb-4 border-t border-stone-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-left">
         <div className="space-y-1">
-          <span className="text-[11px] font-mono uppercase tracking-wider text-[#8C6B28]">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-[#D64500]">
             Botanical Provenance
           </span>
           <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
@@ -217,7 +224,7 @@ export default function ShopClient() {
           href="/terroir"
           className="px-5 py-2.5 rounded-lg bg-[#15231A] hover:bg-[#1E3326] text-white font-medium text-xs transition shrink-0 flex items-center gap-1.5"
         >
-          <Compass size={15} className="text-[#C5A265]" />
+          <Compass size={15} className="text-[#FB5601]" />
           <span>View Terroir Profiles</span>
         </Link>
       </div>

@@ -41,7 +41,7 @@ export default function BoxTierSelector({
             >
               <div className="space-y-1.5">
                 <span className={`text-[10px] font-mono uppercase tracking-[0.2em] block ${
-                  isSelected ? 'text-[#C5A265]' : 'text-stone-400'
+                  isSelected ? 'text-[#FB5601]' : 'text-stone-400'
                 }`}>
                   {tier.capacity} Jars &bull; Save {tier.discountPercent}%
                 </span>
@@ -62,7 +62,7 @@ export default function BoxTierSelector({
               }`}>
                 <div>
                   <span className={`font-serif text-2xl font-normal ${
-                    isSelected ? 'text-[#C5A265]' : 'text-stone-900'
+                    isSelected ? 'text-[#FB5601]' : 'text-stone-900'
                   }`}>
                     ${tier.bundlePrice.toFixed(2)}
                   </span>
@@ -73,7 +73,7 @@ export default function BoxTierSelector({
                   </span>
                 </div>
                 {isSelected && (
-                  <span className="text-[11px] font-mono text-[#C5A265] uppercase tracking-wider">
+                  <span className="text-[11px] font-mono text-[#FB5601] uppercase tracking-wider">
                     Selected
                   </span>
                 )}

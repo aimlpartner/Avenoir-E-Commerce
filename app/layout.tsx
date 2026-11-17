@@ -33,15 +33,16 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.APP_URL || 'http://localhost:3000'),
   title: {
-    default: 'Maison Avenoir Honey | New Jersey Harvested. Beautifully Shared.',
-    template: '%s | Maison Avenoir',
+    default: 'Singing Bee Wildflower Honey | New Jersey Harvested. Raw & Unfiltered.',
+    template: '%s | Singing Bee Honey',
   },
-  description: 'A premium New Jersey honey house: warm, editorial, traceable, and gift-first. Small-batch raw honey bottled with the story of the season still inside.',
-  keywords: ['Maison Avenoir', 'raw honey', 'New Jersey honey', 'Hive Passport', 'artisan honey', 'honey gift boxes', 'corporate gifting'],
+  description: 'Singing Bee Wildflower Honey: warm, traceable, small-batch raw honey harvested by hand in Sussex County, New Jersey and bottled with the story of the season still inside.',
+  keywords: ['Singing Bee', 'Singing Bee Wildflower Honey', 'raw honey', 'New Jersey honey', 'artisan honey', 'honey gift boxes', 'corporate gifting'],
   openGraph: {
-    title: 'Maison Avenoir Honey | New Jersey Harvested. Beautifully Shared.',
-    description: 'A premium New Jersey honey house: warm, editorial, traceable, and gift-first. Small-batch raw honey bottled with the story of the season still inside.',
+    title: 'Singing Bee Wildflower Honey | New Jersey Harvested. Raw & Unfiltered.',
+    description: 'Small-batch raw wildflower honey harvested in Sussex County, New Jersey—tended by real apiarists and bottled raw.',
     type: 'website',
+    images: ['/media/brand/singing-bee-logo.png'],
   },
 };
 

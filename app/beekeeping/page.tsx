@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   title: 'Beekeeping Supplies & Professional Gear',
   description: 'Field-tested in active commercial apiaries across the Northeast. From triple-layer ventilated suits and goatskin gauntlets to Western Red Cedar Langstroth woodenware and titanium frame tools.',
   openGraph: {
-    title: 'Beekeeping Supplies & Professional Gear | Avenoir Apiary',
+    title: 'Beekeeping Supplies & Professional Gear | Singing Bee Honey',
     description: 'Commercial-grade beekeeping supplies, ventilated bee suits, cedar hive boxes, and precision apiculture tools.',
-    images: ['/images/banner-beekeeping-gear.jpg'],
+    images: ['/media/apiary/photos/sunset-hives-row.jpeg'],
   },
 };
 

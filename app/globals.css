@@ -7,9 +7,12 @@
   --font-heading: var(--font-serif), Georgia, Cambria, serif;
   --font-mono: var(--font-mono), monospace;
   
-  --color-brand-gold: #C5A265;
-  --color-brand-gold-dark: #9E7A38;
-  --color-brand-gold-light: #F9F9F8;
+  --color-brand-accent: #FB5601;
+  --color-brand-accent-dark: #D64500;
+  --color-brand-accent-soft: #FFF4ED;
+  --color-brand-gold: #FB5601;
+  --color-brand-gold-dark: #D64500;
+  --color-brand-gold-light: #FFF8F3;
   --color-brand-cream: #FFFFFF;
   --color-brand-charcoal: #171614;
   --color-brand-forest: #15241B;

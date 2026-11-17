@@ -3,6 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import BrandLogo from '@/components/BrandLogo';
+import ApiaryProofSection from '@/components/ApiaryProofSection';
+import { APIARY_VIDEO_CLIPS } from '@/lib/apiaryVideos';
 import { 
   GraduationCap, 
   HeartHandshake, 
@@ -19,7 +22,7 @@ export default function ServicesClient() {
       title: 'Educate',
       subtitle: 'Apiary Academy & Field Masterclasses',
       description: 'Hands-on live hive inspections, colony biology, cold-spun honey chemistry, and master beekeeping certifications hosted at our Kittatinny Ridge sanctuary.',
-      imageUrl: '/images/service-educate-hero.jpg',
+      imageUrl: '/media/apiary/photos/smoker-inspection.jpeg',
       badge: 'Academy & Workshops',
       icon: <GraduationCap size={20} className="text-amber-400" />,
       features: [
@@ -36,7 +39,7 @@ export default function ServicesClient() {
       title: 'Bee Removal',
       subtitle: '100% Humane Live Swarm Relocation',
       description: 'Zero poisons, zero extermination. We gently rescue honeybee swarms and colonies from trees, siding, attics, and chimneys, relocating them to our protected mountain apiaries.',
-      imageUrl: '/images/service-removal-hero.jpg',
+      imageUrl: '/media/apiary/photos/spring-yard-nuc.jpeg',
       badge: 'Emergency & Scheduled',
       icon: <HeartHandshake size={20} className="text-amber-400" />,
       features: [
@@ -53,7 +56,7 @@ export default function ServicesClient() {
       title: 'Bee Keeping',
       subtitle: 'Full-Service Private Estate Apiary Stewardship',
       description: 'Turnkey hive installation, seasonal disease management, and private honey harvests for luxury country homes, vineyards, orchards, and corporate estates.',
-      imageUrl: '/images/service-beekeeping-hero.jpg',
+      imageUrl: '/media/apiary/photos/glass-top-hive.jpeg',
       badge: 'Estate Management',
       icon: <Wrench size={20} className="text-amber-400" />,
       features: [
@@ -76,15 +79,21 @@ export default function ServicesClient() {
         <span className="text-stone-900 font-medium">Apiary Services</span>
       </nav>
 
-      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
-      <div className="pt-1 pb-8 border-b border-stone-200">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
-          Apiary Services &amp; <br className="hidden sm:inline" />
-          <span className="italic text-[#8C6B28]">Estate Stewardship.</span>
-        </h1>
-        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
-          Professional apiary management, humane colony relocation, and hands-on masterclasses across Sussex County.
-        </p>
+      {/* Editorial Header */}
+      <div className="pt-1 pb-8 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-1.5">
+            Singing Bee Field Services
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+            Apiary Services &amp; <br className="hidden sm:inline" />
+            <span className="italic text-[#D64500]">Estate Stewardship.</span>
+          </h1>
+          <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+            Professional apiary management, humane colony relocation, and hands-on masterclasses across Sussex County.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* 2. Three Core Service Pillars */}
@@ -132,7 +141,7 @@ export default function ServicesClient() {
                 <div className="space-y-1.5 pt-3 border-t border-stone-100">
                   {service.features.map((feat, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs text-stone-600">
-                      <span className="text-[#8C6B28] font-bold">&bull;</span>
+                      <span className="text-[#D64500] font-bold">&bull;</span>
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -146,17 +155,32 @@ export default function ServicesClient() {
                 className="w-full py-3 px-5 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white font-semibold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>{service.ctaText}</span>
-                <ArrowRight size={13} className="text-[#C5A265]" />
+                <ArrowRight size={13} className="text-[#FB5601]" />
               </Link>
             </div>
           </div>
         ))}
       </div>
 
+      {/* Real Field Work Proof Strip */}
+      <div className="rounded-2xl overflow-hidden border border-stone-200">
+        <ApiaryProofSection
+          compact
+          clips={[
+            APIARY_VIDEO_CLIPS[4],
+            APIARY_VIDEO_CLIPS[2],
+            APIARY_VIDEO_CLIPS[1],
+            APIARY_VIDEO_CLIPS[3],
+          ]}
+          heading="See Our Field Apiarists in Action"
+          subheading="Unedited footage from our Sussex County bee yards—every inspection, swarm rescue, and estate hive installation is handled by our own team."
+        />
+      </div>
+
       {/* 3. Emergency Dispatch & Inquiry Contact Strip - Clean Editorial */}
       <div className="pt-8 pb-4 border-t border-stone-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div className="space-y-1 text-left">
-          <span className="text-[11px] font-mono uppercase tracking-widest text-[#8C6B28] block">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#D64500] block">
             Emergency Swarm or Custom Estate Inquiry
           </span>
           <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">

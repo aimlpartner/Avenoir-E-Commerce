@@ -17,6 +17,7 @@ import BoxTierSelector from '@/components/gifting/BoxTierSelector';
 import FlavorSelectorGrid from '@/components/gifting/FlavorSelectorGrid';
 import VisualBoxDrawer from '@/components/gifting/VisualBoxDrawer';
 import CuratedBundlesSection from '@/components/gifting/CuratedBundlesSection';
+import BrandLogo from '@/components/BrandLogo';
 import { 
   Gift, 
   Sliders, 
@@ -156,8 +157,8 @@ export default function GiftingClient() {
     <div className="py-6 sm:py-10 px-4 sm:px-8 xl:px-12 2xl:px-16 w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto space-y-8 pb-24">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-md bg-[#15231A] text-white border border-[#C5A265] shadow-2xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold animate-in fade-in slide-in-from-top-4 duration-300">
-          <CheckCircle2 size={18} className="text-[#C5A265] shrink-0" />
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-md bg-[#15231A] text-white border border-[#FB5601] shadow-2xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold animate-in fade-in slide-in-from-top-4 duration-300">
+          <CheckCircle2 size={18} className="text-[#FB5601] shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -172,17 +173,20 @@ export default function GiftingClient() {
       </nav>
 
       {/* Editorial Header */}
-      <div className="pt-2 pb-8 border-b border-stone-200">
-        <span className="text-[11px] font-mono font-medium tracking-[0.2em] text-stone-400 uppercase block mb-2">
-          The Gifting Atelier
-        </span>
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
-          Build a Gift Box &amp; <br className="hidden sm:inline" />
-          <span className="italic text-[#8C6B28]">Curated Honey Flights.</span>
-        </h1>
-        <p className="text-sm sm:text-base text-stone-500 font-serif mt-2.5 max-w-xl leading-relaxed">
-          Curate a personalized assortment of cold-extracted raw nectars, whipped honey, and botanical infusions hand-packed in New Jersey.
-        </p>
+      <div className="pt-2 pb-8 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <div>
+          <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-2">
+            Singing Bee Gifting Studio
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+            Build a Gift Box &amp; <br className="hidden sm:inline" />
+            <span className="italic text-[#D64500]">Curated Honey Flights.</span>
+          </h1>
+          <p className="text-sm sm:text-base text-stone-500 font-serif mt-2.5 max-w-xl leading-relaxed">
+            Curate a personalized assortment of cold-extracted raw nectars, whipped honey, and botanical infusions hand-packed in New Jersey.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* View Switcher Tabs */}
@@ -270,7 +274,7 @@ export default function GiftingClient() {
               Gifting Etiquette
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900">
-              The Maison Avenoir Experience
+              The Singing Bee Gifting Experience
             </h2>
             <p className="text-sm text-stone-500 font-serif mt-1.5 max-w-xl leading-relaxed">
               Every detail considered—from discreet unpriced packing slips to wax-sealed presentation cards.

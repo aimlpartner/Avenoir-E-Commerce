@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import BrandLogo from '@/components/BrandLogo';
+import ApiaryProofSection from '@/components/ApiaryProofSection';
+import { APIARY_VIDEO_CLIPS } from '@/lib/apiaryVideos';
 import { 
   GraduationCap, 
   ChevronRight, 
@@ -99,15 +102,21 @@ export default function EducateClient() {
         <span className="text-emerald-950 font-bold">Educate &bull; Apiary Academy</span>
       </nav>
 
-      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
-      <div className="pt-1 pb-8 border-b border-stone-200">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
-          Apiary Academy &amp; <br className="hidden sm:inline" />
-          <span className="italic text-[#8C6B28]">Field Masterclasses.</span>
-        </h1>
-        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
-          Hands-on live hive inspections, colony biology, and master apiarist apprenticeships hosted at our Kittatinny Ridge sanctuary.
-        </p>
+      {/* Editorial Header */}
+      <div className="pt-1 pb-8 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#D64500] uppercase block mb-1.5">
+            Singing Bee Apiary Academy
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+            Apiary Academy &amp; <br className="hidden sm:inline" />
+            <span className="italic text-[#D64500]">Field Masterclasses.</span>
+          </h1>
+          <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+            Hands-on live hive inspections, colony biology, and master apiarist apprenticeships hosted at our Kittatinny Ridge sanctuary.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* 2. Course Catalog & Interactive Curriculum */}
@@ -207,7 +216,7 @@ export default function EducateClient() {
                   What Every Apprentice Receives
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Every field masterclass at Avenoir Sanctuary is designed as an intimate, sensory mastercourse. All necessary professional gear and preserves are provided.
+                  Every field masterclass at Singing Bee Sanctuary is designed as an intimate, sensory mastercourse. All necessary professional gear and preserves are provided.
                 </p>
               </div>
 
@@ -270,7 +279,7 @@ export default function EducateClient() {
             <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
               <div>
                 <span className="text-slate-400 text-[11px] block">Bespoke or Group Bookings</span>
-                <span className="text-amber-300 font-mono font-semibold">concierge@avenoirhoney.com</span>
+                <span className="text-amber-300 font-mono font-semibold">concierge@singingbeehoney.com</span>
               </div>
               <span className="text-[11px] font-mono text-emerald-300/90 font-bold bg-emerald-900/60 px-2.5 py-1 rounded-md border border-emerald-700/50">
                 (973) 824-HIVE
@@ -438,6 +447,21 @@ export default function EducateClient() {
             )}
           </div>
         </div>
+      </div>
+
+      {/* Preview Real Field Workshop Moments */}
+      <div className="rounded-2xl overflow-hidden border border-stone-200">
+        <ApiaryProofSection
+          compact
+          clips={[
+            APIARY_VIDEO_CLIPS[1],
+            APIARY_VIDEO_CLIPS[5],
+            APIARY_VIDEO_CLIPS[4],
+            APIARY_VIDEO_CLIPS[6],
+          ]}
+          heading="Step Inside the Veil With Us"
+          subheading="Preview the exact first-person hive openings, brood frame inspections, and golden comb checks you will experience during an Academy workshop."
+        />
       </div>
 
     </div>

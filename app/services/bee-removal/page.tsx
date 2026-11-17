@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Bee Removal | 100% Humane Live Colony Relocation',
-    description: 'Zero poison, zero extermination. Emergency and scheduled live honeybee swarm rescue relocated to Avenoir protected mountain apiaries.',
+    description: 'Zero poison, zero extermination. Emergency and scheduled live honeybee swarm rescue relocated to Singing Bee protected mountain apiaries.',
     type: 'website',
   },
 };

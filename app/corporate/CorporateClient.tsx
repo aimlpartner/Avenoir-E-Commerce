@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { PRODUCTS, ProductItem } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
+import BrandLogo from '@/components/BrandLogo';
 
 interface BulkRecipient {
   id: string;
@@ -174,15 +175,18 @@ export default function CorporateClient() {
         <span className="text-stone-900 font-semibold">Private Client &amp; Corporate Commissions</span>
       </nav>
 
-      {/* Editorial Header - Pure Typography, No Floating Cards, No AI Slop */}
-      <div className="pt-1 pb-8 border-b border-stone-200">
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
-          Corporate &amp; Private <br className="hidden sm:inline" />
-          <span className="italic text-[#8C6B28]">Client Commissions.</span>
-        </h1>
-        <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
-          Bespoke wooden presentation boxes, wax-sealed single-origin jars, and custom volumes for client appreciation and corporate milestones.
-        </p>
+      {/* Editorial Header */}
+      <div className="pt-1 pb-8 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <div>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+            Corporate &amp; Private <br className="hidden sm:inline" />
+            <span className="italic text-[#D64500]">Client Commissions.</span>
+          </h1>
+          <p className="text-sm sm:text-base text-stone-600 font-serif mt-3 max-w-xl leading-relaxed">
+            Bespoke wooden presentation boxes, wax-sealed single-origin jars, and custom volumes for client appreciation and corporate milestones.
+          </p>
+        </div>
+        <BrandLogo variant="seal" className="self-start sm:self-end" />
       </div>
 
       {/* Interactive Commission Studio (2-Column Planner) */}
@@ -569,13 +573,14 @@ export default function CorporateClient() {
                 <div className="w-2 h-0.5 bg-[#3a2507] rotate-60" />
               </div>
 
-              {/* Maison Avenoir Hallmark */}
-              <div className="space-y-0.5">
+              {/* Singing Bee Hallmark */}
+              <div className="space-y-1 flex flex-col items-center">
+                <BrandLogo variant="mark" className="w-7 h-7" />
                 <span className="text-[9px] tracking-[0.25em] uppercase font-bold text-[#3d270c] block">
-                  Maison Avenoir &bull; New Jersey Hives
+                  Singing Bee Honey &bull; New Jersey Hives
                 </span>
                 <span className="text-[8px] tracking-[0.18em] uppercase text-[#4d3210]/80 block">
-                  Harvest House &bull; Est. 2026
+                  Wildflower Harvest House
                 </span>
               </div>
 
@@ -662,8 +667,8 @@ export default function CorporateClient() {
 
             <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs text-stone-800 space-y-1">
               <div className="flex items-center justify-between font-mono text-[11px]">
-                <span>concierge@maisonavenoir.com</span>
-                <span className="text-emerald-800 font-semibold">(973) 555-MIEL</span>
+                <span>concierge@singingbeehoney.com</span>
+                <span className="text-[#D64500] font-semibold">(973) 555-MIEL</span>
               </div>
             </div>
           </div>
@@ -859,7 +864,7 @@ export default function CorporateClient() {
       {/* Direct Quote Inquiry Section - Clean Editorial */}
       <section className="pt-10 border-t border-stone-200 text-left space-y-6">
         <div className="max-w-xl space-y-1.5">
-          <span className="text-[11px] font-mono uppercase tracking-widest text-[#8C6B28] block">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#D64500] block font-semibold">
             Custom Consultation Desk
           </span>
           <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">
@@ -875,7 +880,7 @@ export default function CorporateClient() {
             <CheckCircle2 size={26} className="mx-auto text-emerald-700" />
             <h4 className="font-serif text-lg font-semibold text-stone-900">Inquiry Received</h4>
             <p className="text-xs text-stone-600">
-              Thank you. A Maison Avenoir gifting director has received your specifications and will follow up with your formal proposal and digital proof rendering within two hours.
+              Thank you. A Singing Bee Honey gifting director has received your specifications and will follow up with your formal proposal and digital proof rendering within two hours.
             </p>
           </div>
         ) : (

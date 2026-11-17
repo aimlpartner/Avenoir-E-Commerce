@@ -549,17 +549,17 @@ export default function Product3DPreview({
     // Reset translate
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-    // BRAND MARK LABEL TYPOGRAPHY (matching "AETHELRED FINANCIAL" standard on front right)
+    // BRAND MARK LABEL TYPOGRAPHY
     ctx.textAlign = 'center';
     ctx.fillStyle = mainColor;
     ctx.font = `bold ${Math.round(28 * scaleFactor)}px "Space Grotesk", sans-serif`;
     ctx.letterSpacing = "4px";
-    ctx.fillText("AVENOIR ATELIER", centerXRef, size / 2 + 150 * scaleFactor);
+    ctx.fillText("SINGING BEE", centerXRef, size / 2 + 150 * scaleFactor);
     
-    ctx.fillStyle = isGold ? '#EED9AD' : '#573a24';
+    ctx.fillStyle = isGold ? '#FB5601' : '#573a24';
     ctx.font = `italic ${Math.round(18 * scaleFactor)}px serif`;
     ctx.letterSpacing = "1px";
-    ctx.fillText("HONEY RESERVES", centerXRef, size / 2 + 195 * scaleFactor);
+    ctx.fillText("WILDFLOWER HONEY", centerXRef, size / 2 + 195 * scaleFactor);
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.minFilter = THREE.LinearMipmapLinearFilter;
@@ -753,7 +753,7 @@ export default function Product3DPreview({
     ctx.fillStyle = '#faf8f4';
     ctx.fillRect(0, 0, size, size);
 
-    ctx.strokeStyle = '#D4AF37';
+    ctx.strokeStyle = '#FB5601';
     ctx.lineWidth = 10;
     ctx.strokeRect(20, 20, size - 40, size - 40);
 
@@ -764,20 +764,20 @@ export default function Product3DPreview({
     
     ctx.fillStyle = '#221107';
     ctx.font = 'bold 32px "Space Grotesk", sans-serif';
-    ctx.letterSpacing = '5px';
-    ctx.fillText("AVENOIR", size / 2, 120);
+    ctx.letterSpacing = '4px';
+    ctx.fillText("SINGING BEE", size / 2, 120);
 
     ctx.font = 'italic 20px serif';
     ctx.letterSpacing = '2px';
-    ctx.fillText("ATELIER & APIARY", size / 2, 160);
+    ctx.fillText("WILDFLOWER HONEY", size / 2, 160);
 
     ctx.beginPath();
     ctx.moveTo(150, 190);
     ctx.lineTo(size - 150, 190);
-    ctx.strokeStyle = '#D4AF37';
+    ctx.strokeStyle = '#FB5601';
     ctx.stroke();
 
-    ctx.strokeStyle = '#D4AF37';
+    ctx.strokeStyle = '#FB5601';
     ctx.lineWidth = 4;
     const cx = size / 2;
     const cy = 250;
@@ -803,14 +803,14 @@ export default function Product3DPreview({
     ctx.letterSpacing = '6px';
     ctx.fillText("RAW HONEY", size / 2, 360);
 
-    ctx.fillStyle = '#D4AF37';
+    ctx.fillStyle = '#FB5601';
     ctx.font = 'italic 22px serif';
-    ctx.fillText("Liquid Gold", size / 2, 400);
+    ctx.fillText("Pure Wildflower", size / 2, 400);
 
     ctx.fillStyle = '#7a6652';
     ctx.font = 'bold 15px "JetBrains Mono", monospace';
     ctx.letterSpacing = '1px';
-    ctx.fillText("AVENOIR CO. | VOL 500 G", size / 2, 440);
+    ctx.fillText("SINGING BEE | VOL 500 G", size / 2, 440);
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.minFilter = THREE.LinearMipmapLinearFilter;
@@ -2011,7 +2011,7 @@ export default function Product3DPreview({
         ref={containerRef}
         className="relative w-full aspect-square md:aspect-[4/3] rounded-none border border-[#1C1612]/35 shadow-2xl overflow-hidden cursor-grab active:cursor-grabbing flex flex-col min-h-[360px] md:min-h-[460px] xl:min-h-[520px]"
         style={{
-          backgroundImage: `linear-gradient(rgba(12, 7, 3, 0.45), rgba(12, 7, 3, 0.65)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=80&blur=8')`,
+          backgroundImage: `linear-gradient(rgba(12, 7, 3, 0.45), rgba(12, 7, 3, 0.65)), url('/media/apiary/photos/sunset-hives-row.jpeg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
