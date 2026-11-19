@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
-  --font-serif: var(--font-serif), Georgia, Cambria, serif;
-  --font-display: var(--font-serif), Georgia, Cambria, serif;
-  --font-heading: var(--font-serif), Georgia, Cambria, serif;
-  --font-mono: var(--font-mono), monospace;
+@theme inline {
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, Cambria, serif;
+  --font-display: var(--font-fraunces), Georgia, Cambria, serif;
+  --font-heading: var(--font-fraunces), Georgia, Cambria, serif;
+  --font-mono: var(--font-jakarta), system-ui, -apple-system, sans-serif;
   
   --color-brand-accent: #FB5601;
   --color-brand-accent-dark: #D64500;

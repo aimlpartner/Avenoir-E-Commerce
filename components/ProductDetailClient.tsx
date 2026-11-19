@@ -3,554 +3,299 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  Star, 
-  Plus, 
-  Minus, 
-  ShoppingBag, 
-  Truck, 
-  ShieldCheck, 
-  RotateCcw, 
-  CheckCircle2, 
-  ChevronRight, 
-  Sparkles,
-  Droplets,
-  Shield,
-  Layers,
-  Award,
-  Leaf,
-  MapPin,
-  Gift,
-  HelpCircle,
-  ChevronDown
+import {
+  Plus,
+  Minus,
+  ShoppingBag,
+  CheckCircle2,
+  ChevronRight,
+  RefreshCw,
 } from 'lucide-react';
-import { PRODUCTS, ProductItem } from '@/lib/products';
+import { ProductItem, ProductVariant } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
 import ProductCard from '@/components/ProductCard';
-import BrandLogo from '@/components/BrandLogo';
 
 interface ProductDetailClientProps {
   product: ProductItem;
   relatedProducts: ProductItem[];
 }
 
-export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
+export default function ProductDetailClient({
+  product,
+  relatedProducts,
+}: ProductDetailClientProps) {
   const { addToCart } = useCart();
-  const [quantity, setQuantity] = useState(1);
-  const [selectedFinish, setSelectedFinish] = useState<string>(
-    product.finishes && product.finishes.length > 0 ? product.finishes[0] : ''
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(product.variants[0]);
+  const [activeImage, setActiveImage] = useState<string>(
+    product.variants[0]?.imageUrl || product.imageUrl
   );
-  const [customInscription, setCustomInscription] = useState('');
+  const [quantity, setQuantity] = useState(1);
+  const [customNote, setCustomNote] = useState('');
   const [addedSuccess, setAddedSuccess] = useState(false);
-  const [faqOpen, setFaqOpen] = useState(false);
-  const [addedAddonId, setAddedAddonId] = useState<string | null>(null);
 
-  const isHoney = product.department === 'honey';
-  const isBottleCutout = product.imageUrl.includes('singing-bee-bottle');
+  const gallery =
+    product.galleryImages && product.galleryImages.length > 0
+      ? product.galleryImages
+      : [product.imageUrl];
 
-  const pairWellWithProducts = PRODUCTS.filter(
-    (p) => ['AV-JAR-MINI', 'AV-ACC-WAND', 'AV-CANDLE-TAPER'].includes(p.id) && p.id !== product.id
-  ).slice(0, 3);
+  const unitPrice = selectedVariant.price;
+  const lineTotal = unitPrice * quantity;
+
+  const handleSelectVariant = (variant: ProductVariant) => {
+    setSelectedVariant(variant);
+    if (variant.imageUrl) {
+      setActiveImage(variant.imageUrl);
+    }
+  };
 
   const handleAdd = () => {
-    addToCart(product, quantity, selectedFinish || undefined, customInscription || undefined);
+    addToCart(product, quantity, selectedVariant, customNote);
     setAddedSuccess(true);
     setTimeout(() => setAddedSuccess(false), 2500);
   };
 
-  const handleAddAddon = (item: ProductItem) => {
-    addToCart(item, 1);
-    setAddedAddonId(item.id);
-    setTimeout(() => setAddedAddonId(null), 2000);
-  };
-
   return (
-    <div className="py-8 sm:py-12 px-4 sm:px-8 xl:px-12 2xl:px-16 w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto space-y-12">
-      
+    <div className="py-8 sm:py-12 px-4 sm:px-8 xl:px-12 2xl:px-16 w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto space-y-14">
       {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-        <Link href="/" prefetch={true} className="hover:text-emerald-900 transition">Home</Link>
-        <ChevronRight size={12} />
-        <Link 
-          href={isHoney ? "/honey" : "/beekeeping"} 
-          prefetch={true}
-          className="hover:text-emerald-900 transition font-medium"
-        >
-          {isHoney ? "Honey Products" : "Beekeeping Gear"}
+      <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-stone-500">
+        <Link href="/" prefetch={true} className="hover:text-stone-900 transition">
+          Home
         </Link>
         <ChevronRight size={12} />
-        <span className="text-stone-900 font-bold truncate max-w-xs">{product.name}</span>
+        <Link href="/shop" prefetch={true} className="hover:text-stone-900 transition font-medium">
+          Shop
+        </Link>
+        <ChevronRight size={12} />
+        <span className="text-stone-900 font-semibold truncate max-w-xs">{product.name}</span>
       </nav>
 
-      {/* Main Product Section: 2 Columns */}
+      {/* Main 2-Column Stage */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 text-left">
-        
-        {/* Left: Product Image Stage */}
-        <div className="lg:col-span-6 space-y-4">
-          <div
-            className={`relative aspect-square w-full rounded-lg overflow-hidden border border-stone-200/90 shadow-xs ${
-              isBottleCutout ? 'bg-gradient-to-b from-[#FAF7F2] to-[#F2EAE0]' : 'bg-stone-100'
-            }`}
-          >
+        {/* Left: Real Product Photography + Thumbnails */}
+        <div className="lg:col-span-6 space-y-3">
+          <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#FAF7F2]">
             <Image
-              src={product.imageUrl}
+              src={activeImage}
               alt={product.name}
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className={isBottleCutout ? 'object-contain p-6 sm:p-10 drop-shadow-xl' : 'object-cover'}
-              referrerPolicy="no-referrer"
+              className={`object-cover ${
+                activeImage === product.imageUrl
+                  ? product.imagePosition || 'object-center'
+                  : 'object-center'
+              }`}
             />
-
-            {/* Badges */}
-            <div className="absolute top-4 left-4 flex flex-col gap-1.5 items-start">
-              {product.badge && (
-                <span className="bg-[#FB5601] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-xs shadow-xs">
-                  {product.badge}
-                </span>
-              )}
-              <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-xs ${
-                isHoney ? 'bg-white text-stone-900 border border-stone-200 shadow-2xs' : 'bg-stone-100 text-stone-900 border border-stone-200'
-              }`}>
-                {isHoney ? 'New Jersey Honey' : 'Professional Apiary Supply'}
-              </span>
-            </div>
-
-            {/* Singing Bee Certified Seal */}
-            <div className="absolute top-4 right-4 z-10">
-              <BrandLogo variant="seal" />
-            </div>
-
-            {/* Stock status */}
-            <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-xs text-xs font-semibold text-stone-900 flex items-center gap-2 shadow-xs border border-stone-200">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#15231A]"></span>
-              <span>In Stock &bull; Ready for Courier Dispatch</span>
-            </div>
           </div>
 
-          {/* Trust Guarantees */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 pt-2">
-            <div className="p-2 sm:p-2.5 rounded-md bg-white border border-stone-200/90 text-center space-y-0.5 shadow-2xs">
-              <Truck size={15} className="mx-auto text-[#D64500]" />
-              <span className="text-[10px] sm:text-[11px] font-bold text-stone-800 block truncate">Express Dispatch</span>
-              <p className="text-[9px] sm:text-[10px] text-stone-500">Free over $60</p>
+          {gallery.length > 1 && (
+            <div className="flex items-center gap-3">
+              {gallery.map((src) => {
+                const isSelected = activeImage === src;
+                return (
+                  <button
+                    key={src}
+                    type="button"
+                    onClick={() => setActiveImage(src)}
+                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 transition cursor-pointer bg-[#FAF7F2] ${
+                      isSelected
+                        ? 'border-[#FB5601]'
+                        : 'border-transparent opacity-70 hover:opacity-100'
+                    }`}
+                  >
+                    <Image src={src} alt={product.name} fill sizes="80px" className="object-cover" />
+                  </button>
+                );
+              })}
             </div>
-            <div className="p-2 sm:p-2.5 rounded-md bg-white border border-stone-200/90 text-center space-y-0.5 shadow-2xs">
-              <MapPin size={15} className="mx-auto text-[#D64500]" />
-              <span className="text-[10px] sm:text-[11px] font-bold text-stone-800 block truncate">Local Pickup</span>
-              <p className="text-[9px] sm:text-[10px] text-stone-500">Sussex County, NJ</p>
-            </div>
-            <div className="p-2 sm:p-2.5 rounded-md bg-white border border-stone-200/90 text-center space-y-0.5 shadow-2xs">
-              <ShieldCheck size={15} className="mx-auto text-[#D64500]" />
-              <span className="text-[10px] sm:text-[11px] font-bold text-stone-800 block truncate">Traceable QR</span>
-              <p className="text-[9px] sm:text-[10px] text-stone-500">Hive Passport</p>
-            </div>
-            <div className="p-2 sm:p-2.5 rounded-md bg-white border border-stone-200/90 text-center space-y-0.5 shadow-2xs">
-              <RotateCcw size={15} className="mx-auto text-[#D64500]" />
-              <span className="text-[10px] sm:text-[11px] font-bold text-stone-800 block truncate">Guarantee</span>
-              <p className="text-[9px] sm:text-[10px] text-stone-500">30-Day Policy</p>
-            </div>
-          </div>
+          )}
         </div>
 
-        {/* Right: Product Details & Purchase Form */}
-        <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
-          <div className="space-y-4">
-            
-            {/* Rating & SKU */}
-            <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500">
-              <div className="flex items-center gap-1 text-[#FB5601] font-bold">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={13} className="fill-[#FB5601] text-[#FB5601]" />
-                  ))}
-                </div>
-                <span className="text-stone-800 font-extrabold ml-1">{product.rating}</span>
-                <span className="text-stone-400 text-[11px]">({product.reviewsCount} verified)</span>
-              </div>
-              {product.sku && (
-                <span className="font-mono text-[10px] sm:text-[11px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded-xs border border-stone-200">
-                  SKU: {product.sku}
-                </span>
-              )}
-            </div>
+        {/* Right: Clean Unboxed Options & Purchase */}
+        <div className="lg:col-span-6 space-y-6">
+          <div className="space-y-1.5">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight leading-tight">
+              {product.name}
+            </h1>
+            <p className="text-sm text-stone-500 font-serif">{product.subtitle}</p>
+          </div>
 
-            {/* Title & Subtitle */}
-            <div className="space-y-2">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[11px] sm:text-xs font-bold tracking-widest text-[#D64500] uppercase block">
-                  {product.subtitle}
-                </span>
-                {isHoney && (
-                  <span className="text-[10px] sm:text-[11px] font-mono font-medium text-stone-700 bg-stone-100 px-2.5 py-0.5 rounded-xs border border-stone-200">
-                    Harvested from our New Jersey hives &bull; Sussex &amp; Morris Counties
-                  </span>
-                )}
-              </div>
-              <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight leading-tight">
-                {product.name}
-              </h1>
-              {isHoney && (
-                <div className="text-xs font-medium text-stone-800 bg-stone-50 p-3 rounded-md border border-stone-200 flex items-start gap-2">
-                  <Leaf size={15} className="text-[#D64500] shrink-0 mt-0.5" />
-                  <p className="leading-relaxed">
-                    <strong>Honest Process:</strong> Raw &amp; unfiltered &mdash; bottled unheated to protect natural live enzymes, wild pollen, and microclimate floral aromatics.
-                  </p>
-                </div>
-              )}
-            </div>
-
-            {/* Price Display */}
-            <div className="flex items-baseline gap-3 pt-1 pb-2 border-b border-stone-200">
-              <span className="text-2xl sm:text-4xl font-extrabold text-stone-900">
-                ${product.price.toFixed(2)}
-              </span>
-              <span className="text-[11px] sm:text-xs text-stone-500">
-                Taxes included. Hand-inspected in Sussex County.
-              </span>
-            </div>
-
-            {/* Description & Long Description */}
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-              {product.longDescription || product.description}
-            </p>
-
-            {/* Finishes Selector (If Applicable) */}
-            {product.finishes && product.finishes.length > 0 && (
-              <div className="space-y-2 pt-1">
-                <span className="text-xs font-bold text-stone-700 block">
-                  Select Artisan Finish: <strong className="text-stone-900">{selectedFinish}</strong>
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {product.finishes.map((finish) => (
-                    <button
-                      key={finish}
-                      type="button"
-                      onClick={() => setSelectedFinish(finish)}
-                      className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition cursor-pointer ${
-                        selectedFinish === finish
-                          ? 'bg-[#15231A] text-white shadow-2xs'
-                          : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
-                      }`}
-                    >
-                      {finish}
-                    </button>
-                  ))}
-                </div>
-              </div>
+          {/* Price */}
+          <div className="flex items-baseline gap-2.5 pb-4 border-b border-stone-200">
+            <span className="font-serif text-3xl sm:text-4xl font-semibold text-stone-900">
+              ${unitPrice.toFixed(2)}
+            </span>
+            {product.isSubscription && (
+              <span className="text-sm font-medium text-[#D64500]">/ month</span>
             )}
+            <span className="text-xs text-stone-500 ml-1">&bull; {selectedVariant.weight}</span>
+          </div>
 
-            {/* Custom Engraving / Gifting Note (For Vaults or Jars) */}
-            {isHoney && (
-              <div className="space-y-1.5 pt-1">
-                <label htmlFor="custom-inscription" className="text-xs font-bold text-stone-700 block flex items-center justify-between">
-                  <span>Optional Brass Lid Inscription / Gift Note:</span>
-                  <span className="text-[10px] text-stone-400 font-normal">Complimentary</span>
-                </label>
-                <input
-                  id="custom-inscription"
-                  type="text"
-                  maxLength={60}
-                  value={customInscription}
-                  onChange={(e) => setCustomInscription(e.target.value)}
-                  placeholder="e.g. For Henry & Catherine — Happy Anniversary"
-                  className="w-full px-3.5 py-2.5 rounded-md bg-stone-50 border border-stone-300 text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-stone-800"
-                />
-              </div>
-            )}
+          <p className="text-sm text-stone-700 leading-relaxed">{product.description}</p>
 
-            {/* Quantity Selector & Add to Bag Button */}
-            <div className="pt-3 space-y-3">
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
-                
-                {/* Quantity Control */}
-                <div className="flex items-center justify-between border border-stone-300 rounded-md bg-stone-50 px-3 py-1 sm:w-36 h-12">
+          {/* Clean Hairline Option Selector (No Heavy Card Boxes) */}
+          <div className="space-y-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-stone-500 block">
+              {product.id === 'SB-HOLIDAY-BOX'
+                ? 'Select Holiday Edition'
+                : product.isSubscription
+                ? 'Select Monthly Plan'
+                : 'Select Option'}
+            </span>
+            <div className="divide-y divide-stone-200 border-y border-stone-200">
+              {product.variants.map((variant) => {
+                const isSelected = selectedVariant.id === variant.id;
+                return (
                   <button
-                    onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                    className="w-9 h-9 rounded-md flex items-center justify-center text-stone-600 hover:text-stone-950 hover:bg-stone-200/60 transition cursor-pointer"
-                    aria-label="Decrease quantity"
+                    key={variant.id}
+                    type="button"
+                    onClick={() => handleSelectVariant(variant)}
+                    className={`w-full py-3.5 px-2 text-left transition cursor-pointer flex items-center justify-between gap-3 ${
+                      isSelected ? 'bg-[#FFF8F3]' : 'hover:bg-stone-50'
+                    }`}
                   >
-                    <Minus size={15} />
-                  </button>
-                  <span className="font-bold text-sm text-stone-900 px-2">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={() => setQuantity((prev) => prev + 1)}
-                    className="w-9 h-9 rounded-md flex items-center justify-center text-stone-600 hover:text-stone-950 hover:bg-stone-200/60 transition cursor-pointer"
-                    aria-label="Increase quantity"
-                  >
-                    <Plus size={15} />
-                  </button>
-                </div>
-
-                {/* Primary Add to Bag Button */}
-                <button
-                  onClick={handleAdd}
-                  className="flex-1 py-3 px-6 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white font-bold text-xs uppercase tracking-wider transition cursor-pointer flex items-center justify-center gap-2 shadow-2xs active:scale-98 min-h-[48px]"
-                >
-                  <ShoppingBag size={16} className="text-[#FB5601]" />
-                  <span>{addedSuccess ? 'Added to Bag!' : `Add to Bag • $${(product.price * quantity).toFixed(2)}`}</span>
-                </button>
-              </div>
-
-              {addedSuccess && (
-                <div className="p-3 bg-[#142118] text-stone-200 border border-[#223528] rounded-md text-xs font-semibold flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#FB5601] shrink-0" />
-                  <span>Item added to your shopping bag! Cart drawer is open.</span>
-                </div>
-              )}
-
-              {/* Shipping & Gifting Dispatch Notices */}
-              <div className="space-y-2 pt-1">
-                <div className="flex items-center gap-2 text-[11px] text-stone-600 bg-stone-50 p-2.5 rounded-md border border-stone-200/80">
-                  <Gift size={14} className="text-[#D64500] shrink-0" />
-                  <span>Complimentary gift wrapping &amp; handwritten note included at checkout. &ldquo;A sweeter way to say thank you.&rdquo;</span>
-                </div>
-                <div className="flex items-center gap-2 text-[11px] text-stone-800 bg-stone-50 p-2.5 rounded-md border border-stone-200/80">
-                  <Truck size={14} className="text-[#D64500] shrink-0" />
-                  <span><strong>Holiday Gift Notice:</strong> Order by Dec 18 for guaranteed delivery by Dec 24. Local pickup available through Dec 23.</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Pairs Well With Section */}
-            {pairWellWithProducts.length > 0 && (
-              <div className="pt-5 border-t border-stone-200 space-y-2.5">
-                <span className="text-xs uppercase tracking-wider font-bold text-stone-800 block">
-                  Pairs Well With
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  {pairWellWithProducts.map((addon) => (
-                    <div
-                      key={addon.id}
-                      className="p-2.5 rounded-md border border-stone-200/90 bg-white hover:border-stone-300 transition flex flex-col justify-between gap-2 shadow-2xs"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <div className="relative w-10 h-10 rounded-sm overflow-hidden bg-stone-100 shrink-0">
-                          <Image
-                            src={addon.imageUrl}
-                            alt={addon.name}
-                            fill
-                            sizes="40px"
-                            className="object-cover"
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                        <div className="min-w-0">
-                          <h4 className="text-xs font-bold text-stone-900 truncate">{addon.name}</h4>
-                          <span className="text-[11px] text-stone-500 font-semibold">${addon.price.toFixed(2)}</span>
-                        </div>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => handleAddAddon(addon)}
-                        className="w-full py-1 px-2 rounded-md bg-stone-100 hover:bg-[#15231A] hover:text-white text-stone-800 text-[11px] font-bold transition flex items-center justify-center gap-1 cursor-pointer"
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span
+                        className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                          isSelected ? 'border-[#FB5601]' : 'border-stone-300'
+                        }`}
                       >
-                        {addedAddonId === addon.id ? (
-                          <>
-                            <CheckCircle2 size={12} className="text-[#FB5601]" />
-                            <span>Added</span>
-                          </>
-                        ) : (
-                          <>
-                            <Plus size={12} />
-                            <span>Add</span>
-                          </>
+                        {isSelected && <span className="w-2 h-2 rounded-full bg-[#FB5601]" />}
+                      </span>
+                      <div className="min-w-0">
+                        <span className="text-sm font-medium text-stone-900 block">
+                          {variant.label}
+                        </span>
+                        {variant.badge && (
+                          <span className="text-[11px] font-semibold text-[#D64500] block">
+                            {variant.badge}
+                          </span>
                         )}
-                      </button>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Product Specifications List */}
-            <div className="pt-5 border-t border-stone-200 space-y-2">
-              <span className="text-xs uppercase tracking-wider font-bold text-stone-800 block">
-                Harvest &amp; Product Details
-              </span>
-              <ul className="space-y-1.5 text-xs text-stone-600">
-                {product.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 size={14} className="text-[#D64500] shrink-0 mt-0.5" />
-                    <span>{detail}</span>
-                  </li>
-                ))}
-                {product.materials && (
-                  <li className="flex items-start gap-2">
-                    <Layers size={14} className="text-[#D64500] shrink-0 mt-0.5" />
-                    <span><strong>Craft Materials:</strong> {product.materials}</span>
-                  </li>
-                )}
-                {product.weight && (
-                  <li className="flex items-start gap-2">
-                    <Sparkles size={14} className="text-[#D64500] shrink-0 mt-0.5" />
-                    <span><strong>Weight:</strong> {product.weight}</span>
-                  </li>
-                )}
-                {product.dimensions && (
-                  <li className="flex items-start gap-2">
-                    <Award size={14} className="text-[#D64500] shrink-0 mt-0.5" />
-                    <span><strong>Dimensions:</strong> {product.dimensions}</span>
-                  </li>
-                )}
-              </ul>
+                    <span className="text-sm font-semibold text-stone-900 shrink-0">
+                      ${variant.price.toFixed(0)}
+                      {product.isSubscription ? '/mo' : ''}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Crystallization FAQ (Honey Products) */}
-            {isHoney && (
-              <div className="pt-4 border-t border-stone-200">
+          {/* Optional Custom Note — Clean Underline Input */}
+          {product.allowsCustomNote && (
+            <div>
+              <label
+                htmlFor="product-custom-note"
+                className="text-xs font-medium text-stone-600 block mb-1.5"
+              >
+                {product.customNoteLabel || 'Personalization (Optional)'}
+              </label>
+              <input
+                id="product-custom-note"
+                type="text"
+                maxLength={90}
+                value={customNote}
+                onChange={(e) => setCustomNote(e.target.value)}
+                placeholder={product.customNotePlaceholder || 'Add your custom text...'}
+                className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+              />
+            </div>
+          )}
+
+          {/* Quantity & Add to Bag */}
+          <div className="pt-1 space-y-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div className="flex items-center justify-between border border-stone-300 rounded-md px-2 sm:w-32 h-12">
                 <button
                   type="button"
-                  onClick={() => setFaqOpen(!faqOpen)}
-                  className="w-full flex items-center justify-between text-left p-3 rounded-md bg-stone-50 hover:bg-stone-100 border border-stone-200 transition cursor-pointer"
+                  onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                  className="w-8 h-8 flex items-center justify-center text-stone-600 hover:text-stone-950 transition cursor-pointer"
+                  aria-label="Decrease quantity"
                 >
-                  <div className="flex items-center gap-2">
-                    <HelpCircle size={15} className="text-[#D64500] shrink-0" />
-                    <span className="text-xs font-bold text-stone-900">
-                      Why does real honey crystallize?
-                    </span>
-                  </div>
-                  <ChevronDown
-                    size={15}
-                    className={`text-[#D64500] transition-transform duration-200 ${
-                      faqOpen ? 'rotate-180' : ''
-                    }`}
-                  />
+                  <Minus size={15} />
                 </button>
-                {faqOpen && (
-                  <div className="p-3.5 mt-2 rounded-md bg-white border border-stone-200 text-xs text-stone-700 leading-relaxed space-y-2 animate-in fade-in duration-200">
-                    <p>
-                      Crystallization is completely natural and a hallmark of raw, unprocessed honey. It proves the honey has never been micro-filtered or superheated, leaving natural glucose, beneficial live enzymes, and wild flower pollen 100% intact.
-                    </p>
-                    <p className="text-stone-600 font-medium">
-                      <strong>To return it to liquid:</strong> Gently place the glass jar in a warm water bath (under 100&deg;F) for a few minutes. Never microwave, as high heat destroys fragile enzymes.
-                    </p>
-                  </div>
-                )}
+                <span className="font-semibold text-sm text-stone-900 px-2">{quantity}</span>
+                <button
+                  type="button"
+                  onClick={() => setQuantity((prev) => prev + 1)}
+                  className="w-8 h-8 flex items-center justify-center text-stone-600 hover:text-stone-950 transition cursor-pointer"
+                  aria-label="Increase quantity"
+                >
+                  <Plus size={15} />
+                </button>
               </div>
+
+              <button
+                type="button"
+                onClick={handleAdd}
+                className="flex-1 py-3.5 px-6 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition cursor-pointer flex items-center justify-center gap-2 min-h-[48px]"
+              >
+                {product.isSubscription ? <RefreshCw size={16} /> : <ShoppingBag size={16} />}
+                <span>
+                  {addedSuccess
+                    ? 'Added to Bag!'
+                    : product.isSubscription
+                    ? `Subscribe • $${lineTotal.toFixed(2)}/mo`
+                    : `Add to Bag • $${lineTotal.toFixed(2)}`}
+                </span>
+              </button>
+            </div>
+
+            {addedSuccess && (
+              <p className="text-xs font-semibold text-[#D64500] flex items-center gap-1.5">
+                <CheckCircle2 size={14} />
+                <span>Added to your shopping bag.</span>
+              </p>
             )}
 
+            {product.id === 'SB-CORPORATE-GLASS' && (
+              <p className="text-xs text-stone-500">
+                Need 50+ personalized glass jars or custom logo printing?{' '}
+                <Link href="/corporate" className="text-[#D64500] font-semibold hover:underline">
+                  Corporate Order Page &rarr;
+                </Link>
+              </p>
+            )}
           </div>
-        </div>
 
+          {/* Details */}
+          <ul className="pt-5 border-t border-stone-200 space-y-2 text-xs sm:text-sm text-stone-600">
+            {product.details.map((detail, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <CheckCircle2 size={15} className="text-[#D64500] shrink-0 mt-0.5" />
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {/* Verified Reviews Section */}
-      <section className="bg-white rounded-lg p-8 sm:p-12 border border-stone-200 shadow-2xs text-left space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-stone-200">
-          <div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
-              Verified Client Reviews
-            </h3>
-            <p className="text-xs text-stone-500 mt-1">
-              Feedback from verified collectors, gift recipients, and certified apiarists.
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="text-right">
-              <span className="font-serif text-3xl font-extrabold text-stone-900 block leading-none">
-                {product.rating}
-              </span>
-              <span className="text-[10px] text-stone-400">out of 5 stars</span>
-            </div>
-            <div className="flex text-[#FB5601]">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={18} className="fill-[#FB5601]" />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* 3 Review Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-5 rounded-md bg-stone-50 border border-stone-200/90 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex text-[#FB5601]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="fill-[#FB5601]" />
-                ))}
-              </div>
-              <span className="text-[10px] text-stone-400">3 days ago</span>
-            </div>
-            <p className="text-xs text-stone-700 italic leading-relaxed">
-              &quot;The wildflower honey has completely spoiled store-bought honey for me. You can actually taste the season.&quot;
-            </p>
-            <div className="flex items-center gap-2 pt-1 border-t border-stone-200/60">
-              <span className="text-xs font-bold text-stone-800">Eleanor V.</span>
-              <span className="text-[10px] text-[#D64500] uppercase tracking-wider font-semibold">Verified Buyer</span>
-            </div>
-          </div>
-
-          <div className="p-5 rounded-md bg-stone-50 border border-stone-200/90 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex text-[#FB5601]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="fill-[#FB5601]" />
-                ))}
-              </div>
-              <span className="text-[10px] text-stone-400">2 weeks ago</span>
-            </div>
-            <p className="text-xs text-stone-700 italic leading-relaxed">
-              &quot;Received this as an executive holiday gift from a partner firm. Hands-down the most tasteful, memorable presentation I have ever unboxed.&quot;
-            </p>
-            <div className="flex items-center gap-2 pt-1 border-t border-stone-200/60">
-              <span className="text-xs font-bold text-stone-800">Marcus Thorne</span>
-              <span className="text-[10px] text-[#D64500] uppercase tracking-wider font-semibold">Verified Corporate</span>
-            </div>
-          </div>
-
-          <div className="p-5 rounded-md bg-stone-50 border border-stone-200/90 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex text-[#FB5601]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="fill-[#FB5601]" />
-                ))}
-              </div>
-              <span className="text-[10px] text-stone-400">1 month ago</span>
-            </div>
-            <p className="text-xs text-stone-700 italic leading-relaxed">
-              &quot;Precision build and top tier materials. Whether in the kitchen or out in the apiary yard, the quality holds up flawlessly.&quot;
-            </p>
-            <div className="flex items-center gap-2 pt-1 border-t border-stone-200/60">
-              <span className="text-xs font-bold text-stone-800">Dr. Julian Hayes</span>
-              <span className="text-[10px] text-[#D64500] uppercase tracking-wider font-semibold">Master Apiarist</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products Section */}
+      {/* More Products */}
       {relatedProducts.length > 0 && (
-        <section className="space-y-6 text-left">
-          <div className="flex items-end justify-between border-b border-stone-200 pb-4">
-            <div>
-              <span className="text-xs font-bold text-[#D64500] uppercase tracking-wider block mb-1">
-                More from {isHoney ? 'The Honey Reserve' : 'The Apiary Shop'}
-              </span>
-              <h3 className="font-serif text-2xl font-bold text-stone-900">
-                You May Also Admire
-              </h3>
-            </div>
+        <section className="space-y-6 text-left pt-6 border-t border-stone-200">
+          <div className="flex items-end justify-between">
+            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">
+              More from Singing Bee
+            </h2>
             <Link
-              href={isHoney ? "/honey" : "/beekeeping"}
+              href="/shop"
               prefetch={true}
-              className="text-xs font-bold text-stone-900 hover:text-stone-700 flex items-center gap-1"
+              className="text-xs font-semibold text-stone-700 hover:text-[#D64500] flex items-center gap-1"
             >
-              <span>View All {isHoney ? 'Honey' : 'Beekeeping'}</span>
+              <span>View All</span>
               <ChevronRight size={13} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedProducts.map((rel) => (
               <ProductCard key={rel.id} product={rel} />
             ))}
           </div>
         </section>
       )}
-
     </div>
   );
 }

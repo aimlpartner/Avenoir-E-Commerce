@@ -9,14 +9,14 @@ import { useCart } from '@/context/CartContext';
 import BrandLogo from '@/components/BrandLogo';
 
 export default function CartDrawer() {
-  const { 
-    cartItems, 
-    isCartOpen, 
-    setIsCartOpen, 
-    updateQuantity, 
-    removeFromCart, 
-    cartSubtotal, 
-    freeShippingThreshold 
+  const {
+    cartItems,
+    isCartOpen,
+    setIsCartOpen,
+    updateQuantity,
+    removeFromCart,
+    cartSubtotal,
+    freeShippingThreshold,
   } = useCart();
 
   const totalItems = cartItems.reduce((acc, i) => acc + i.quantity, 0);
@@ -27,7 +27,6 @@ export default function CartDrawer() {
     <AnimatePresence>
       {isCartOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -36,7 +35,6 @@ export default function CartDrawer() {
             className="fixed inset-0 bg-stone-900/40 backdrop-blur-xs z-50 transition-opacity"
           />
 
-          {/* Slide-out Drawer */}
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
@@ -44,7 +42,7 @@ export default function CartDrawer() {
             transition={{ type: 'spring', damping: 28, stiffness: 300 }}
             className="fixed top-0 right-0 h-full w-full sm:w-[440px] bg-white z-50 shadow-2xl flex flex-col justify-between"
           >
-            {/* Minimalist Editorial Header */}
+            {/* Header */}
             <div className="px-6 py-5 border-b border-stone-200 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <BrandLogo variant="mark" className="w-8 h-8" />
@@ -56,14 +54,17 @@ export default function CartDrawer() {
                     </span>
                   </h3>
                   <p className="text-xs text-stone-500 font-serif mt-0.5">
-                    {hasUnlockedFreeShipping
-                      ? 'Complimentary courier shipping unlocked'
-                      : `Add $${remainingForFreeShipping.toFixed(2)} for complimentary shipping`}
+                    {cartItems.length === 0
+                      ? 'Free shipping on orders over $60'
+                      : hasUnlockedFreeShipping
+                      ? 'Free shipping unlocked'
+                      : `Add $${remainingForFreeShipping.toFixed(2)} for free shipping`}
                   </p>
                 </div>
               </div>
 
               <button
+                type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="p-1.5 text-stone-400 hover:text-stone-900 transition cursor-pointer"
                 aria-label="Close Shopping Bag"
@@ -72,20 +73,22 @@ export default function CartDrawer() {
               </button>
             </div>
 
-            {/* Cart Items List - Clean, Spacious, No Card Boxes */}
+            {/* Cart Items */}
             <div className="flex-1 overflow-y-auto px-6 py-2">
               {cartItems.length === 0 ? (
                 <div className="text-center py-16 space-y-4">
                   <div className="flex justify-center">
                     <BrandLogo variant="seal" />
                   </div>
-                  <h4 className="font-serif text-lg font-normal text-stone-800">Your bag is empty</h4>
+                  <h4 className="font-serif text-lg font-normal text-stone-800">
+                    Your bag is empty
+                  </h4>
                   <p className="text-xs text-stone-500 max-w-xs mx-auto font-serif">
-                    Explore single-origin raw honeys from Sussex County apiaries or curated gift boxes.
+                    Start with a single jar, a 3-jar combo, a holiday gift box, or our monthly club.
                   </p>
                   <div className="pt-2">
                     <Link
-                      href="/honey"
+                      href="/shop"
                       prefetch={true}
                       onClick={() => setIsCartOpen(false)}
                       className="inline-block px-6 py-2.5 rounded-lg bg-[#FB5601] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#D64500] transition shadow-2xs"
@@ -98,22 +101,23 @@ export default function CartDrawer() {
                 <div className="divide-y divide-stone-100">
                   {cartItems.map((item) => (
                     <div key={item.id} className="py-5 flex gap-4 items-start">
-                      {/* Item Image */}
-                      <div className="relative w-20 h-20 rounded-md overflow-hidden bg-stone-50 shrink-0 border border-stone-200/80">
+                      <div className="relative w-20 h-20 rounded-md overflow-hidden bg-[#FAF7F2] shrink-0 border border-stone-200/80">
                         <Image
                           src={item.imageUrl}
                           alt={item.name}
                           fill
-                          className={item.imageUrl.includes('singing-bee-bottle') ? 'object-contain p-1' : 'object-cover'}
-                          referrerPolicy="no-referrer"
+                          className={
+                            item.imageUrl.endsWith('.png')
+                              ? 'object-contain p-1.5'
+                              : 'object-cover'
+                          }
                         />
                       </div>
 
-                      {/* Item Info */}
                       <div className="flex-1 min-w-0 space-y-1">
                         <div className="flex items-start justify-between gap-2">
                           <Link
-                            href={item.isBundle ? '/gifting' : `/products/${item.productId}`}
+                            href={`/products/${item.productId}`}
                             prefetch={true}
                             onClick={() => setIsCartOpen(false)}
                             className="font-serif text-sm sm:text-base font-normal text-stone-900 hover:text-[#D64500] transition line-clamp-1"
@@ -122,6 +126,7 @@ export default function CartDrawer() {
                           </Link>
 
                           <button
+                            type="button"
                             onClick={() => removeFromCart(item.id)}
                             className="text-stone-300 hover:text-stone-700 transition p-0.5 cursor-pointer shrink-0"
                             aria-label="Remove item"
@@ -130,17 +135,8 @@ export default function CartDrawer() {
                           </button>
                         </div>
 
-                        {item.finish && (
-                          <span className="text-xs text-stone-500 block font-serif">
-                            {item.finish}
-                          </span>
-                        )}
-
-                        {/* Bundle Included Items */}
-                        {item.bundleItems && item.bundleItems.length > 0 && (
-                          <p className="text-[11px] text-stone-500 font-serif truncate">
-                            Includes: {item.bundleItems.map((b) => b.name).join(', ')}
-                          </p>
+                        {item.variantLabel && (
+                          <span className="text-xs text-stone-500 block">{item.variantLabel}</span>
                         )}
 
                         {item.customNote && (
@@ -150,9 +146,9 @@ export default function CartDrawer() {
                         )}
 
                         <div className="flex items-center justify-between pt-2">
-                          {/* Minimalist Quantity Stepper */}
                           <div className="flex items-center border border-stone-200 rounded-md bg-stone-50">
                             <button
+                              type="button"
                               onClick={() => updateQuantity(item.id, -1)}
                               className="w-7 h-7 flex items-center justify-center text-stone-500 hover:text-stone-900 transition cursor-pointer"
                               aria-label="Decrease quantity"
@@ -163,6 +159,7 @@ export default function CartDrawer() {
                               {item.quantity}
                             </span>
                             <button
+                              type="button"
                               onClick={() => updateQuantity(item.id, 1)}
                               className="w-7 h-7 flex items-center justify-center text-stone-500 hover:text-stone-900 transition cursor-pointer"
                               aria-label="Increase quantity"
@@ -171,8 +168,9 @@ export default function CartDrawer() {
                             </button>
                           </div>
 
-                          <span className="text-sm font-medium text-stone-900">
+                          <span className="text-sm font-semibold text-stone-900">
                             ${(item.price * item.quantity).toFixed(2)}
+                            {item.isSubscription ? '/mo' : ''}
                           </span>
                         </div>
                       </div>
@@ -182,42 +180,38 @@ export default function CartDrawer() {
               )}
             </div>
 
-            {/* Clean Editorial Footer */}
+            {/* Footer */}
             {cartItems.length > 0 && (
               <div className="p-6 border-t border-stone-200 bg-white space-y-4">
-                <div className="space-y-1.5 text-xs text-stone-600 font-serif">
+                <div className="space-y-1.5 text-xs text-stone-600">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span className="font-sans font-medium text-stone-900">
-                      ${cartSubtotal.toFixed(2)}
-                    </span>
+                    <span className="font-semibold text-stone-900">${cartSubtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Courier Delivery</span>
-                    <span className="font-sans font-medium text-stone-900">
-                      {hasUnlockedFreeShipping ? 'Complimentary' : '$12.00'}
+                    <span>Shipping</span>
+                    <span className="font-semibold text-stone-900">
+                      {hasUnlockedFreeShipping ? 'Free' : '$8.00'}
                     </span>
                   </div>
                 </div>
 
                 <div className="pt-3 border-t border-stone-100 flex justify-between items-baseline">
                   <span className="font-serif text-base text-stone-900">Total</span>
-                  <span className="text-xl font-medium text-stone-900">
-                    ${(cartSubtotal + (hasUnlockedFreeShipping ? 0 : 12)).toFixed(2)}
+                  <span className="text-xl font-semibold text-stone-900">
+                    ${(cartSubtotal + (hasUnlockedFreeShipping ? 0 : 8)).toFixed(2)}
                   </span>
                 </div>
 
-                <div className="pt-1">
-                  <Link
-                    href="/cart"
-                    prefetch={true}
-                    onClick={() => setIsCartOpen(false)}
-                    className="w-full py-3.5 rounded-lg bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-medium uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <span>Proceed to Checkout</span>
-                    <ArrowRight size={14} className="text-[#FB5601]" />
-                  </Link>
-                </div>
+                <Link
+                  href="/cart"
+                  prefetch={true}
+                  onClick={() => setIsCartOpen(false)}
+                  className="w-full py-3.5 rounded-lg bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-semibold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>Proceed to Checkout</span>
+                  <ArrowRight size={14} className="text-[#FB5601]" />
+                </Link>
               </div>
             )}
           </motion.div>

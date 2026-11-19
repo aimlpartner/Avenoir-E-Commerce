@@ -1,14 +1,16 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import GiftingClient from './GiftingClient';
 
 export const metadata: Metadata = {
-  title: 'Build Your Own Honey Box & Curated Gift Sets | Singing Bee Honey',
-  description: 'Design a bespoke artisan honey gift box or shop pre-made luxury bundles. Mix & match raw varietals, whipped creamed honeys, and botanical infusions with custom calligraphy notes.',
+  title: 'Holiday Gift Boxes & Event Favors',
+  description:
+    'Shop Singing Bee Holiday Special Gift Boxes (Christmas, Thanksgiving, New Year) and custom-tagged Favor Gifts for weddings, parties, and events.',
   openGraph: {
-    title: 'Build Your Own Honey Box & Curated Gift Sets | Singing Bee Honey',
-    description: 'Design a bespoke artisan honey gift box or shop pre-made luxury bundles with custom wax-sealed calligraphy notes.',
+    title: 'Holiday Gift Boxes & Event Favors | Singing Bee Honey',
+    description:
+      'Holiday honey gift boxes for Christmas, Thanksgiving, and New Year plus mini honey favor jars for weddings and parties.',
     images: ['/media/brand/singing-bee-logo.png'],
-  }
+  },
 };
 
 export default function GiftingPage() {

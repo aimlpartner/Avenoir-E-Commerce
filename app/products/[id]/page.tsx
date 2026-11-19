@@ -20,18 +20,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!product) {
     return {
       title: 'Product Not Found',
-      description: 'The requested product reserve is unavailable in the atelier catalog.',
+      description: 'The requested Singing Bee Honey product could not be found.',
     };
   }
 
-  const isHoney = product.department === 'honey';
-  const categoryLabel = isHoney ? 'Raw Honey Reserve' : 'Professional Apiary Gear';
-
   return {
-    title: `${product.name} | ${categoryLabel}`,
+    title: product.name,
     description: product.description || product.subtitle,
     openGraph: {
-      title: `${product.name} | Avenoir Apiary`,
+      title: `${product.name} | Singing Bee Wildflower Honey`,
       description: product.subtitle,
       images: [product.imageUrl],
     },

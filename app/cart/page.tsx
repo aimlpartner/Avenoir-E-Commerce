@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import CartClient from './CartClient';
 
 export const metadata: Metadata = {
-  title: 'Shopping Bag & Express Checkout',
-  description: 'Review your selected artisanal raw honeys, commercial apiary supplies, and bespoke presentation trunks. Enjoy complimentary white-glove shipping on orders over $150.',
+  title: 'Shopping Bag & Checkout',
+  description:
+    'Review your Singing Bee Wildflower Honey order and complete checkout. Free shipping on orders over $60.',
   openGraph: {
     title: 'Shopping Bag & Checkout | Singing Bee Honey',
-    description: 'Review and finalize your order of cold-extracted Sussex honey and apiary gear.',
+    description: 'Review your raw wildflower honey order from Madisonville Apiary, Basking Ridge, NJ.',
   },
 };
 

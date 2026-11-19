@@ -1,6 +1,6 @@
 {
   "name": "Singing Bee Wildflower Honey",
-  "description": "Raw wildflower honey e-commerce storefront, real apiary field proof, bespoke gift boxes, corporate concierge, and operations admin portal.",
+  "description": "Raw wildflower honey storefront from Madisonville Apiary in Basking Ridge, NJ: single jars, 3-jar combos, holiday gift boxes, event favors, kids bottles, personalized corporate glass gifting, and monthly subscriptions.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }

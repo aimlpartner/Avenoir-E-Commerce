@@ -2,7 +2,8 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { AlertTriangle, RotateCcw, Home } from 'lucide-react';
+import { RotateCcw, Home } from 'lucide-react';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function GlobalError({
   error,
@@ -12,42 +13,40 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error('Unhandled Application Error:', error);
+    console.error('Application Error:', error);
   }, [error]);
 
   return (
-    <div className="py-20 sm:py-32 px-4 sm:px-8 max-w-xl mx-auto text-center space-y-6">
-      <div className="w-16 h-16 rounded-2xl bg-rose-50 text-rose-700 flex items-center justify-center mx-auto border border-rose-200 shadow-xs">
-        <AlertTriangle size={32} />
+    <div className="py-20 sm:py-28 px-4 sm:px-8 max-w-xl mx-auto text-center space-y-6">
+      <div className="flex justify-center">
+        <BrandLogo variant="seal" />
       </div>
 
       <div className="space-y-2">
-        <span className="text-xs font-mono font-bold tracking-[0.25em] text-rose-800 uppercase block">
-          Telemetry Alert &bull; Atelier Exception
-        </span>
-        <h1 className="font-serif text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          An Unexpected Interruption Occurred
+        <h1 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900">
+          Something went wrong.
         </h1>
-        <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-          The atelier interface encountered a temporary exception. Our diagnostic sensors have logged this incident.
+        <p className="text-sm text-stone-500 font-serif">
+          Please try again or return to the homepage.
         </p>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+      <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
         <button
+          type="button"
           onClick={() => reset()}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-xs cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white text-xs font-semibold uppercase tracking-wider transition cursor-pointer"
         >
           <RotateCcw size={14} />
-          <span>Retry Session</span>
+          <span>Try Again</span>
         </button>
 
         <Link
           href="/"
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 text-xs font-bold uppercase tracking-wider transition shadow-2xs"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-semibold uppercase tracking-wider transition"
         >
-          <Home size={14} />
-          <span>Return Home</span>
+          <Home size={14} className="text-[#FB5601]" />
+          <span>Home</span>
         </Link>
       </div>
     </div>

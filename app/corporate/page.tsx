@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import CorporateClient from './CorporateClient';
 
 export const metadata: Metadata = {
-  title: 'Heirloom Presentation Trunks & Corporate Concierge',
-  description: 'Cabinet-grade American walnut and birdseye maple trunks, solid C360 architectural brass plaques engraved with your insignia, and white-glove individual recipient dispatch.',
+  title: 'Personalized Corporate Gifting (Glass Bottles & Jars)',
+  description:
+    'Custom-labeled raw wildflower honey in glass bottles and glass jars for client appreciation, team milestones, and corporate holiday gifts.',
   openGraph: {
-    title: 'Heirloom Presentation Trunks & Corporate Concierge | Singing Bee Honey',
-    description: 'Bespoke corporate gifting, volume tier savings, and custom engraved brass plaques for discerning enterprises.',
+    title: 'Personalized Corporate Gifting | Singing Bee Honey',
+    description:
+      'Personalized glass honey bottles and jars with your company name and message from Madisonville Apiary, Basking Ridge, NJ.',
     images: ['/media/brand/singing-bee-logo.png'],
   },
 };

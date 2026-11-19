@@ -7,8 +7,8 @@ export default function Loading() {
       {/* Branded Singing Bee Loading Pulse */}
       <div className="flex items-center gap-3 pb-2">
         <BrandLogo variant="pill" />
-        <span className="text-xs font-mono uppercase tracking-widest text-[#D64500] animate-pulse">
-          Loading Harvest Catalog...
+        <span className="text-xs font-semibold uppercase tracking-wider text-[#D64500] animate-pulse">
+          Loading...
         </span>
       </div>
 

@@ -1,14 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { ProductItem } from '@/lib/products';
-
-export interface BundleSubItem {
-  id: string;
-  name: string;
-  imageUrl?: string;
-  quantity?: number;
-}
+import { ProductItem, ProductVariant } from '@/lib/products';
 
 export interface CartItem {
   id: string;
@@ -17,27 +10,19 @@ export interface CartItem {
   price: number;
   imageUrl: string;
   quantity: number;
-  finish?: string;
+  variantLabel?: string;
+  isSubscription?: boolean;
   customNote?: string;
-  isBundle?: boolean;
-  bundleTier?: string;
-  bundleItems?: BundleSubItem[];
-  packagingStyle?: string;
 }
 
 interface CartContextType {
   cartItems: CartItem[];
-  addToCart: (product: ProductItem, quantity?: number, finish?: string, customNote?: string) => void;
-  addBundleToCart: (bundleData: {
-    bundleId?: string;
-    name: string;
-    tier: string;
-    price: number;
-    imageUrl: string;
-    items: BundleSubItem[];
-    packagingStyle?: string;
-    customNote?: string;
-  }) => void;
+  addToCart: (
+    product: ProductItem,
+    quantity?: number,
+    variant?: ProductVariant | string,
+    customNote?: string
+  ) => void;
   removeFromCart: (itemId: string) => void;
   updateQuantity: (itemId: string, delta: number) => void;
   clearCart: () => void;
@@ -50,111 +35,82 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'avenoir_cart_v1';
+const STORAGE_KEY = 'singing_bee_cart_v2';
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     if (typeof window === 'undefined') {
-      return [
-        {
-          id: "init-1",
-          productId: "AV-BOX-WALNUT",
-          name: "The Estate Walnut Tri-Vault",
-          price: 185.00,
-          imageUrl: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
-          quantity: 1,
-          finish: "Satin Walnut Lacquer"
-        }
-      ];
+      return [];
     }
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           return parsed;
         }
       }
     } catch {
-      // ignore
+      // ignore invalid storage
     }
-    return [
-      {
-        id: "init-1",
-        productId: "AV-BOX-WALNUT",
-        name: "The Estate Walnut Tri-Vault",
-        price: 185.00,
-        imageUrl: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
-        quantity: 1,
-        finish: "Satin Walnut Lacquer"
-      }
-    ];
+    return [];
   });
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Save to localStorage
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
     } catch {
-      // ignore
+      // ignore storage errors
     }
   }, [cartItems]);
 
-  const addToCart = (product: ProductItem, quantity = 1, finish?: string, customNote?: string) => {
+  const addToCart = (
+    product: ProductItem,
+    quantity = 1,
+    variant?: ProductVariant | string,
+    customNote?: string
+  ) => {
+    const resolvedVariant: ProductVariant | undefined =
+      typeof variant === 'string'
+        ? product.variants.find((v) => v.label === variant || v.id === variant)
+        : variant || product.variants[0];
+
+    const variantLabel =
+      typeof variant === 'string' && !resolvedVariant ? variant : resolvedVariant?.label;
+    const unitPrice = resolvedVariant ? resolvedVariant.price : product.price;
+    const cleanedNote = customNote?.trim() || undefined;
+
     setCartItems((prev) => {
       const existingIdx = prev.findIndex(
-        (item) => item.productId === product.id && item.finish === finish
+        (item) =>
+          item.productId === product.id &&
+          item.variantLabel === variantLabel &&
+          item.customNote === cleanedNote
       );
+
       if (existingIdx > -1) {
         const next = [...prev];
         next[existingIdx] = {
           ...next[existingIdx],
-          quantity: next[existingIdx].quantity + quantity
+          quantity: next[existingIdx].quantity + quantity,
         };
         return next;
-      } else {
-        const newItem: CartItem = {
-          id: `cart-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
-          productId: product.id,
-          name: product.name,
-          price: product.price,
-          imageUrl: product.imageUrl,
-          quantity,
-          finish,
-          customNote
-        };
-        return [...prev, newItem];
       }
-    });
-    setIsCartOpen(true);
-  };
 
-  const addBundleToCart = (bundleData: {
-    bundleId?: string;
-    name: string;
-    tier: string;
-    price: number;
-    imageUrl: string;
-    items: BundleSubItem[];
-    packagingStyle?: string;
-    customNote?: string;
-  }) => {
-    const newItem: CartItem = {
-      id: `bundle-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
-      productId: bundleData.bundleId || `custom-bundle-${Date.now()}`,
-      name: bundleData.name,
-      price: bundleData.price,
-      imageUrl: bundleData.imageUrl,
-      quantity: 1,
-      finish: bundleData.packagingStyle,
-      customNote: bundleData.customNote,
-      isBundle: true,
-      bundleTier: bundleData.tier,
-      bundleItems: bundleData.items,
-      packagingStyle: bundleData.packagingStyle
-    };
-    setCartItems((prev) => [...prev, newItem]);
+      const newItem: CartItem = {
+        id: `cart-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+        productId: product.id,
+        name: product.name,
+        price: unitPrice,
+        imageUrl: resolvedVariant?.imageUrl || product.imageUrl,
+        quantity,
+        variantLabel,
+        isSubscription: product.isSubscription,
+        customNote: cleanedNote,
+      };
+      return [...prev, newItem];
+    });
     setIsCartOpen(true);
   };
 
@@ -189,7 +145,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       value={{
         cartItems,
         addToCart,
-        addBundleToCart,
         removeFromCart,
         updateQuantity,
         clearCart,
@@ -197,7 +152,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         setIsCartOpen,
         cartCount,
         cartSubtotal,
-        freeShippingThreshold
+        freeShippingThreshold,
       }}
     >
       {children}
