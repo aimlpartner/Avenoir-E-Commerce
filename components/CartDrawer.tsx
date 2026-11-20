@@ -49,7 +49,7 @@ export default function CartDrawer() {
                 <div>
                   <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900">
                     Shopping Bag
-                    <span className="text-[#D64500] font-sans text-sm ml-2 font-semibold">
+                    <span className="text-[#7A5CD6] font-sans text-sm ml-2 font-semibold">
                       ({totalItems})
                     </span>
                   </h3>
@@ -91,7 +91,7 @@ export default function CartDrawer() {
                       href="/shop"
                       prefetch={true}
                       onClick={() => setIsCartOpen(false)}
-                      className="inline-block px-6 py-2.5 rounded-lg bg-[#FB5601] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#D64500] transition shadow-2xs"
+                      className="inline-block px-6 py-2.5 rounded-lg bg-[#8B6FE0] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#7A5CD6] transition shadow-2xs"
                     >
                       Shop Honey
                     </Link>
@@ -101,7 +101,7 @@ export default function CartDrawer() {
                 <div className="divide-y divide-stone-100">
                   {cartItems.map((item) => (
                     <div key={item.id} className="py-5 flex gap-4 items-start">
-                      <div className="relative w-20 h-20 rounded-md overflow-hidden bg-[#FAF7F2] shrink-0 border border-stone-200/80">
+                      <div className="relative w-20 h-20 rounded-md overflow-hidden bg-[#FDF9E4] shrink-0 border border-stone-200/80">
                         <Image
                           src={item.imageUrl}
                           alt={item.name}
@@ -120,7 +120,7 @@ export default function CartDrawer() {
                             href={`/products/${item.productId}`}
                             prefetch={true}
                             onClick={() => setIsCartOpen(false)}
-                            className="font-serif text-sm sm:text-base font-normal text-stone-900 hover:text-[#D64500] transition line-clamp-1"
+                            className="font-serif text-sm sm:text-base font-normal text-stone-900 hover:text-[#7A5CD6] transition line-clamp-1"
                           >
                             {item.name}
                           </Link>
@@ -207,10 +207,10 @@ export default function CartDrawer() {
                   href="/cart"
                   prefetch={true}
                   onClick={() => setIsCartOpen(false)}
-                  className="w-full py-3.5 rounded-lg bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-semibold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3.5 rounded-lg bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>Proceed to Checkout</span>
-                  <ArrowRight size={14} className="text-[#FB5601]" />
+                  <ArrowRight size={14} />
                 </Link>
               </div>
             )}

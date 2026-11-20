@@ -7,16 +7,28 @@
   --font-heading: var(--font-fraunces), Georgia, Cambria, serif;
   --font-mono: var(--font-jakarta), system-ui, -apple-system, sans-serif;
   
-  --color-brand-accent: #FB5601;
-  --color-brand-accent-dark: #D64500;
-  --color-brand-accent-soft: #FFF4ED;
-  --color-brand-gold: #FB5601;
-  --color-brand-gold-dark: #D64500;
-  --color-brand-gold-light: #FFF8F3;
+  --color-brand-lavender: #8B6FE0;
+  --color-brand-lavender-dark: #7A5CD6;
+  --color-brand-lavender-mid: #A890E4;
+  --color-brand-lilac: #C5B3F0;
+  --color-brand-lavender-soft: #F5F1FD;
+  --color-brand-honey: #E5C530;
+  --color-brand-honey-bright: #F0E454;
+  --color-brand-honey-cream: #FDF9E4;
+  --color-brand-leaf: #78B448;
+  --color-brand-leaf-soft: #EEF7E6;
+  --color-brand-leaf-dark: #1F3016;
+  --color-brand-leaf-deep: #182610;
+  --color-brand-accent: #8B6FE0;
+  --color-brand-accent-dark: #7A5CD6;
+  --color-brand-accent-soft: #F5F1FD;
+  --color-brand-gold: #E5C530;
+  --color-brand-gold-dark: #C4A018;
+  --color-brand-gold-light: #FDF9E4;
   --color-brand-cream: #FFFFFF;
   --color-brand-charcoal: #171614;
-  --color-brand-forest: #15241B;
-  --color-brand-forest-dark: #0F1A13;
+  --color-brand-forest: #1F3016;
+  --color-brand-forest-dark: #182610;
 
   /* Sleek, professional luxury border-radius scale (toned down from bubbly values) */
   --radius-xs: 2px;

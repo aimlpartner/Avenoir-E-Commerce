@@ -35,7 +35,7 @@ export default function GlobalError({
         <button
           type="button"
           onClick={() => reset()}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white text-xs font-semibold uppercase tracking-wider transition cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold uppercase tracking-wider transition cursor-pointer"
         >
           <RotateCcw size={14} />
           <span>Try Again</span>
@@ -43,9 +43,9 @@ export default function GlobalError({
 
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-semibold uppercase tracking-wider transition"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#F5F1FD] hover:bg-[#EAE2FB] text-[#6E52C4] text-xs font-semibold uppercase tracking-wider transition"
         >
-          <Home size={14} className="text-[#FB5601]" />
+          <Home size={14} />
           <span>Home</span>
         </Link>
       </div>

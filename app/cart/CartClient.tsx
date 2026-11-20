@@ -54,7 +54,7 @@ export default function CartClient() {
         <div className="flex justify-center">
           <BrandLogo variant="seal" />
         </div>
-        <CheckCircle2 size={32} className="text-[#FB5601] mx-auto" />
+        <CheckCircle2 size={32} className="text-[#78B448] mx-auto" />
         <h1 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900">
           Thank You for Your Order
         </h1>
@@ -87,15 +87,15 @@ export default function CartClient() {
           <Link
             href="/"
             prefetch={true}
-            className="w-full sm:w-auto px-7 py-3 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-semibold uppercase tracking-wider transition inline-flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-7 py-3 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold uppercase tracking-wider transition inline-flex items-center justify-center gap-2"
           >
             <span>Back to Home</span>
-            <ArrowRight size={14} className="text-[#FB5601]" />
+            <ArrowRight size={14} />
           </Link>
           <Link
             href="/shop"
             prefetch={true}
-            className="w-full sm:w-auto px-6 py-3 rounded-md bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-semibold uppercase tracking-wider transition inline-flex items-center justify-center"
+            className="w-full sm:w-auto px-6 py-3 rounded-md bg-[#F5F1FD] hover:bg-[#EAE2FB] text-[#6E52C4] text-xs font-semibold uppercase tracking-wider transition inline-flex items-center justify-center"
           >
             Continue Shopping
           </Link>
@@ -123,7 +123,7 @@ export default function CartClient() {
             Your Shopping Bag
           </h1>
         </div>
-        <span className="text-xs text-[#D64500] font-semibold">
+        <span className="text-xs text-[#7A5CD6] font-semibold">
           {cartItems.reduce((acc, i) => acc + i.quantity, 0)} items
         </span>
       </div>
@@ -141,14 +141,14 @@ export default function CartClient() {
             <Link
               href="/shop"
               prefetch={true}
-              className="px-6 py-2.5 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white text-xs font-semibold uppercase tracking-wider transition"
+              className="px-6 py-2.5 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold uppercase tracking-wider transition"
             >
               Shop Honey
             </Link>
             <Link
               href="/gifting"
               prefetch={true}
-              className="px-6 py-2.5 rounded-md bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-semibold uppercase tracking-wider transition"
+              className="px-6 py-2.5 rounded-md bg-[#F5F1FD] hover:bg-[#EAE2FB] text-[#6E52C4] text-xs font-semibold uppercase tracking-wider transition"
             >
               Gift Boxes
             </Link>
@@ -162,16 +162,16 @@ export default function CartClient() {
             <div className="space-y-2 pb-4 border-b border-stone-200">
               <div className="flex items-center justify-between text-xs text-stone-700">
                 <span className="flex items-center gap-1.5 font-medium">
-                  <Truck size={14} className="text-[#D64500]" />
+                  <Truck size={14} className="text-[#5B8E33]" />
                   {remainingForFreeShipping > 0
                     ? `Add $${remainingForFreeShipping.toFixed(2)} more for free shipping (over $60)`
                     : 'Free shipping unlocked'}
                 </span>
-                <span className="font-semibold text-[#D64500]">{progress}%</span>
+                <span className="font-semibold text-[#5B8E33]">{progress}%</span>
               </div>
-              <div className="w-full h-1.5 bg-stone-200 rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-[#EAF4E2] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#FB5601] rounded-full transition-all duration-300"
+                  className="h-full bg-[#78B448] rounded-full transition-all duration-300"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -185,7 +185,7 @@ export default function CartClient() {
                   className="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="relative w-18 h-18 sm:w-20 sm:h-20 rounded-lg overflow-hidden bg-[#FAF7F2] shrink-0">
+                    <div className="relative w-18 h-18 sm:w-20 sm:h-20 rounded-lg overflow-hidden bg-[#FDF9E4] shrink-0">
                       <Image
                         src={item.imageUrl}
                         alt={item.name}
@@ -201,7 +201,7 @@ export default function CartClient() {
                       <Link
                         href={`/products/${item.productId}`}
                         prefetch={true}
-                        className="font-serif text-base font-medium text-stone-900 hover:text-[#D64500] transition block"
+                        className="font-serif text-base font-medium text-stone-900 hover:text-[#7A5CD6] transition block"
                       >
                         {item.name}
                       </Link>
@@ -263,7 +263,7 @@ export default function CartClient() {
             <div className="flex flex-wrap justify-between items-center gap-3 pt-4 border-t border-stone-200">
               <Link
                 href="/shop"
-                className="text-xs font-semibold text-stone-700 hover:text-[#D64500] hover:underline"
+                className="text-xs font-semibold text-stone-700 hover:text-[#7A5CD6] hover:underline"
               >
                 &larr; Continue Shopping
               </Link>
@@ -307,7 +307,7 @@ export default function CartClient() {
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
                 placeholder="Full name"
-                className="w-full py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+                className="w-full py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
               />
               <input
                 type="email"
@@ -315,7 +315,7 @@ export default function CartClient() {
                 value={customerEmail}
                 onChange={(e) => setCustomerEmail(e.target.value)}
                 placeholder="Email for order confirmation"
-                className="w-full py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+                className="w-full py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
               />
               <input
                 type="text"
@@ -323,7 +323,7 @@ export default function CartClient() {
                 value={shippingAddress}
                 onChange={(e) => setShippingAddress(e.target.value)}
                 placeholder="Shipping address (Street, City, State, ZIP)"
-                className="w-full py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+                className="w-full py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
               />
 
               <div className="pt-2 space-y-3">
@@ -332,26 +332,26 @@ export default function CartClient() {
                     type="checkbox"
                     checked={isGift}
                     onChange={(e) => setIsGift(e.target.checked)}
-                    className="w-4 h-4 rounded border-stone-300 accent-[#FB5601] cursor-pointer"
+                    className="w-4 h-4 rounded border-stone-300 accent-[#8B6FE0] cursor-pointer"
                   />
                   <span>This order is a gift</span>
                 </label>
 
                 {isGift && (
-                  <div className="pl-4 border-l-2 border-[#FB5601]/60 space-y-3">
+                  <div className="pl-4 border-l-2 border-[#A890E4] space-y-3">
                     <input
                       type="text"
                       value={giftRecipientName}
                       onChange={(e) => setGiftRecipientName(e.target.value)}
                       placeholder="Recipient name"
-                      className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+                      className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
                     />
                     <textarea
                       rows={2}
                       value={giftNote}
                       onChange={(e) => setGiftNote(e.target.value)}
                       placeholder="Optional gift message..."
-                      className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601] resize-none"
+                      className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0] resize-none"
                     />
                   </div>
                 )}
@@ -359,9 +359,9 @@ export default function CartClient() {
 
               <button
                 type="submit"
-                className="w-full mt-2 py-3.5 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-semibold uppercase tracking-wider transition cursor-pointer flex items-center justify-center gap-2"
+                className="w-full mt-2 py-3.5 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold uppercase tracking-wider transition cursor-pointer flex items-center justify-center gap-2"
               >
-                <ShieldCheck size={16} className="text-[#FB5601]" />
+                <ShieldCheck size={16} />
                 <span>Place Order &bull; ${finalTotal.toFixed(2)}</span>
               </button>
             </form>

@@ -53,7 +53,7 @@ export default function ShopClient() {
       {/* Header */}
       <div className="pt-1 pb-6 border-b border-stone-200 text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <span className="text-xs font-semibold tracking-wider text-[#D64500] uppercase block mb-1.5">
+          <span className="text-xs font-semibold tracking-wider text-[#5B8E33] uppercase block mb-1.5">
             Madisonville Apiary &bull; Basking Ridge, NJ
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
@@ -86,8 +86,8 @@ export default function ShopClient() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3.5 py-2 rounded-md text-xs font-semibold transition cursor-pointer ${
                   isSelected
-                    ? 'bg-[#15231A] text-white shadow-2xs'
-                    : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                    ? 'bg-[#8B6FE0] text-white shadow-2xs'
+                    : 'bg-[#F5F1FD] text-stone-700 hover:bg-[#EAE2FB] hover:text-[#6E52C4]'
                 }`}
               >
                 {cat.label} ({count})
@@ -106,7 +106,7 @@ export default function ShopClient() {
             placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-8 py-2 rounded-md border border-stone-300 bg-white text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#FB5601] focus:border-[#FB5601]"
+            className="w-full pl-9 pr-8 py-2 rounded-md border border-stone-300 bg-white text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#8B6FE0] focus:border-[#8B6FE0]"
           />
           {searchQuery && (
             <button
@@ -140,7 +140,7 @@ export default function ShopClient() {
               setSelectedCategory('all');
               setSearchQuery('');
             }}
-            className="px-4 py-2 rounded-md bg-[#15231A] text-white text-xs font-semibold hover:bg-[#1E3326] transition cursor-pointer"
+            className="px-4 py-2 rounded-md bg-[#8B6FE0] text-white text-xs font-semibold hover:bg-[#7A5CD6] transition cursor-pointer"
           >
             Show All Products
           </button>

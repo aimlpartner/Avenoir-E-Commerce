@@ -28,7 +28,7 @@ export default function HomeClient() {
       {/* =========================================================================
           1. HERO — LIVE APIARY VIDEO BG + FULL PRODUCT RANGE MOSAIC
           ========================================================================= */}
-      <section className="relative bg-[#111913] text-white border-b border-stone-800 px-4 sm:px-8 xl:px-12 2xl:px-16 overflow-hidden min-h-[560px] lg:min-h-[640px] flex items-center py-12 sm:py-16 lg:py-20">
+      <section className="relative bg-[#16220F] text-white border-b border-[#263A1A] px-4 sm:px-8 xl:px-12 2xl:px-16 overflow-hidden min-h-[560px] lg:min-h-[640px] flex items-center py-12 sm:py-16 lg:py-20">
         {/* Side-by-Side Live Apiary Video Wall */}
         <div
           aria-hidden="true"
@@ -58,7 +58,7 @@ export default function HomeClient() {
         {/* Contrast Scrim */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 z-1 bg-gradient-to-r from-[#0D1711]/92 via-[#101D15]/80 to-[#0D1711]/70"
+          className="absolute inset-0 z-1 bg-gradient-to-r from-[#111B0B]/92 via-[#16220F]/80 to-[#111B0B]/70"
         />
 
         {/* Foreground Content */}
@@ -67,7 +67,7 @@ export default function HomeClient() {
           <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] font-normal text-white tracking-tight leading-[1.06] drop-shadow-sm">
               Raw wildflower honey. <br />
-              <span className="italic text-[#FB5601]">For every table &amp; occasion.</span>
+              <span className="italic text-[#F0E454]">For every table &amp; occasion.</span>
             </h1>
 
             <p className="text-sm sm:text-base text-stone-200 max-w-lg mx-auto lg:mx-0 leading-relaxed">
@@ -79,7 +79,7 @@ export default function HomeClient() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
               <a
                 href="#main-products"
-                className="py-3.5 px-8 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition shadow-md active:scale-98"
+                className="py-3.5 px-8 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition shadow-md active:scale-98"
               >
                 Shop All Honey
               </a>
@@ -87,7 +87,7 @@ export default function HomeClient() {
               <Link
                 href="/products/SB-MONTHLY-SUB"
                 prefetch={true}
-                className="py-3.5 px-7 rounded-md bg-white/95 hover:bg-white text-stone-900 font-semibold text-xs sm:text-sm uppercase tracking-wider transition shadow-sm"
+                className="py-3.5 px-7 rounded-md bg-white/95 hover:bg-white text-[#6E52C4] font-semibold text-xs sm:text-sm uppercase tracking-wider transition shadow-sm"
               >
                 Monthly Club
               </Link>
@@ -198,7 +198,7 @@ export default function HomeClient() {
           <Link
             href="/shop"
             prefetch={true}
-            className="text-xs sm:text-sm font-medium text-stone-700 hover:text-[#D64500] flex items-center gap-1.5 transition shrink-0 group font-serif"
+            className="text-xs sm:text-sm font-medium text-stone-700 hover:text-[#7A5CD6] flex items-center gap-1.5 transition shrink-0 group font-serif"
           >
             <span>View All (7)</span>
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -223,7 +223,7 @@ export default function HomeClient() {
           <Link
             href="/gifting"
             prefetch={true}
-            className="text-xs sm:text-sm font-medium text-stone-700 hover:text-[#D64500] flex items-center gap-1.5 transition shrink-0 group font-serif"
+            className="text-xs sm:text-sm font-medium text-stone-700 hover:text-[#7A5CD6] flex items-center gap-1.5 transition shrink-0 group font-serif"
           >
             <span>Gift Boxes &amp; Favors</span>
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -257,7 +257,7 @@ export default function HomeClient() {
       {/* =========================================================================
           6. SIMPLE HARVEST UPDATES SIGNUP
           ========================================================================= */}
-      <section className="w-full bg-stone-100/80 border-t border-stone-200 py-14 sm:py-16 text-center">
+      <section className="w-full bg-gradient-to-b from-[#FDF9E4] to-[#F5F1FD] border-t border-[#E6DFC5] py-14 sm:py-16 text-center">
         <div className="w-full max-w-xl mx-auto px-4 sm:px-8 space-y-3.5">
           <div className="flex justify-center">
             <BrandLogo variant="seal" />
@@ -265,14 +265,14 @@ export default function HomeClient() {
           <h2 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 tracking-tight">
             Fresh Harvest Alerts
           </h2>
-          <p className="text-sm text-stone-500 font-serif">
+          <p className="text-sm text-stone-600 font-serif">
             Get notified when new batches and holiday boxes are ready.
           </p>
 
           <div className="max-w-md mx-auto pt-1">
             {newsletterSuccess ? (
-              <div className="p-4 rounded-md bg-[#142118] text-white flex items-center justify-center gap-2 text-xs font-semibold">
-                <Check size={16} className="text-[#FB5601]" />
+              <div className="p-4 rounded-md bg-[#EEF7E6] border border-[#78B448]/40 text-[#2E5414] flex items-center justify-center gap-2 text-xs font-semibold">
+                <Check size={16} className="text-[#78B448]" />
                 <span>You&apos;re on the list!</span>
               </div>
             ) : (
@@ -288,12 +288,12 @@ export default function HomeClient() {
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
                     placeholder="Enter your email..."
-                    className="w-full pl-9 pr-3 py-2.5 rounded-md border border-stone-300 bg-white text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-[#FB5601] focus:border-[#FB5601]"
+                    className="w-full pl-9 pr-3 py-2.5 rounded-md border border-[#D8CEF4] bg-white text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-[#8B6FE0] focus:border-[#8B6FE0]"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white font-bold text-xs uppercase tracking-wider transition cursor-pointer whitespace-nowrap"
+                  className="px-5 py-2.5 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white font-semibold text-xs uppercase tracking-wider transition cursor-pointer whitespace-nowrap"
                 >
                   Join List
                 </button>

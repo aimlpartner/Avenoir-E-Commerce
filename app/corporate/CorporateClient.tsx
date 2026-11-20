@@ -59,7 +59,7 @@ export default function CorporateClient() {
       {/* Open Editorial Header */}
       <div className="pb-8 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <span className="text-xs font-semibold tracking-wider text-[#D64500] uppercase block mb-1.5">
+          <span className="text-xs font-semibold tracking-wider text-[#5B8E33] uppercase block mb-1.5">
             Business &amp; Client Gifts
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
@@ -77,7 +77,7 @@ export default function CorporateClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Left: Real Photo + Simple Label Preview */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="relative w-full aspect-4/5 rounded-xl overflow-hidden bg-stone-100">
+          <div className="relative w-full aspect-4/5 rounded-xl overflow-hidden bg-[#FDF9E4]">
             <Image
               src="/media/products/beeproduct_corporategifting.jpeg"
               alt="Personalized Corporate Honey Gift Box"
@@ -92,7 +92,7 @@ export default function CorporateClient() {
           <div className="pt-4 border-t border-stone-200 flex items-start gap-4">
             <BrandLogo variant="mark" className="w-8 h-8 shrink-0 mt-0.5" />
             <div className="space-y-1 min-w-0">
-              <p className="text-xs uppercase tracking-wider text-[#D64500] font-semibold">
+              <p className="text-xs uppercase tracking-wider text-[#7A5CD6] font-semibold">
                 {companyName.trim() || 'Your Company Name'}
               </p>
               <p className="font-serif text-base text-stone-900 leading-snug">
@@ -130,16 +130,16 @@ export default function CorporateClient() {
                     type="button"
                     onClick={() => setSelectedVariant(variant)}
                     className={`w-full py-4 px-2 text-left transition cursor-pointer flex items-center justify-between gap-4 ${
-                      selected ? 'bg-[#FFF8F3]' : 'hover:bg-stone-50'
+                      selected ? 'bg-[#F5F1FD]' : 'hover:bg-[#FDF9E4]/60'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0">
                       <span
                         className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition ${
-                          selected ? 'border-[#FB5601]' : 'border-stone-300'
+                          selected ? 'border-[#8B6FE0]' : 'border-stone-300'
                         }`}
                       >
-                        {selected && <span className="w-2 h-2 rounded-full bg-[#FB5601]" />}
+                        {selected && <span className="w-2 h-2 rounded-full bg-[#8B6FE0]" />}
                       </span>
                       <div className="min-w-0">
                         <span className="text-sm font-semibold text-stone-900 block">
@@ -154,7 +154,7 @@ export default function CorporateClient() {
                         ${variant.price.toFixed(0)}
                       </span>
                       {variant.badge && (
-                        <span className="text-[11px] font-semibold text-[#D64500]">
+                        <span className="text-[11px] font-semibold text-[#5B8E33]">
                           {variant.badge}
                         </span>
                       )}
@@ -186,7 +186,7 @@ export default function CorporateClient() {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="e.g. Ridgefield Design Group"
-                  className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601] transition"
+                  className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0] transition"
                 />
               </div>
 
@@ -204,7 +204,7 @@ export default function CorporateClient() {
                   value={labelMessage}
                   onChange={(e) => setLabelMessage(e.target.value)}
                   placeholder="e.g. Thank you for a wonderful year!"
-                  className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601] transition"
+                  className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0] transition"
                 />
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function CorporateClient() {
             <button
               type="button"
               onClick={handleAddToBag}
-              className="py-3.5 px-8 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition cursor-pointer inline-flex items-center justify-center gap-2"
+              className="py-3.5 px-8 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition cursor-pointer inline-flex items-center justify-center gap-2"
             >
               {addedSuccess ? <CheckCircle2 size={16} /> : <ShoppingBag size={16} />}
               <span>
@@ -238,7 +238,7 @@ export default function CorporateClient() {
       {/* Custom / Large Volume Inquiry — Open Hairline Section (Zero Outer Box) */}
       <section className="pt-12 border-t border-stone-200 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         <div className="lg:col-span-5 space-y-2.5">
-          <span className="text-xs uppercase tracking-wider text-[#D64500] font-semibold block">
+          <span className="text-xs uppercase tracking-wider text-[#5B8E33] font-semibold block">
             Custom Orders &amp; Logo Printing
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">
@@ -255,7 +255,7 @@ export default function CorporateClient() {
 
         <div className="lg:col-span-7">
           {inquirySubmitted ? (
-            <div className="py-6 border-l-2 border-[#FB5601] pl-5 space-y-1">
+            <div className="py-6 border-l-2 border-[#78B448] pl-5 space-y-1">
               <h3 className="font-serif text-xl text-stone-900">Inquiry Received</h3>
               <p className="text-sm text-stone-600">
                 Thanks, {contactName}. We&apos;ll reach out to {contactEmail} shortly with pricing
@@ -271,7 +271,7 @@ export default function CorporateClient() {
                   value={contactName}
                   onChange={(e) => setContactName(e.target.value)}
                   placeholder="Your name"
-                  className="py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+                  className="py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
                 />
                 <input
                   type="email"
@@ -279,7 +279,7 @@ export default function CorporateClient() {
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
                   placeholder="Work email"
-                  className="py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+                  className="py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
                 />
               </div>
 
@@ -289,12 +289,12 @@ export default function CorporateClient() {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Company name"
-                  className="py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+                  className="py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
                 />
                 <select
                   value={estimatedQty}
                   onChange={(e) => setEstimatedQty(e.target.value)}
-                  className="py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 focus:outline-none focus:border-[#FB5601]"
+                  className="py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 focus:outline-none focus:border-[#8B6FE0]"
                 >
                   <option value="12-24">12 – 24 glass jars/bottles</option>
                   <option value="25-49">25 – 49 glass jars/bottles</option>
@@ -308,14 +308,14 @@ export default function CorporateClient() {
                 value={inquiryNotes}
                 onChange={(e) => setInquiryNotes(e.target.value)}
                 placeholder="Target delivery date, jar size (1/2 lb or 1 lb), and custom logo details..."
-                className="w-full py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601] resize-none"
+                className="w-full py-2.5 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0] resize-none"
               />
 
               <button
                 type="submit"
-                className="px-7 py-3 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white text-xs font-semibold uppercase tracking-wider transition inline-flex items-center gap-2 cursor-pointer"
+                className="px-7 py-3 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold uppercase tracking-wider transition inline-flex items-center gap-2 cursor-pointer"
               >
-                <Send size={14} className="text-[#FB5601]" />
+                <Send size={14} />
                 <span>Send Inquiry</span>
               </button>
             </form>

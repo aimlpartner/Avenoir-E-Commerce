@@ -110,7 +110,7 @@ export default function Navbar() {
                 href={link.href}
                 prefetch={true}
                 className={`h-full px-1 text-sm font-medium transition flex items-center whitespace-nowrap ${
-                  isActive ? 'text-[#D64500]' : 'text-stone-700 hover:text-stone-950'
+                  isActive ? 'text-[#7A5CD6]' : 'text-stone-700 hover:text-[#7A5CD6]'
                 }`}
               >
                 {link.label}
@@ -134,7 +134,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsCartOpen(true)}
-            className="h-10 px-3 flex items-center gap-1.5 text-stone-900 hover:text-[#D64500] transition cursor-pointer rounded-full hover:bg-[#FFF4ED]"
+            className="h-10 px-3 flex items-center gap-1.5 text-stone-900 hover:text-[#7A5CD6] transition cursor-pointer rounded-full hover:bg-[#F5F1FD]"
             aria-label={`Shopping bag containing ${cartCount} items`}
             title="Shopping Bag"
           >
@@ -182,7 +182,7 @@ export default function Navbar() {
                       className="relative flex items-center border-b border-stone-200 px-4 py-3.5 sm:py-4"
                     >
                       <BrandLogo variant="mark" className="w-6 h-6 mr-2" />
-                      <Search size={18} className="text-[#D64500] shrink-0 mr-2.5" />
+                      <Search size={18} className="text-[#8B6FE0] shrink-0 mr-2.5" />
                       <input
                         ref={searchInputRef}
                         type="text"
@@ -218,7 +218,7 @@ export default function Navbar() {
                                 onClick={() => setIsSearchOpen(false)}
                                 className="flex items-center gap-3.5 p-2.5 rounded-lg hover:bg-stone-50 transition group"
                               >
-                                <div className="relative w-12 h-12 rounded-md overflow-hidden bg-[#FAF7F2] shrink-0 border border-stone-200/70">
+                                <div className="relative w-12 h-12 rounded-md overflow-hidden bg-[#FDF9E4] shrink-0 border border-stone-200/70">
                                   <Image
                                     src={product.imageUrl}
                                     alt={product.name}
@@ -227,7 +227,7 @@ export default function Navbar() {
                                   />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <h4 className="font-serif text-sm font-medium text-stone-900 group-hover:text-[#D64500] transition truncate">
+                                  <h4 className="font-serif text-sm font-medium text-stone-900 group-hover:text-[#7A5CD6] transition truncate">
                                     {product.name}
                                   </h4>
                                   <p className="text-xs text-stone-500 truncate">{product.subtitle}</p>
@@ -326,7 +326,7 @@ export default function Navbar() {
                           href={link.href}
                           prefetch={true}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block py-2.5 text-base font-serif text-stone-900 hover:text-[#D64500] transition"
+                          className="block py-2.5 text-base font-serif text-stone-900 hover:text-[#7A5CD6] transition"
                         >
                           {link.label}
                         </Link>
@@ -343,7 +343,7 @@ export default function Navbar() {
                           href={`/products/${p.id}`}
                           prefetch={true}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block py-1.5 text-sm text-stone-600 hover:text-[#D64500] transition"
+                          className="block py-1.5 text-sm text-stone-600 hover:text-[#7A5CD6] transition"
                         >
                           {p.name}
                         </Link>
@@ -351,14 +351,14 @@ export default function Navbar() {
                     </div>
                   </div>
 
-                  <div className="p-4 border-t border-stone-200 bg-stone-50">
+                  <div className="p-4 border-t border-stone-200 bg-[#FDF9E4]">
                     <button
                       type="button"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setIsCartOpen(true);
                       }}
-                      className="w-full py-3 px-4 rounded-md bg-[#15231A] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-between"
+                      className="w-full py-3 px-4 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-between"
                     >
                       <span>View Shopping Bag</span>
                       <span className="font-semibold">({cartCount})</span>

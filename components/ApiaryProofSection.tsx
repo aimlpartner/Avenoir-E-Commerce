@@ -26,15 +26,15 @@ export default function ApiaryProofSection({
   return (
     <section
       id={id}
-      className="py-14 sm:py-20 bg-[#FAF7F2] border-y border-stone-200/80 scroll-mt-24 text-left overflow-hidden"
+      className="py-14 sm:py-20 bg-[#FDF9E4] border-y border-[#E6DFC5] scroll-mt-24 text-left overflow-hidden"
     >
       <div className="w-full max-w-(--breakpoint-2xl) 2xl:max-w-[1720px] mx-auto px-4 sm:px-8 xl:px-12 2xl:px-16 space-y-8">
-        <div className="flex items-end justify-between gap-4 pb-5 border-b border-stone-200">
+        <div className="flex items-end justify-between gap-4 pb-5 border-b border-[#E5DDBB]">
           <div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
               From Our Hives
             </h2>
-            <p className="text-sm text-stone-500 font-serif mt-1">
+            <p className="text-sm text-stone-600 font-serif mt-1">
               Madisonville Apiary &bull; Basking Ridge, NJ
             </p>
           </div>
@@ -43,7 +43,7 @@ export default function ApiaryProofSection({
             <button
               type="button"
               onClick={() => scrollTrack('left')}
-              className="w-9 h-9 rounded-full border border-stone-300 bg-white hover:border-[#FB5601] text-stone-700 hover:text-[#D64500] flex items-center justify-center transition cursor-pointer"
+              className="w-9 h-9 rounded-full border border-[#D8CEF4] bg-white hover:border-[#8B6FE0] text-stone-700 hover:text-[#7A5CD6] flex items-center justify-center transition cursor-pointer"
               aria-label="Scroll left"
             >
               <ChevronLeft size={16} />
@@ -51,7 +51,7 @@ export default function ApiaryProofSection({
             <button
               type="button"
               onClick={() => scrollTrack('right')}
-              className="w-9 h-9 rounded-full border border-stone-300 bg-white hover:border-[#FB5601] text-stone-700 hover:text-[#D64500] flex items-center justify-center transition cursor-pointer"
+              className="w-9 h-9 rounded-full border border-[#D8CEF4] bg-white hover:border-[#8B6FE0] text-stone-700 hover:text-[#7A5CD6] flex items-center justify-center transition cursor-pointer"
               aria-label="Scroll right"
             >
               <ChevronRight size={16} />

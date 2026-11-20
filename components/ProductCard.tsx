@@ -39,7 +39,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link
         href={`/products/${product.id}`}
         prefetch={true}
-        className="block relative aspect-square w-full overflow-hidden rounded-xl cursor-pointer mb-3 border border-stone-200/80 bg-[#FAF7F2] group-hover:border-[#FB5601]/50 transition-colors"
+        className="block relative aspect-square w-full overflow-hidden rounded-xl cursor-pointer mb-3 border border-[#E8E0C8] bg-[#FDF9E4] group-hover:border-[#A890E4] transition-colors"
       >
         <Image
           src={product.imageUrl}
@@ -56,8 +56,8 @@ export default function ProductCard({ product }: ProductCardProps) {
             onClick={handleQuickAdd}
             className={`w-full py-2.5 px-4 rounded-md text-xs font-semibold uppercase tracking-wider transition shadow-sm flex items-center justify-center gap-1.5 cursor-pointer ${
               added
-                ? 'bg-[#FB5601] text-white'
-                : 'bg-white/95 hover:bg-white text-stone-900 hover:text-[#D64500] backdrop-blur-xs'
+                ? 'bg-[#78B448] text-white'
+                : 'bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white'
             }`}
           >
             {added ? (
@@ -67,7 +67,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               </>
             ) : (
               <>
-                <ShoppingBag size={13} className="text-[#D64500]" />
+                <ShoppingBag size={13} className="text-[#F0E454]" />
                 <span>
                   {product.isSubscription ? 'Subscribe' : 'Quick Add'} &bull; $
                   {defaultVariant.price.toFixed(0)}
@@ -80,7 +80,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       <div className="space-y-1">
         <Link href={`/products/${product.id}`} prefetch={true} className="block group/title">
-          <h3 className="font-serif text-base font-normal text-stone-900 group-hover/title:text-[#D64500] transition leading-snug">
+          <h3 className="font-serif text-base font-normal text-stone-900 group-hover/title:text-[#7A5CD6] transition leading-snug">
             {product.name}
           </h3>
         </Link>
@@ -91,7 +91,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link
         href={`/products/${product.id}`}
         prefetch={true}
-        className="sm:hidden mt-2.5 py-2 px-3 rounded-md bg-stone-100 hover:bg-[#FFF4ED] text-stone-900 text-xs font-semibold transition flex items-center justify-center"
+        className="sm:hidden mt-2.5 py-2 px-3 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold transition flex items-center justify-center"
       >
         Choose Options
       </Link>

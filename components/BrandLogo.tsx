@@ -31,7 +31,7 @@ export default function BrandLogo({
   if (variant === 'seal') {
     return (
       <div
-        className={`inline-flex items-center justify-center rounded-full bg-white/95 p-1.5 border-2 border-[#FB5601]/80 shadow-lg backdrop-blur-xs shrink-0 ${className}`}
+        className={`inline-flex items-center justify-center rounded-full bg-white/95 p-1.5 border-2 border-[#E4C024] shadow-lg backdrop-blur-xs shrink-0 ${className}`}
         title="Singing Bee Wildflower Honey"
       >
         <div className="relative w-14 h-16 sm:w-16 sm:h-[70px]">
@@ -50,7 +50,7 @@ export default function BrandLogo({
   if (variant === 'card') {
     return (
       <div
-        className={`inline-flex items-center justify-center rounded-xl bg-white p-3 sm:p-4 border border-[#FB5601]/30 shadow-md shrink-0 ${className}`}
+        className={`inline-flex items-center justify-center rounded-xl bg-white p-3 sm:p-4 border border-[#A890E4]/40 shadow-md shrink-0 ${className}`}
       >
         <div className="relative w-24 h-28 sm:w-28 sm:h-32">
           <Image
@@ -70,8 +70,8 @@ export default function BrandLogo({
       <div
         className={`inline-flex items-center justify-center rounded-xl px-3 py-1.5 border shadow-sm shrink-0 ${
           theme === 'dark'
-            ? 'bg-white border-[#FB5601]/40'
-            : 'bg-white border-[#FB5601]/30'
+            ? 'bg-white border-[#E4C024]/60'
+            : 'bg-white border-[#A890E4]/40'
         } ${className}`}
       >
         <div className="relative w-14 h-16">
@@ -91,7 +91,7 @@ export default function BrandLogo({
     return (
       <div
         className={`inline-flex items-center justify-center shrink-0 ${
-          theme === 'dark' ? 'bg-white rounded-lg px-2 py-1 border border-[#FB5601]/30' : ''
+          theme === 'dark' ? 'bg-white rounded-lg px-2 py-1 border border-[#E4C024]/40' : ''
         } ${className}`}
       >
         <div className="relative w-12 h-14 shrink-0">

@@ -67,7 +67,7 @@ export default function GiftingClient() {
       {/* Open Header */}
       <div className="pb-8 border-b border-stone-200 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <span className="text-xs font-semibold tracking-wider text-[#D64500] uppercase block mb-1.5">
+          <span className="text-xs font-semibold tracking-wider text-[#5B8E33] uppercase block mb-1.5">
             Seasonal Boxes &amp; Celebrations
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
@@ -84,7 +84,7 @@ export default function GiftingClient() {
       {/* Section 1: Holiday Special Gift Box — Open 2-Column Layout */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         <div className="lg:col-span-5 space-y-3">
-          <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-stone-100">
+          <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#FDF9E4]">
             <Image
               src={activeHolidayImage}
               alt={holidayProduct.name}
@@ -105,7 +105,7 @@ export default function GiftingClient() {
                   onClick={() => setActiveHolidayImage(src)}
                   className={`relative aspect-square rounded-lg overflow-hidden border-2 transition cursor-pointer ${
                     isSelected
-                      ? 'border-[#FB5601]'
+                      ? 'border-[#8B6FE0]'
                       : 'border-transparent opacity-70 hover:opacity-100'
                   }`}
                   aria-label={`Holiday edition photo ${idx + 1}`}
@@ -119,7 +119,7 @@ export default function GiftingClient() {
 
         <div className="lg:col-span-7 space-y-6">
           <div className="space-y-2">
-            <span className="text-xs uppercase tracking-wider text-[#D64500] font-semibold block">
+            <span className="text-xs uppercase tracking-wider text-[#5B8E33] font-semibold block">
               Holiday Special
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900">
@@ -144,16 +144,16 @@ export default function GiftingClient() {
                     type="button"
                     onClick={() => handleSelectHolidayVariant(v)}
                     className={`w-full py-3.5 px-2 text-left transition cursor-pointer flex items-center justify-between gap-4 ${
-                      selected ? 'bg-[#FFF8F3]' : 'hover:bg-stone-50'
+                      selected ? 'bg-[#F5F1FD]' : 'hover:bg-[#FDF9E4]/60'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <span
                         className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                          selected ? 'border-[#FB5601]' : 'border-stone-300'
+                          selected ? 'border-[#8B6FE0]' : 'border-stone-300'
                         }`}
                       >
-                        {selected && <span className="w-2 h-2 rounded-full bg-[#FB5601]" />}
+                        {selected && <span className="w-2 h-2 rounded-full bg-[#8B6FE0]" />}
                       </span>
                       <span className="text-sm font-medium text-stone-900">{v.label}</span>
                     </div>
@@ -181,7 +181,7 @@ export default function GiftingClient() {
               value={holidayNote}
               onChange={(e) => setHolidayNote(e.target.value)}
               placeholder="e.g. Happy Holidays from the Miller family!"
-              className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+              className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
             />
           </div>
 
@@ -195,7 +195,7 @@ export default function GiftingClient() {
             <button
               type="button"
               onClick={handleAddHoliday}
-              className="py-3.5 px-8 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white font-semibold text-xs uppercase tracking-wider transition cursor-pointer inline-flex items-center justify-center gap-2"
+              className="py-3.5 px-8 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white font-semibold text-xs uppercase tracking-wider transition cursor-pointer inline-flex items-center justify-center gap-2"
             >
               {holidayAdded ? <CheckCircle2 size={16} /> : <ShoppingBag size={16} />}
               <span>{holidayAdded ? 'Added to Bag' : 'Add Gift Box to Bag'}</span>
@@ -207,7 +207,7 @@ export default function GiftingClient() {
       {/* Section 2: Favor Gifts — Open 2-Column Layout separated by Hairline */}
       <section className="pt-14 border-t border-stone-200 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         <div className="lg:col-span-5">
-          <div className="relative aspect-4/3 w-full rounded-xl overflow-hidden bg-stone-100">
+          <div className="relative aspect-4/3 w-full rounded-xl overflow-hidden bg-[#FDF9E4]">
             <Image
               src={favorProduct.imageUrl}
               alt={favorProduct.name}
@@ -220,7 +220,7 @@ export default function GiftingClient() {
 
         <div className="lg:col-span-7 space-y-6">
           <div className="space-y-2">
-            <span className="text-xs uppercase tracking-wider text-[#D64500] font-semibold block">
+            <span className="text-xs uppercase tracking-wider text-[#5B8E33] font-semibold block">
               Wedding &bull; Party &bull; Events
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900">
@@ -244,8 +244,8 @@ export default function GiftingClient() {
                   onClick={() => setFavorOccasion(occ)}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition cursor-pointer ${
                     favorOccasion === occ
-                      ? 'bg-[#15231A] text-white'
-                      : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                      ? 'bg-[#8B6FE0] text-white'
+                      : 'bg-[#F5F1FD] text-stone-700 hover:bg-[#EAE2FB] hover:text-[#6E52C4]'
                   }`}
                 >
                   {occ}
@@ -268,16 +268,16 @@ export default function GiftingClient() {
                     type="button"
                     onClick={() => setFavorVariant(v)}
                     className={`w-full py-3.5 px-2 text-left transition cursor-pointer flex items-center justify-between gap-4 ${
-                      selected ? 'bg-[#FFF8F3]' : 'hover:bg-stone-50'
+                      selected ? 'bg-[#F5F1FD]' : 'hover:bg-[#FDF9E4]/60'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <span
                         className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                          selected ? 'border-[#FB5601]' : 'border-stone-300'
+                          selected ? 'border-[#8B6FE0]' : 'border-stone-300'
                         }`}
                       >
-                        {selected && <span className="w-2 h-2 rounded-full bg-[#FB5601]" />}
+                        {selected && <span className="w-2 h-2 rounded-full bg-[#8B6FE0]" />}
                       </span>
                       <span className="text-sm font-medium text-stone-900">{v.label}</span>
                     </div>
@@ -305,7 +305,7 @@ export default function GiftingClient() {
               value={favorTagText}
               onChange={(e) => setFavorTagText(e.target.value)}
               placeholder="e.g. Sweetest Thank You · Maya & Daniel · June 14"
-              className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+              className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
             />
           </div>
 
@@ -319,13 +319,9 @@ export default function GiftingClient() {
             <button
               type="button"
               onClick={handleAddFavors}
-              className="py-3.5 px-8 rounded-md bg-[#15231A] hover:bg-[#1E3326] text-white font-semibold text-xs uppercase tracking-wider transition cursor-pointer inline-flex items-center justify-center gap-2"
+              className="py-3.5 px-8 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white font-semibold text-xs uppercase tracking-wider transition cursor-pointer inline-flex items-center justify-center gap-2"
             >
-              {favorAdded ? (
-                <CheckCircle2 size={16} className="text-[#FB5601]" />
-              ) : (
-                <ShoppingBag size={16} className="text-[#FB5601]" />
-              )}
+              {favorAdded ? <CheckCircle2 size={16} /> : <ShoppingBag size={16} />}
               <span>{favorAdded ? 'Added to Bag' : 'Add Favor Pack to Bag'}</span>
             </button>
           </div>
@@ -335,7 +331,7 @@ export default function GiftingClient() {
       {/* Corporate Callout — Simple Hairline Footer Row */}
       <section className="pt-12 border-t border-stone-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div className="space-y-1">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#D64500] block">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#5B8E33] block">
             Business &amp; Client Gifting
           </span>
           <h3 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">
@@ -349,7 +345,7 @@ export default function GiftingClient() {
         <Link
           href="/corporate"
           prefetch={true}
-          className="px-6 py-3 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white text-xs font-semibold uppercase tracking-wider transition shrink-0 inline-flex items-center gap-2"
+          className="px-6 py-3 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white text-xs font-semibold uppercase tracking-wider transition shrink-0 inline-flex items-center gap-2"
         >
           <span>Corporate Gifting</span>
           <ArrowRight size={14} />

@@ -73,7 +73,7 @@ export default function ProductDetailClient({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 text-left">
         {/* Left: Real Product Photography + Thumbnails */}
         <div className="lg:col-span-6 space-y-3">
-          <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#FAF7F2]">
+          <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#FDF9E4]">
             <Image
               src={activeImage}
               alt={product.name}
@@ -97,9 +97,9 @@ export default function ProductDetailClient({
                     key={src}
                     type="button"
                     onClick={() => setActiveImage(src)}
-                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 transition cursor-pointer bg-[#FAF7F2] ${
+                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 transition cursor-pointer bg-[#FDF9E4] ${
                       isSelected
-                        ? 'border-[#FB5601]'
+                        ? 'border-[#8B6FE0]'
                         : 'border-transparent opacity-70 hover:opacity-100'
                     }`}
                   >
@@ -126,7 +126,7 @@ export default function ProductDetailClient({
               ${unitPrice.toFixed(2)}
             </span>
             {product.isSubscription && (
-              <span className="text-sm font-medium text-[#D64500]">/ month</span>
+              <span className="text-sm font-medium text-[#7A5CD6]">/ month</span>
             )}
             <span className="text-xs text-stone-500 ml-1">&bull; {selectedVariant.weight}</span>
           </div>
@@ -151,23 +151,23 @@ export default function ProductDetailClient({
                     type="button"
                     onClick={() => handleSelectVariant(variant)}
                     className={`w-full py-3.5 px-2 text-left transition cursor-pointer flex items-center justify-between gap-3 ${
-                      isSelected ? 'bg-[#FFF8F3]' : 'hover:bg-stone-50'
+                      isSelected ? 'bg-[#F5F1FD]' : 'hover:bg-[#FDF9E4]/60'
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <span
                         className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                          isSelected ? 'border-[#FB5601]' : 'border-stone-300'
+                          isSelected ? 'border-[#8B6FE0]' : 'border-stone-300'
                         }`}
                       >
-                        {isSelected && <span className="w-2 h-2 rounded-full bg-[#FB5601]" />}
+                        {isSelected && <span className="w-2 h-2 rounded-full bg-[#8B6FE0]" />}
                       </span>
                       <div className="min-w-0">
                         <span className="text-sm font-medium text-stone-900 block">
                           {variant.label}
                         </span>
                         {variant.badge && (
-                          <span className="text-[11px] font-semibold text-[#D64500] block">
+                          <span className="text-[11px] font-semibold text-[#5B8E33] block">
                             {variant.badge}
                           </span>
                         )}
@@ -199,7 +199,7 @@ export default function ProductDetailClient({
                 value={customNote}
                 onChange={(e) => setCustomNote(e.target.value)}
                 placeholder={product.customNotePlaceholder || 'Add your custom text...'}
-                className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#FB5601]"
+                className="w-full py-2 border-b border-stone-300 bg-transparent text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#8B6FE0]"
               />
             </div>
           )}
@@ -230,7 +230,7 @@ export default function ProductDetailClient({
               <button
                 type="button"
                 onClick={handleAdd}
-                className="flex-1 py-3.5 px-6 rounded-md bg-[#FB5601] hover:bg-[#D64500] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition cursor-pointer flex items-center justify-center gap-2 min-h-[48px]"
+                className="flex-1 py-3.5 px-6 rounded-md bg-[#8B6FE0] hover:bg-[#7A5CD6] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition cursor-pointer flex items-center justify-center gap-2 min-h-[48px]"
               >
                 {product.isSubscription ? <RefreshCw size={16} /> : <ShoppingBag size={16} />}
                 <span>
@@ -244,8 +244,8 @@ export default function ProductDetailClient({
             </div>
 
             {addedSuccess && (
-              <p className="text-xs font-semibold text-[#D64500] flex items-center gap-1.5">
-                <CheckCircle2 size={14} />
+              <p className="text-xs font-semibold text-[#5B8E33] flex items-center gap-1.5">
+                <CheckCircle2 size={14} className="text-[#78B448]" />
                 <span>Added to your shopping bag.</span>
               </p>
             )}
@@ -253,7 +253,7 @@ export default function ProductDetailClient({
             {product.id === 'SB-CORPORATE-GLASS' && (
               <p className="text-xs text-stone-500">
                 Need 50+ personalized glass jars or custom logo printing?{' '}
-                <Link href="/corporate" className="text-[#D64500] font-semibold hover:underline">
+                <Link href="/corporate" className="text-[#7A5CD6] font-semibold hover:underline">
                   Corporate Order Page &rarr;
                 </Link>
               </p>
@@ -264,7 +264,7 @@ export default function ProductDetailClient({
           <ul className="pt-5 border-t border-stone-200 space-y-2 text-xs sm:text-sm text-stone-600">
             {product.details.map((detail, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <CheckCircle2 size={15} className="text-[#D64500] shrink-0 mt-0.5" />
+                <CheckCircle2 size={15} className="text-[#78B448] shrink-0 mt-0.5" />
                 <span>{detail}</span>
               </li>
             ))}
@@ -282,7 +282,7 @@ export default function ProductDetailClient({
             <Link
               href="/shop"
               prefetch={true}
-              className="text-xs font-semibold text-stone-700 hover:text-[#D64500] flex items-center gap-1"
+              className="text-xs font-semibold text-stone-700 hover:text-[#7A5CD6] flex items-center gap-1"
             >
               <span>View All</span>
               <ChevronRight size={13} />
